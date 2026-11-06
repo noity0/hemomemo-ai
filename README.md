@@ -13,7 +13,9 @@ DJ Science College, Karachi. Email: laptopshampoo@gmail.com · Instagram: huzaif
 
 ## 🌍 Official Website (LIVE)
 
-**https://noity0.github.io/hemomemo-ai/**
+**GitHub (Project Site):** https://noity0.github.io/hemomemo-ai/
+
+**Netlify (Second / Live Mirror):** https://hemomemo-ai.netlify.app/
 
 Yahan se aap:
 - **⬇️ Download (Windows)** kar sakte hain → **HemomemoUltra-People.zip** (mukammal
