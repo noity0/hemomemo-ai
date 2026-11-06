@@ -1,8 +1,8 @@
-/* ☪ GenOne Ultra Brain — portal JS
-   Sirf GENONE local API (127.0.0.1:8790) se baat karta hai — kisi aur
+/* ☪ Hemomemo AI — portal JS
+   Sirf HEMOMO local API (127.0.0.1:8790) se baat karta hai — kisi aur
    AI/platform ki API se koi taluq NAHI (user ka pakka qanoon). */
 const API = "http://127.0.0.1:8790";
-const LS_KEY = "genone_key";
+const LS_KEY = "hemomemo_key";
 
 const $ = (id) => document.getElementById(id);
 const msg = (t, cls) => { const m = $("apiMsg"); m.textContent = t || "";
@@ -26,9 +26,9 @@ async function detect() {
 function hdrs(key) {
   return {
     "Content-Type": "application/json",
-    "X-GenOne-Key": key,
-    "X-GenOne-Ts": String(Math.floor(Date.now() / 1000)),
-    "X-GenOne-Nonce": Math.random().toString(36).slice(2) +
+    "X-Hemomemo-Key": key,
+    "X-Hemomemo-Ts": String(Math.floor(Date.now() / 1000)),
+    "X-Hemomemo-Nonce": Math.random().toString(36).slice(2) +
                       Date.now().toString(36),
   };
 }
@@ -47,7 +47,7 @@ async function auth(ep) {
     if (r.ok && j.ok) {
       localStorage.setItem(LS_KEY, j.key);
       showKeys(j.key, j.keys || [j.key], j.key_limit || 3);
-      msg("✅ Khush-aamdeed, " + email + " — aap ki GenOne key tayyar hai.", "ok");
+      msg("✅ Khush-aamdeed, " + email + " — aap ki Hemomemo key tayyar hai.", "ok");
     } else {
       msg("⚠️ " + (j.error || ("masla (" + r.status + ")")), "err");
     }
@@ -102,7 +102,7 @@ async function newKey() {
     const j = await r.json();
     if (r.ok && j.ok) {
       await showKeys(j.key, j.keys, j.key_limit || 3);
-      msg("🎫 Nayi key tayyar — bilkul random, isi GenOne API se juri.", "ok");
+      msg("🎫 Nayi key tayyar — bilkul random, isi Hemomemo API se juri.", "ok");
     } else {
       msg("⚠️ " + (j.error || ("masla (" + r.status + ")")), "err");
     }
@@ -112,9 +112,9 @@ async function newKey() {
 
 /* ── download-counter ──
    Ye sirf ek GINTI-service hai (abacus — free counter, koi AI API NAHI,
-   koi AI-model se iska taluq nahi; GenOne ka dimagh is se kuch nahi karta).
+   koi AI-model se iska taluq nahi; Hemomemo ka dimagh is se kuch nahi karta).
    Service na chale to counter khud-chup — download hamesha chalta hai. */
-const CKEY = "genoneultra_downloads";
+const CKEY = "hemomemo_downloads";
 const CAPI = "https://abacus.jasoncameron.dev/abacus/" + CKEY;
 
 async function countHit() {
