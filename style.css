@@ -24,21 +24,28 @@ a{color:var(--em)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:62px}
 .brand{display:flex;gap:10px;align-items:center;font-size:1.15rem;font-weight:600}
 .brand b{color:var(--gold)}
-.moon{color:var(--gold);font-size:1.3rem}
+.moon{color:var(--gold);font-size:1.3rem;display:inline-block;animation:moonGlow 6s ease-in-out infinite}
 .nav a{color:var(--dim);text-decoration:none;margin-left:20px;font-size:.93rem}
 .nav a:hover{color:var(--gold2)}
 
 /* ── hero ── */
-.hero{padding:84px 0 66px;text-align:center;
+.hero{position:relative;overflow:hidden;padding:110px 0 86px;text-align:center;
   background:radial-gradient(700px 340px at 50% -60px,#17352a 0%,var(--bg) 70%)}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(560px 280px at 50% 115%,rgba(47,191,143,.13),transparent 70%);
+  animation:drift 16s ease-in-out infinite alternate}
+.hero>*{position:relative;z-index:2}
 .pill{display:inline-block;border:1px solid var(--em2);color:var(--em);
-  border-radius:999px;padding:5px 16px;font-size:.8rem;letter-spacing:.6px}
-.hero h1{font-size:3.1rem;margin:18px 0 10px;letter-spacing:.5px}
+  border-radius:999px;padding:5px 16px;font-size:.8rem;letter-spacing:.6px;
+  animation:fadeUp .8s ease both}
+.hero h1{font-size:3.1rem;margin:18px 0 10px;letter-spacing:.5px;color:var(--gold2);
+  text-shadow:0 0 34px rgba(217,180,91,.35);
+  animation:fadeUp 1s ease .12s both}
 .hero h1 span{color:var(--gold)}
-.lead{color:var(--dim);max-width:640px;margin:0 auto;font-size:1.06rem}
+.lead{color:var(--dim);max-width:640px;margin:0 auto;font-size:1.06rem;animation:fadeUp 1s ease .24s both}
 .lead b{color:var(--txt)}
-.hero-btns{margin:26px 0 34px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.hero-stats{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;color:var(--dim)}
+.hero-btns{margin:26px 0 34px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;animation:fadeUp 1s ease .36s both}
+.hero-stats{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;color:var(--dim);animation:fadeUp 1s ease .48s both}
 .hero-stats b{display:block;font-size:1.25rem;color:var(--gold2)}
 .hero-stats span{font-size:.8rem}
 
@@ -47,11 +54,15 @@ a{color:var(--em)}
   text-decoration:none;cursor:pointer;border:1px solid transparent;
   transition:transform .12s,box-shadow .12s}
 .btn:hover{transform:translateY(-1px)}
-.btn.gold{background:linear-gradient(180deg,var(--gold),#c49a3f);color:#141b14;
+.btn.gold{position:relative;overflow:hidden;background:linear-gradient(180deg,var(--gold),#c49a3f);color:#141b14;
   font-weight:700;box-shadow:0 6px 18px rgba(217,180,91,.22)}
+.btn.gold::after{content:"";position:absolute;top:0;left:-90%;width:45%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);
+  transform:skewX(-20deg);animation:shine 3.4s ease-in-out infinite}
 .btn.ghost{border-color:var(--em2);color:var(--em)}
 .btn.big{font-size:1.12rem;padding:14px 30px}
 .btn:disabled{opacity:.5;cursor:wait;transform:none}
+.btn.gold:hover{box-shadow:0 0 30px rgba(217,180,91,.55)}
 
 /* ── sections/cards ── */
 .sec{padding:58px 0}
@@ -122,3 +133,16 @@ a{color:var(--em)}
 .foot{border-top:1px solid var(--line);padding:34px 0;text-align:center;color:var(--dim)}
 .foot b{color:var(--gold2)}
 .foot .dim{font-size:.85rem;margin-top:4px}
+
+/* ── ANIMATIONS (Hemomemo AI — beautiful animated UI/UX) ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes moonGlow{0%,100%{box-shadow:0 0 16px rgba(217,180,91,.28)}50%{box-shadow:0 0 34px rgba(217,180,91,.58)}}
+@keyframes twinkle{0%,100%{opacity:.25;transform:scale(.8)}50%{opacity:1;transform:scale(1.2)}}
+@keyframes drift{from{transform:translateX(-16px)}to{transform:translateX(16px)}}
+@keyframes shine{0%,55%{left:-90%}100%{left:140%}}
+.stars{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.star{position:absolute;border-radius:50%;background:#e8f2ec;opacity:.35;animation:twinkle 4s ease-in-out infinite}
+.stars .s1{top:16%;left:10%}
+.stars .s2{top:30%;left:82%;animation-delay:1.3s}
+.stars .s3{top:8%;left:46%;animation-delay:.7s}
+section.sec{animation:fadeUp .8s ease both}
