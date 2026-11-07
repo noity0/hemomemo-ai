@@ -136,7 +136,7 @@ class KnowledgeRetrieval:
         self.corpus_dir = corpus_dir
         self.files = files or ["games_knowledge.txt", "coding_knowledge.txt",
                                "coding_deep_master.txt", "harvest_live.txt",
-                               "agent_orders.txt",
+                               "agent_orders.txt", "gamebot_tasks.txt",
                                "hadith_bukhari_english_sahih.txt",
                                "hadith_muslim_english_sahih.txt",
                                "hadith_nasai_english_sahih.txt",
