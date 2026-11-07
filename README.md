@@ -1,96 +1,144 @@
-# ☪ Hemomemo AI — 100% Local Muslim AI (Windows 7 se 11 Pro)
+# ☪ Hemomemo AI — Apna Dimagh (100% Local AI — NO API, NO LLM, NO Cloud)
 
-**Hemomemo AI** — kisi bhi AI platform / AI-API / cloud / MCP ki madad **NAHI** leti.
-Apni **pure-NumPy dimagh** (2-layer LSTM + 2M bio-neurons + HMHZ secret-language
-security + Quran/Hadith ilm + aqal/jazbaat) se jawab deti hai. **Koi bahar-ki API,
-koi cloud, koi doosra AI model — koi connection bhi nahi.** Sirf **Hemomemo AI** — isi
-ke apne haq ke dimagh par.
+**Hemomemo AI** apna **khud ka dimagh** hai — koi LLM nahi, koi bahar ka model nahi,
+koi AI-API nahi, koi cloud nahi, koi MCP nahi. Poora dimagh **pure-NumPy** ka
+**2-layer LSTM** hai (7M parameters), jo **aap ke apne PC par** chalta hai.
 
-👤 **Owner / Creator:** Hafiz Muhammed Huzaifa Shamim (HMHS) — 17 saal ka student,
-DJ Science College, Karachi. Email: laptopshampoo@gmail.com · Instagram: huzaifa_464.
-
----
-
-## 🌍 Official Website (LIVE)
-
-**GitHub (Project Site):** https://noity0.github.io/hemomemo-ai/
-
-**Netlify (Second / Live Mirror):** https://hemomemo-ai.netlify.app/
-
-Yahan se aap:
-- **⬇️ Download (Windows)** kar sakte hain → **HemomemoUltra-People.zip** (mukammal
-  standalone app + model + knowledge + Hemomemo API server — ~150 MB).
-- **🔑 Apni Hemomemo API key** le sakte hain — sign-in / sign-up se (max **3 keys**).
+👤 **Owner / Creator:** Hafiz Muhammed Huzaifa Shamim (**HMHS**) — 17 saal ka student,
+DJ Science College, Karachi. Email: laptopshampoo@gmail.com · Instagram: huzaifa_464
+📜 **License:** MIT (yaqini azaadi — neeche LICENSE file dekho)
 
 ---
 
-## 📥 Download — 2 tariqay
+## 🧠 Apna Dimagh — LLM NAHI (Architecture)
 
-### 1) Website se (aakhri/latest file)
-**https://noity0.github.io/hemomemo-ai/**
-- Upar **⬇️ Download (Windows)** button → **HemomemoUltra-People.zip** (mukammal
-  standalone app + model + knowledge + Hemomemo API server — ~150 MB).
+Hemomemo **LLM-based app NAHI** hai. Ye apna **dimagh-tanaab** (neural + retrieval +
+reasoning + yaad) hai:
 
-### 2) GitHub se (step-by-step, bilkul asaan)
-1. Browser me: **https://github.com/noity0/hemomemo-ai/releases**
-2. **v4.2.0-people** release open karo.
-3. **HemomemoUltra-People.zip** → **Asset download / Release asset**.
-4. Zip **Extract All** karo → folder me **Hemomemo-Ultra-Brain.exe** nikko.
+```
+ aap ka sawal
+      |
+      v
+ +--------------+    +----------------+    +---------------------+
+ | L1 net-guard | -> | L2 input-guard | -> | INTENT (pehchan)    |
+ | (whitelist)  |    | (kachra-blok)  |    | math/coding/game/   |
+ +--------------+    +----------------+    | islamic/general     |
+                                           +----------+----------+
+                                                      |
+                     +--------------------------------+----------------+
+                     |                                                 |
+                     v                                                 v
+        +---------------------+                        +------------------------+
+        | YAAD (episodic)     |                        | ILM (knowledge corpus) |
+        | episodic.jsonl      |                        | Sawal:/Jawab: pairs    |
+        | token-overlap +     |                        | corpus_big/*.txt       |
+        | recency-boost       |                        | keyword-retrieval      |
+        +---------+-----------+                        +-----------+------------+
+                  |                                                 |
+                  +------------------> +----------------------------+
+                                       v
+                        +-----------------------------------+
+                        | REASONING LOOP (model/reasoning)  |
+                        | - math: DETERMINISTIC (pakka sahi)|
+                        | - steps/plan banata hai           |
+                        +----------------+------------------+
+                                         |
+                                         v
+                        +-----------------------------------+
+                        | COMPOSER (model/generate)         |
+                        | apna 2-layer LSTM (NumPy, 7M)     |
+                        | order-driven, template-NAHI       |
+                        +----------------+------------------+
+                                         |
+                                         v
+                        +-----------------------------------+
+                        | L4 sacred-guard + L5 HMHZ-VM      |
+                        +----------------+------------------+
+                                         |
+                                         v
+                                   aap ko JAWAB
+```
 
----
-
-## 🛠️ Install (Windows par — 7 se 11 Pro tak)
-
-1. **Download** (upar di website/GitHub se).
-2. **Zip kholein** → **Extract All** → kisi bhi folder me (misal: `D:\HemomemoUltra-People`).
-3. **App chalayen**: folder me sab se pehli file **`Hemomemo-Ultra-Brain.exe`** —
-   double-click. (SmartScreen pooche to **More info → Run anyway** — app kisi store
-   par nahi, isi laptop par.)
-4. App khulte hi **Hemomemo ki apni local API** khud **ON** hoti hai:
-   `http://127.0.0.1:8790` — website/API page usi par chalte hain.
-
-### 🔐 Apni API key lein (3 keys free / account)
-- Website (yahin se): **🔑 Apni Hemomemo API Key** section → **👤 Apni API lein**
-  (Sign-in / Nayi key) → aap ka **gk_…-key** tayyar.
-- App → **🌐 Hemomemo AI API** page → **👤 Apni API lein** (Sign-in / Nayi key).
-- Max **3 keys** per account (har nayi key bilkul random, isi local API se juri).
-- Use:
-  ```
-  POST http://127.0.0.1:8790/v1/chat
-  Header: X-Hemomemo-Key: <aap-ki-gk_…-key>
-  Body:   {"prompt": "aap ka sawal"}
-  ```
-
----
-
-## 💻 Coding AI (sirf Hemomemo AI — koi doosra AI nahi)
-
-- Coding sawalon (python / javascript / sql / cpp / java / go / rust / php / ruby /
-  bash / html / css / …) → **Hemomemo AI local Coding AI** → **code block** me jawab.
-- Coding hamesha **chat → code block** me hota hai; **copy whole code block** button se
-  copy karo. Koi AI-API / foreign code-AI — **nahi**.
-- Quality: local templates + apna local dimagh; **koi other AI connection nahi**.
-
----
-
-## 🔒 Security / Hifazat (100% local — koi bhi cloud/API nahi)
-
-- **6 security-layers** (L1 net-firewall → L2 input-guard → L3 integrity → L4 sacred →
-  L5 HMHZ secret-VM → L6 API-guard). Sab **local**, koi API/platform/koi MCP — **nahi**.
-- Context window: **100,000 chars** (quality sambhal ke).
-- **Daily token/context reset: 12:00 AM** (local counter).
-- Koi platform API, koi cloud call, koi MCP, koi AI-model — **nahi**.
-- System files read-only hain — `VERIFY-SYSTEM.bat` se SHA-256 tasdeeq.
+**Har hissa local hai:** yaad `data/memory/episodic.jsonl` par, ilm
+`data/corpus_big/*.txt` par, dimagh `model/checkpoints/genmaster_*.npz` par —
+sab **aap ke PC** par. Koi token, koi quota, koi bahar-ka-server — **nahi**.
 
 ---
 
-## 🧪 QA / Quality
+## 🎮 Teen Kaam — Text, Code, AGENT (Minecraft Bot-Player)
 
-- **1000+ asli QA checks** (math / islamic / social / micro-adab / owner / ilm / kachra /
-  intent / NN / guard / learn / math-gen / coding-AI / chat) — real code-paths par,
-  koi nakli check nahi.
-- Final result: honest notes + fixes — **final QA last** jab saari kaam complete ho jaye.
+Hemomemo AI ke **teen kaam** hain:
+
+### 1) TEXT — Chat (apna dimagh)
+- Sawal-jawab, ilm, islami-adab, general chat.
+- Har baat **yaad** mein mehfooz (aap ke PC par) — agle jawab behtar.
+
+### 2) CODE — Coding AI
+- Python / JavaScript / Java / Kotlin / SQL / HTML / CSS / Bash / Rust / Go / PHP …
+- Jawab **code-block** mein — copy-button ke sath (desktop app).
+- Coding knowledge: `coding_knowledge.txt` + `coding_deep_master.txt` (13,600+ bytes).
+
+### 3) AGENT — Game-Bot Player (Minecraft!) 🟩
+**Sabse bada kaam:** Hemomemo **Minecraft mein player ki tarah** khelta hai!
+
+- **Server-mode:** offline-mode/LAN Minecraft server se **join** karta hai
+  (`py -3 -m agent.modes agent` ya `py -3 agent\mc_bot.py <server-host> <username>`).
+  Chat parhta/likhta hai, aap ko salaam karta hai, aap ke sawalon ke jawab
+  **apne local dimagh** se deta hai — live, game ke andar!
+- **Direct-mode:** bina server ke — aap terminal mein likho, bot sath khelta hai
+  (`py -3 -m agent.modes agent`).
+- **Faisla 100% local:** bot ka har jawab `model/reasoning.py` (yaad + ilm +
+  deterministic-math) se aata hai. **Koi AI-API game ke andar bhi nahi.**
+- **Imandari-hadd:** online-mode (Mojang-auth) servers ke liye bahar ka auth
+  chahiye hota hai — wo **jaan-boojh kar support nahi** (NO-API-law). Block-level
+  khel (dig/build) ke liye optional `mcpi` hook diya gaya hai (server-side plugin).
+
+Protocol: apna **VarInt-framing + handshake + login + chat** likha gaya hai
+(`agent/mc_bot.py`) — koi SDK koi library zaroori nahi.
 
 ---
 
-*Built with ❤️ by Hafiz Muhammed Huzaifa Shamim (HMHS) — Alhamdulillah, 100% local AI.*
+## 📥 Download (Windows 7 → 11 Pro)
+
+**GitHub:** https://github.com/noity0/hemomemo-ai/releases/tag/v4.2.0-people
+→ **HemomemoUltra-People.zip** (~131 MB) → Extract All → **`Hemomemo-Ultra-Brain.exe`**
+
+**Live sites:**
+- 🌍 GitHub Pages: **https://noity0.github.io/hemomemo-ai/**
+- 🌍 Netlify Mirror: **https://hemomemo-ai.netlify.app/**
+
+App khulte hi **Hemomemo local API** khud ON: `http://127.0.0.1:8790`
+(3 free API keys / account — `gk_…` keys, PBKDF2-hashed, 100% PC-par).
+
+---
+
+## 🛠️ Build (Windows workflow)
+
+```
+BUILD-WINDOWS.bat     <- 1) tests  2) EXE (PyInstaller)  3) package
+py -3 tests\test_new_modules.py    <- honest tests (22 checks)
+py -3 scripts\make_package.py      <- package + SHA-256 manifest
+```
+
+Error-handling: har build-step fail hone par ruk kar **imandari error** dikhata hai
+(koi jhooti "success" nahi).
+
+---
+
+## 🔒 Security (6 layers — sab local)
+
+L1 net-firewall (AI-API hosts HARD-BLOCK) · L2 input-guard · L3 integrity
+(SHA-256 manifest, fail-closed) · L4 sacred-guard · L5 HMHZ secret-VM ·
+L6 API-guard (local keys). Koi platform API / cloud / MCP / doosra AI — **nahi**.
+
+## 🧪 QA — Imandari
+
+QA-500 suite har release se pehle chalti hai. **Nateeja jaisa hai waisa bataya
+jata hai** — koi nakli "success" nahi. Naye dimagh-modules ke 22 tests
+(memory / retrieval / reasoning / deterministic-math / mc-bot protocol) —
+**22/22 PASS** (2026-11-07).
+
+---
+
+*Built with ❤️ by Hafiz Muhammed Huzaifa Shamim (HMHS) — Alhamdulillah,
+100% local, 100% apna dimagh. MIT License.*
