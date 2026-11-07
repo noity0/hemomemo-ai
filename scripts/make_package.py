@@ -183,6 +183,31 @@ def main():
           % (os.path.getsize(exe_src) / 1048576,
              time.strftime("%H:%M:%S", time.localtime(os.path.getmtime(exe_src)))))
 
+    # ---- 1b) AGENT-EXE (Hemomemo-Agent - console, isi-folder ka dimagh)
+    print("🔨 AGENT-EXE build (Hemomemo-Agent)…")
+    agent_src = os.path.join(SRC, "dist", "Hemomemo-Agent.exe")
+    ra = subprocess.run([sys.executable, "-m", "PyInstaller", "--noconfirm",
+                         "Hemomemo-Agent.spec"], cwd=SRC,
+                        capture_output=True, text=True)
+    src_latest_a = 0
+    for rel in ("agent/console_app.py", "agent/orders.py", "agent/mc_bot.py",
+                "Hemomemo-Agent.spec", "model/understand.py",
+                "model/tokenize.py"):
+        p = os.path.join(SRC, rel)
+        if os.path.exists(p):
+            src_latest_a = max(src_latest_a, os.path.getmtime(p))
+    fresh_a = (ra.returncode == 0 and os.path.exists(agent_src)
+               and os.path.getmtime(agent_src) >= src_latest_a - 2)
+    if not fresh_a:
+        print("❌ AGENT-EXE build FAIL ya PURANA (rc=%s)" % ra.returncode)
+        for tail in (ra.stdout[-1200:], ra.stderr[-1200:]):
+            if tail:
+                print(tail)
+        sys.exit(1)
+    print("   AGENT-EXE-OK (%.1f MB, built %s)"
+          % (os.path.getsize(agent_src) / 1048576,
+             time.strftime("%H:%M:%S", time.localtime(os.path.getmtime(agent_src)))))
+
     os.makedirs(DST, exist_ok=True)
 
     # ---- 2) files copy
@@ -303,11 +328,49 @@ def main():
     # EXE + bat + README + version + hash-manifest
     _copy2_retry(exe_src, os.path.join(DST, "Hemomemo-Ultra-Brain.exe"))
     copied += 1
+    # AGENT-EXE (Minecraft bot + PC-aankh console) - isi folder mein
+    _copy2_retry(agent_src, os.path.join(DST, "Hemomemo-Agent.exe"))
+    copied += 1
 
     with open(os.path.join(DST, "START-HEMOMO.bat"), "w",
               encoding="utf-8") as f:
         f.write('@echo off\r\ntitle Hemomemo AI\r\n'
                 'start "" "%~dp0Hemomemo-Ultra-Brain.exe"\r\n')
+    with open(os.path.join(DST, "START-AGENT.bat"), "w",
+              encoding="utf-8") as f:
+        f.write('@echo off\r\ntitle Hemomemo Agent (Minecraft bot + PC-aankh)\r\n'
+                'start "" "%~dp0Hemomemo-Agent.exe"\r\n')
+
+    # ---- BRAIN-LINK: owner-published-dimagh ka rasta (sirf file-sync,
+    #      koi AI/model/platform API nahi; app bina iske bhi 100% local)
+    _cks = []
+    _ck_dir = os.path.join(SRC, "model", "checkpoints")
+    if os.path.isdir(_ck_dir):
+        _cks = [os.path.join(_ck_dir, f) for f in os.listdir(_ck_dir)
+                if f.startswith("genmaster_") and f.endswith(".npz")]
+    if _cks:
+        _ck = max(_cks, key=os.path.getmtime)
+        _bname = os.path.basename(_ck)
+        _bh = hashlib.sha256(open(_ck, "rb").read()).hexdigest()
+        _ver = _bname.rsplit("_", 1)[-1].replace(".npz", "")
+        try:
+            os.makedirs(os.path.join(DST, "data"), exist_ok=True)
+            with open(os.path.join(DST, "data", "brain_version.json"),
+                      "w", encoding="utf-8") as f:
+                import json as _json
+                _json.dump({"version": _ver, "file": _bname,
+                            "sha256": _bh}, f, indent=1)
+        except OSError:
+            pass
+    _upd = os.path.join(SRC, "update_brain.ps1")
+    if os.path.exists(_upd):
+        _copy2_retry(_upd, os.path.join(DST, "update_brain.ps1"))
+        copied += 1
+    with open(os.path.join(DST, "UPDATE-BRAIN.bat"), "w",
+              encoding="utf-8") as f:
+        f.write('@echo off\r\ntitle Hemomemo Brain-Link (owner-published)\r\n'
+                'powershell -NoProfile -ExecutionPolicy Bypass -File '
+                '"%~dp0update_brain.ps1"\r\npause\r\n')
     with open(os.path.join(DST, "VERIFY-SYSTEM.bat"), "w",
               encoding="utf-8") as f:
         f.write('@echo off\r\ntitle Hemomemo System Verify\r\n'
@@ -386,6 +449,15 @@ koi development-folder zaroori NAHI**. 100% local — **koi platform/API
 - ⚠️ Sign-in **100% local** hai (email+password isi PC par mehfooz,
   PBKDF2-hash). Asli Google-OAuth JAAN-BOOJH kar nahi hai — wo Google ki
   API mangta hai aur Hemomemo ka qanoon hai: **NO any platform API of the world**.
+
+## Agent-hukum (Minecraft + PC-aankhein — sab 100% local)
+- `py -3 -m agent.modes text`            — chat (token-dimagh se samajh)
+- `py -3 -m agent.modes code`            — coding AI (code-block jawab)
+- `py -3 -m agent.modes agent`           — bot direct-play (aap ke sath)
+- `py -3 -m agent.modes mc <host> [port]`  — Minecraft server par KHUD join
+- `py -3 -m agent.modes duo <host> [port]` — 2 KIRDAR multi-play
+- `py -3 -m agent.modes pc-watch`        — screen-AANKH (dekhe + bataye)
+- `py -3 -m agent.modes pc-play`         — dekhe + WASD/mouse chalaye
 
 ## Hifazat (ye system aap ki amanat hai)
 - `model/`, `core/`, `knowledge/`, `security/`, `server/`, `web/`,
