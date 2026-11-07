@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://noity0.github.io/hemomemo-ai/sitemap.xml
