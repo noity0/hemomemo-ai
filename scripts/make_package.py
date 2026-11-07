@@ -450,7 +450,7 @@ koi development-folder zaroori NAHI**. 100% local — **koi platform/API
   PBKDF2-hash). Asli Google-OAuth JAAN-BOOJH kar nahi hai — wo Google ki
   API mangta hai aur Hemomemo ka qanoon hai: **NO any platform API of the world**.
 
-## Agent-hukum (Minecraft + PC-aankhein — sab 100% local)
+## Game-Bot hukum (Minecraft + PC-aankh — sab 100% local)
 - `py -3 -m agent.modes text`            — chat (token-dimagh se samajh)
 - `py -3 -m agent.modes code`            — coding AI (code-block jawab)
 - `py -3 -m agent.modes agent`           — bot direct-play (aap ke sath)
@@ -458,6 +458,15 @@ koi development-folder zaroori NAHI**. 100% local — **koi platform/API
 - `py -3 -m agent.modes duo <host> [port]` — 2 KIRDAR multi-play
 - `py -3 -m agent.modes pc-watch`        — screen-AANKH (dekhe + bataye)
 - `py -3 -m agent.modes pc-play`         — dekhe + WASD/mouse chalaye
+
+## Task / Sekh system (Game-Bot ko sikhao — starting se end, kabhi bhi)
+- `sekho <sawal> = <jawab>`  — bot token-dar-token parhta hai, samajhta
+  hai aur DATA-MEMORY me save karta hai (episodic-memory + tasks-file).
+- `kaam <task> phir <agla-qadam> …` — bot qadam-war-qadam PLAN banata
+  hai aur starting-se-end chalata hai, har qadam ka nateeja bata kar
+  poora hisab memory me mehfooz karta hai.
+- Ye dono hukum GameBot-EXE console AUR Minecraft-chat dono jagah
+  chalte hain (ek hi dimagh — koi API nahi).
 
 ## Hifazat (ye system aap ki amanat hai)
 - `model/`, `core/`, `knowledge/`, `security/`, `server/`, `web/`,
