@@ -154,6 +154,15 @@ def chat_async(prompt, on_done, think="auto", progress=None):
     progress(stage) — har asli marhale par UI ko bataata hai (3-soch flow)."""
     def work():
         try:
+            # token-dimagh pehle: token-dar-token samajh (no-API, local)
+            try:
+                from model.understand import default_token_chat
+                txt, m = default_token_chat().respond(prompt)
+                if txt and (m or {}).get("source") not in (None, ""):
+                    on_done(txt, m or {})
+                    return
+            except Exception:
+                pass
             G = brain_generate()
             txt, m = G.chat_once(prompt, meta=True, think=think,
                                  progress=progress)
