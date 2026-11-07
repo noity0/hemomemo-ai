@@ -203,7 +203,6 @@ class HemomemoApp(tk.Tk):
         self._build_chat()
         self._build_dashboard()
         self._build_formulas()
-        self._build_status()
         self._build_api()
         self._build_about()
         self.show("chat")
@@ -373,7 +372,6 @@ class HemomemoApp(tk.Tk):
                 ("dash", "📊", " Main Page"),
                 ("formu", "📐", " Formulas (331)"),
                 ("api", "🌐", " Hemomemo API"),
-                ("stat", "🛡️", " Surat-e-Hal"),
                 ("about", "ℹ️", " Baare Me")]:
             b = tk.Button(side, text="%s%s" % (icon, label), font=F_BOLD,
                           bg=C_PANEL, fg=C_DIM, activebackground=C_CARD2,
@@ -440,8 +438,6 @@ class HemomemoApp(tk.Tk):
             self.refresh_dashboard()
         if key == "formu" and not hasattr(self, "_formu_filled"):
             self._fill_formulas()
-        if key == "stat":
-            self.refresh_status()
         if key == "api":
             self.refresh_api()
 
@@ -1489,44 +1485,6 @@ class HemomemoApp(tk.Tk):
                         "misal: '%s' (values de kar poochho)." %
                  b.get("name", "").lower(), "s")
         t.configure(state="disabled")
-
-    # ==================================================================
-    # 🛡️ STATUS PAGE
-    # ==================================================================
-    def _build_status(self):
-        f = self._page("stat")
-        f.grid_rowconfigure(1, weight=1)
-        f.grid_columnconfigure(0, weight=1)
-        top = tk.Frame(f, bg=C_BG)
-        top.grid(row=0, column=0, sticky="ew", pady=(0, 8))
-        tk.Label(top, text="🛡️ Surat-e-Hal — live hub.status()",
-                 font=F_H1, bg=C_BG, fg=C_TEXT).pack(side="left")
-        wrap = tk.Frame(f, bg=C_CARD, highlightthickness=1,
-                        highlightbackground=C_BORDER)
-        wrap.grid(row=1, column=0, sticky="nsew")
-        self._stat_txt = tk.Text(wrap, bg=C_CARD, fg=C_TEXT, font=F_MONO,
-                                 relief="flat", wrap="none", padx=14, pady=12,
-                                 state="disabled", cursor="arrow")
-        self._stat_txt.pack(side="left", fill="both", expand=True)
-        sb = ttk.Scrollbar(wrap, command=self._stat_txt.yview)
-        sb.pack(side="right", fill="y")
-        self._stat_txt.configure(yscrollcommand=sb.set)
-
-    def refresh_status(self):
-        def work():
-            try:
-                s = brain_hub().status()
-                txt = _pretty(s)
-            except Exception as e:
-                txt = "status FAIL: %s" % e
-            self.after(0, lambda: self._stat_fill(txt))
-        threading.Thread(target=work, daemon=True).start()
-
-    def _stat_fill(self, txt):
-        self._stat_txt.configure(state="normal")
-        self._stat_txt.delete("1.0", "end")
-        self._stat_txt.insert("end", txt)
-        self._stat_txt.configure(state="disabled")
 
     # ==================================================================
     # ℹ️ ABOUT PAGE
