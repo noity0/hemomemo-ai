@@ -106,7 +106,7 @@ Hemomemo AI ke **teen kaam** hain:
   chahiye hota hai — wo **jaan-boojh kar support nahi** (NO-API-law). Block-level
   khel (dig/build) ke liye optional `mcpi` hook diya gaya hai (server-side plugin).
 
-DEEPLY-LINKED DIRECT (NO API-LAYER): `Hemomemo-Agent.exe` desktop-app ke
+DEEPLY-LINKED DIRECT (NO API-LAYER): `Hemomemo-GameBot.exe` desktop-app ke
 folder mein rehta hai aur **seedha in-process Hemomemo-system** (model/ +
 data/ isi folder se) istemal karta hai — koi HTTP-link nahi, koi key nahi,
 koi API-layer nahi. App naya training ho, agent foran naya dimagh
@@ -153,7 +153,8 @@ App khulte hi **Hemomemo local API** khud ON: `http://127.0.0.1:8790`
 BUILD-WINDOWS.bat     <- 1) tests  2) EXE (PyInstaller)  3) package
 py -3 tests\test_new_modules.py    <- honest tests (22 checks)
 py -3 tests\test_token_brain.py    <- token-dimagh tests (20 checks)
-py -3 tests\test_agent_powers.py   <- agent powers tests (38 checks)
+py -3 tests\test_agent_powers.py   <- agent powers tests (42 checks)
+py -3 tests\test_gamebot_50qa.py   <- game-bot control/read QA (50 checks)
 py -3 scripts\make_package.py      <- package + SHA-256 manifest
 ```
 
@@ -173,8 +174,9 @@ L6 API-guard (local keys). Koi platform API / cloud / MCP / doosra AI — **nahi
 QA-500 suite har release se pehle chalti hai. **Nateeja jaisa hai waisa bataya
 jata hai** — koi nakli "success" nahi. Naye dimagh-modules ke tests
 (memory / retrieval / reasoning / deterministic-math / mc-bot protocol /
-token-dimagh / agent-powers / order-parser / console-orders) — **80/80 PASS**
-(22 + 20 + 38) + **live API par key-lifecycle 11/11 PASS** (2026-11-07).
+token-dimagh / agent-powers / order-parser / console-orders) — **134/134 PASS**
+(22 + 20 + 42 + 50 game-bot control/read QA) + **live API par key-lifecycle
+11/11 PASS** (2026-11-07).
 
 ---
 
