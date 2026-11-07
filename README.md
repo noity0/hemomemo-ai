@@ -108,7 +108,7 @@ Protocol: apna **VarInt-framing + handshake + login + chat** likha gaya hai
 - 🌍 Netlify Mirror: **https://hemomemo-ai.netlify.app/**
 
 App khulte hi **Hemomemo local API** khud ON: `http://127.0.0.1:8790`
-(3 free API keys / account — `gk_…` keys, PBKDF2-hashed, 100% PC-par).
+(3 free API keys / account — `hemo…` keys, PBKDF2-hashed, 100% PC-par).
 
 ---
 
