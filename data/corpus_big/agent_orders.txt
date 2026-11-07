@@ -1,0 +1,36 @@
+# HEMOMO AGENT-ORDERS - bot ke hukum ka ilm (Sawal:/Jawab: shakal).
+# Yeh file token-dimagh (KnowledgeRetrieval) + order-parser dono parhte hain.
+# 100% local - koi API nahi.
+
+Sawal: bot chal, aage jao, walk forward
+Jawab: order=aage | bot apne yaw ke rukh mein aage chalta hai (position-packets).
+
+Sawal: peeche jao, back
+Jawab: order=peeche | bot peechhe hata-ta hai.
+
+Sawal: baen mudo, left
+Jawab: order=baen | camera 90 darjy baen ghuma kar qadam.
+
+Sawal: daen mudo, right
+Jawab: order=daen | camera 90 darjy daen ghuma kar qadam.
+
+Sawal: jump, chhalang
+Jawab: order=jump | bot chhalang lagata hai.
+
+Sawal: ruk jao, stop, khare ho jao
+Jawab: order=ruk | bot sab harkat rok deta hai.
+
+Sawal: hal batao, dekho, aankhein kholo, kahan ho
+Jawab: order=hal | bot apni jagah (x,y,z), rukh aur aakhri chat bata kar dikhata hai - yeh uski aankhein hain.
+
+Sawal: salam, hello, kaun ho
+Jawab: bot Hemomemo-dimagh se jawab deta hai (100% local, koi API nahi).
+
+Sawal: khatam, nikal jao, leave
+Jawab: order=khatam | bot server chhohar wapas aata hai.
+
+Sawal: world kaise join karein, login enter
+Jawab: Hemomemo-Agent apne VarInt-handshake+login se offline/LAN server par khud login hota hai - TLauncher/SFX/XMLEMC sab chaltay (unhe koi API nahi chahiye).
+
+Sawal: screen dekho, mera control karo, pc mode
+Jawab: order=pc | aankh screen parhti hai, haath WASD/mouse chalata hai - ESC dab-jab tak, phir foran stop.
