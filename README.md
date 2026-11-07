@@ -109,8 +109,15 @@ Hemomemo AI ke **teen kaam** hain:
 DEEPLY-LINKED DIRECT (NO API-LAYER): `Hemomemo-GameBot.exe` desktop-app ke
 folder mein rehta hai aur **seedha in-process Hemomemo-system** (model/ +
 data/ isi folder se) istemal karta hai — koi HTTP-link nahi, koi key nahi,
-koi API-layer nahi. App naya training ho, agent foran naya dimagh
+koi API-layer nahi. App naya training ho, bot foran naya dimagh
 istemal kare (ek hi dimagh ki files — sab apas mein jure).
+
+TASK/SEKH-SYSTEM (starting se end, kabhi bhi — 100% local):
+- `sekho <sawal> = <jawab>` — bot TOKEN-dar-token parhta hai, samajhta
+  hai aur DATA-MEMORY me save karta hai (episodic-memory + tasks-file).
+- `kaam <task> phir <qadam> …` — qadam-war-qadam plan → starting-se-end
+  chalao → har qadam ka imandari nateeja → poora hisab memory me save.
+- Dono hukum GameBot-console AUR Minecraft-chat dono jagah chalte hain.
 
 Protocol: apna **VarInt-framing + handshake + login + chat + position** likha
 gaya hai (`agent/mc_bot.py`) — koi SDK koi library zaroori nahi.
@@ -171,12 +178,17 @@ L6 API-guard (local keys). Koi platform API / cloud / MCP / doosra AI — **nahi
 
 ## 🧪 QA — Imandari
 
-QA-500 suite har release se pehle chalti hai. **Nateeja jaisa hai waisa bataya
-jata hai** — koi nakli "success" nahi. Naye dimagh-modules ke tests
+QA-500 suite har release se pehle chalti hai. **Nateeja jaisa hai waisa
+bataya jata hai** — koi nakli "success" nahi. Naye dimagh-modules ke tests
 (memory / retrieval / reasoning / deterministic-math / mc-bot protocol /
-token-dimagh / agent-powers / order-parser / console-orders) — **134/134 PASS**
-(22 + 20 + 42 + 50 game-bot control/read QA) + **live API par key-lifecycle
-11/11 PASS** (2026-11-07).
+token-dimagh / agent-powers / order-parser / console-orders / task-sekh-
+system) — **146/146 PASS** (22 + 20 + 42 + 50 game-bot QA + 12 task-system)
++ **live API par key-lifecycle 11/11 PASS** (2026-11-07).
+
+**LIVE tasdeeq (apne PC par)**: GameBot ka PC-control asli chala kar dekha
+(asli cursor-harkat + wapas-bilkul) ✓, aankh asli screenshot parh rahi ✓,
+dimagh package ke hi model se jawab de raha ✓. Minecraft is-waqt band tha —
+bot tayar hai: server chalte hi khud join karega (protocol 42/42 tests).
 
 ---
 
