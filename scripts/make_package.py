@@ -375,11 +375,11 @@ koi development-folder zaroori NAHI**. 100% local — **koi platform/API
 
 ## Apni API key lein (har bande ki apni)
 - App → 🌐 **Hemomemo API** page → **👤 Apni API lein (Sign-in)**
-  → Gmail/Email + password → **🆕 Nayi API lein** → key `gk_…` milti hai
+  → Gmail/Email + password → **🆕 Nayi API lein** → key `hemo…` milti hai
   → **📋 Key copy**.
 - API-use (developers ke liye):
   `POST http://127.0.0.1:8790/v1/chat`
-  headers: `X-Hemomemo-Key: <aap ki gk_… key>`, `X-Hemomemo-Ts: <unix-seconds>`,
+  headers: `X-Hemomemo-Key: <aap ki hemo… key>`, `X-Hemomemo-Ts: <unix-seconds>`,
   `X-Hemomemo-Nonce: <nayi har request par>`
   body: `{"prompt": "sawal"}`
 - `GET /health`, `GET /v1/info`, `GET /v1/auth/me` — wahi key se.
