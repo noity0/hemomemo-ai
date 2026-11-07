@@ -183,15 +183,15 @@ def main():
           % (os.path.getsize(exe_src) / 1048576,
              time.strftime("%H:%M:%S", time.localtime(os.path.getmtime(exe_src)))))
 
-    # ---- 1b) AGENT-EXE (Hemomemo-Agent - console, isi-folder ka dimagh)
-    print("🔨 AGENT-EXE build (Hemomemo-Agent)…")
-    agent_src = os.path.join(SRC, "dist", "Hemomemo-Agent.exe")
+    # ---- 1b) GAMEBOT-EXE (Hemomemo-GameBot - console, isi-folder ka dimagh)
+    print("🔨 GAMEBOT-EXE build (Hemomemo-GameBot)…")
+    agent_src = os.path.join(SRC, "dist", "Hemomemo-GameBot.exe")
     ra = subprocess.run([sys.executable, "-m", "PyInstaller", "--noconfirm",
-                         "Hemomemo-Agent.spec"], cwd=SRC,
+                         "Hemomemo-GameBot.spec"], cwd=SRC,
                         capture_output=True, text=True)
     src_latest_a = 0
     for rel in ("agent/console_app.py", "agent/orders.py", "agent/mc_bot.py",
-                "Hemomemo-Agent.spec", "model/understand.py",
+                "Hemomemo-GameBot.spec", "model/understand.py",
                 "model/tokenize.py"):
         p = os.path.join(SRC, rel)
         if os.path.exists(p):
@@ -328,18 +328,18 @@ def main():
     # EXE + bat + README + version + hash-manifest
     _copy2_retry(exe_src, os.path.join(DST, "Hemomemo-Ultra-Brain.exe"))
     copied += 1
-    # AGENT-EXE (Minecraft bot + PC-aankh console) - isi folder mein
-    _copy2_retry(agent_src, os.path.join(DST, "Hemomemo-Agent.exe"))
+    # GAMEBOT-EXE (Minecraft bot + PC-aankh console) - isi folder mein
+    _copy2_retry(agent_src, os.path.join(DST, "Hemomemo-GameBot.exe"))
     copied += 1
 
     with open(os.path.join(DST, "START-HEMOMO.bat"), "w",
               encoding="utf-8") as f:
         f.write('@echo off\r\ntitle Hemomemo AI\r\n'
                 'start "" "%~dp0Hemomemo-Ultra-Brain.exe"\r\n')
-    with open(os.path.join(DST, "START-AGENT.bat"), "w",
+    with open(os.path.join(DST, "START-GAMEBOT.bat"), "w",
               encoding="utf-8") as f:
-        f.write('@echo off\r\ntitle Hemomemo Agent (Minecraft bot + PC-aankh)\r\n'
-                'start "" "%~dp0Hemomemo-Agent.exe"\r\n')
+        f.write('@echo off\r\ntitle Hemomemo Game Bot (Minecraft bot + PC-aankh)\r\n'
+                'start "" "%~dp0Hemomemo-GameBot.exe"\r\n')
 
     # ---- BRAIN-LINK: owner-published-dimagh ka rasta (sirf file-sync,
     #      koi AI/model/platform API nahi; app bina iske bhi 100% local)
