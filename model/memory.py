@@ -17,6 +17,10 @@ import time
 from typing import Callable, Iterable, List, Optional, Tuple
 
 _WORD = re.compile(r"[a-z0-9]+", re.UNICODE)
+# harvest-junk pehchan (kabhi jawab na bane - "trouble accessing" waghera)
+_JUNK_RX = re.compile(r"trouble accessing|unusual traffic|captcha|"
+                      r"access denied|not recognized|enable javascript",
+                      re.I)
 
 def _tokens(text: str) -> List[str]:
     return _WORD.findall((text or "").lower())
@@ -103,6 +107,17 @@ class EpisodicStore:
             "items": recs,
         }
 
+    def facts(self, prefix: str, limit: int = 5) -> List[str]:
+        """Token-dimagh ke liye: 'user_naam=…' jaise mehfooz haqaiq (naye pehle)."""
+        out = []
+        for rec in reversed(list(self._iter())):
+            b = str(rec.get("bot", ""))
+            if b.startswith(prefix):
+                out.append(b[len(prefix):])
+                if len(out) >= limit:
+                    break
+        return out
+
     def forget_all(self) -> int:
         """Poora episodic-yad saaf (user ki marzi se)."""
         n = len(list(self._iter()))
@@ -120,7 +135,16 @@ class KnowledgeRetrieval:
     def __init__(self, corpus_dir: str, files: Optional[List[str]] = None) -> None:
         self.corpus_dir = corpus_dir
         self.files = files or ["games_knowledge.txt", "coding_knowledge.txt",
-                               "coding_deep_master.txt", "harvest_live.txt"]
+                               "coding_deep_master.txt", "harvest_live.txt",
+                               "agent_orders.txt",
+                               "hadith_bukhari_english_sahih.txt",
+                               "hadith_muslim_english_sahih.txt",
+                               "hadith_nasai_english_sahih.txt",
+                               "hadith_abudawud_english_sahih.txt",
+                               "hadith_tirmidhi_english_sahih.txt",
+                               "hadith_ibnmajah_english_sahih.txt",
+                               "hadith_malik_english_sahih.txt",
+                               "harvest_quran.txt"]
         self._pairs: List[Tuple[str, str, List[str]]] = []
         self._loaded_from: Optional[str] = None
         self._lock = threading.Lock()
@@ -143,7 +167,7 @@ class KnowledgeRetrieval:
                 for q, a in qs:
                     q1 = " ".join(str(q).split())
                     a1 = " ".join(str(a).split())[:1200]
-                    if q1 and a1:
+                    if q1 and a1 and not _JUNK_RX.search(a1):
                         pairs.append((q1, a1, _tokens(q1 + " " + a1)))
             self._pairs = pairs
             self._loaded_from = self.corpus_dir
@@ -165,6 +189,11 @@ class KnowledgeRetrieval:
     def count(self) -> int:
         self._load()
         return len(self._pairs)
+
+    def pairs(self):
+        """Token-dimagh ke liye: (sawal, jawab, tokens) ki poori suchi."""
+        self._load()
+        return self._pairs
 
 
 def make_answer_fn(generate_fn: Optional[Callable[[str], str]] = None,
