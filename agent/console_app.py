@@ -1,4 +1,4 @@
-"""HEMOMO AGENT-CONSOLE - alag EXE, desktop-app ke sath, USI dimagh se.
+"""HEMOMEO GAME-BOT - alag EXE, desktop-app ke sath, USI dimagh se.
 
 Yeh kya hai (user-qanoon):
   "bande ke computer ke Minecraft (TLauncher/SFX/XMLEMC - koi bhi) mein
@@ -43,8 +43,9 @@ VK_ESC = 0x1B
 
 def _banner() -> None:
     print("=" * 62)
-    print("  HEMOMEO AGENT-CONSOLE  (100%% local - sirf Hemomemo AI system)")
-    print("  Minecraft bot-player + PC-aankh/haath | NO any API of the world")
+    print("  HEMOMEO GAME-BOT  (100% local - sirf Hemomemo AI system)")
+    print("  Game bot-player (Minecraft/koi bhi game) + PC-aankh/haath")
+    print("  NO any API of the world - aap ke control mein, ESC = stop")
     print("=" * 62)
 
 
@@ -149,8 +150,10 @@ def pc_direct(seconds_max: float = 0.0) -> int:
     (chal=walk_forward, ghum=mouse_look, jump=space, ruk=kuch nahi)."""
     from agent.pc_eye import Eye, Hand
     eye, hand = Eye(), Hand()
-    print("\nPC-DIRECT: screen parh raha hoon + aap ke hukum chala raha hoon.")
-    print("  HUKUM: chal / jump / ghum <darjy> / ruk |  ** ESC = foran STOP **")
+    print("\nPC-DIRECT: koi bhi GAME/app - poora READ + CONTROL (aap hukmi).")
+    print("  HUKUM: chal / peeche / baen / daen / jump / ghum <darjy> /")
+    print("         k <key> (misal: k f, k 1, k space) / click / rclick |")
+    print("         ** ESC = foran STOP (sab control aap ke haath) **")
     orders_q: list = []
     stop = {"now": False}
 
@@ -172,14 +175,32 @@ def pc_direct(seconds_max: float = 0.0) -> int:
         d = eye.describe()
         if "error" not in d:
             print("[%d] %s" % (n, eye.see_say()))
-        # console-hukum chalao
+        # console-hukum chalao (poora control - aap hukmi, ESC stop)
         while orders_q:
             raw = orders_q.pop(0)
+            low = raw.lower()
+            if low.startswith("k "):
+                kn = low[2:].strip()
+                if hand.key(kn):
+                    print("  key '%s' dabai" % kn)
+                else:
+                    print("  [honest] key '%s' map mein nahi" % kn)
+                continue
+            if low in ("click", "rclick"):
+                hand.mouse_click("left" if low == "click" else "right")
+                print("  mouse-%s dabai" % ("left" if low == "click" else "right"))
+                continue
             from agent.orders import parse, describe
             o = parse(raw)
             print("  " + describe(o))
             if o.action == "aage":
                 hand.walk_forward(1.0)
+            elif o.action == "peeche":
+                hand.key("s", 1.0)
+            elif o.action == "baen":
+                hand.key("a", 1.0)
+            elif o.action == "daen":
+                hand.key("d", 1.0)
             elif o.action == "jump":
                 hand.jump()
             elif o.action == "ghum":
@@ -204,7 +225,7 @@ def main(argv: list) -> int:
     _banner()
     print("  [1] MC-JOIN  (bot khud naya player - multi aap ke sath)")
     print("  [2] MC-DUO   (2 KIRDAR ek sath)")
-    print("  [3] PC-DIRECT (screen parhe + control - ESC tak)")
+    print("  [3] PC-DIRECT (koi bhi game: parhe + control - ESC tak)")
     print("  [4] PC-WATCH  (sirf dekhe)")
     print("=" * 62)
     if len(argv) >= 3:
