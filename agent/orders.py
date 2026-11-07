@@ -35,8 +35,10 @@ _ORDER_WORDS = {
 }
 
 # pehli-kadam wale (hukum pehle - warna dimagh chat samajhta)
-_PRIORITY = ("ruk", "khatam", "hal", "jump", "ghum", "baen", "daen",
-             "peeche", "aage")
+# NOTE: baen/daen ghum se PEHLE - "baen mudo" (ghumao-baen) mein dararaf
+# (direction) ghoomna se pehle aata hai ("ghum" akeLA ho tab hi ghum).
+_PRIORITY = ("ruk", "khatam", "hal", "jump", "baen", "daen",
+             "peeche", "aage", "ghum")
 
 
 @dataclass
