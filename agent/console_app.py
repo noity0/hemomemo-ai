@@ -50,7 +50,23 @@ def _banner() -> None:
 
 
 def _brain_answer(prompt: str) -> str:
-    """USI desktop-app ka token-dimagh (isi folder se - deeply-linked)."""
+    """USI desktop-app ka token-dimagh (isi folder se - deeply-linked).
+
+    Pehle TASK/SEKH-system dekho ("sekho ...", "kaam ...") - ye bhi
+    100% local hai (token-think + data-memory). Warna seedha dimagh."""
+    try:
+        from agent import tasks as _tasks
+        from model.memory import EpisodicStore
+        if not getattr(_brain_answer, "_sys", None):
+            _brain_answer._sys = tasks.TaskSystem(
+                EpisodicStore(os.path.join(ROOT, "data")),
+                os.path.join(ROOT, "data", "corpus_big", "gamebot_tasks.txt"))
+        hua, jawab = tasks.handle(prompt, _brain_answer._sys)
+        if hua and jawab:
+            print(jawab[:800])
+            return jawab
+    except Exception as e:
+        print("[task-system masla - honest] %s" % e)
     try:
         from model.understand import default_token_chat
         return default_token_chat().respond_with_memory(prompt, tag="agent")
@@ -205,6 +221,9 @@ def pc_direct(seconds_max: float = 0.0) -> int:
                 hand.jump()
             elif o.action == "ghum":
                 hand.mouse_look(o.angle if o.angle is not None else 30.0)
+            elif o.action == "chat":
+                jawab = _brain_answer(raw)     # task/sekho/aam-baat dono
+                print("  dimagh> %s" % (jawab or "(khamosh)")[:300])
             elif o.action == "khatam" or _esc_dabaa():
                 stop["now"] = True
                 break
