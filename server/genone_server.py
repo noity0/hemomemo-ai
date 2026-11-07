@@ -386,6 +386,17 @@ class HemomemoHandler(BaseHTTPRequestHandler):
         except Exception:
             pass
         # poora LOCAL pipeline (koi AI/platform API nahi)
+        # token-dimagh pehle: token-dar-token samajh -> soch -> jawab
+        try:
+            from model.understand import default_token_chat
+            _t0 = time.time()
+            text, m = default_token_chat().respond(prompt)
+            self._json(200, {"api": API_NAME, "answer": text,
+                             "meta": m, "took_s": round(time.time() - _t0, 2)})
+            return 200
+        except Exception:
+            pass
+        # purana composer-flow (fallback - wahi asli dimagh)
         try:
             from model.generate import chat_once
             _t0 = time.time()
