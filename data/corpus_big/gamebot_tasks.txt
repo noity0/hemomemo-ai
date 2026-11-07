@@ -1,0 +1,24 @@
+# Hemomemo Game-Bot - TASK/KAAM-KNOWLEDGE (Sawal:/Jawab: - 100% local)
+# Ye bot ka apna "kaam-kaise-karna-hai" ilm hai: starting se end tak.
+# Har sekho-hua task bhi isi file me judta rehta hai (data-memory).
+
+Sawal: kaam kaise karta hai bot kaam kaise karna
+Jawab: Hemomemo Game Bot ka tareeqa (starting se end): 1) hukum TOKEN-dar-token parho, 2) samjho kya chahiye, 3) qadam-war-qadam plan banao (phir/then se todo), 4) har qadam chalao (MC-bot ya PC-haath), 5) har qadam ka nateeja imandari batao, 6) poora kaam-khatam hone par nateeja data-memory me save karo. Sab kuch local - koi API nahi.
+
+Sawal: order kaise milta hai order system kaise hai
+Jawab: Order do jagah se aate hain - (1) GameBot-EXE console se, (2) Minecraft-chat se ("Hemomemo chal / ruk / jump / ghum 180 / hal / khatam"). Dono ek hi parser se token-dar-token parhte hain. PC-mode me: chal / peeche / baen / daen / jump / ghum <darjy> / k <key> / click / rclick - aur ESC = foran stop (hifazat pehle).
+
+Sawal: sekho kaise sekho ka matlab
+Jawab: "sekho <sawal> = <jawab>" - bot token-think karta hai (sawal+jawab ko token may tor kar parhta hai), phir usay data-memory me save karta hai: episodic-memory (foran yaad) + tasks-file (daimi ilm). Ye seekh kabhi bhi kaam me kaam aati hai - 100% local.
+
+Sawal: task kaise plan hota hai
+Jawab: Bot task ko token may tor kar parhta hai, phir "phir / then / aur" par todo kar qadam banata hai. Har qadam par: agar order-lafz hai (chal/jump/ghum...) to wo kadam chalaya jata hai, warna apne task-ilm se mutaliq jawab nikalta hai. Plan: starting -> har qadam -> end, aur report har qadam ka.
+
+Sawal: screen kaise parho aankh kaise kaam karti
+Jawab: PC-WATCH/PC-DIRECT me bot screenshot leta hai (PIL ImageGrab) aur numpy se tahlil karta hai: raushni, 4x4 raushni-grid, ghalba-rang, harkat (pichle frame se farq). Isi se wo "kya nazar aa raha" batata hai - sirf apni himmat, koi API nahi.
+
+Sawal: minecraft me kaise khelta hai
+Jawab: Bot khud server par login/enter/join karta hai (apna VarInt-protocol - TLauncher/SFX/XMLEMC offline/LAN). Phir chat-orders + console-orders chalta hai: chal (qadam), jump (chhalang), ghum (rukh), hal (jagah batao), khatam (alvida). MC-DUO me 2 kirdar ek sath.
+
+Sawal: ruk jao hifazat kaise
+Jawab: Hifazat pehle: ESC = foran stop (PC-DIRECT/PC-WATCH), "ruk" = sab harkat band, "khatam" = alvida. Bot sirf bande ke hukum par chalta hai - bande ke control me rahta hai.
