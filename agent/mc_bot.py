@@ -33,6 +33,10 @@ STATE_STATUS = 1
 STATE_LOGIN = 2
 STATE_PLAY = 3
 
+# server->client "apni jagah" packet-ids (version-bound, best-effort):
+# 1.19.2~0x2E | 1.20.1~0x36 | 1.20.2+~0x3E - hum LENIENT parhte hain (jo mile)
+_S2C_POSITION_IDS = {0x2E, 0x34, 0x35, 0x36, 0x3E, 0x40}
+
 
 # ---------------- VarInt / framing ----------------
 def write_varint(value: int) -> bytes:
@@ -128,6 +132,11 @@ class MinecraftBot:
         self.running = False
         self._thread: Optional[threading.Thread] = None
         self._pending_keepalive = 0
+        # --- player-ki-AANKHEIN (server jo bheje, hum parhte hain) ---
+        self.pos: dict = {"x": None, "y": None, "z": None,
+                          "yaw": 0.0, "pitch": 0.0, "on_ground": True}
+        self.chat_log: list = []          # aakhri chat (aankh ka ilm)
+        self.health: Optional[float] = None
 
     # --- log ---
     def _log(self, msg: str) -> None:
@@ -171,41 +180,172 @@ class MinecraftBot:
         if not self.sock:
             return False
         try:
-            self.sock.sendall(pack_packet(0x05, _mc_string(msg[:256])))  # 0x05=chat (1.20.x)
+            # 0x05 = Chat Message (1.20.x C2S) - apne version-map se
+            self.sock.sendall(pack_packet(self._C2S["chat"],
+                                          _mc_string(msg[:256])))
             return True
         except OSError:
             return False
 
-    # --- 3) sun'na + Hemomemo-dimagh se jawab ---
+    # --- 3) sun'na + Hemomemo-dimagh se jawab (player-ki-aankhein) ---
     def _handle_play(self, pid: int, payload: bytes) -> None:
-        if pid == 0x0F:  # keepalive (1.20.x) -> wapas bhejo
-            if len(payload) >= 8:
-                self.sock.sendall(pack_packet(0x0F, payload[:8]))  # echo same id
-            return
-        if pid == 0x30:  # system/chat message (1.20.x)
+        # keepalive: LENIENT - jis pid par aaya, usi pid par wapas (version-azad)
+        if len(payload) == 8 and pid not in (0x30, 0x31, 0x03, 0x02):
+            try:
+                self.sock.sendall(pack_packet(pid, payload))
+                return
+            except OSError:
+                return
+        if pid in (0x30, 0x31, 0x64, 0x6F):  # chat (1.19.x/1.20.x system/chat)
             try:
                 text = _read_mc_string(payload)
                 self._on_chat(text)
             except Exception:
                 pass
             return
+        # player-position (server -> hum): id version-bound - best-effort parhna
+        if pid in _S2C_POSITION_IDS:
+            try:
+                self._read_self_position(payload)
+            except Exception:
+                pass
+            return
+
+    def _read_self_position(self, payload: bytes) -> None:
+        """Apni jagah parho (x,y,z double + yaw/pitch float + ...) - aankh."""
+        import struct as _s
+        if len(payload) < 33:
+            return
+        x, y, z = _s.unpack(">ddd", payload[0:24])
+        yaw, pitch = _s.unpack(">ff", payload[24:32])
+        self.pos.update({"x": round(x, 2), "y": round(y, 2),
+                         "z": round(z, 2), "yaw": round(yaw, 1),
+                         "pitch": round(pitch, 1)})
+        # teleport-confirm (C2S 0x00 varint id) - server sabar rahe
+        try:
+            tid = payload[32] if len(payload) > 32 else 0
+            self.sock.sendall(pack_packet(0x00, write_varint(tid)))
+        except OSError:
+            pass
+
+    # --- player-ke-HAATH: harkat (server-authoritative - imandari-hadd) ---
+    _C2S = {"chat": 0x05, "pos": 0x15, "rot": 0x16, "ground": 0x17}
+
+    def look(self, yaw: float, pitch: float) -> bool:
+        """Game-camera ghumao (Set Player Rotation - 1.20.x shape)."""
+        import struct as _s
+        if not self.sock:
+            return False
+        self.pos["yaw"], self.pos["pitch"] = yaw, pitch
+        body = (_s.pack(">ff", yaw, pitch)
+                + (b"\x01" if self.pos.get("on_ground") else b"\x00"))
+        try:
+            self.sock.sendall(pack_packet(self._C2S["rot"], body))
+            return True
+        except OSError:
+            return False
+
+    def move_step(self, dx: float = 0.0, dy: float = 0.0,
+                  dz: float = 0.0) -> bool:
+        """Apni jagah aage/peeche bhejo (Set Player Position)."""
+        import struct as _s
+        if not self.sock or self.pos.get("x") is None:
+            return False
+        self.pos["x"] = round(self.pos["x"] + dx, 2)
+        self.pos["y"] = round(self.pos["y"] + dy, 2)
+        self.pos["z"] = round(self.pos["z"] + dz, 2)
+        body = (_s.pack(">ddd", self.pos["x"], self.pos["y"], self.pos["z"])
+                + (b"\x01" if self.pos.get("on_ground") else b"\x00"))
+        try:
+            self.sock.sendall(pack_packet(self._C2S["pos"], body))
+            return True
+        except OSError:
+            return False
+
+    def walk_forward(self, meters: float = 2.0, steps: int = 4) -> int:
+        """Aage chalna (yaw ke rukh mein) - chhote qadam, server hi haqeeqi
+        jagah tay karta hai (anti-cheat wale theek karte - imandari)."""
+        import math as _m
+        yaw = _m.radians(self.pos.get("yaw", 0.0))
+        dx, dz = -_m.sin(yaw) * (meters / steps), _m.cos(yaw) * (meters / steps)
+        n = 0
+        for _ in range(steps):
+            if self.move_step(dx=dx, dz=dz):
+                n += 1
+            time.sleep(0.05)
+        return n
+
+    def see(self) -> dict:
+        """AANKHEIN kholo: apni jagah + sehat + aakhri chat (sab local-parha)."""
+        return {"name": self.username, "pos": dict(self.pos),
+                "health": self.health, "chat_tail": list(self.chat_log[-5:])}
 
     def _on_chat(self, raw: str) -> None:
         self._log("chat: " + raw[:200])
+        self.chat_log.append(raw[:300])
+        if len(self.chat_log) > 50:               # aankh ka daayra (50 chat)
+            self.chat_log.pop(0)
         # bot ko address kiya gaya? (Hemomemo / hemomemo / @bot)
         low = raw.lower()
-        if "hemomemo" in low or self.username.lower() in low:
-            sawal = raw
-            for token in ("<", ">", "[", "]"):
-                sawal = sawal.replace(token, " ")
+        if "hemomemo" not in low and self.username.lower() not in low:
+            return
+        # sender ka naam nikaalo ("<Ali> ...")
+        sawal = raw
+        for token in ("<", ">", "[", "]"):
+            sawal = sawal.replace(token, " ")
+        # 1) HUKUM? (EXE-console wala hi parser - ek dimagh, dono raste)
+        try:
+            from agent.orders import parse, describe
+            o = parse(sawal)
+            self._log(describe(o))
+            if o.action == "ruk":
+                self.say("ruk gaya - sab harkat band. (%s)" % self.username)
+                return
+            if o.action == "khatam":
+                self.say("alvida - main nikal raha hoon!")
+                self.leave()
+                return
+            if o.action == "hal":
+                s = self.see()
+                p = s["pos"]
+                self.say("aankhein: jagah x=%s y=%s z=%s | rukh %.0f darjy"
+                         % (p.get("x"), p.get("y"), p.get("z"),
+                            float(p.get("yaw") or 0)))
+                return
+            if o.action == "jump":
+                # jump = chhota upar-harkat (server-authoritative)
+                self.move_step(dy=1.0)
+                self.say("chhalang!")
+                return
+            if o.action == "ghum":
+                ang = o.angle if o.angle is not None else 90.0
+                self.look((self.pos.get("yaw", 0.0) + ang) % 360.0,
+                          self.pos.get("pitch", 0.0))
+                self.say("%.0f darjy ghum gaya" % ang)
+                return
+            if o.action in ("aage", "peeche", "baen", "daen"):
+                sign = -1.0 if o.action == "peeche" else 1.0
+                dist = o.meters if o.meters is not None else 2.0
+                if o.action == "baen":
+                    self.look((self.pos.get("yaw", 0.0) - 90.0) % 360.0,
+                              self.pos.get("pitch", 0.0))
+                elif o.action == "daen":
+                    self.look((self.pos.get("yaw", 0.0) + 90.0) % 360.0,
+                              self.pos.get("pitch", 0.0))
+                n = self.walk_forward(dist)
+                self.say("%d qadam chal gaya (%s)" % (n, o.action))
+                return
+            # 2) aam-baat -> Hemomemo-dimagh se jawab
             jawab = ""
             try:
                 jawab = (self.answer_fn(sawal.strip()) or "").strip()
             except Exception:
                 jawab = ""
             if not jawab:
-                jawab = "Main Hemomemo AI hoon - 100% local. Batao kis game me madad karoon?"
+                jawab = "Main Hemomemo AI hoon - 100% local. Hukum dein: chal / ruk / hal / ghum / jump."
             self.say(jawab[:250])
+        except Exception as e:
+            self._log("order-parhne mein masla (honest): %s" % e)
 
     def _loop(self) -> None:
         while self.running and self.sock:
@@ -249,6 +389,34 @@ class MinecraftBot:
         except Exception:
             self._log("mcpi nahi mila (optional hai) - chat-mode kaafi hai")
             return False
+
+
+def duo_play(answer_fn: Callable[[str], str], host: str, port: int = 25565,
+             names: Tuple[str, str] = ("HemomemoAI", "HemomemoAI-2")) -> int:
+    """MULTI-PLAY: 2 KIRDAR ek sath server par - dono Hemomemo-dimagh wale.
+
+    - dono join karte hain (person ke sath 3 players bante hain)
+    - dono aapas mein baat karte + person ke sawalon ke jawab dete hain
+    - yehi hai "multi with person as 2 characters"
+    """
+    bots: list = []
+    for nm in names[:2]:
+        b = MinecraftBot(answer_fn=answer_fn, username=nm)
+        if b.join_server(host, port):
+            b.play()
+            bots.append(b)
+            time.sleep(0.5)
+    if not bots:
+        print("[duo] koi bot join nahi hua (host/port dekho)")
+        return 0
+    print("[duo] %d kirdar andar - person ke sath khel shuru!" % len(bots))
+    try:
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        for b in bots:
+            b.leave()
+    return len(bots)
 
 
 def direct_play(answer_fn: Callable[[str], str], bot_name: str = "HemomemoAI") -> None:
