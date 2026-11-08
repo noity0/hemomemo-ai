@@ -55,13 +55,13 @@ def _brain_answer(prompt: str) -> str:
     Pehle TASK/SEKH-system dekho ("sekho ...", "kaam ...") - ye bhi
     100% local hai (token-think + data-memory). Warna seedha dimagh."""
     try:
-        from agent import tasks as _tasks
+        from agent import tasks as _t
         from model.memory import EpisodicStore
         if not getattr(_brain_answer, "_sys", None):
-            _brain_answer._sys = tasks.TaskSystem(
+            _brain_answer._sys = _t.TaskSystem(
                 EpisodicStore(os.path.join(ROOT, "data")),
                 os.path.join(ROOT, "data", "corpus_big", "gamebot_tasks.txt"))
-        hua, jawab = tasks.handle(prompt, _brain_answer._sys)
+        hua, jawab = _t.handle(prompt, _brain_answer._sys)
         if hua and jawab:
             print(jawab[:800])
             return jawab
@@ -169,7 +169,10 @@ def pc_direct(seconds_max: float = 0.0) -> int:
     print("\nPC-DIRECT: koi bhi GAME/app - poora READ + CONTROL (aap hukmi).")
     print("  HUKUM: chal / peeche / baen / daen / jump / ghum <darjy> /")
     print("         k <key> (misal: k f, k 1, k space) / click / rclick |")
-    print("         ** ESC = foran STOP (sab control aap ke haath) **")
+    print("         type <text> / close / open <app> / scroll / press <key> /")
+    print("         hotkey <combo> (misal: alt+f4, ctrl+s, win+d) / dblclick /")
+    print("         move <dx dy> / win |")
+    print("  ** ESC = foran STOP (sab control aap ke haath) **")
     orders_q: list = []
     stop = {"now": False}
 
@@ -206,6 +209,70 @@ def pc_direct(seconds_max: float = 0.0) -> int:
                 hand.mouse_click("left" if low == "click" else "right")
                 print("  mouse-%s dabai" % ("left" if low == "click" else "right"))
                 continue
+            # ---- FULL PC-CONTROL ALLOWANCE (user-demand: hr cheez par control)
+            words = low.split(None, 1)
+            kw = words[0] if words else ""
+            rest = words[1].strip() if len(words) > 1 else ""
+            if kw in ("type", "typekar", "dikdo", "likho", "likh"):
+                hand.type_text(rest or "x")
+                print("  typed: %r" % (rest or "")[:50])
+                continue
+            if kw in ("close", "band"):
+                ok = hand.close_active() if not rest else hand.close_window(rest)
+                print("  close-window: %s (%s)"
+                      % (rest or "active", "ho gaya" if ok else "nahi mili"))
+                continue
+            if kw == "open":
+                app = rest or "notepad"
+                try:
+                    if hasattr(os, "startfile"):
+                        os.startfile(app)
+                    else:
+                        import subprocess
+                        subprocess.Popen(app)
+                    print("  open: %s" % app)
+                except Exception as _e:
+                    print("  [honest] open nahi hua: %s" % _e)
+                continue
+            if kw == "scroll":
+                try:
+                    hand.scroll(int(rest or 1))
+                    print("  scroll: %s" % (rest or 1))
+                except Exception:
+                    print("  [honest] scroll nahi hua")
+                continue
+            if kw in ("scrollup", "scrolldown"):
+                hand.scroll(3 if kw == "scrollup" else -3)
+                print("  scroll-%s dabai" % kw)
+                continue
+            if kw in ("dblclick", "dclick"):
+                hand.mouse_click("left")
+                hand.mouse_click("left")
+                print("  dblclick-left dabai")
+                continue
+            if low.startswith("press ") or kw == "press":
+                k2 = low[6:].strip() if low.startswith("press ") else (rest or "enter")
+                if hand.key(k2):
+                    print("  key '%s' dabai" % k2)
+                continue
+            if kw == "hotkey":
+                if hand.hotkey(rest or "ctrl+s"):
+                    print("  hotkey: %s" % (rest or "ctrl+s"))
+                continue
+            if kw == "move":
+                try:
+                    nums = [float(x) for x in rest.replace(",", " ").split()[:2]]
+                    hand.mouse_move(int(nums[0]) if len(nums) > 0 else 0,
+                                   int(nums[1]) if len(nums) > 1 else 0)
+                    print("  move: (%s, %s)" % (nums[0] if len(nums) > 0 else 0,
+                                              nums[1] if len(nums) > 1 else 0))
+                except Exception:
+                    print("  [honest] move nahi hua")
+                continue
+            if kw == "win":
+                hand.key("win")
+                print("  win-key dabai")
+                continue
             from agent.orders import parse, describe
             o = parse(raw)
             print("  " + describe(o))
@@ -232,21 +299,37 @@ def pc_direct(seconds_max: float = 0.0) -> int:
     return 0
 
 
-def pc_watch(rounds: int = 6, pause: float = 2.0) -> int:
-    """SIRF dekhe - koi control nahi (aankh bina haath)."""
-    from agent.pc_eye import watch_and_report
-    watch_and_report(rounds, pause)
+def pc_watch(rounds: int = 0, pause: float = 2.0) -> int:
+    """SIRF dekhe - koi control nahi (aankh bina haath).
+
+    rounds=0 (menu-se) -> JAB-TAK-ESC dekhta rahe (6-qadam-wala mehdooda
+    demo nahi). ESC = foran stop. CLI-se: `GameBot.exe watch 10` = 10
+    round ka chhota imtihaan."""
+    from agent.pc_eye import Eye
+    eye = Eye()
+    print("\nPC-WATCH: sirf dekh raha hoon (koi control nahi).")
+    print("  ** ESC = foran STOP ** %s"
+          % ("" if rounds else "(jab tak ESC na dabey)"))
+    n = 0
+    while True:
+        if rounds and n >= rounds:
+            break
+        if _esc_dabaa():
+            print("\n** ESC dab gaya - FORAN STOP **")
+            break
+        n += 1
+        d = eye.describe()
+        print("[%d] %s" % (n, eye.see_say() if "error" not in d
+                           else d["error"]))
+        time.sleep(pause)
+    print("PC-WATCH khatam - %d round dekha. (aankh salam)" % n)
     return 0
 
 
 # ------------------------------------------------------------------ main
 def main(argv: list) -> int:
     _banner()
-    print("  [1] MC-JOIN  (bot khud naya player - multi aap ke sath)")
-    print("  [2] MC-DUO   (2 KIRDAR ek sath)")
-    print("  [3] PC-DIRECT (koi bhi game: parhe + control - ESC tak)")
-    print("  [4] PC-WATCH  (sirf dekhe)")
-    print("=" * 62)
+    # CLI-modes (automation ke liye - jaise pehle):
     if len(argv) >= 3:
         mode, host = argv[1], argv[2]
         port = int(argv[3]) if len(argv) > 3 and argv[3].isdigit() else 25565
@@ -257,22 +340,53 @@ def main(argv: list) -> int:
         if mode == "pc":
             return pc_direct()
         if mode == "watch":
-            return pc_watch()
-    try:
-        ch = input("Chunahein [1/2/3/4]: ").strip()
-    except (EOFError, KeyboardInterrupt):
-        return 0
-    if ch in ("1", "2"):
-        hp = input("Minecraft server host:port (misal: 127.0.0.1:25565): ").strip()
-        host, _, prt = hp.partition(":")
-        port = int(prt) if prt.isdigit() else 25565
-        return mc_join(host or "127.0.0.1", port, duo=(ch == "2"))
-    if ch == "3":
-        return pc_direct()
-    if ch == "4":
-        return pc_watch()
-    print("kuch nahi chuna - khatam. (100% local, koi kaam nahi hua)")
-    return 0
+            return pc_watch(rounds=(int(host) if host.isdigit() else 0))
+        if mode == "browser":
+            from agent import browser_cloud as _bc
+            url = argv[2] if len(argv) > 2 else "https://example.com"
+            return _bc.main_cli(["fetch", url])
+    # MENU-LOOP: bot KHUD band NAHI hota - mode khatam to WAPAS menu.
+    # Band sirf bande apni marzi se (0 = Khatam). Galti par bhi honest
+    # message + wapas menu (crash-exit nahi - hifazat pehle).
+    while True:
+        print("  [1] MC-JOIN  (bot khud naya player - multi aap ke sath)")
+        print("  [2] MC-DUO   (2 KIRDAR ek sath)")
+        print("  [3] PC-DIRECT (koi bhi game: parhe + control - ESC tak)")
+        print("  [4] PC-WATCH  (sirf dekhe - jab tak ESC na dabey)")
+        print("  [5] BROWSER    (Obscura browser - cloud-computer me serve+fetch)")
+        print("  [0] KHATAM    (aap khud band karein)")
+        print("=" * 62)
+        try:
+            ch = input("Chunahein [0/1/2/3/4/5]: ").strip()
+        except (EOFError, KeyboardInterrupt):
+            print("\nalvida - (console band hua). 100% local, salam!")
+            return 0
+        if ch == "0":
+            print("alvida - Hemomemo Game Bot band (aap ke hukum par).")
+            return 0
+        try:
+            if ch in ("1", "2"):
+                hp = input("Minecraft server host:port (misal: "
+                           "127.0.0.1:25565): ").strip()
+                host, _, prt = hp.partition(":")
+                port = int(prt) if prt.isdigit() else 25565
+                mc_join(host or "127.0.0.1", port, duo=(ch == "2"))
+            elif ch == "3":
+                pc_direct()
+            elif ch == "4":
+                pc_watch()
+            elif ch == "5":
+                hp = input("Browser-URL (example: https://example.com): ").strip()
+                if hp:
+                    from agent import browser_cloud as _bc2
+                    return _bc2.main_cli(["fetch", hp])
+            else:
+                print("kuch nahi chuna - dobara chunahein.")
+        except Exception as e:
+            print("[honest] masla aaya: %s" % e)
+        print("-" * 62)
+        print("  (mode khatam - WAPAS MENU: bot band NAHI hua)")
+        print("-" * 62)
 
 
 if __name__ == "__main__":
