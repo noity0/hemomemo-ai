@@ -73,8 +73,17 @@ Hemomemo AI ke **teen kaam** hain:
 - Sawal-jawab, ilm, islami-adab, general chat.
 - Har baat **yaad** mein mehfooz (aap ke PC par) — agle jawab behtar.
 
-### 2) CODE — Coding AI
-- Python / JavaScript / Java / Kotlin / SQL / HTML / CSS / Bash / Rust / Go / PHP …
+### 2) CODE — Code-Dimagh (45+ zabanen ka Ustad!)
+- **45+ coding-zabanen** — har zaban me ASLI chhal-filar program khud banta hai
+  (deterministic, token-se): Python, C, C++, C#, Java, JavaScript, TypeScript,
+  Go, Rust, PHP, Ruby, Swift, Kotlin, Dart, Lua, Perl, Bash, PowerShell, R,
+  MATLAB, SQL, HTML, CSS, JSON, YAML, Scala, Haskell, F#, Julia, Fortran,
+  Pascal, Basic, VB, Zig, Nim, Crystal, Elixir, Clojure, Erlang, OCaml, D,
+  Assembly (x86-64), COBOL, Tcl, Prolog, Lisp, Scheme, Racket, Objective-C.
+- Roman rasta bhi: `python me i love you ka code` — English rasta bhi:
+  `code hello world in c++`.
+- Zaban-khazane me na ho to **imandari** — jhoot nahi, saaf bata deta hai
+  kaunsi zabanen jaanta hoon.
 - Jawab **code-block** mein — copy-button ke sath (desktop app).
 - Coding knowledge: `coding_knowledge.txt` + `coding_deep_master.txt` (13,600+ bytes).
 
@@ -143,7 +152,7 @@ rahti hai:
 ## 📥 Download (Windows 7 → 11 Pro)
 
 **GitHub:** https://github.com/noity0/hemomemo-ai/releases/tag/v4.2.0-people
-→ **HemomemoUltra-People.zip** (~131 MB) → Extract All → **`Hemomemo-Ultra-Brain.exe`**
+→ **HemomemoUltra-People.zip** (~182 MB) → Extract All → **`Hemomemo-Ultra-Brain.exe`**
 
 **Live sites:**
 - 🌍 GitHub Pages: **https://noity0.github.io/hemomemo-ai/**
@@ -167,6 +176,19 @@ py -3 scripts\make_package.py      <- package + SHA-256 manifest
 
 Error-handling: har build-step fail hone par ruk kar **imandari error** dikhata hai
 (koi jhooti "success" nahi).
+
+### 🖥️ Cloud-Computer Browser (Obscura + Hemomemo — sirf Hemomemo)
+
+- **Obscura** (headless browser: Rust, CDP/Puppeteer/Playwright/MCP): 
+  https://github.com/h4ckf0r0day/obscura
+- **Chalta hai:** `py -3 -m agent.browser_cloud start` (obscura serve :9222)
+  → `py -3 -m agent.browser_cloud fetch <url> --dump text` (page fetch)
+  → `py -3 -m agent.browser_cloud screenshot <url> <out.png>`
+  → `py -3 -m agent.browser_cloud mcp start`
+  → `py -3 -m agent.browser_cloud skill install` (SKILL.md hamesha Hemomemo-local)
+- **Cloud-computer:** Obscura ka CDP-server us cloud-computer me run hota hai;
+  Hemomemo usi se page fetch/screenshot/eval karti hai (koi AI-API nahi).
+- GameBot menu me **[5] BROWSER** — URL dena → bot fetch + dikhata hai.
 
 ---
 
