@@ -152,7 +152,43 @@ def reload_brain_async(done_cb=None):
 def chat_async(prompt, on_done, think="auto", progress=None):
     """Chat worker thread — UI freeze nahi hota. Result → on_done(text, meta).
     progress(stage) — har asli marhale par UI ko bataata hai (3-soch flow)."""
+    _VID_RX = re.compile(r"(?i)\b(video|film|movie|animation|clip)\b")
+    _VID_CMD_RX = re.compile(r"(?i)(make|create|generate|banai|banao|benao|show|showing)\b.*\b(video|film|movie|animation|clip)\b")
+    _VNUM_RX = re.compile(r"(?i)\b(\d+(?:\.\d+)?)\s*(sec|s|second|seconds|min|minute|minutes)\b")
+
+    def _video_gen(q, out):
+        """Local video engine — 5s se 15 min tak; koi AI-API nahi."""
+        try:
+            from agent import video_gen as _vg
+            _dur = 10.0
+            m = _VNUM_RX.search(q)
+            if m:
+                _v = float(m.group(1))
+                _dur = _v * 60.0 if m.group(2) in ("min", "minute", "minutes") else _v
+            _dur = max(5.0, min(900.0, _dur))
+            p = _vg.generate_video(q, duration_sec=_dur)
+            mm = _vg.video_meta(p)
+            return (p, mm, True, "")
+        except Exception as e:
+            import traceback as _t
+            return (None, {}, False, "%s\n%s" % (e, _t.format_exc()))
+
     def work():
+        # 🎬 VIDEO-COMMAND fast-path (local engine — koi API nahi)
+        if _VID_CMD_RX.search(prompt):
+            p, mm, ok, err = _video_gen(prompt, None)
+            if ok:
+                on_done(
+                    "Hemomemo AI-> ✅ %s video generate ho gayi (100% local — "
+                    "no API/no cloud): duration=%ss size=%sKB fps=%s\n%s"
+                    % (prompt[:40], mm.get("duration", 0),
+                       int(mm.get("size", 0) / 1024), mm.get("fps", 0), p),
+                    {"source": "video-local", "file": p,
+                     "size": mm.get("size", 0), "duration": mm.get("duration", 0)})
+                return
+            on_done("Hemomemo AI-> ❌ video generate FAIL: %s" % err,
+                    {"source": "video-err"})
+            return
         try:
             # token-dimagh pehle: token-dar-token samajh (no-API, local)
             try:
@@ -209,6 +245,7 @@ class HemomemoApp(tk.Tk):
         self._hist_load()
         self.after(400, lambda: prewarm_async(self._prewarm_done))
         self._autostart_server()           # 🌐 apni local API khud ON
+        self._build_video()               # 🎬 Video-Generation tab (local-only)
         self.after(20000, self._refresh_statusbar)
         self.protocol("WM_DELETE_WINDOW", self._on_close)
 
@@ -372,12 +409,13 @@ class HemomemoApp(tk.Tk):
                 ("dash", "📊", " Main Page"),
                 ("formu", "📐", " Formulas (331)"),
                 ("api", "🌐", " Hemomemo API"),
-                ("about", "ℹ️", " Baare Me")]:
+                ("about", "ℹ️", " Baare Me"),
+                ("video", "🎬", " Video Generation")]:
             b = tk.Button(side, text="%s%s" % (icon, label), font=F_BOLD,
-                          bg=C_PANEL, fg=C_DIM, activebackground=C_CARD2,
-                          activeforeground=C_TEXT, relief="flat", bd=0,
-                          anchor="w", padx=18, pady=10, cursor="hand2",
-                          command=lambda k=key: self.show(k))
+                           bg=C_PANEL, fg=C_DIM, activebackground=C_CARD2,
+                           activeforeground=C_TEXT, relief="flat", bd=0,
+                           anchor="w", padx=18, pady=10, cursor="hand2",
+                           command=lambda k=key: self.show(k))
             b.pack(fill="x", padx=10, pady=2)
             self._nav_btns[key] = b
             # 🖱️ hover: sirf jab select nahi (selected gold rehta hai)
@@ -1194,6 +1232,130 @@ class HemomemoApp(tk.Tk):
         self._chat_busy = False
         self.send_btn.configure(state="normal", text="Bhejo ➤")
         self._refresh_mood()
+
+    def _build_video(self):
+        """🎬 HEMOMO VIDEO-GENERATION TAB (local engine — 100% Hemomemo AI,
+        koi external AI-API / UE5 / Higgsfield nahi. ffmpeg + PIL local)."""
+        f = self._page("video")
+        f.grid_columnconfigure(0, weight=1)
+
+        card = self._card(f, row=0)
+        tk.Label(card, text="🎬 Hemomemo AI — Text → Video (100% Local)",
+                 font=F_H1, bg=C_CARD, fg=C_GOLD).pack(
+            anchor="w", padx=16, pady=(14, 2))
+        tk.Label(card, text="Prompt → local script → procedural frames → "
+                 "ffmpeg → mp4. 5s se 15 min tak (15 min = 900s). "
+                 "No AI-API · No Cloud · No MCP · koi platform-key nahi.",
+                 font=F_FONT, bg=C_CARD, fg=C_TEXT, wraplength=900,
+                 justify="left", anchor="w").pack(fill="x", padx=16, pady=(2, 10))
+
+        # 📝 prompt row
+        self._vid_prompt_var = tk.StringVar(value="cinematic hero running through neon city rain")
+        tk.Entry(card, textvariable=self._vid_prompt_var, font=F_FONT,
+                 bg=C_CARD2, fg=C_TEXT, relief="flat",
+                 insertbackground=C_ACCENT).pack(
+            fill="x", padx=16, pady=6, ipady=9)
+
+        # ⚙️ controls row: duration / fps / style
+        self._vid_dur_var = tk.IntVar(value=10)
+        self._vid_fps_var = tk.IntVar(value=24)
+        self._vid_style_var = tk.StringVar(value="auto")
+        c = tk.Frame(card, bg=C_CARD); c.pack(fill="x", padx=16, pady=4)
+        tk.Label(c, text="⏱ duration (sec):", font=F_FONT, bg=C_CARD,
+                 fg=C_TEXT).pack(side="left")
+        tk.Spinbox(c, from_=5, to=900, increment=5, font=F_FONT,
+                   bg=C_CARD2, fg=C_TEXT, relief="flat",
+                   textvariable=self._vid_dur_var, width=6).pack(
+            side="left", padx=(6, 16))
+        tk.Label(c, text="🎞 fps:", font=F_FONT, bg=C_CARD,
+                 fg=C_TEXT).pack(side="left")
+        tk.Spinbox(c, from_=8, to=60, increment=4, font=F_FONT,
+                   bg=C_CARD2, fg=C_TEXT, relief="flat",
+                   textvariable=self._vid_fps_var, width=4).pack(
+            side="left", padx=(6, 16))
+        for st in ("auto", "ocean", "desert", "neon", "space", "rain"):
+            pass
+        tk.Label(c, text="🎨 style:", font=F_FONT, bg=C_CARD,
+                 fg=C_TEXT).pack(side="left")
+        style_box = tk.Frame(c, bg=C_CARD); style_box.pack(side="left", padx=(6, 0))
+        for st in ("auto", "ocean", "desert", "neon", "space", "rain"):
+            tk.Radiobutton(style_box, text=st, font=F_SMALL, bg=C_CARD,
+                           fg=C_TEXT, variable=self._vid_style_var,
+                           value=st, activebackground=C_CARD,
+                           activeforeground=C_GOLD).pack(side="left", padx=4)
+
+        # ▶ generate row
+        b = tk.Frame(card, bg=C_CARD); b.pack(fill="x", padx=16, pady=8)
+        self._vid_gen_btn = tk.Button(
+            b, text="▶ Generate Video", font=F_BOLD, bg=C_CARD2, fg=C_GOLD,
+            relief="flat", cursor="hand2", activebackground=C_BORDER,
+            command=self._video_gen_now)
+        self._vid_gen_btn.pack(side="left", ipady=4, padx=(0, 8))
+        tk.Button(b, text="🗂 Video-Folder kholo", font=F_BOLD,
+                   bg=C_CARD2, fg=C_TEXT, relief="flat",
+                   cursor="hand2", activebackground=C_BORDER,
+                   command=self._video_open_dir).pack(side="left", ipady=4)
+        tk.Label(b, text="… mp4 local data/videos/ me banayegi (no cloud)",
+                 font=F_SMALL, bg=C_CARD, fg=C_DIM).pack(
+            side="left", padx=(12, 0), anchor="center")
+
+        # 📤 result row
+        self._vid_res = tk.Label(card, text="", font=F_FONT, bg=C_CARD,
+                                  fg=C_DIM, anchor="w", justify="left",
+                                  wraplength=900)
+        self._vid_res.pack(fill="x", padx=16, pady=(4, 12))
+
+    def _video_gen_now(self):
+        """▶ generate button → background thread me video_gen.generate_video()
+        (thread-safe UI freeze nahi hota)."""
+        self._vid_gen_btn.configure(state="disabled", text="…")
+        self._vid_res.configure(text="🎬 video ban rahi hai (local engine)…",
+                                fg=C_GOLD)
+        prompt = self._vid_prompt_var.get().strip() or "cinematic epic scene"
+        dur = self._vid_dur_var.get()
+        fps = self._vid_fps_var.get()
+        style = self._vid_style_var.get()
+        d = {"prompt": prompt, "duration": dur, "fps": fps, "style": style}
+
+        def work():
+            try:
+                from agent import video_gen as _vg
+                out = _vg.generate_video(prompt, duration_sec=float(dur),
+                                          fps=fps, style=style)
+                mm = _vg.video_meta(out)
+                self.after(0, lambda: self._video_done(out, mm))
+            except Exception as e:
+                import traceback
+                self.after(0, lambda e=e: self._video_fail(e))
+
+        threading.Thread(target=work, daemon=True).start()
+
+    def _video_done(self, out, mm):
+        self._vid_gen_btn.configure(state="normal", text="▶ Generate Video")
+        self._vid_res.configure(
+            text=("✅ video ban gayi — 100% local (Hemomemo engine):\n"
+                  "    file: %s\n    duration: %ss   size: %sKB   fps: %s\n"
+                  "    (data/videos/ me mehfooz — aap ka apna PC, koi cloud nahi)"
+                  % (out, mm.get("duration"),
+                     int(mm.get("size", 0) / 1024), mm.get("fps"))),
+            fg=C_ACCENT)
+
+    def _video_fail(self, e):
+        self._vid_gen_btn.configure(state="normal", text="▶ Generate Video")
+        self._vid_res.configure(text="❌ video FAIL: %s" % e, fg=C_DANGER)
+
+    def _video_open_dir(self):
+        try:
+            import subprocess, sys
+            p = os.path.join(ROOT, "data", "videos")
+            os.makedirs(p, exist_ok=True)
+            if sys.platform == "win32":
+                os.startfile(p)
+            else:
+                import xdg_open
+                subprocess.Popen(["xdg-open", p])
+        except Exception:
+            pass
 
     # ==================================================================
     # 📊 MAIN PAGE (DASHBOARD)
