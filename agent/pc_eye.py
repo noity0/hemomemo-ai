@@ -99,7 +99,7 @@ _VK = {"space": 0x20, "enter": 0x0D, "esc": 0x1B, "tab": 0x09, "shift": 0x10,
        "ctrl": 0x11, "alt": 0x12, "up": 0x26, "down": 0x28, "left": 0x25,
        "right": 0x27, "w": 0x57, "a": 0x41, "s": 0x53, "d": 0x44, "e": 0x45,
        "f": 0x46, "r": 0x52, "q": 0x51, "1": 0x31, "2": 0x32, "3": 0x33,
-       "4": 0x34, "5": 0x35}
+       "4": 0x34, "5": 0x35, "win": 0x5B, "lwin": 0x5B, "rwin": 0x5C}
 
 class Hand:
     """Haath: mouse + keyboard (Windows SendInput - ctypes, koi lib nahi)."""
@@ -110,8 +110,11 @@ class Hand:
 
     # ---- keyboard ----
     def key(self, name: str, hold_s: float = 0.0) -> bool:
-        """Ek key dabao (w/a/s/d/space/1-5/enter...)."""
-        vk = _VK.get(str(name).lower())
+        """Ek key dabao (w/a/s/d/space/1-5/enter.../f/q/arjumal-key)."""
+        n = str(name).lower().strip()
+        vk = _VK.get(n)
+        if vk is None and len(n) == 1 and n.isalpha():
+            vk = 0x41 + ord(n) - ord("a")      # ASCII-A-Z → real VK (A=0x41…Z=0x5A)
         if vk is None:
             return False
         self._tap(vk, hold_s)
@@ -168,6 +171,98 @@ class Hand:
                  "mid": (0x0020, 0x0040)}.get(button, (0x0002, 0x0004))
         self.user32.mouse_event(flags[0], 0, 0, 0, 0)
         self.user32.mouse_event(flags[1], 0, 0, 0, 0)
+
+    def type_text(self, text: str, hold_s: float = 0.0) -> bool:
+        """Keyboard se text likho (chat/game-input me).
+        Pure Windows SendInput — no AI API, no cloud. Har printable char dabao."""
+        ok = True
+        for ch in (text or ""):
+            if not ch.isprintable():
+                continue
+            if not self.key(ch, hold_s):
+                ok = False
+        return ok
+
+    def scroll(self, amount: int = 1, axis: str = "vertical") -> bool:
+        """Scroll (mouse wheel) — vertical/horizontal dono. Positive = aage."""
+        try:
+            self.user32.mouse_event(0x0004, 0, int(amount), 0, 0)  # WHEEL
+            return True
+        except Exception:
+            return False
+
+    def hotkey(self, combo: str) -> bool:
+        """Hotkey: 'ctrl+s' / 'alt+f4' / 'win+d' / 'ctrl+shift+esc' jaisa.
+        Modifiers rakh kar key dabao — pure Windows SendInput."""
+        combo = str(combo or "").strip().lower().replace("_", "-")
+        order: list = []
+        rest = combo
+        for m, mv in (("ctrl", 0x11), ("control", 0x11), ("alt", 0x12),
+                      ("shift", 0x10), ("win", 0x5B), ("windows", 0x5B)):
+            if m in rest:
+                order.append(mv)
+                rest = rest.replace(m, "")
+        rest = rest.strip()
+        vk = _VK.get(rest)
+        if vk is None and len(rest) == 1 and rest.isalpha():
+            vk = 0x41 + ord(rest) - ord("a")
+        if vk is None:
+            for m in reversed(order):
+                self._send_key(m, False)
+            return False
+        for m in order:
+            self._send_key(m, True)
+        self._tap(vk, 0.06)
+        for m in reversed(order):
+            self._send_key(m, False)
+        return True
+
+    def close_window(self, title: str = "") -> bool:
+        """Window dhoondho (title substring / empty = first-enumerated).
+        → WM_CLOSE. Koi window nahi mila → False (honest)."""
+        user32 = self.user32
+        title = str(title or "").strip()
+        hits: list = []
+
+        @ctypes.CFUNCTYPE(ctypes.c_int, ctypes.c_void_p, ctypes.c_void_p)
+        def _enum(hwnd, lparam):      # EnumWindows callback
+            try:
+                n = user32.GetWindowTextW(ctypes.c_void_p(hwnd))
+            except Exception:
+                return 1
+            if not n:
+                return 1
+            if not title or title == "*" or title.lower() in n.lower():
+                hits.append((hwnd, n))
+            return 1
+
+        try:
+            user32.EnumWindows(_enum, 0)
+        except Exception:
+            return False
+        if not hits:
+            return False
+        hwnd, _t = hits[0]
+        try:
+            user32.PostMessageW(ctypes.c_void_p(hwnd), 0x0010, 0, 0)  # WM_CLOSE
+            time.sleep(1.0)
+            return True
+        except Exception:
+            return False
+
+    def close_active(self) -> bool:
+        """Foreground window ko khud-muhabbat band karo (WM_CLOSE)."""
+        user32 = self.user32
+        try:
+            fg = user32.GetForegroundWindow()
+        except Exception:
+            return False
+        try:
+            user32.PostMessageW(ctypes.c_void_p(fg), 0x0010, 0, 0)
+            time.sleep(1.0)
+            return True
+        except Exception:
+            return False
 
 
 # ------------------------------------------------- aankh+haath agent-loop
