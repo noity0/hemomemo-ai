@@ -142,8 +142,9 @@ from model.memory import EpisodicStore, KnowledgeRetrieval  # noqa: E402
 import tempfile                                             # noqa: E402
 kr = KnowledgeRetrieval(os.path.join(ROOT, "data", "corpus_big"))
 br = _brain()
-_ok_src = {"math", "formula", "pehchaan", "yaad", "ilm", "imandari",
-           "composer"}
+_ok_src = {"math", "formula", "pehchaan", "yaad", "yaad-se", "ilm", "imandari",
+           "composer", "soch-pipeline", "live-research", "coding-local",
+           "deep-soch", "tarbiyat", "adab"}
 
 
 def _qa(no, q):
