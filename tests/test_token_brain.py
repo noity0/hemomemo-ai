@@ -77,15 +77,18 @@ t, m = brain.respond("mera naam kya hai?")
 check("yaad-recall", m["source"] == "yaad" and "Ahmed" in t)
 
 # ilm (token-IDF retrieval) - TOPICAL criteria
+# 🧠 NOTE (flow v3): sawalon ab TokenBrain→chat_once(full-soch-flow) me chalte
+#    hain → source "ilm" nahi, flow-source (yaad-se/soch-pipeline/live-research)
+#    aata. TO topic-quality hi check karte hain (creeper/salah/loop), source
+#    strict se NAHI.
 t, m = brain.respond("minecraft creeper kya hai")
-check("ilm-creeper", m["source"] == "ilm" and
-      ("creeper" in t.lower()))
+check("ilm-creeper", "creeper" in t.lower() and len(t) > 20)
 t, m = brain.respond("namaz kitni farz hai")
-check("ilm-namaz", m["source"] == "ilm" and
-      ("salah" in t.lower() or "namaz" in t.lower() or "prayer" in t.lower()))
+check("ilm-namaz", ("salah" in t.lower() or "namaz" in t.lower()
+                    or "prayer" in t.lower()) and len(t) > 20)
 t, m = brain.respond("python me loop kaise likhein")
-check("ilm-python-loop", m["source"] == "ilm" and
-      ("loop" in t.lower() or "for" in t.lower() or "def" in t.lower()))
+check("ilm-python-loop", ("loop" in t.lower() or "for" in t.lower()
+                          or "def" in t.lower()) and len(t) > 20)
 
 # samajh ka sab-se-ahem imtihaan: ban-input jawab KHATAM
 # (pehle "who is sex" par identity-dump aata tha - ab mutaliq/samajh-dar jawab)
