@@ -1,11 +1,11 @@
 {
   "brain": "hemomemo-master",
-  "version": "1794056479",
-  "file": "genmaster_1794056479.npz",
-  "file_path": "model/checkpoints/genmaster_1794056479.npz",
-  "size": 27295962,
-  "sha256": "83f49a4b3f6e3d2159e6ff197594e580311ae6f73f1eda505529504eabc13bb3",
-  "updated": "2026-11-07T13:52:32Z",
-  "url": "https://github.com/noity0/hemomemo-ai/releases/download/brain/Hemomemo-Brain-1794056479.npz",
+  "version": "1794071754",
+  "file": "genmaster_1794071754.npz",
+  "file_path": "model/checkpoints/genmaster_1794071754.npz",
+  "size": 26365996,
+  "sha256": "15eab3ff30f09a0df15c34a3ad5e0040a82288cd9070005a20ea96cf4f0f8168",
+  "updated": "2026-11-08T05:55:00Z",
+  "url": "https://github.com/noity0/hemomemo-ai/releases/download/brain/Hemomemo-Brain-1794071754.npz",
   "note": "owner-published brain (HMHS) - sirf file-sync, koi AI/model/platform API nahi; app bina iske bhi 100% local chalti hai"
 }
