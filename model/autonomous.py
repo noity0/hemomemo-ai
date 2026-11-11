@@ -1,7 +1,7 @@
 """
 🤖 autonomous.py — Hemomemo AI AUTONOMOUS REASONING ENGINE (FULLY AUTONOMOUS UPGRADE)
 
-Hemomemo AI ko ab bilkul aakhirat me fully autonomous bana diya:
+Hemomemo AI ko ab bilkul aakhirat me fully autonomous bana diya (latest flow: READ-TOKEN→CONVERT-TO-BINARY→READ-BY-AI→THINK→REASONING→THINK-RESEARCH→THINK-CONVERT→RESEARCH→THINK→CONVERT-BINARY-TO-TEXT→ANSWER→READ-AGAIN→LEARN):
 
     📥 READ    → sawal ko samajh (normalize / tokenize / intent-scan)
     🧭 FOCUS   → jawab kis che ke liye chahiye (math / logic / fact / sacred /
