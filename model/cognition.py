@@ -4,20 +4,11 @@
 Har sawal ab ek NAA-CHANGE MACHINE-FLOW me chalta hai (koi API nahi, koi
 doosra AI nahi — sirf yehi NumPy dimagh):
 
-   📥 READ     → sawal ko theek tarah se nishchat karo (saaf lafz, topic-words,
-                 sawal-ki-qism) — ASCII-typos bhi yahan theek
-   🧭 FOCUS    → kis che ke liye jawab chahiye (islamic? factual? identity?
-                 code? chit-chat?) — energia yahan tay ki jati hai
-   📚 RECALL   → brain ki apni yaad (Quran+7 Sahih books + corpus + research-note)
-                 se milta-julta ilm notes wapas laao
-   🌐 RESEARCH → sirf NEED ho to (unknown topic + real sawal + chit-chat nahi)
-                 whitelist-net se padhayi (user neeche: har cheez search nahi)
-   ⚙️ THINK    → khud sochna (LSTM BPTT sampling tier ke mutabiq) YA strong-yaad
-                 se pak compose — hamesha fabrication-guard ke sath
-   🪞 VERIFY   → metacognition: apna jawab khud jancha (doubt/verdict) — shak
-                 par upgrade ya pak-imandari
-   🧬 LEARN    → sirf pak evidence par chhote live-weights steps (plasticity)
-   ✍️ SPEAK    → style + guards + status-line
+   📥 READ-TOKEN → 🔢 CONVERT-TO-BINARY → 🤖 READ-BY-AI → 💭 THINK → 🧠 REASONING →
+                  🔎 THINK-RESEARCH(need-if) → 🔄 THINK-CONVERT → 💭 THINK →
+                  🌐 RESEARCH → 💭 THINK → 🔄 CONVERT-BINARY-TO-TEXT → ✍️ ANSWER →
+                  📖 READ-AGAIN → 🧬 LEARN
+
 
 Ye module flow ko TENDER karta hai: har phase ka waqt + chhota sa HUD-port
 (chat me dikhaye ga) — aur agar chat me user likh de `flow on/off/auto` to
@@ -44,15 +35,27 @@ sys.path.insert(0, ROOT)
 STATE_PATH = os.path.join(ROOT, "data", "flow_state.json")
 
 # ✨ FLOW PHASES — order machine-fan (read-only documentation + HUD label)
-# USER-FLOW: READ → THINK-TOKENS → SYSTEM → READ-AGAIN → THINK → ANALYZE →
-#           RESEARCH → VERIFY → TOKENS-TO-TEXT → ANSWER
-PHASES = ["READ", "THINK-TOKENS", "SYSTEM", "READ-AGAIN", "THINK", "ANALYZE",
-          "RESEARCH", "VERIFY", "TOKENS-TO-TEXT", "ANSWER"]
+# USER-FLOW (user qanoon):
+#   READ-TOKEN → CONVERT-TO-BINARY → READ-BY-AI → THINK → REASONING →
+#   THINK-RESEARCH(need-if) → THINK-CONVERT → THINK → RESEARCH → THINK →
+#   CONVERT-BINARY-TO-TEXT → ANSWER → READ-AGAIN → LEARN
+PHASES = ["READ-TOKEN", "CONVERT-TO-BINARY", "READ-BY-AI", "THINK", "REASONING",
+          "THINK-RESEARCH", "THINK-CONVERT", "RESEARCH", "THINK",
+          "CONVERT-BINARY-TO-TEXT", "ANSWER", "READ-AGAIN", "LEARN"]
 _PHASE_GLYPH = {
-    "READ": "📥", "THINK-TOKENS": "⚙️", "SYSTEM": "⬇️", "READ-AGAIN": "📖",
-    "THINK": "⚡", "ANALYZE": "🔬", "RESEARCH": "🌐", "VERIFY": "🪞",
-    "TOKENS-TO-TEXT": "🔄", "ANSWER": "✍️",
+    "READ-TOKEN": "📥", "CONVERT-TO-BINARY": "🔢", "READ-BY-AI": "🤖",
+    "THINK": "💭", "REASONING": "🧠", "THINK-RESEARCH": "🔎",
+    "THINK-CONVERT": "🔄", "RESEARCH": "🌐",
+    "CONVERT-BINARY-TO-TEXT": "🔄", "ANSWER": "✍️",
+    "READ-AGAIN": "📖", "LEARN": "🧬",
 }
+# legacy aliases (purani stage naam - same phase ka purana label)
+_LEGACY_GLYPHS = {
+    "READ": "📥", "THINK-TOKENS": "💭", "SYSTEM": "⬇️",
+    "THINK": "💭", "ANALYZE": "🧠", "RESEARCH": "🌐",
+    "VERIFY": "🧾", "TOKENS-TO-TEXT": "🔄", "ANSWER": "✍️",
+}
+_PHASE_GLYPH.update(_LEGACY_GLYPHS)
 
 # sawal-kisim ke pehchan (READ phase ka intent-scan)
 _Q_RX = re.compile(r"(?i)(\?|\b(kya|kyun|kaise|kaisay|kaun|kahan|kab|kitna|"
