@@ -124,12 +124,19 @@ def best_checkpoint():
     corpus se EXACT milta ho. Stray (mismatched) checkpoint par rukna mana hai —
     usko skip karo; jab tak match na mile, chat RAG-only chalta rahega.
     🧠 CHAAR-DIMAGH RULE: yahan sirf GENMASTER (pehla 7M dimagh) — helper/
-    verify/deep apne modules se load hote hain (genhelper_/genverify_/gendeep_)."""
-    tok = _tok()
+    verify/deep apne modules se load hote hain (genhelper_/genverify_/gendeep_).
+    ⚡ memo: result (name,mtime)-signatur par — harek tez-e-sawal par 26MB npz
+    dobara scane NAIH hoti (chat 24/7 tabdeek rakhne ke liye); checkpoints
+    badalne par (UPDATE-BRAIN / tarbiyat) memo khud invalidate hota hai."""
     cks = [os.path.join(CKPT_DIR, f) for f in os.listdir(CKPT_DIR)
            if f.endswith(".npz") and f.startswith("genmaster")
            and not f.endswith(".tmp.npz")]
+    sig = tuple(sorted((os.path.basename(c), os.path.getmtime(c)) for c in cks))
+    if _CACHE.get("best_sig") == sig:
+        return _CACHE.get("best_ck")
+    tok = _tok()
     cks.sort(key=os.path.getmtime, reverse=True)
+    found = None
     for ck in cks:
         try:
             with np.load(ck) as d:
@@ -137,10 +144,13 @@ def best_checkpoint():
         except OSError:
             continue
         if vocab == tok.vocab_size:
-            return ck
+            found = ck
+            break
         print("  [chat] skip %s (vocab %d vs corpus %d)" % (
             os.path.basename(ck), vocab, tok.vocab_size))
-    return None
+    _CACHE["best_sig"] = sig
+    _CACHE["best_ck"] = found
+    return found
 
 
 def _load_model(ck):
@@ -711,6 +721,14 @@ def _clean(text):
 # ───────────────────────── 💻 HEMOMO CODING AI (local, no any AI-API) ─────────────────────────
 _COD_LANG_RX = re.compile(r"(?i)(?<![a-z0-9])(python|javascript|typescript|js|ts|node|java|c\+\+|cpp|c#|csharp|go|golang|rust|php|sql|html|css|kotlin|swift|ruby|bash|shell|django|flask|react|vue|express|pandas|numpy|excel|matlab|r|rb|dart|perl|lua|haskell|scala)(?![a-z0-9])")
 _COD_TASK_RX = re.compile(r"(?i)\b(code|function|func|script|program|bug|debug|refactor|compile|algorithm|regex|query|boilerplate|oop|api|endpoint|database|crud|slice|dataframe|component|module|library|package|binary|deploy|thread|async|promise|callback|array|list|dictionary|stack|queue|tree|graph|fibonacci|sort|reverse|palindrome|fizzbuzz|prime|debounce|throttle|middleware|server|client|frontend|backend|fullstack|cli|flask|django|sql|love|heart|counter|clock|timer|stopwatch|quiz|form|login|signup|card|animation|guess)\b")
+
+# 🔎 CONCEPTUAL-guard: "what is X / explain X / X vs Y / basics / rules" — ye
+# programming-SAWAL hain, code-BANANE ke order nahi → ilm (teaching) raasta,
+# generic solve() code NAHI (QA1-coding conceptual-FAILs ka elaj).
+_COD_CONCEPT_RX = re.compile(
+    r"(?i)\b(what is|what are|what does|explain|define|difference|\bvs\b|"
+    r"kya hota|kya hai|kya hote|matlab|batao|batain|bata|samjhao|samjha\b|"
+    r"concept|principle|rules|basics|meaning)\b")
 _COD_LANG_MAP = {"py": "python", "python": "python", "js": "javascript", "javascript": "javascript",
                  "ts": "typescript", "typescript": "typescript", "node": "javascript",
                  "c++": "cpp", "cpp": "cpp", "c#": "csharp", "csharp": "csharp",
@@ -2047,7 +2065,8 @@ def chat_once(prompt: str, temperature: float = 0.5, max_new: int = None,
         # 🧾 CODING-intent social-guard: code sawalon adab/fire NAHI se (python
         # hello world → adab → QA-FAIL; _COD_TASK/_COD_LANG se coding-pata karo)
         _pl_now = (prompt or "").lower()
-        _codish = bool(_COD_TASK_RX.search(_pl_now) or _COD_LANG_RX.search(_pl_now))
+        _codish = bool((_COD_TASK_RX.search(_pl_now) or _COD_LANG_RX.search(_pl_now))
+                       and not _COD_CONCEPT_RX.search(_pl_now))
         if (_sm.get("social") and not _codish):
             from model.autonomous import answer as _samajh_ans
             _srep = _samajh_ans(prompt)
@@ -2069,15 +2088,15 @@ def chat_once(prompt: str, temperature: float = 0.5, max_new: int = None,
                 return _stext
     except Exception:
         pass
-    # ◈ COGNITION FLOW v3 — user-flow: READ → THINK-TOKENS → SYSTEM → READ-AGAIN → THINK → ANALYZE → RESEARCH → VERIFY → TOKENS-TO-TEXT → ANSWER
+    # ◇ COGNITION FLOW v3 — user-flow: READ-TOKEN → CONVERT-TO-BINARY → READ-BY-AI → THINK → REASONING → THINK-RESEARCH(need-if) → THINK-CONVERT → THINK → RESEARCH → THINK → CONVERT-BINARY-TO-TEXT → ANSWER → READ-AGAIN → LEARN
     try:
         from model.cognition import FlowTracker, read_intent, get_display
         from agent.animation import flow_animations, ANIM_STAGES as _ANIM_STAGES
         F = FlowTracker()
-        F.stage("READ", "smart-prompt")                 # 📥 1st read (padh)
+        F.stage("READ-TOKEN", "smart-prompt")                 # 📥 1st read (padh)
         _intent = read_intent(prompt)
-        F.stage("THINK-TOKENS", _intent.get("kind", "baat"))   # ⚙️ token-soch
-        F.stage("SYSTEM", "token-brain-kirish")       # ⬇️ send-to-system
+        F.stage("CONVERT-TO-BINARY", "kind=%s" % _intent.get("kind", "baat"))   # ⚙️ token->binary
+        F.stage("READ-BY-AI", "token-brain-kirish")       # ⬇️ send-to-system
         _flow_disp = get_display()
         _say("🧠 soch-1: sawal samajh raha hoon…")
         _social_hit = False
@@ -2087,7 +2106,8 @@ def chat_once(prompt: str, temperature: float = 0.5, max_new: int = None,
             _smx = _u(prompt) or {}
             _pl2 = (prompt or "").lower()
             _social_hit = bool(_smx.get("social") and not (
-                _COD_TASK_RX.search(_pl2) or _COD_LANG_RX.search(_pl2)))
+                (_COD_TASK_RX.search(_pl2) or _COD_LANG_RX.search(_pl2))
+                and not _COD_CONCEPT_RX.search(_pl2)))
         except Exception:
             _social_hit = False
         try:
@@ -2168,7 +2188,9 @@ def chat_once(prompt: str, temperature: float = 0.5, max_new: int = None,
     try:
         _plc = (prompt or "").lower()
         if len((_plc)) > 8 and not _sacred and not _math_force and not _social_hit:
-            _cod_hit = bool((_COD_LANG_RX.search(_plc) or _COD_TASK_RX.search(_plc)))
+            _cod_hit = bool(
+                (_COD_LANG_RX.search(_plc) or _COD_TASK_RX.search(_plc))
+                and not _COD_CONCEPT_RX.search(_plc))
             if _cod_hit:
                 _cod_text, _cod_conf, _cod_lang = _coding_answer(prompt)
                 _ctext = ("Hemomemo AI-> 💻 Ye raha aap ka %s code (local "
@@ -2259,11 +2281,11 @@ def chat_once(prompt: str, temperature: float = 0.5, max_new: int = None,
         except Exception:
             pass
         if F:
-            F.timed("ANALYZE", time.time() - _t0r,
+            F.timed("REASONING", time.time() - _t0r,
                     "need → fire" if _res_done else "need → koi pak jawab nahi")
             _res_marked = True
     elif F:
-        F.skip("ANALYZE", "yaad kafi hai — net ki need NAHI")
+        F.skip("REASONING", "yaad kafi hai — net ki need NAHI")
         _res_marked = True
 
     # 🧠 3) KHUD SOCH: tier ke mutabiq temp-copies (low=1, mid=2, high=3)
@@ -2370,6 +2392,8 @@ def chat_once(prompt: str, temperature: float = 0.5, max_new: int = None,
     # (jo pehle try ho chuka use dobara nahi — ⏱️ double-wait ka khatra nahi)
     # 🔓 direct-conditions (koi _res_ok bhool nahi): sacred/chit-chat/junk
     # phir bhi BAN — asli unknown sawal par hamesha ek mauqa
+    if F and not _res_marked and _res_ok and not _res_done and not _res_tried:
+        F.stage("THINK-RESEARCH", "need-if")          # 🔎 deep-research phase (sirf need-if)
     if (source in ("imaandari", "tarbiyat")
             and not _sacred
             and not bool(_CHITCHAT_RX.match(prompt.strip()))
@@ -2428,8 +2452,11 @@ def chat_once(prompt: str, temperature: float = 0.5, max_new: int = None,
             plastic = None
 
     if F:
-        F.stage("TOKENS-TO-TEXT", "token-text-jod")
+        if _res_done:
+            F.stage("THINK", "research-refine")
+        F.stage("CONVERT-BINARY-TO-TEXT", "token-text-jod")
         F.stage("ANSWER", "jawab-tayyar")
+        F.stage("LEARN", "pak-evidence-learnt")
     # 🤖 AUTONOMOUS REASONING ENGINE (FULLY AUTONOMOUS UPGRADE) — alag-hai
     #    local algorithmic engine: math / logic / knowledge-graph / live-research /
     #    hypothesis + self-verify. Confident (engine-conf>=0.60) sawon par jab
@@ -2667,10 +2694,8 @@ def chat_loop():
         if lowq.startswith("flow"):
             arg = lowq.replace("flow", "").strip() or "on"
             from model.cognition import set_display
-            stf = set_display(arg if arg in ("on", "off", "verbose", "auto")
-                              else "on")
-            print(" ◈ flow-display: %s  (phases: READ→FOCUS→RECALL→"
-                  "RESEARCH?→THINK→VERIFY→LEARN→SPEAK)" % stf.get("display"))
+            stf = set_display(arg if arg in ("on", "off", "verbose", "auto") else "on")
+            print(" ◈ flow-display: %s  (phases: READ-TOKEN→CONVERT-TO-BINARY→READ-BY-AI→THINK→REASONING→THINK-RESEARCH→THINK-CONVERT→RESEARCH→THINK→CONVERT-BINARY-TO-TEXT→ANSWER→READ-AGAIN→LEARN)" % stf.get("display"))
             continue
         if lowq.startswith("think"):
             arg = lowq.replace("think", "").strip()
