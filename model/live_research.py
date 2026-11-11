@@ -1,7 +1,7 @@
 """
 🌐 live_research.py — Hemomemo AI LIVE INTERNET-RESEARCH (whitelist-only, guard ON)
 
-Kiya karta hai:
+Kiya karta hai (latest flow: READ-TOKEN→CONVERT-TO-BINARY→READ-BY-AI→THINK→REASONING→THINK-RESEARCH→THINK-CONVERT→RESEARCH→THINK→CONVERT-BINARY-TO-TEXT→ANSWER→READ-AGAIN→LEARN):
   - GAIR-ISLAMIC sawal jo yaad/model se pura na hua → live research (jawab)
   - ISLAMIC sawal par internet NAHI — sirf Quran + 7 Hadith books (corpus)
     se cited jawab; ilm na ho to imandari se mana (no fake)
