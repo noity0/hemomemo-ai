@@ -1,0 +1,3171 @@
+# HEMOMEMO CMD+POWERSHELL ILM (hazaaran-asli-commands, 100% local)
+# Sab haqeeqi-Windows-commands (standard-docs-level sach). KnowledgeRetrieval + token-dimagh isi parhte hain.
+
+Sawal: cmd dir
+Sawal: cmd command dir kya karta hai
+Sawal: dir command ka istemal
+Sawal: windows cmd dir
+Sawal: dir kaise chalate hain
+Sawal: dos dir command
+Jawab: DIR — Folder ka content dikhata hai. Usage: dir C:\Windows (param: /a hidden sab, /o sort, /s sub-folders, /q owner).
+
+Sawal: cmd cd
+Sawal: cmd command cd kya karta hai
+Sawal: cd command ka istemal
+Sawal: windows cmd cd
+Sawal: cd kaise chalate hain
+Sawal: dos cd command
+Jawab: CD / CHDIR — Folder tabdeel. Usage: cd D:\DigitalBrain (cd .. peechay, cd\ root, /d drive-bhi-badal).
+
+Sawal: cmd md
+Sawal: cmd command md kya karta hai
+Sawal: md command ka istemal
+Sawal: windows cmd md
+Sawal: md kaise chalate hain
+Sawal: dos md command
+Jawab: MD / MKDIR — Naya folder. Usage: md D:\DigitalBrain\nayafolder (beech-kay-folers khud ban jate hain).
+
+Sawal: cmd rd
+Sawal: cmd command rd kya karta hai
+Sawal: rd command ka istemal
+Sawal: windows cmd rd
+Sawal: rd kaise chalate hain
+Sawal: dos rd command
+Jawab: RD / RMDIR — Folder hatao. Usage: rd folder (khali) / rd /s folder (sab-andar) / rd /s /q (bina-poochay).
+
+Sawal: cmd copy
+Sawal: cmd command copy kya karta hai
+Sawal: copy command ka istemal
+Sawal: windows cmd copy
+Sawal: copy kaise chalate hain
+Sawal: dos copy command
+Jawab: COPY — File copy. Usage: copy a.txt D:\b\ (wildcards: copy *.txt D:\bak\).
+
+Sawal: cmd xcopy
+Sawal: cmd command xcopy kya karta hai
+Sawal: xcopy command ka istemal
+Sawal: windows cmd xcopy
+Sawal: xcopy kaise chalate hain
+Sawal: dos xcopy command
+Jawab: XCOPY — Folder-copy zyada-qaaboo. Usage: xcopy C:\src D:\dst /E /H /K /Y (/E empty-bhi, /H hidden+system, /Y overwrite-no-ask).
+
+Sawal: cmd robocopy
+Sawal: cmd command robocopy kya karta hai
+Sawal: robocopy command ka istemal
+Sawal: windows cmd robocopy
+Sawal: robocopy kaise chalate hain
+Sawal: dos robocopy command
+Jawab: ROBOCOPY — Bharay-mandir file-copy (server-grade). Usage: robocopy C:\src D:\dst /E /Z /R:2 /W:2 /MT:8 (/Z restartable, /MT threads). Exit-codes: 0-7 kamyab.
+
+Sawal: cmd del
+Sawal: cmd command del kya karta hai
+Sawal: del command ka istemal
+Sawal: windows cmd del
+Sawal: del kaise chalate hain
+Sawal: dos del command
+Jawab: DEL / ERASE — File hatao. Usage: del file.txt / del *.tmp /s (sub-folders) /f force /q quiet.
+
+Sawal: cmd ren
+Sawal: cmd command ren kya karta hai
+Sawal: ren command ka istemal
+Sawal: windows cmd ren
+Sawal: ren kaise chalate hain
+Sawal: dos ren command
+Jawab: REN / RENAME — Naam badal. Usage: ren purana.txt naya.txt.
+
+Sawal: cmd move
+Sawal: cmd command move kya karta hai
+Sawal: move command ka istemal
+Sawal: windows cmd move
+Sawal: move kaise chalate hain
+Sawal: dos move command
+Jawab: MOVE — File/folder hilo. Usage: move a.txt D:\new\ (move *.log archive\).
+
+Sawal: cmd type
+Sawal: cmd command type kya karta hai
+Sawal: type command ka istemal
+Sawal: windows cmd type
+Sawal: type kaise chalate hain
+Sawal: dos type command
+Jawab: TYPE — File ka text dikhao. Usage: type config.txt (type a.txt b.txt > sab.txt merge).
+
+Sawal: cmd more
+Sawal: cmd command more kya karta hai
+Sawal: more command ka istemal
+Sawal: windows cmd more
+Sawal: more kaise chalate hain
+Sawal: dos more command
+Jawab: MORE — Bare-file ko tukron me dikhao. Usage: more big.log (SPACE agla, Q kharoj).
+
+Sawal: cmd find
+Sawal: cmd command find kya karta hai
+Sawal: find command ka istemal
+Sawal: windows cmd find
+Sawal: find kaise chalate hain
+Sawal: dos find command
+Jawab: FIND — Text dhoondo (simple). Usage: find "salam" file.txt /c (ginti) /i case-nahi-dekhta.
+
+Sawal: cmd findstr
+Sawal: cmd command findstr kya karta hai
+Sawal: findstr command ka istemal
+Sawal: windows cmd findstr
+Sawal: findstr kaise chalate hain
+Sawal: dos findstr command
+Jawab: FINDSTR — Text dhoondo (regex, powerful). Usage: findstr /i /r "^[0-9]+" file.txt (/s sub-folders, /m sirf-file-name).
+
+Sawal: cmd attrib
+Sawal: cmd command attrib kya karta hai
+Sawal: attrib command ka istemal
+Sawal: windows cmd attrib
+Sawal: attrib kaise chalate hain
+Sawal: dos attrib command
+Jawab: ATTRIB — File-attributes. Usage: attrib +r file (read-only) / attrib -h -s file (hidden/system khulo) / attrib +h secret.
+
+Sawal: cmd chkdsk
+Sawal: cmd command chkdsk kya karta hai
+Sawal: chkdsk command ka istemal
+Sawal: windows cmd chkdsk
+Sawal: chkdsk kaise chalate hain
+Sawal: dos chkdsk command
+Jawab: CHKDSK — Disk-janch. Usage: chkdsk D: /f (ghalati-theek) /r (kharab-sectors dhoond).
+
+Sawal: cmd sfc
+Sawal: cmd command sfc kya karta hai
+Sawal: sfc command ka istemal
+Sawal: windows cmd sfc
+Sawal: sfc kaise chalate hain
+Sawal: dos sfc command
+Jawab: SFC — System-files ki sachai. Usage: sfc /scannow (Windows ki kharab system files theek).
+
+Sawal: cmd dism
+Sawal: cmd command dism kya karta hai
+Sawal: dism command ka istemal
+Sawal: windows cmd dism
+Sawal: dism kaise chalate hain
+Sawal: dos dism command
+Jawab: DISM — Windows-image service. Usage: DISM /Online /Cleanup-Image /RestoreHealth (component-store theek).
+
+Sawal: cmd diskpart
+Sawal: cmd command diskpart kya karta hai
+Sawal: diskpart command ka istemal
+Sawal: windows cmd diskpart
+Sawal: diskpart kaise chalate hain
+Sawal: dos diskpart command
+Jawab: DISKPART — Disk-partition ka control. Usage: diskpart → list disk → select disk 0 → list partition (khayal: clean poora disk mita!).
+
+Sawal: cmd format
+Sawal: cmd command format kya karta hai
+Sawal: format command ka istemal
+Sawal: windows cmd format
+Sawal: format kaise chalate hain
+Sawal: dos format command
+Jawab: FORMAT — Drive format. Usage: format D: /FS:NTFS /Q (Q=jaldi) — SARA DATA URA!
+
+Sawal: cmd fsutil
+Sawal: cmd command fsutil kya karta hai
+Sawal: fsutil command ka istemal
+Sawal: windows cmd fsutil
+Sawal: fsutil kaise chalate hain
+Sawal: dos fsutil command
+Jawab: FSUTIL — File-system ka nichla-qaaboo. Usage: fsutil volume diskfree C: (khali-jagah).
+
+Sawal: cmd cipher
+Sawal: cmd command cipher kya karta hai
+Sawal: cipher command ka istemal
+Sawal: windows cmd cipher
+Sawal: cipher kaise chalate hain
+Sawal: dos cipher command
+Jawab: CIPHER — Encryption + secure-delete. Usage: cipher /w:C: (khali-jagah ke purane data SAFAY) /e folder (EFS encrypt).
+
+Sawal: cmd compact
+Sawal: cmd command compact kya karta hai
+Sawal: compact command ka istemal
+Sawal: windows cmd compact
+Sawal: compact kaise chalate hain
+Sawal: dos compact command
+Jawab: COMPACT — NTFS-compression. Usage: compact /c /s:D:\folder /i /q (jagah bachao).
+
+Sawal: cmd defrag
+Sawal: cmd command defrag kya karta hai
+Sawal: defrag command ka istemal
+Sawal: windows cmd defrag
+Sawal: defrag kaise chalate hain
+Sawal: dos defrag command
+Jawab: DEFRAG — Disk-murattab. Usage: defrag C: /O (SSD par /O retrim; HDD par /U /V).
+
+Sawal: cmd driverquery
+Sawal: cmd command driverquery kya karta hai
+Sawal: driverquery command ka istemal
+Sawal: windows cmd driverquery
+Sawal: driverquery kaise chalate hain
+Sawal: dos driverquery command
+Jawab: DRIVERQUERY — Drivers ki list. Usage: driverquery /v (tafsil) /si (signatures).
+
+Sawal: cmd sc
+Sawal: cmd command sc kya karta hai
+Sawal: sc command ka istemal
+Sawal: windows cmd sc
+Sawal: sc kaise chalate hain
+Sawal: dos sc command
+Jawab: SC — Service-control. Usage: sc query wuauserv / sc startBITS? NO — sc start <name> / sc config <name> start= auto (space-zaroori start= ke baad).
+
+Sawal: cmd schtasks
+Sawal: cmd command schtasks kya karta hai
+Sawal: schtasks command ka istemal
+Sawal: windows cmd schtasks
+Sawal: schtasks kaise chalate hain
+Sawal: dos schtasks command
+Jawab: SCHTASKS — Scheduled-task. Usage: schtasks /create /tn "Naam" /tr "notepad" /sc onlogon /rl highest /f ; schtasks /run /tn "Naam" ; /change /disable.
+
+Sawal: cmd tasklist
+Sawal: cmd command tasklist kya karta hai
+Sawal: tasklist command ka istemal
+Sawal: windows cmd tasklist
+Sawal: tasklist kaise chalate hain
+Sawal: dos tasklist command
+Jawab: TASKLIST — Chal-rahe-processes. Usage: tasklist /v /fi "memusage gt 100000" (100MB+ RAM).
+
+Sawal: cmd taskkill
+Sawal: cmd command taskkill kya karta hai
+Sawal: taskkill command ka istemal
+Sawal: windows cmd taskkill
+Sawal: taskkill kaise chalate hain
+Sawal: dos taskkill command
+Jawab: TASKKILL — Process khatam. Usage: taskkill /IM notepad.exe /F / taskkill /PID 1234 /F /T (tree-children-bhi).
+
+Sawal: cmd wmic
+Sawal: cmd command wmic kya karta hai
+Sawal: wmic command ka istemal
+Sawal: windows cmd wmic
+Sawal: wmic kaise chalate hain
+Sawal: dos wmic command
+Jawab: WMIC — WMI-queries (purana). Usage: wmic cpu get name / wmic logicaldisk get size,freespace / wmic process where name='x.exe' delete.
+
+Sawal: cmd reg
+Sawal: cmd command reg kya karta hai
+Sawal: reg command ka istemal
+Sawal: windows cmd reg
+Sawal: reg kaise chalate hain
+Sawal: dos reg command
+Jawab: REG — Windows-registry. Usage: reg add HKCU\Software\X /v V /t REG_SZ /d "data" /f ; reg query HKLM\... ; reg delete ... /f ; reg export key file.reg.
+
+Sawal: cmd regsvr32
+Sawal: cmd command regsvr32 kya karta hai
+Sawal: regsvr32 command ka istemal
+Sawal: windows cmd regsvr32
+Sawal: regsvr32 kaise chalate hain
+Sawal: dos regsvr32 command
+Jawab: REGSVR32 — DLL-register. Usage: regsvr32 shell32.dll /u (unregister) /s (silent).
+
+Sawal: cmd set
+Sawal: cmd command set kya karta hai
+Sawal: set command ka istemal
+Sawal: windows cmd set
+Sawal: set kaise chalate hain
+Sawal: dos set command
+Jawab: SET — Env-vars session-me. Usage: set PATH=%PATH%;D:\new (setx permanent banata hai).
+
+Sawal: cmd setx
+Sawal: cmd command setx kya karta hai
+Sawal: setx command ka istemal
+Sawal: windows cmd setx
+Sawal: setx kaise chalate hain
+Sawal: dos setx command
+Jawab: SETX — Env-var PERMANENT. Usage: setx JAVA_HOME "C:\java" / setx PATH "%PATH%;D:\bin" /M (machine-wide, admin).
+
+Sawal: cmd cls
+Sawal: cmd command cls kya karta hai
+Sawal: cls command ka istemal
+Sawal: windows cmd cls
+Sawal: cls kaise chalate hain
+Sawal: dos cls command
+Jawab: CLS — Screen saaf. Usage: cls.
+
+Sawal: cmd echo
+Sawal: cmd command echo kya karta hai
+Sawal: echo command ka istemal
+Sawal: windows cmd echo
+Sawal: echo kaise chalate hain
+Sawal: dos echo command
+Jawab: ECHO — Text print + file-likho. Usage: echo salam > a.txt (naya) / echo zyada >> a.txt (append) / echo off (bat-script).
+
+Sawal: cmd pause
+Sawal: cmd command pause kya karta hai
+Sawal: pause command ka istemal
+Sawal: windows cmd pause
+Sawal: pause kaise chalate hain
+Sawal: dos pause command
+Jawab: PAUSE — Script rok-kar intezar: "press any key". Usage: pause >nul (chup-chaap).
+
+Sawal: cmd start
+Sawal: cmd command start kya karta hai
+Sawal: start command ka istemal
+Sawal: windows cmd start
+Sawal: start kaise chalate hain
+Sawal: dos start command
+Jawab: START — Naya window/process. Usage: start notepad / start "T" cmd /c "bat" / start /min app / start /b python x.py (us-window-me).
+
+Sawal: cmd call
+Sawal: cmd command call kya karta hai
+Sawal: call command ka istemal
+Sawal: windows cmd call
+Sawal: call kaise chalate hain
+Sawal: dos call command
+Jawab: CALL — Dusra bat chalao aur wapas aao. Usage: call :label arg1 / call other.bat.
+
+Sawal: cmd exit
+Sawal: cmd command exit kya karta hai
+Sawal: exit command ka istemal
+Sawal: windows cmd exit
+Sawal: exit kaise chalate hain
+Sawal: dos exit command
+Jawab: EXIT — Khatam. Usage: exit / exit /b 0 (rc=0 kamyab) / exit /b %errorlevel%.
+
+Sawal: cmd for
+Sawal: cmd command for kya karta hai
+Sawal: for command ka istemal
+Sawal: windows cmd for
+Sawal: for kaise chalate hain
+Sawal: dos for command
+Jawab: FOR — Loop. Usage: for %f in (*.txt) do echo %f (bat-me %%f) / for /f "tokens=1" %a in (list.txt) do ... / for /d /r /l (count).
+
+Sawal: cmd if
+Sawal: cmd command if kya karta hai
+Sawal: if command ka istemal
+Sawal: windows cmd if
+Sawal: if kaise chalate hain
+Sawal: dos if command
+Jawab: IF — Sharait. Usage: if exist f.txt (echo hai) else (echo nahi) / if %a%==1 ... / if errorlevel 1 ... / if defined var.
+
+Sawal: cmd goto
+Sawal: cmd command goto kya karta hai
+Sawal: goto command ka istemal
+Sawal: windows cmd goto
+Sawal: goto kaise chalate hain
+Sawal: dos goto command
+Jawab: GOTO — Kood. Usage: goto :label → :label (exit /b se niklo warna fall-through).
+
+Sawal: cmd shift
+Sawal: cmd command shift kya karta hai
+Sawal: shift command ka istemal
+Sawal: windows cmd shift
+Sawal: shift kaise chalate hain
+Sawal: dos shift command
+Jawab: SHIFT — Bat-args shift: %1→%0. Usage: loop-parsing me shift.
+
+Sawal: cmd title
+Sawal: cmd command title kya karta hai
+Sawal: title command ka istemal
+Sawal: windows cmd title
+Sawal: title kaise chalate hain
+Sawal: dos title command
+Jawab: TITLE — Window ka title. Usage: title MERA-NAAM.
+
+Sawal: cmd color
+Sawal: cmd command color kya karta hai
+Sawal: color command ka istemal
+Sawal: windows cmd color
+Sawal: color kaise chalate hain
+Sawal: dos color command
+Jawab: COLOR — Console-rang. Usage: color 0a (kala-bg, sabz-text) / color /f default.
+
+Sawal: cmd prompt
+Sawal: cmd command prompt kya karta hai
+Sawal: prompt command ka istemal
+Sawal: windows cmd prompt
+Sawal: prompt kaise chalate hain
+Sawal: dos prompt command
+Jawab: PROMPT — Prompt ka shape. Usage: prompt $P$G (path>) / prompt $T$s$P$G (waqt+path).
+
+Sawal: cmd ver
+Sawal: cmd command ver kya karta hai
+Sawal: ver command ka istemal
+Sawal: windows cmd ver
+Sawal: ver kaise chalate hain
+Sawal: dos ver command
+Jawab: VER — Windows-version. Usage: ver.
+
+Sawal: cmd vol
+Sawal: cmd command vol kya karta hai
+Sawal: vol command ka istemal
+Sawal: windows cmd vol
+Sawal: vol kaise chalate hain
+Sawal: dos vol command
+Jawab: VOL — Volume-label. Usage: vol C:.
+
+Sawal: cmd label
+Sawal: cmd command label kya karta hai
+Sawal: label command ka istemal
+Sawal: windows cmd label
+Sawal: label kaise chalate hain
+Sawal: dos label command
+Jawab: LABEL — Drive-label badlo. Usage: label D: DATA.
+
+Sawal: cmd date
+Sawal: cmd command date kya karta hai
+Sawal: date command ka istemal
+Sawal: windows cmd date
+Sawal: date kaise chalate hain
+Sawal: dos date command
+Jawab: DATE / TIME — Taareekh/waqt. Usage: date /t (dikhao) / time (badlo).
+
+Sawal: cmd tree
+Sawal: cmd command tree kya karta hai
+Sawal: tree command ka istemal
+Sawal: windows cmd tree
+Sawal: tree kaise chalate hain
+Sawal: dos tree command
+Jawab: TREE — Folder-structure ka darakht. Usage: tree /f (files-bhi) /a (ASCII).
+
+Sawal: cmd where
+Sawal: cmd command where kya karta hai
+Sawal: where command ka istemal
+Sawal: windows cmd where
+Sawal: where kaise chalate hain
+Sawal: dos where command
+Jawab: WHERE — Executable/file dhoondo PATH-me. Usage: where python / where /r C:\ *.npz.
+
+Sawal: cmd whoami
+Sawal: cmd command whoami kya karta hai
+Sawal: whoami command ka istemal
+Sawal: windows cmd whoami
+Sawal: whoami kaise chalate hain
+Sawal: dos whoami command
+Jawab: WHOAMI — Main kaun. Usage: whoami /priv (privileges) /groups /user:SID.
+
+Sawal: cmd net user
+Sawal: cmd command net user kya karta hai
+Sawal: net user command ka istemal
+Sawal: windows cmd net user
+Sawal: net user kaise chalate hain
+Sawal: dos net user command
+Jawab: NET USER — Users-kaam. Usage: net user / net user Ali Pass123 /add / net user Ali /delete / net user Ali * (password-badal).
+
+Sawal: cmd net localgroup
+Sawal: cmd command net localgroup kya karta hai
+Sawal: net localgroup command ka istemal
+Sawal: windows cmd net localgroup
+Sawal: net localgroup kaise chalate hain
+Sawal: dos net localgroup command
+Jawab: NET LOCALGROUP — Groups. Usage: net localgroup administrators Ali /add (admin-banao).
+
+Sawal: cmd net use
+Sawal: cmd command net use kya karta hai
+Sawal: net use command ka istemal
+Sawal: windows cmd net use
+Sawal: net use kaise chalate hain
+Sawal: dos net use command
+Jawab: NET USE — Network-drive/mapping. Usage: net use Z: \\PC\share /user:u pass / net use * /delete (sab-jur).
+
+Sawal: cmd net share
+Sawal: cmd command net share kya karta hai
+Sawal: net share command ka istemal
+Sawal: windows cmd net share
+Sawal: net share kaise chalate hain
+Sawal: dos net share command
+Jawab: NET SHARE — Shares. Usage: net share MyShare=D:\data /grant:Everyone,full.
+
+Sawal: cmd net start/stop
+Sawal: cmd command net start/stop kya karta hai
+Sawal: net start/stop command ka istemal
+Sawal: windows cmd net start/stop
+Sawal: net start/stop kaise chalate hain
+Sawal: dos net start/stop command
+Jawab: NET START/STOP — Service. Usage: net start wuauserv / net stop wuauserv.
+
+Sawal: cmd netstat
+Sawal: cmd command netstat kya karta hai
+Sawal: netstat command ka istemal
+Sawal: windows cmd netstat
+Sawal: netstat kaise chalate hain
+Sawal: dos netstat command
+Jawab: NETSTAT — Network-connections. Usage: netstat -ano (PIDs-bhi) / -b (exe-naam) / netstat -ano | findstr :8790 (port-kaun-pakray).
+
+Sawal: cmd nbtstat
+Sawal: cmd command nbtstat kya karta hai
+Sawal: nbtstat command ka istemal
+Sawal: windows cmd nbtstat
+Sawal: nbtstat kaise chalate hain
+Sawal: dos nbtstat command
+Jawab: NBTSTAT — NetBIOS-cache/naam. Usage: nbtstat -A 192.168.1.5.
+
+Sawal: cmd ping
+Sawal: cmd command ping kya karta hai
+Sawal: ping command ka istemal
+Sawal: windows cmd ping
+Sawal: ping kaise chalate hain
+Sawal: dos ping command
+Jawab: PING — ICMP-test. Usage: ping 8.8.8.8 -n 4 / ping -t (lagatar, CTRL+C rok) / ping -l 1400 (packet-size).
+
+Sawal: cmd tracert
+Sawal: cmd command tracert kya karta hai
+Sawal: tracert command ka istemal
+Sawal: windows cmd tracert
+Sawal: tracert kaise chalate hain
+Sawal: dos tracert command
+Jawab: TRACERT — Route dikhao. Usage: tracert google.com -d (DNS-resolve-nahi).
+
+Sawal: cmd pathping
+Sawal: cmd command pathping kya karta hai
+Sawal: pathping command ka istemal
+Sawal: windows cmd pathping
+Sawal: pathping kaise chalate hain
+Sawal: dos pathping command
+Jawab: PATHPING — Route + packet-loss (zyada sach). Usage: pathping google.com.
+
+Sawal: cmd nslookup
+Sawal: cmd command nslookup kya karta hai
+Sawal: nslookup command ka istemal
+Sawal: windows cmd nslookup
+Sawal: nslookup kaise chalate hain
+Sawal: dos nslookup command
+Jawab: NSLOOKUP — DNS-sawal. Usage: nslookup example.com / nslookup -type=mx example.com 1.1.1.1.
+
+Sawal: cmd ipconfig
+Sawal: cmd command ipconfig kya karta hai
+Sawal: ipconfig command ka istemal
+Sawal: windows cmd ipconfig
+Sawal: ipconfig kaise chalate hain
+Sawal: dos ipconfig command
+Jawab: IPCONFIG — Network-config. Usage: ipconfig /all / ipconfig /release + /renew / ipconfig /flushdns (DNS-cache saaf).
+
+Sawal: cmd route
+Sawal: cmd command route kya karta hai
+Sawal: route command ka istemal
+Sawal: windows cmd route
+Sawal: route kaise chalate hain
+Sawal: dos route command
+Jawab: ROUTE — Routing-table. Usage: route print / route add 10.0.0.0 mask 255.0.0.0 192.168.1.1.
+
+Sawal: cmd arp
+Sawal: cmd command arp kya karta hai
+Sawal: arp command ka istemal
+Sawal: windows cmd arp
+Sawal: arp kaise chalate hain
+Sawal: dos arp command
+Jawab: ARP — MAC-cache. Usage: arp -a (sab entries).
+
+Sawal: cmd getmac
+Sawal: cmd command getmac kya karta hai
+Sawal: getmac command ka istemal
+Sawal: windows cmd getmac
+Sawal: getmac kaise chalate hain
+Sawal: dos getmac command
+Jawab: GETMAC — MAC-addresses. Usage: getmac /v.
+
+Sawal: cmd hostname
+Sawal: cmd command hostname kya karta hai
+Sawal: hostname command ka istemal
+Sawal: windows cmd hostname
+Sawal: hostname kaise chalate hain
+Sawal: dos hostname command
+Jawab: HOSTNAME — PC ka naam. Usage: hostname.
+
+Sawal: cmd systeminfo
+Sawal: cmd command systeminfo kya karta hai
+Sawal: systeminfo command ka istemal
+Sawal: windows cmd systeminfo
+Sawal: systeminfo kaise chalate hain
+Sawal: dos systeminfo command
+Jawab: SYSTEMINFO — Poora system-report. Usage: systeminfo (RAM, hotfixes, uptime, NICs).
+
+Sawal: cmd msinfo32
+Sawal: cmd command msinfo32 kya karta hai
+Sawal: msinfo32 command ka istemal
+Sawal: windows cmd msinfo32
+Sawal: msinfo32 kaise chalate hain
+Sawal: dos msinfo32 command
+Jawab: MSINFO32 — System-info GUI. Usage: msinfo32.
+
+Sawal: cmd dxdiag
+Sawal: cmd command dxdiag kya karta hai
+Sawal: dxdiag command ka istemal
+Sawal: windows cmd dxdiag
+Sawal: dxdiag kaise chalate hain
+Sawal: dos dxdiag command
+Jawab: DXDIAG — DirectX/GPU-jaanch. Usage: dxdiag.
+
+Sawal: cmd mstsc
+Sawal: cmd command mstsc kya karta hai
+Sawal: mstsc command ka istemal
+Sawal: windows cmd mstsc
+Sawal: mstsc kaise chalate hain
+Sawal: dos mstsc command
+Jawab: MSTSC — Remote-Desktop. Usage: mstsc /v:PC /w:1280 /h:720.
+
+Sawal: cmd shutdown
+Sawal: cmd command shutdown kya karta hai
+Sawal: shutdown command ka istemal
+Sawal: windows cmd shutdown
+Sawal: shutdown kaise chalate hain
+Sawal: dos shutdown command
+Jawab: SHUTDOWN — Shutdown/restart. Usage: shutdown /s /t 60 (60s me band) / shutdown /r /t 0 (restart) / shutdown /a (cancel!) / shutdown /l (logoff).
+
+Sawal: cmd logoff
+Sawal: cmd command logoff kya karta hai
+Sawal: logoff command ka istemal
+Sawal: windows cmd logoff
+Sawal: logoff kaise chalate hain
+Sawal: dos logoff command
+Jawab: LOGOFF — Session-khatam. Usage: logoff (current) / logoff SESSIONID /server:PC.
+
+Sawal: cmd rundll32
+Sawal: cmd command rundll32 kya karta hai
+Sawal: rundll32 command ka istemal
+Sawal: windows cmd rundll32
+Sawal: rundll32 kaise chalate hain
+Sawal: dos rundll32 command
+Jawab: RUNDLL32 — DLL-function chalao (khatarnaak-qaabil-e-ilm). Usage: rundll32 powrprof.dll,SetSuspendState 0,1,0 (sleep) / user32.dll,LockWorkStation (lock).
+
+Sawal: cmd assoc
+Sawal: cmd command assoc kya karta hai
+Sawal: assoc command ka istemal
+Sawal: windows cmd assoc
+Sawal: assoc kaise chalate hain
+Sawal: dos assoc command
+Jawab: ASSOC / FTYPE — File-association. Usage: assoc .py=Python.File / ftype Python.File="C:\py\python.exe" "%%1".
+
+Sawal: cmd subst
+Sawal: cmd command subst kya karta hai
+Sawal: subst command ka istemal
+Sawal: windows cmd subst
+Sawal: subst kaise chalate hain
+Sawal: dos subst command
+Jawab: SUBST — Folder=drive. Usage: subst X: D:\deep\folder (subst X: /d hatao).
+
+Sawal: cmd mklink
+Sawal: cmd command mklink kya karta hai
+Sawal: mklink command ka istemal
+Sawal: windows cmd mklink
+Sawal: mklink kaise chalate hain
+Sawal: dos mklink command
+Jawab: MKLINK — Links. Usage: mklink file.lnk target (file-symlink) / mklink /D dir.lnk target (dir-symlink) / mklink /J dir.lnk target (junction — admin-nahi-chahiye!).
+
+Sawal: cmd expand
+Sawal: cmd command expand kya karta hai
+Sawal: expand command ka istemal
+Sawal: windows cmd expand
+Sawal: expand kaise chalate hain
+Sawal: dos expand command
+Jawab: EXPAND — CAB/MSI-file khole. Usage: expand file.cab -F:* D:\out.
+
+Sawal: cmd makecab
+Sawal: cmd command makecab kya karta hai
+Sawal: makecab command ka istemal
+Sawal: windows cmd makecab
+Sawal: makecab kaise chalate hain
+Sawal: dos makecab command
+Jawab: MAKECAB — CAB banao. Usage: makecab a.txt a.cab.
+
+Sawal: cmd certutil
+Sawal: cmd command certutil kya karta hai
+Sawal: certutil command ka istemal
+Sawal: windows cmd certutil
+Sawal: certutil kaise chalate hain
+Sawal: dos certutil command
+Jawab: CERTUTIL — Certificates + hash. Usage: certutil -hashfile file.txt SHA256 (hash!) / -addstore Root cert.cer.
+
+Sawal: cmd bcdedit
+Sawal: cmd command bcdedit kya karta hai
+Sawal: bcdedit command ka istemal
+Sawal: windows cmd bcdedit
+Sawal: bcdedit kaise chalate hain
+Sawal: dos bcdedit command
+Jawab: BCDEDIT — Boot-config. Usage: bcdedit /set {default} safeboot minimal (safe-mode) / /deletevalue (wapas).
+
+Sawal: cmd winmgmt
+Sawal: cmd command winmgmt kya karta hai
+Sawal: winmgmt command ka istemal
+Sawal: windows cmd winmgmt
+Sawal: winmgmt kaise chalate hain
+Sawal: dos winmgmt command
+Jawab: WINMGMT — WMI-service. Usage: winmgmt /validaterepository /resyncperf.
+
+Sawal: cmd gpupdate
+Sawal: cmd command gpupdate kya karta hai
+Sawal: gpupdate command ka istemal
+Sawal: windows cmd gpupdate
+Sawal: gpupdate kaise chalate hain
+Sawal: dos gpupdate command
+Jawab: GPUPDATE — Group-policy refresh. Usage: gpupdate /force.
+
+Sawal: cmd gpresult
+Sawal: cmd command gpresult kya karta hai
+Sawal: gpresult command ka istemal
+Sawal: windows cmd gpresult
+Sawal: gpresult kaise chalate hain
+Sawal: dos gpresult command
+Jawab: GPRESULT — Policy-report. Usage: gpresult /r /h report.html.
+
+Sawal: cmd icacls
+Sawal: cmd command icacls kya karta hai
+Sawal: icacls command ka istemal
+Sawal: windows cmd icacls
+Sawal: icacls kaise chalate hain
+Sawal: dos icacls command
+Jawab: ICACLS — NTFS-permissions (naya). Usage: icacls folder /grant Users:(OI)(CI)F /T / icacls folder /reset /T / /save file /restore file.
+
+Sawal: cmd takeown
+Sawal: cmd command takeown kya karta hai
+Sawal: takeown command ka istemal
+Sawal: windows cmd takeown
+Sawal: takeown kaise chalate hain
+Sawal: dos takeown command
+Jawab: TAKEOWN — Malik-bano. Usage: takeown /f file / takeown /f folder /r /d y.
+
+Sawal: cmd runas
+Sawal: cmd command runas kya karta hai
+Sawal: runas command ka istemal
+Sawal: windows cmd runas
+Sawal: runas kaise chalate hain
+Sawal: dos runas command
+Jawab: RUNAS — Doosre-user se chalao. Usage: runas /user:Administrator cmd.
+
+Sawal: cmd control
+Sawal: cmd command control kya karta hai
+Sawal: control command ka istemal
+Sawal: windows cmd control
+Sawal: control kaise chalate hain
+Sawal: dos control command
+Jawab: CONTROL — Control-Panel. Usage: control / control printers / schedtasks.
+
+Sawal: cmd appwiz.cpl
+Sawal: cmd command appwiz.cpl kya karta hai
+Sawal: appwiz.cpl command ka istemal
+Sawal: windows cmd appwiz.cpl
+Sawal: appwiz.cpl kaise chalate hain
+Sawal: dos appwiz.cpl command
+Jawab: APPWIZ.CPL — Programs-ya-khatam. Usage: appwiz.cpl (control-panel applets .cpl se khulte hain).
+
+Sawal: cmd perfmon
+Sawal: cmd command perfmon kya karta hai
+Sawal: perfmon command ka istemal
+Sawal: windows cmd perfmon
+Sawal: perfmon kaise chalate hain
+Sawal: dos perfmon command
+Jawab: PERFMON — Performance-monitor. Usage: perfmon /res (resource-monitor).
+
+Sawal: cmd resmon
+Sawal: cmd command resmon kya karta hai
+Sawal: resmon command ka istemal
+Sawal: windows cmd resmon
+Sawal: resmon kaise chalate hain
+Sawal: dos resmon command
+Jawab: RESMON — Resource-monitor. Usage: resmon (CPU/RAM/Disk/Network live).
+
+Sawal: cmd compmgmt
+Sawal: cmd command compmgmt kya karta hai
+Sawal: compmgmt command ka istemal
+Sawal: windows cmd compmgmt
+Sawal: compmgmt kaise chalate hain
+Sawal: dos compmgmt command
+Jawab: COMPMGMT — Computer-management. Usage: compmgmt.msc (eventvwr+services+disk sab).
+
+Sawal: cmd devmgmt
+Sawal: cmd command devmgmt kya karta hai
+Sawal: devmgmt command ka istemal
+Sawal: windows cmd devmgmt
+Sawal: devmgmt kaise chalate hain
+Sawal: dos devmgmt command
+Jawab: DEVMGMT — Device-manager. Usage: devmgmt.msc.
+
+Sawal: cmd diskmgmt
+Sawal: cmd command diskmgmt kya karta hai
+Sawal: diskmgmt command ka istemal
+Sawal: windows cmd diskmgmt
+Sawal: diskmgmt kaise chalate hain
+Sawal: dos diskmgmt command
+Jawab: DISKMGMT — Disk-management. Usage: diskmgmt.msc.
+
+Sawal: cmd services
+Sawal: cmd command services kya karta hai
+Sawal: services command ka istemal
+Sawal: windows cmd services
+Sawal: services kaise chalate hain
+Sawal: dos services command
+Jawab: SERVICES — Services-GUI. Usage: services.msc.
+
+Sawal: cmd eventvwr
+Sawal: cmd command eventvwr kya karta hai
+Sawal: eventvwr command ka istemal
+Sawal: windows cmd eventvwr
+Sawal: eventvwr kaise chalate hain
+Sawal: dos eventvwr command
+Jawab: EVENTVWR — Event-logs. Usage: eventvwr.msc / eventvwr System.
+
+Sawal: cmd cleanmgr
+Sawal: cmd command cleanmgr kya karta hai
+Sawal: cleanmgr command ka istemal
+Sawal: windows cmd cleanmgr
+Sawal: cleanmgr kaise chalate hain
+Sawal: dos cleanmgr command
+Jawab: CLEANMGR — Disk-safai. Usage: cleanmgr /d C: /sageset:1.
+
+Sawal: cmd mdsched
+Sawal: cmd command mdsched kya karta hai
+Sawal: mdsched command ka istemal
+Sawal: windows cmd mdsched
+Sawal: mdsched kaise chalate hain
+Sawal: dos mdsched command
+Jawab: MDSCHED — RAM-jaanch. Usage: mdsched (restart-kar-jaanch).
+
+Sawal: cmd verifier
+Sawal: cmd command verifier kya karta hai
+Sawal: verifier command ka istemal
+Sawal: windows cmd verifier
+Sawal: verifier kaise chalate hain
+Sawal: dos verifier command
+Jawab: VERIFIER — Driver-verifier (debug). Usage: verifier /standard /all (khatarnaak-bsod).
+
+Sawal: cmd sigverif
+Sawal: cmd command sigverif kya karta hai
+Sawal: sigverif command ka istemal
+Sawal: windows cmd sigverif
+Sawal: sigverif kaise chalate hain
+Sawal: dos sigverif command
+Jawab: SIGVERIF — File-signature-jaanch. Usage: sigverif.
+
+Sawal: cmd slmgr
+Sawal: cmd command slmgr kya karta hai
+Sawal: slmgr command ka istemal
+Sawal: windows cmd slmgr
+Sawal: slmgr kaise chalate hain
+Sawal: dos slmgr command
+Jawab: SLMGR — Windows-license. Usage: slmgr /xpr (expiry) / /dlv (tafsil) / /rearm.
+
+Sawal: cmd cscript
+Sawal: cmd command cscript kya karta hai
+Sawal: cscript command ka istemal
+Sawal: windows cmd cscript
+Sawal: cscript kaise chalate hain
+Sawal: dos cscript command
+Jawab: CSCRIPT / WSCRIPT — VBScript/JScript chalao. Usage: cscript script.vbs //nologo.
+
+Sawal: cmd mshta
+Sawal: cmd command mshta kya karta hai
+Sawal: mshta command ka istemal
+Sawal: windows cmd mshta
+Sawal: mshta kaise chalate hain
+Sawal: dos mshta command
+Jawab: MSHTA — HTA-app chalao. Usage: mshta app.hta.
+
+Sawal: cmd choice
+Sawal: cmd command choice kya karta hai
+Sawal: choice command ka istemal
+Sawal: windows cmd choice
+Sawal: choice kaise chalate hain
+Sawal: dos choice command
+Jawab: CHOICE — Choice-prompt. Usage: choice /c YN /m "Qabol?" (errorlevel 1=Y,2=N).
+
+Sawal: cmd timeout
+Sawal: cmd command timeout kya karta hai
+Sawal: timeout command ka istemal
+Sawal: windows cmd timeout
+Sawal: timeout kaise chalate hain
+Sawal: dos timeout command
+Jawab: TIMEOUT — Intezar. Usage: timeout /t 10 /nobreak (10s, key-ignore).
+
+Sawal: cmd curl
+Sawal: cmd command curl kya karta hai
+Sawal: curl command ka istemal
+Sawal: windows cmd curl
+Sawal: curl kaise chalate hain
+Sawal: dos curl command
+Jawab: CURL — URL-fetch (Win10+ builtin). Usage: curl -O https://... / curl -I url (headers) / curl -d "a=1" -X POST url.
+
+Sawal: cmd tar
+Sawal: cmd command tar kya karta hai
+Sawal: tar command ka istemal
+Sawal: windows cmd tar
+Sawal: tar kaise chalate hain
+Sawal: dos tar command
+Jawab: TAR — TAR-archive (Win10+ builtin). Usage: tar -xf a.tar.gz / tar -czf a.tar.gz folder / -xzf khole.
+
+Sawal: cmd clip
+Sawal: cmd command clip kya karta hai
+Sawal: clip command ka istemal
+Sawal: windows cmd clip
+Sawal: clip kaise chalate hain
+Sawal: dos clip command
+Jawab: CLIP — Clipboard bhejo. Usage: ipconfig | clip.
+
+Sawal: cmd doskey
+Sawal: cmd command doskey kya karta hai
+Sawal: doskey command ka istemal
+Sawal: windows cmd doskey
+Sawal: doskey kaise chalate hain
+Sawal: dos doskey command
+Jawab: DOSKEY — Macro/history. Usage: doskey np=notepad $* / doskey /history.
+
+Sawal: cmd robocopy /mir
+Sawal: cmd command robocopy /mir kya karta hai
+Sawal: robocopy /mir command ka istemal
+Sawal: windows cmd robocopy /mir
+Sawal: robocopy /mir kaise chalate hain
+Sawal: dos robocopy /mir command
+Jawab: ROBOCOPY /MIR — Folder MIRROR. Usage: robocopy src dst /MIR (dst ko src jaisa — EXTRA FILES URA! /MOT:n monitor).
+
+Sawal: cmd path
+Sawal: cmd command path kya karta hai
+Sawal: path command ka istemal
+Sawal: windows cmd path
+Sawal: path kaise chalate hain
+Sawal: dos path command
+Jawab: PATH — PATH dikhao/badlo (session). Usage: path %PATH%;D:\bin.
+
+Sawal: cmd pushd
+Sawal: cmd command pushd kya karta hai
+Sawal: pushd command ka istemal
+Sawal: windows cmd pushd
+Sawal: pushd kaise chalate hain
+Sawal: dos pushd command
+Jawab: PUSHD / POPD — Location-stack. Usage: pushd D:\x (wapas: popd — network-path par drive khud map).
+
+Sawal: cmd fc
+Sawal: cmd command fc kya karta hai
+Sawal: fc command ka istemal
+Sawal: windows cmd fc
+Sawal: fc kaise chalate hain
+Sawal: dos fc command
+Jawab: FC — Files compare. Usage: fc a.txt b.txt /n (line-nos) /fc binary /b.
+
+Sawal: cmd sort
+Sawal: cmd command sort kya karta hai
+Sawal: sort command ka istemal
+Sawal: windows cmd sort
+Sawal: sort kaise chalate hain
+Sawal: dos sort command
+Jawab: SORT — Text-sort. Usage: sort a.txt /o b.txt /+n (numeric) /r (ulta).
+
+Sawal: cmd echo %errorlevel%
+Sawal: cmd command echo %errorlevel% kya karta hai
+Sawal: echo %errorlevel% command ka istemal
+Sawal: windows cmd echo %errorlevel%
+Sawal: echo %errorlevel% kaise chalate hain
+Sawal: dos echo %errorlevel% command
+Jawab: ECHO %ERRORLEVEL% — Pichli-command ka rc. Usage: 0=kamyab, non-zero=fail; bat: if %errorlevel% neq 0 exit /b 1.
+
+Sawal: cmd eventcreate
+Sawal: cmd command eventcreate kya karta hai
+Sawal: eventcreate command ka istemal
+Sawal: windows cmd eventcreate
+Sawal: eventcreate kaise chalate hain
+Sawal: dos eventcreate command
+Jawab: EVENTCREATE — Custom-event likho. Usage: eventcreate /l application /so HEMO /id 1 /t information /d "msg".
+
+Sawal: cmd wevtutil
+Sawal: cmd command wevtutil kya karta hai
+Sawal: wevtutil command ka istemal
+Sawal: windows cmd wevtutil
+Sawal: wevtutil kaise chalate hain
+Sawal: dos wevtutil command
+Jawab: WEVTUTIL — Event-log-CLI. Usage: wevtutil qe System /c:5 /f:text /rd:true (aakhri 5).
+
+Sawal: cmd powercfg
+Sawal: cmd command powercfg kya karta hai
+Sawal: powercfg command ka istemal
+Sawal: windows cmd powercfg
+Sawal: powercfg kaise chalate hain
+Sawal: dos powercfg command
+Jawab: POWERCFG — Power-plan + report. Usage: powercfg /a (sleep-states) / /energy (battery-report) / /list /setactive SCHEME.
+
+Sawal: cmd wmic qfe
+Sawal: cmd command wmic qfe kya karta hai
+Sawal: wmic qfe command ka istemal
+Sawal: windows cmd wmic qfe
+Sawal: wmic qfe kaise chalate hain
+Sawal: dos wmic qfe command
+Jawab: WMIC QFE — Updates-list. Usage: wmic qfe list brief (installed-hotfixes).
+
+Sawal: cmd setlocal
+Sawal: cmd command setlocal kya karta hai
+Sawal: setlocal command ka istemal
+Sawal: windows cmd setlocal
+Sawal: setlocal kaise chalate hain
+Sawal: dos setlocal command
+Jawab: SETLOCAL / ENDLOCAL — Bat-vars local-scope. Usage: setlocal (badlaaw wapas endlocal par ura).
+
+Sawal: cmd title@echo off
+Sawal: cmd command title@echo off kya karta hai
+Sawal: title@echo off command ka istemal
+Sawal: windows cmd title@echo off
+Sawal: title@echo off kaise chalate hain
+Sawal: dos title@echo off command
+Jawab: TITLE@ECHO OFF — Bat-standard: Usage: @echo off (har-line-print-na) + title + setlocal.
+
+Sawal: cmd robocopy backup
+Sawal: cmd command robocopy backup kya karta hai
+Sawal: robocopy backup command ka istemal
+Sawal: windows cmd robocopy backup
+Sawal: robocopy backup kaise chalate hain
+Sawal: dos robocopy backup command
+Jawab: ROBOCOPY BACKUP — Backup-pattern. Usage: robocopy C:\data D:\bak\%%date%% /E /XD temp (date-folder backup).
+
+Sawal: cmd bitsadmin
+Sawal: cmd command bitsadmin kya karta hai
+Sawal: bitsadmin command ka istemal
+Sawal: windows cmd bitsadmin
+Sawal: bitsadmin kaise chalate hain
+Sawal: dos bitsadmin command
+Jawab: BITSADMIN — BITS-jobs (purana). Usage: bitsadmin /transfer j /download /priority high url file.
+
+Sawal: cmd netsh
+Sawal: cmd command netsh kya karta hai
+Sawal: netsh command ka istemal
+Sawal: windows cmd netsh
+Sawal: netsh kaise chalate hain
+Sawal: dos netsh command
+Jawab: NETSH — Network-shape. Usage: netsh wlan show profiles / netsh interface ip set dns "Ethernet" static 1.1.1.1 / netsh advfirewall firewall add rule name="X" dir=in action=allow protocol=TCP localport=8790.
+
+Sawal: powershell Get-ChildItem
+Sawal: ps Get-ChildItem kya karta hai
+Sawal: Get-ChildItem powershell command
+Sawal: powershell me Get-ChildItem ka istemal
+Sawal: Get-ChildItem cmdlet example
+Jawab: Get-ChildItem / gci / ls — Folder-list. Usage: gci D:\x -Recurse -Filter *.npz -Force (hidden-bhi); -Depth level; | Measure-Object -Property Length -Sum = size.
+
+Sawal: powershell Set-Location
+Sawal: ps Set-Location kya karta hai
+Sawal: Set-Location powershell command
+Sawal: powershell me Set-Location ka istemal
+Sawal: Set-Location cmdlet example
+Jawab: Set-Location / cd — Tabdeel-jagah. Usage: cd D:\x; cd ..; cd ~ (home).
+
+Sawal: powershell Get-Content
+Sawal: ps Get-Content kya karta hai
+Sawal: Get-Content powershell command
+Sawal: powershell me Get-Content ka istemal
+Sawal: Get-Content cmdlet example
+Jawab: Get-Content / gc / cat — Text-parho. Usage: gc file.txt -Tail 20 (aakhri-20, live: -Wait); gc file -Raw (ek-string).
+
+Sawal: powershell Set-Content
+Sawal: ps Set-Content kya karta hai
+Sawal: Set-Content powershell command
+Sawal: powershell me Set-Content ka istemal
+Sawal: Set-Content cmdlet example
+Jawab: Set-Content / Add-Content — Likho/Joro. Usage: sc? NO — Set-Content f "text" -Encoding utf8; Add-Content log "line" -Encoding utf8.
+
+Sawal: powershell Copy-Item
+Sawal: ps Copy-Item kya karta hai
+Sawal: Copy-Item powershell command
+Sawal: powershell me Copy-Item ka istemal
+Sawal: Copy-Item cmdlet example
+Jawab: Copy-Item / cp — Copy. Usage: Copy-Item a b -Force; Copy-Item src dst -Recurse.
+
+Sawal: powershell Move-Item
+Sawal: ps Move-Item kya karta hai
+Sawal: Move-Item powershell command
+Sawal: powershell me Move-Item ka istemal
+Sawal: Move-Item cmdlet example
+Jawab: Move-Item / mv — Hilo/naam-badal. Usage: Move-Item a D:\x\; Move-Item purana naya.
+
+Sawal: powershell Remove-Item
+Sawal: ps Remove-Item kya karta hai
+Sawal: Remove-Item powershell command
+Sawal: powershell me Remove-Item ka istemal
+Sawal: Remove-Item cmdlet example
+Jawab: Remove-Item / rm / del — Mitao. Usage: Remove-Item f -Force; Remove-Item folder -Recurse -Force; -WhatIf pehle-dekho.
+
+Sawal: powershell New-Item
+Sawal: ps New-Item kya karta hai
+Sawal: New-Item powershell command
+Sawal: powershell me New-Item ka istemal
+Sawal: New-Item cmdlet example
+Jawab: New-Item — Naya banо. Usage: New-Item f.txt -ItemType File; New-Item dir -ItemType Directory -Force.
+
+Sawal: powershell Test-Path
+Sawal: ps Test-Path kya karta hai
+Sawal: Test-Path powershell command
+Sawal: powershell me Test-Path ka istemal
+Sawal: Test-Path cmdlet example
+Jawab: Test-Path — Hai ya nahi. Usage: Test-Path f; Test-Path HKCU:\Software\X (registry-bhi).
+
+Sawal: powershell Get-Process
+Sawal: ps Get-Process kya karta hai
+Sawal: Get-Process powershell command
+Sawal: powershell me Get-Process ka istemal
+Sawal: Get-Process cmdlet example
+Jawab: Get-Process / ps — Processes. Usage: Get-Process python | Sort-Object WS -Desc (RAM-top); Get-Process -Id 1234.
+
+Sawal: powershell Stop-Process
+Sawal: ps Stop-Process kya karta hai
+Sawal: Stop-Process powershell command
+Sawal: powershell me Stop-Process ka istemal
+Sawal: Stop-Process cmdlet example
+Jawab: Stop-Process — Process khatam. Usage: Stop-Process -Name notepad -Force; Stop-Process -Id 1234 -Force.
+
+Sawal: powershell Start-Process
+Sawal: ps Start-Process kya karta hai
+Sawal: Start-Process powershell command
+Sawal: powershell me Start-Process ka istemal
+Sawal: Start-Process cmdlet example
+Jawab: Start-Process — Chalao. Usage: Start-Process notepad; Start-Process python -ArgumentList '-Xutf8','app.py' -WindowStyle Hidden -WorkingDirectory D:\x.
+
+Sawal: powershell Wait-Process
+Sawal: ps Wait-Process kya karta hai
+Sawal: Wait-Process powershell command
+Sawal: powershell me Wait-Process ka istemal
+Sawal: Wait-Process cmdlet example
+Jawab: Wait-Process — Intezar-process. Usage: Wait-Process -Name x -Timeout 60.
+
+Sawal: powershell Get-Service
+Sawal: ps Get-Service kya karta hai
+Sawal: Get-Service powershell command
+Sawal: powershell me Get-Service ka istemal
+Sawal: Get-Service cmdlet example
+Jawab: Get-Service — Services. Usage: Get-Service wuauserv; gsv | Where-Object Status -eq Running.
+
+Sawal: powershell Start/Stop/Restart-Service
+Sawal: ps Start/Stop/Restart-Service kya karta hai
+Sawal: Start/Stop/Restart-Service powershell command
+Sawal: powershell me Start/Stop/Restart-Service ka istemal
+Sawal: Start/Stop/Restart-Service cmdlet example
+Jawab: Start/Stop/Restart-Service — Service kaam. Usage: Start-Service wuauserv -WhatIf; Restart-Service wuauserv -Force.
+
+Sawal: powershell Get-CimInstance
+Sawal: ps Get-CimInstance kya karta hai
+Sawal: Get-CimInstance powershell command
+Sawal: powershell me Get-CimInstance ka istemal
+Sawal: Get-CimInstance cmdlet example
+Jawab: Get-CimInstance — WMI/CIM-sawal (modern). Usage: Get-CimInstance Win32_OperatingSystem | Select FreePhysicalMemory; Get-CimInstance Win32_Process -Filter "Name='python.exe'" | Select CommandLine.
+
+Sawal: powershell Invoke-CimMethod
+Sawal: ps Invoke-CimMethod kya karta hai
+Sawal: Invoke-CimMethod powershell command
+Sawal: powershell me Invoke-CimMethod ka istemal
+Sawal: Invoke-CimMethod cmdlet example
+Jawab: Invoke-CimMethod — WMI-amal. Usage: Invoke-CimMethod Win32_Process -MethodName Create -Arguments @{CommandLine='notepad'}.
+
+Sawal: powershell Get-ComputerInfo
+Sawal: ps Get-ComputerInfo kya karta hai
+Sawal: Get-ComputerInfo powershell command
+Sawal: powershell me Get-ComputerInfo ka istemal
+Sawal: Get-ComputerInfo cmdlet example
+Jawab: Get-ComputerInfo — System-report. Usage: Get-ComputerInfo | Select OsName,OsArchitecture,CsTotalPhysicalMemory.
+
+Sawal: powershell Get-EventLog
+Sawal: ps Get-EventLog kya karta hai
+Sawal: Get-EventLog powershell command
+Sawal: powershell me Get-EventLog ka istemal
+Sawal: Get-EventLog cmdlet example
+Jawab: Get-EventLog / Get-WinEvent — Event-log. Usage: Get-WinEvent -LogName System -MaxEvents 10 -Oldest? NO: -MaxEvents 10 (naye-pehle); Get-WinEvent -FilterHashtable @{LogName='System';Level=2} -MaxEvents 5 (errors).
+
+Sawal: powershell Get-HotFix
+Sawal: ps Get-HotFix kya karta hai
+Sawal: Get-HotFix powershell command
+Sawal: powershell me Get-HotFix ka istemal
+Sawal: Get-HotFix cmdlet example
+Jawab: Get-HotFix — Updates. Usage: Get-HotFix | Sort InstalledOn -Desc | Select -First 5.
+
+Sawal: powershell Test-Connection
+Sawal: ps Test-Connection kya karta hai
+Sawal: Test-Connection powershell command
+Sawal: powershell me Test-Connection ka istemal
+Sawal: Test-Connection cmdlet example
+Jawab: Test-Connection / ping — Ping. Usage: Test-Connection 8.8.8.8 -Count 2 -Quiet (True/False).
+
+Sawal: powershell Resolve-DnsName
+Sawal: ps Resolve-DnsName kya karta hai
+Sawal: Resolve-DnsName powershell command
+Sawal: powershell me Resolve-DnsName ka istemal
+Sawal: Resolve-DnsName cmdlet example
+Jawab: Resolve-DnsName — DNS. Usage: Resolve-DnsName example.com -Type MX -Server 1.1.1.1.
+
+Sawal: powershell Get-NetIPAddress
+Sawal: ps Get-NetIPAddress kya karta hai
+Sawal: Get-NetIPAddress powershell command
+Sawal: powershell me Get-NetIPAddress ka istemal
+Sawal: Get-NetIPAddress cmdlet example
+Jawab: Get-NetIPAddress / Get-NetAdapter — Network. Usage: Get-NetAdapter | Select Name,Status,LinkSpeed; Get-NetIPAddress -AddressFamily IPv4 | Select IPAddress,InterfaceAlias.
+
+Sawal: powershell Test-NetConnection
+Sawal: ps Test-NetConnection kya karta hai
+Sawal: Test-NetConnection powershell command
+Sawal: powershell me Test-NetConnection ka istemal
+Sawal: Test-NetConnection cmdlet example
+Jawab: Test-NetConnection / tnc — Port-test. Usage: tnc 127.0.0.1 -Port 8790 (True/False + TcpTestSucceeded).
+
+Sawal: powershell Get-NetTCPConnection
+Sawal: ps Get-NetTCPConnection kya karta hai
+Sawal: Get-NetTCPConnection powershell command
+Sawal: powershell me Get-NetTCPConnection ka istemal
+Sawal: Get-NetTCPConnection cmdlet example
+Jawab: Get-NetTCPConnection — Ports/connections. Usage: Get-NetTCPConnection -LocalPort 8790 -State Listen | Select OwningProcess.
+
+Sawal: powershell Get/Enable/Disable-NetFirewallRule
+Sawal: ps Get/Enable/Disable-NetFirewallRule kya karta hai
+Sawal: Get/Enable/Disable-NetFirewallRule powershell command
+Sawal: powershell me Get/Enable/Disable-NetFirewallRule ka istemal
+Sawal: Get/Enable/Disable-NetFirewallRule cmdlet example
+Jawab: Get/Enable/Disable-NetFirewallRule + New-NetFirewallRule — Firewall. Usage: New-NetFirewallRule -DisplayName 'HemoAPI' -Direction Inbound -Protocol TCP -LocalPort 8790 -Action Allow; Get-NetFirewallRule -Enabled True | Select -First 5.
+
+Sawal: powershell Set-DnsClientServerAddress
+Sawal: ps Set-DnsClientServerAddress kya karta hai
+Sawal: Set-DnsClientServerAddress powershell command
+Sawal: powershell me Set-DnsClientServerAddress ka istemal
+Sawal: Set-DnsClientServerAddress cmdlet example
+Jawab: Set-DnsClientServerAddress — DNS-set. Usage: Set-DnsClientServerAddress -InterfaceAlias 'Ethernet' -ServerAddresses 1.1.1.1,8.8.8.8.
+
+Sawal: powershell Get-Disk
+Sawal: ps Get-Disk kya karta hai
+Sawal: Get-Disk powershell command
+Sawal: powershell me Get-Disk ka istemal
+Sawal: Get-Disk cmdlet example
+Jawab: Get-Disk / Get-Volume / Get-Partition — Storage. Usage: Get-Disk; Get-Volume | Select DriveLetter,SizeRemaining,Size; Get-Partition -DiskNumber 0.
+
+Sawal: powershell Initialize-Disk
+Sawal: ps Initialize-Disk kya karta hai
+Sawal: Initialize-Disk powershell command
+Sawal: powershell me Initialize-Disk ka istemal
+Sawal: Initialize-Disk cmdlet example
+Jawab: Initialize-Disk / New-Partition / Format-Volume — Naya-disk. Usage: Initialize-Disk -Number 1; New-Partition -DiskNumber 1 -UseMaximumSize -AssignDriveLetter | Format-Volume -FileSystem NTFS.
+
+Sawal: powershell Repair-Volume
+Sawal: ps Repair-Volume kya karta hai
+Sawal: Repair-Volume powershell command
+Sawal: powershell me Repair-Volume ka istemal
+Sawal: Repair-Volume cmdlet example
+Jawab: Repair-Volume / Optimize-Volume — Disk-theek. Usage: Repair-Volume -DriveLetter C -Scan; Optimize-Volume -DriveLetter C -Defrag (HDD) / -Retrim (SSD).
+
+Sawal: powershell Get-BitLockerVolume
+Sawal: ps Get-BitLockerVolume kya karta hai
+Sawal: Get-BitLockerVolume powershell command
+Sawal: powershell me Get-BitLockerVolume ka istemal
+Sawal: Get-BitLockerVolume cmdlet example
+Jawab: Get-BitLockerVolume / Enable-BitLocker — Encryption. Usage: Get-BitLockerVolume C; Enable-BitLocker -MountPoint C: -EncryptionMethod XtsAes256.
+
+Sawal: powershell Compress-Archive
+Sawal: ps Compress-Archive kya karta hai
+Sawal: Compress-Archive powershell command
+Sawal: powershell me Compress-Archive ka istemal
+Sawal: Compress-Archive cmdlet example
+Jawab: Compress-Archive / Expand-Archive — Zip. Usage: Compress-Archive folder a.zip -Force; Expand-Archive a.zip -DestinationPath out -Force.
+
+Sawal: powershell Get-FileHash
+Sawal: ps Get-FileHash kya karta hai
+Sawal: Get-FileHash powershell command
+Sawal: powershell me Get-FileHash ka istemal
+Sawal: Get-FileHash cmdlet example
+Jawab: Get-FileHash — Hash. Usage: Get-FileHash f -Algorithm SHA256; (Get-FileHash f).Hash -eq $known.
+
+Sawal: powershell Get-AuthenticodeSignature
+Sawal: ps Get-AuthenticodeSignature kya karta hai
+Sawal: Get-AuthenticodeSignature powershell command
+Sawal: powershell me Get-AuthenticodeSignature ka istemal
+Sawal: Get-AuthenticodeSignature cmdlet example
+Jawab: Get-AuthenticodeSignature — Sign-jaanch. Usage: Get-AuthenticodeSignature app.exe | Select Status,SignerCertificate.
+
+Sawal: powershell Get-LocalUser
+Sawal: ps Get-LocalUser kya karta hai
+Sawal: Get-LocalUser powershell command
+Sawal: powershell me Get-LocalUser ka istemal
+Sawal: Get-LocalUser cmdlet example
+Jawab: Get-LocalUser / New-LocalUser — Users. Usage: Get-LocalUser; New-LocalUser -Name Ali -Password (ConvertTo-SecureString 'P@ss' -AsPlainText -Force).
+
+Sawal: powershell Get-LocalGroup
+Sawal: ps Get-LocalGroup kya karta hai
+Sawal: Get-LocalGroup powershell command
+Sawal: powershell me Get-LocalGroup ka istemal
+Sawal: Get-LocalGroup cmdlet example
+Jawab: Get-LocalGroup / Add-LocalGroupMember — Groups. Usage: Add-LocalGroupMember Administrators -Member Ali.
+
+Sawal: powershell Get-ScheduledTask
+Sawal: ps Get-ScheduledTask kya karta hai
+Sawal: Get-ScheduledTask powershell command
+Sawal: powershell me Get-ScheduledTask ka istemal
+Sawal: Get-ScheduledTask cmdlet example
+Jawab: Get-ScheduledTask — Tasks. Usage: Get-ScheduledTask | Where-Object State -eq Running; Get-ScheduledTaskInfo -TaskName X.
+
+Sawal: powershell Register-ScheduledTask
+Sawal: ps Register-ScheduledTask kya karta hai
+Sawal: Register-ScheduledTask powershell command
+Sawal: powershell me Register-ScheduledTask ka istemal
+Sawal: Register-ScheduledTask cmdlet example
+Jawab: Register-ScheduledTask — Task-banao. Usage: $a=New-ScheduledTaskAction -Execute 'cmd.exe' -Argument '/c D:\x\run.bat'; $t=New-ScheduledTaskTrigger -AtLogOn; Register-ScheduledTask -TaskName 'Hemo' -Action $a -Trigger $t -Force.
+
+Sawal: powershell Start/Stop/Enable/Disable-ScheduledTask
+Sawal: ps Start/Stop/Enable/Disable-ScheduledTask kya karta hai
+Sawal: Start/Stop/Enable/Disable-ScheduledTask powershell command
+Sawal: powershell me Start/Stop/Enable/Disable-ScheduledTask ka istemal
+Sawal: Start/Stop/Enable/Disable-ScheduledTask cmdlet example
+Jawab: Start/Stop/Enable/Disable-ScheduledTask — Task kaam. Usage: Start-ScheduledTask -TaskName X; Disable-ScheduledTask X -Path \.
+
+Sawal: powershell Get/Set-ExecutionPolicy
+Sawal: ps Get/Set-ExecutionPolicy kya karta hai
+Sawal: Get/Set-ExecutionPolicy powershell command
+Sawal: powershell me Get/Set-ExecutionPolicy ka istemal
+Sawal: Get/Set-ExecutionPolicy cmdlet example
+Jawab: Get/Set-ExecutionPolicy — PS-policy. Usage: Get-ExecutionPolicy -List; Set-ExecutionPolicy RemoteSigned -Scope CurrentUser (Bypass = sirf-ek-run: powershell -ExecutionPolicy Bypass -File a.ps1).
+
+Sawal: powershell Get-Help
+Sawal: ps Get-Help kya karta hai
+Sawal: Get-Help powershell command
+Sawal: powershell me Get-Help ka istemal
+Sawal: Get-Help cmdlet example
+Jawab: Get-Help / Get-Member — Seekho. Usage: Get-Help Get-Content -Examples; Get-Date | Get-Member (kya-kya-kaam).
+
+Sawal: powershell Select-Object
+Sawal: ps Select-Object kya karta hai
+Sawal: Select-Object powershell command
+Sawal: powershell me Select-Object ka istemal
+Sawal: Select-Object cmdlet example
+Jawab: Select-Object / Where-Object / Sort-Object / Group-Object — Pipeline-filter. Usage: ps | Where-Object CPU -gt 10 | Sort-Object CPU -Descending | Select -First 5 Name,CPU; gci | Group-Object Extension.
+
+Sawal: powershell Measure-Object
+Sawal: ps Measure-Object kya karta hai
+Sawal: Measure-Object powershell command
+Sawal: powershell me Measure-Object ka istemal
+Sawal: Measure-Object cmdlet example
+Jawab: Measure-Object — Ginti/jama. Usage: gci *.txt | Measure-Object Length -Sum -Maximum; (gc f.txt | Measure-Object -Line).Lines.
+
+Sawal: powershell Select-String
+Sawal: ps Select-String kya karta hai
+Sawal: Select-String powershell command
+Sawal: powershell me Select-String ka istemal
+Sawal: Select-String cmdlet example
+Jawab: Select-String / sls — Text-dhoondo. Usage: Select-String -Path *.log -Pattern 'ERROR' -SimpleMatch; sls 'salam' f.txt -CaseSensitive.
+
+Sawal: powershell Out-File
+Sawal: ps Out-File kya karta hai
+Sawal: Out-File powershell command
+Sawal: powershell me Out-File ka istemal
+Sawal: Out-File cmdlet example
+Jawab: Out-File / Out-GridView / Out-String — Output. Usage: ... | Out-File r.txt -Encoding utf8 -Append; | Out-GridView (GUI-table); $x = ... | Out-String.
+
+Sawal: powershell Export-Csv
+Sawal: ps Export-Csv kya karta hai
+Sawal: Export-Csv powershell command
+Sawal: powershell me Export-Csv ka istemal
+Sawal: Export-Csv cmdlet example
+Jawab: Export-Csv / Import-Csv — CSV. Usage: ps | Select Name,CPU | Export-Csv p.csv -NoTypeInformation; Import-Csv p.csv | Where CPU -gt 1.
+
+Sawal: powershell ConvertTo-Json
+Sawal: ps ConvertTo-Json kya karta hai
+Sawal: ConvertTo-Json powershell command
+Sawal: powershell me ConvertTo-Json ka istemal
+Sawal: ConvertTo-Json cmdlet example
+Jawab: ConvertTo-Json / ConvertFrom-Json — JSON. Usage: Get-Date | ConvertTo-Json; $o = Get-Content c.json -Raw | ConvertFrom-Json; $o.key.
+
+Sawal: powershell ConvertTo-Html
+Sawal: ps ConvertTo-Html kya karta hai
+Sawal: ConvertTo-Html powershell command
+Sawal: powershell me ConvertTo-Html ka istemal
+Sawal: ConvertTo-Html cmdlet example
+Jawab: ConvertTo-Html — HTML-report. Usage: ps | ConvertTo-Html | Out-File p.html.
+
+Sawal: powershell Export/Import-Clixml
+Sawal: ps Export/Import-Clixml kya karta hai
+Sawal: Export/Import-Clixml powershell command
+Sawal: powershell me Export/Import-Clixml ka istemal
+Sawal: Export/Import-Clixml cmdlet example
+Jawab: Export/Import-Clixml — Object-save. Usage: $obj | Export-Clixml s.xml; $obj = Import-Clixml s.xml.
+
+Sawal: powershell Invoke-WebRequest
+Sawal: ps Invoke-WebRequest kya karta hai
+Sawal: Invoke-WebRequest powershell command
+Sawal: powershell me Invoke-WebRequest ka istemal
+Sawal: Invoke-WebRequest cmdlet example
+Jawab: Invoke-WebRequest / iwr — Web-GET. Usage: (iwr url).Content / -OutFile f.png; iwr url -Method Head.
+
+Sawal: powershell Invoke-RestMethod
+Sawal: ps Invoke-RestMethod kya karta hai
+Sawal: Invoke-RestMethod powershell command
+Sawal: powershell me Invoke-RestMethod ka istemal
+Sawal: Invoke-RestMethod cmdlet example
+Jawab: Invoke-RestMethod / irm — REST-API. Usage: irm https://api.github.com/repos/x | Select -Expand assets; irm url -Method Post -Body $json -ContentType 'application/json'.
+
+Sawal: powershell Invoke-Command
+Sawal: ps Invoke-Command kya karta hai
+Sawal: Invoke-Command powershell command
+Sawal: powershell me Invoke-Command ka istemal
+Sawal: Invoke-Command cmdlet example
+Jawab: Invoke-Command / New-PSSession / Enter-PSSession — Remote-PS. Usage: New-PSSession PC (needs Enable-PSRemoting on target); Invoke-Command -ComputerName PC -ScriptBlock {hostname} -Credential u.
+
+Sawal: powershell Enable/Disable-PSRemoting
+Sawal: ps Enable/Disable-PSRemoting kya karta hai
+Sawal: Enable/Disable-PSRemoting powershell command
+Sawal: powershell me Enable/Disable-PSRemoting ka istemal
+Sawal: Enable/Disable-PSRemoting cmdlet example
+Jawab: Enable/Disable-PSRemoting — Remoting ON/OFF. Usage: Enable-PSRemoting -Force (admin, target-PC).
+
+Sawal: powershell Start-Job
+Sawal: ps Start-Job kya karta hai
+Sawal: Start-Job powershell command
+Sawal: powershell me Start-Job ka istemal
+Sawal: Start-Job cmdlet example
+Jawab: Start-Job / Get-Job / Receive-Job — Background-job. Usage: Start-Job {gci D:\ -Recurse}; Get-Job | Receive-Job -Keep; Wait-Job.
+
+Sawal: powershell ForEach-Object -Parallel
+Sawal: ps ForEach-Object -Parallel kya karta hai
+Sawal: ForEach-Object -Parallel powershell command
+Sawal: powershell me ForEach-Object -Parallel ka istemal
+Sawal: ForEach-Object -Parallel cmdlet example
+Jawab: ForEach-Object -Parallel — Multi-thread (PS7). Usage: 1..8 | ForEach-Object -Parallel {Test-Connection 192.168.0.$_ -Count 1} -ThrottleLimit 4.
+
+Sawal: powershell Get/Set-Clipboard
+Sawal: ps Get/Set-Clipboard kya karta hai
+Sawal: Get/Set-Clipboard powershell command
+Sawal: powershell me Get/Set-Clipboard ka istemal
+Sawal: Get/Set-Clipboard cmdlet example
+Jawab: Get/Set-Clipboard — Clipboard. Usage: Get-Clipboard; 'text' | Set-Clipboard; Get-ChildItem | Select -Exp Name | Set-Clipboard.
+
+Sawal: powershell Start/Stop-Transcript
+Sawal: ps Start/Stop-Transcript kya karta hai
+Sawal: Start/Stop-Transcript powershell command
+Sawal: powershell me Start/Stop-Transcript ka istemal
+Sawal: Start/Stop-Transcript cmdlet example
+Jawab: Start/Stop-Transcript — Session-record. Usage: Start-Transcript log.txt; ...; Stop-Transcript.
+
+Sawal: powershell Get/Set-ItemProperty
+Sawal: ps Get/Set-ItemProperty kya karta hai
+Sawal: Get/Set-ItemProperty powershell command
+Sawal: powershell me Get/Set-ItemProperty ka istemal
+Sawal: Get/Set-ItemProperty cmdlet example
+Jawab: Get/Set-ItemProperty + New/Remove-ItemProperty — Registry-values. Usage: Set-ItemProperty HKCU:\Software\X -Name V -Value 1; Get-ItemProperty HKCU:\... | Select V.
+
+Sawal: powershell New-PSDrive
+Sawal: ps New-PSDrive kya karta hai
+Sawal: New-PSDrive powershell command
+Sawal: powershell me New-PSDrive ka istemal
+Sawal: New-PSDrive cmdlet example
+Jawab: New-PSDrive — Virtual-drive. Usage: New-PSDrive -Name H -PSProvider FileSystem -Root D:\data -Persist.
+
+Sawal: powershell Push/Pop-Location
+Sawal: ps Push/Pop-Location kya karta hai
+Sawal: Push/Pop-Location powershell command
+Sawal: powershell me Push/Pop-Location ka istemal
+Sawal: Push/Pop-Location cmdlet example
+Jawab: Push/Pop-Location — Jagah-stack. Usage: Push-Location D:\x; ...; Pop-Location.
+
+Sawal: powershell Get-Variable
+Sawal: ps Get-Variable kya karta hai
+Sawal: Get-Variable powershell command
+Sawal: powershell me Get-Variable ka istemal
+Sawal: Get-Variable cmdlet example
+Jawab: Get-Variable / New-Variable — Vars. Usage: Get-Variable P*; New-Variable x 5; $x; Remove-Variable x.
+
+Sawal: powershell Get-Command
+Sawal: ps Get-Command kya karta hai
+Sawal: Get-Command powershell command
+Sawal: powershell me Get-Command ka istemal
+Sawal: Get-Command cmdlet example
+Jawab: Get-Command / Find-Command — Kya-mojood. Usage: Get-Command *zip*; Get-Command Get-Content | Select Source.
+
+Sawal: powershell Get/Install/Update-Module
+Sawal: ps Get/Install/Update-Module kya karta hai
+Sawal: Get/Install/Update-Module powershell command
+Sawal: powershell me Get/Install/Update-Module ka istemal
+Sawal: Get/Install/Update-Module cmdlet example
+Jawab: Get/Install/Update-Module — Modules. Usage: Get-Module -ListAvailable; Install-Module PSScriptTools -Scope CurrentUser -Force; Update-Module.
+
+Sawal: powershell New-Guid
+Sawal: ps New-Guid kya karta hai
+Sawal: New-Guid powershell command
+Sawal: powershell me New-Guid ka istemal
+Sawal: New-Guid cmdlet example
+Jawab: New-Guid / Get-Random — Random. Usage: New-Guid; Get-Random -Maximum 100 -Minimum 1; gci | Get-Random -Count 3.
+
+Sawal: powershell Invoke-Expression
+Sawal: ps Invoke-Expression kya karta hai
+Sawal: Invoke-Expression powershell command
+Sawal: powershell me Invoke-Expression ka istemal
+Sawal: Invoke-Expression cmdlet example
+Jawab: Invoke-Expression / iex — String-kaam. Usage: iex 'Get-Date' (khatarnaak input-par — sirf apna).
+
+Sawal: powershell Get/Set-Alias
+Sawal: ps Get/Set-Alias kya karta hai
+Sawal: Get/Set-Alias powershell command
+Sawal: powershell me Get/Set-Alias ka istemal
+Sawal: Get/Set-Alias cmdlet example
+Jawab: Get/Set-Alias — Alias. Usage: Set-Alias np notepad; Get-Alias np.
+
+Sawal: powershell Get-History
+Sawal: ps Get-History kya karta hai
+Sawal: Get-History powershell command
+Sawal: powershell me Get-History ka istemal
+Sawal: Get-History cmdlet example
+Jawab: Get-History / Add-History — History. Usage: Get-History -Count 10; h | Invoke-Item? no.
+
+Sawal: powershell Get-Date
+Sawal: ps Get-Date kya karta hai
+Sawal: Get-Date powershell command
+Sawal: powershell me Get-Date ka istemal
+Sawal: Get-Date cmdlet example
+Jawab: Get-Date / Set-Date — Waqt. Usage: (Get-Date).AddDays(-1); Get-Date -Format 'yyyy-MM-dd HH:mm'; Set-Date (admin).
+
+Sawal: powershell Get/Set-TimeZone
+Sawal: ps Get/Set-TimeZone kya karta hai
+Sawal: Get/Set-TimeZone powershell command
+Sawal: powershell me Get/Set-TimeZone ka istemal
+Sawal: Get/Set-TimeZone cmdlet example
+Jawab: Get/Set-TimeZone — Zone. Usage: Get-TimeZone; Set-TimeZone 'Pakistan Standard Time'.
+
+Sawal: powershell Get-PfxCertificate
+Sawal: ps Get-PfxCertificate kya karta hai
+Sawal: Get-PfxCertificate powershell command
+Sawal: powershell me Get-PfxCertificate ka istemal
+Sawal: Get-PfxCertificate cmdlet example
+Jawab: Get-PfxCertificate / Import/Export-Certificate — Certs. Usage: Import-Certificate -FilePath a.cer -CertStoreLocation Cert:\LocalMachine\Root; Export-Certificate -Cert (Get-Item ...) -FilePath out.cer.
+
+Sawal: powershell New-SelfSignedCertificate
+Sawal: ps New-SelfSignedCertificate kya karta hai
+Sawal: New-SelfSignedCertificate powershell command
+Sawal: powershell me New-SelfSignedCertificate ka istemal
+Sawal: New-SelfSignedCertificate cmdlet example
+Jawab: New-SelfSignedCertificate — Self-sign. Usage: New-SelfSignedCertificate -Subject 'CN=Hemo' -CertStoreLocation Cert:\CurrentUser\My -NotAfter (Get-Date).AddYears(2).
+
+Sawal: powershell Get/Set-MpPreference
+Sawal: ps Get/Set-MpPreference kya karta hai
+Sawal: Get/Set-MpPreference powershell command
+Sawal: powershell me Get/Set-MpPreference ka istemal
+Sawal: Get/Set-MpPreference cmdlet example
+Jawab: Get/Set-MpPreference / Start-MpScan (Defender) — Defender. Usage: Get-MpComputerStatus | Select RealTimeProtectionEnabled; Add-MpPreference -ExclusionPath 'D:\DigitalBrain'; Start-MpScan -ScanType QuickScan; Update-MpSignature.
+
+Sawal: powershell Get-WindowsOptionalFeature
+Sawal: ps Get-WindowsOptionalFeature kya karta hai
+Sawal: Get-WindowsOptionalFeature powershell command
+Sawal: powershell me Get-WindowsOptionalFeature ka istemal
+Sawal: Get-WindowsOptionalFeature cmdlet example
+Jawab: Get-WindowsOptionalFeature / Enable/Disable- — Features. Usage: Get-WindowsOptionalFeature -Online | Where FeatureName -match Hyper; Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All (admin).
+
+Sawal: powershell Get/Set-CimInstance
+Sawal: ps Get/Set-CimInstance kya karta hai
+Sawal: Get/Set-CimInstance powershell command
+Sawal: powershell me Get/Set-CimInstance ka istemal
+Sawal: Get/Set-CimInstance cmdlet example
+Jawab: Get/Set-CimInstance (modify) — WMI-set. Usage: Set-CimInstance Win32_OperatingSystem? — mostly read; services: Set-Service wuauserv -StartupType Automatic.
+
+Sawal: powershell Get-PSDrive
+Sawal: ps Get-PSDrive kya karta hai
+Sawal: Get-PSDrive powershell command
+Sawal: powershell me Get-PSDrive ka istemal
+Sawal: Get-PSDrive cmdlet example
+Jawab: Get-PSDrive — Drives. Usage: Get-PSDrive -PSProvider FileSystem | Select Name,Used,Free.
+
+Sawal: powershell Format-List
+Sawal: ps Format-List kya karta hai
+Sawal: Format-List powershell command
+Sawal: powershell me Format-List ka istemal
+Sawal: Format-List cmdlet example
+Jawab: Format-List / Format-Table / fw / ft — Formatting. Usage: ... | fl * (sab-properties); | ft -AutoSize -Wrap.
+
+Sawal: powershell Tee-Object
+Sawal: ps Tee-Object kya karta hai
+Sawal: Tee-Object powershell command
+Sawal: powershell me Tee-Object ka istemal
+Sawal: Tee-Object cmdlet example
+Jawab: Tee-Object — Dikhao+Likho. Usage: log-stream | Tee-Object log.txt -Append.
+
+Sawal: powershell Compare-Object
+Sawal: ps Compare-Object kya karta hai
+Sawal: Compare-Object powershell command
+Sawal: powershell me Compare-Object ka istemal
+Sawal: Compare-Object cmdlet example
+Jawab: Compare-Object — Farq. Usage: Compare-Object (gc a.txt) (gc b.txt) | Where SideIndicator -eq '=>' (naye).
+
+Sawal: powershell Join-String
+Sawal: ps Join-String kya karta hai
+Sawal: Join-String powershell command
+Sawal: powershell me Join-String ka istemal
+Sawal: Join-String cmdlet example
+Jawab: Join-String / Select-Object -ExpandProperty — String-banao. Usage: gci | Select -Exp Name | Join-String -Separator ', '.
+
+Sawal: powershell Unblock-File
+Sawal: ps Unblock-File kya karta hai
+Sawal: Unblock-File powershell command
+Sawal: powershell me Unblock-File ka istemal
+Sawal: Unblock-File cmdlet example
+Jawab: Unblock-File — Internet-mark-hatao. Usage: Unblock-File *.ps1 (MOTW-clear).
+
+Sawal: powershell Restart/Stop-Computer
+Sawal: ps Restart/Stop-Computer kya karta hai
+Sawal: Restart/Stop-Computer powershell command
+Sawal: powershell me Restart/Stop-Computer ka istemal
+Sawal: Restart/Stop-Computer cmdlet example
+Jawab: Restart/Stop-Computer — Band/Restart. Usage: Restart-Computer -Force; Stop-Computer -Force; -WsmanTarget? (remote: -ComputerName).
+
+Sawal: powershell Suspend/Resume-Service
+Sawal: ps Suspend/Resume-Service kya karta hai
+Sawal: Suspend/Resume-Service powershell command
+Sawal: powershell me Suspend/Resume-Service ka istemal
+Sawal: Suspend/Resume-Service cmdlet example
+Jawab: Suspend/Resume-Service — Service-pause. Usage: Suspend-Service spooler; Resume-Service spooler.
+
+Sawal: powershell Clear-RecycleBin
+Sawal: ps Clear-RecycleBin kya karta hai
+Sawal: Clear-RecycleBin powershell command
+Sawal: powershell me Clear-RecycleBin ka istemal
+Sawal: Clear-RecycleBin cmdlet example
+Jawab: Clear-RecycleBin — Recycle-bin saaf. Usage: Clear-RecycleBin -DriveLetter C -Force.
+
+Sawal: powershell Enable/Disable-ComputerRestore
+Sawal: ps Enable/Disable-ComputerRestore kya karta hai
+Sawal: Enable/Disable-ComputerRestore powershell command
+Sawal: powershell me Enable/Disable-ComputerRestore ka istemal
+Sawal: Enable/Disable-ComputerRestore cmdlet example
+Jawab: Enable/Disable-ComputerRestore + Checkpoint-Computer — Restore-points. Usage: Enable-ComputerRestore C:\; Checkpoint-Computer -Description 'pehle-update'.
+
+Sawal: powershell Get-PSSession
+Sawal: ps Get-PSSession kya karta hai
+Sawal: Get-PSSession powershell command
+Sawal: powershell me Get-PSSession ka istemal
+Sawal: Get-PSSession cmdlet example
+Jawab: Get-PSSession / Remove-PSSession — Sessions. Usage: Get-PSSession | Remove-PSSession.
+
+Sawal: powershell Read-Host
+Sawal: ps Read-Host kya karta hai
+Sawal: Read-Host powershell command
+Sawal: powershell me Read-Host ka istemal
+Sawal: Read-Host cmdlet example
+Jawab: Read-Host / Write-Host/Output/Warning — I/O. Usage: $n = Read-Host 'naam'; Write-Host salam -ForegroundColor Green; Write-Output obj (pipeline).
+
+Sawal: powershell $ErrorActionPreference
+Sawal: ps $ErrorActionPreference kya karta hai
+Sawal: $ErrorActionPreference powershell command
+Sawal: powershell me $ErrorActionPreference ka istemal
+Sawal: $ErrorActionPreference cmdlet example
+Jawab: $ErrorActionPreference / try-catch-finally — Ghalati-kaam. Usage: try { risky } catch { $_.Exception.Message; exit 1 } finally { cleanup }; $ErrorActionPreference='Stop'.
+
+Sawal: powershell Get-PSReadLineKeyHandler
+Sawal: ps Get-PSReadLineKeyHandler kya karta hai
+Sawal: Get-PSReadLineKeyHandler powershell command
+Sawal: powershell me Get-PSReadLineKeyHandler ka istemal
+Sawal: Get-PSReadLineKeyHandler cmdlet example
+Jawab: Get-PSReadLineKeyHandler — Console-QAABOO. Usage: Get-PSReadLineKeyHandler | Select -First 5; Set-PSReadLineOption -PredictionSource History (PS5.1+).
+
+Sawal: powershell Get-ChildItem -Stream
+Sawal: ps Get-ChildItem -Stream kya karta hai
+Sawal: Get-ChildItem -Stream powershell command
+Sawal: powershell me Get-ChildItem -Stream ka istemal
+Sawal: Get-ChildItem -Stream cmdlet example
+Jawab: Get-ChildItem -Stream — NTFS-streams. Usage: gci -Stream (Zone.Identifier MOTW dekho); Unblock-File = stream-delete.
+
+Sawal: powershell split/join/replace/trim
+Sawal: ps split/join/replace/trim kya karta hai
+Sawal: split/join/replace/trim powershell command
+Sawal: powershell me split/join/replace/trim ka istemal
+Sawal: split/join/replace/trim cmdlet example
+Jawab: split/join/replace/trim (.NET-string) — String-kaam. Usage: ('a,b'.Split(','))[0]; 'abc'.ToUpper(); ' x '.Trim(); 'a-b'.Replace('-','_').
+
+Sawal: powershell [Math]::
+Sawal: ps [Math]:: kya karta hai
+Sawal: [Math]:: powershell command
+Sawal: powershell me [Math]:: ka istemal
+Sawal: [Math]:: cmdlet example
+Jawab: [Math]:: / [DateTime]:: / [IO.File]:: — .NET-seedha. Usage: [Math]::Round(3.7); [DateTime]::Today; [IO.File]::ReadAllText('f'); [IO.Path]::GetExtension('a.txt').
+
+Sawal: powershell Get-WindowsCapability
+Sawal: ps Get-WindowsCapability kya karta hai
+Sawal: Get-WindowsCapability powershell command
+Sawal: powershell me Get-WindowsCapability ka istemal
+Sawal: Get-WindowsCapability cmdlet example
+Jawab: Get-WindowsCapability / Add- — Capability. Usage: Get-WindowsCapability -Online | Where State -eq NotPresent; Add-WindowsCapability -Online -Name Rsat.ActiveDirectory* (admin).
+
+Sawal: powershell Get-Volume KnowledgeRetrieval-note
+Sawal: ps Get-Volume KnowledgeRetrieval-note kya karta hai
+Sawal: Get-Volume KnowledgeRetrieval-note powershell command
+Sawal: powershell me Get-Volume KnowledgeRetrieval-note ka istemal
+Sawal: Get-Volume KnowledgeRetrieval-note cmdlet example
+Jawab: Get-Volume KnowledgeRetrieval-note — Yeh-ilm-app-ke-andar-bhi: local KnowledgeRetrieval corpus (yehi file) parhta hai — koi cloud-AI nahi.
+
+Sawal: powershell Update-Help
+Sawal: ps Update-Help kya karta hai
+Sawal: Update-Help powershell command
+Sawal: powershell me Update-Help ka istemal
+Sawal: Update-Help cmdlet example
+Jawab: Update-Help / Save-Help — Help-fresh. Usage: Update-Help -Module * -Force (admin); Save-Help -DestinationPath D:\help (offline PCs).
+
+Sawal: powershell Get-PhysicalDisk
+Sawal: ps Get-PhysicalDisk kya karta hai
+Sawal: Get-PhysicalDisk powershell command
+Sawal: powershell me Get-PhysicalDisk ka istemal
+Sawal: Get-PhysicalDisk cmdlet example
+Jawab: Get-PhysicalDisk / Get-StoragePool — Storage-tier. Usage: Get-PhysicalDisk | Select FriendlyName,MediaType,HealthStatus.
+
+Sawal: powershell Get-WmiObject
+Sawal: ps Get-WmiObject kya karta hai
+Sawal: Get-WmiObject powershell command
+Sawal: powershell me Get-WmiObject ka istemal
+Sawal: Get-WmiObject cmdlet example
+Jawab: Get-WmiObject (purana) — Legacy-WMI. Usage: Get-WmiObject Win32_ComputerSystem (naya = Get-CimInstance).
+
+Sawal: powershell Set-Service
+Sawal: ps Set-Service kya karta hai
+Sawal: Set-Service powershell command
+Sawal: powershell me Set-Service ka istemal
+Sawal: Set-Service cmdlet example
+Jawab: Set-Service — Service-config. Usage: Set-Service wuauserv -StartupType Automatic; Set-Service x -Status Running.
+
+Sawal: powershell Get-Content -AsByteStream
+Sawal: ps Get-Content -AsByteStream kya karta hai
+Sawal: Get-Content -AsByteStream powershell command
+Sawal: powershell me Get-Content -AsByteStream ka istemal
+Sawal: Get-Content -AsByteStream cmdlet example
+Jawab: Get-Content -AsByteStream / -Encoding — Encoding. Usage: gc f -Encoding utf8; bytes: gc f -AsByteStream -TotalCount 4 (magic-number).
+
+Sawal: powershell Out-Null
+Sawal: ps Out-Null kya karta hai
+Sawal: Out-Null powershell command
+Sawal: powershell me Out-Null ka istemal
+Sawal: Out-Null cmdlet example
+Jawab: Out-Null — Faltu-output giro. Usage: cmd >nul? PS: | Out-Null; Start-Process ... | Out-Null.
+
+Sawal: powershell 2>&1
+Sawal: ps 2>&1 kya karta hai
+Sawal: 2>&1 powershell command
+Sawal: powershell me 2>&1 ka istemal
+Sawal: 2>&1 cmdlet example
+Jawab: 2>&1 / 2>&1 | Select-Object — Errors-jama. Usage: cmd 2>&1 | Select -Last 5 (aakhri-lines-dekho).
+
+Sawal: powershell $_ pipeline-variable
+Sawal: ps $_ pipeline-variable kya karta hai
+Sawal: $_ pipeline-variable powershell command
+Sawal: powershell me $_ pipeline-variable ka istemal
+Sawal: $_ pipeline-variable cmdlet example
+Jawab: $_ pipeline-variable — Current-item. Usage: gci | ForEach-Object { $_.Name + ' ' + $_.Length }; Where-Object { $_.Length -gt 1MB }.
+
+Sawal: powershell $PSScriptRoot
+Sawal: ps $PSScriptRoot kya karta hai
+Sawal: $PSScriptRoot powershell command
+Sawal: powershell me $PSScriptRoot ka istemal
+Sawal: $PSScriptRoot cmdlet example
+Jawab: $PSScriptRoot / $env: — Script-env. Usage: $PSScriptRoot (script-folder); $env:PATH -split ';' (PATH-parts); $env:USERNAME.
+
+Sawal: powershell Wait-Job
+Sawal: ps Wait-Job kya karta hai
+Sawal: Wait-Job powershell command
+Sawal: powershell me Wait-Job ka istemal
+Sawal: Wait-Job cmdlet example
+Jawab: Wait-Job / Start-Sleep — Intezar. Usage: Start-Sleep -Seconds 5; Start-Sleep -Milliseconds 200.
+
+Sawal: powershell Get-ChildItem Env:
+Sawal: ps Get-ChildItem Env: kya karta hai
+Sawal: Get-ChildItem Env: powershell command
+Sawal: powershell me Get-ChildItem Env: ka istemal
+Sawal: Get-ChildItem Env: cmdlet example
+Jawab: Get-ChildItem Env: — Env-list. Usage: Get-ChildItem Env: | Where Name -match 'NETLIFY|PATH' | Select Name,Value.
+
+Sawal: powershell Register-ObjectEvent
+Sawal: ps Register-ObjectEvent kya karta hai
+Sawal: Register-ObjectEvent powershell command
+Sawal: powershell me Register-ObjectEvent ka istemal
+Sawal: Register-ObjectEvent cmdlet example
+Jawab: Register-ObjectEvent — Event-listen. Usage: (advanced) Register-ObjectEvent $watcher Changed -Action { log } — file-watcher patterns.
+
+Sawal: powershell Get-Service | Restart-Service -Force
+Sawal: ps Get-Service | Restart-Service -Force kya karta hai
+Sawal: Get-Service | Restart-Service -Force powershell command
+Sawal: powershell me Get-Service | Restart-Service -Force ka istemal
+Sawal: Get-Service | Restart-Service -Force cmdlet example
+Jawab: Get-Service | Restart-Service -Force — Dependents-sab-restart. Usage: Restart-Service wuauserv -Force (dependent-bhi).
+
+Sawal: powershell ConvertFrom-StringData
+Sawal: ps ConvertFrom-StringData kya karta hai
+Sawal: ConvertFrom-StringData powershell command
+Sawal: powershell me ConvertFrom-StringData ka istemal
+Sawal: ConvertFrom-StringData cmdlet example
+Jawab: ConvertFrom-StringData — Key=value-parse. Usage: (Get-Content c.ini -Raw) -replace '\\','\\' | ConvertFrom-StringData.
+
+Sawal: powershell Get-Command -Syntax note
+Sawal: ps Get-Command -Syntax note kya karta hai
+Sawal: Get-Command -Syntax note powershell command
+Sawal: powershell me Get-Command -Syntax note ka istemal
+Sawal: Get-Command -Syntax note cmdlet example
+Jawab: Get-Command -Syntax note — SYNTAX. Usage: (Get-Command Get-Content).Parameters (accepts-what); Get-Help -Parameter *.
+
+Sawal: powershell Sort-Object -Property hashtable
+Sawal: ps Sort-Object -Property hashtable kya karta hai
+Sawal: Sort-Object -Property hashtable powershell command
+Sawal: powershell me Sort-Object -Property hashtable ka istemal
+Sawal: Sort-Object -Property hashtable cmdlet example
+Jawab: Sort-Object -Property hashtable — Multi-sort. Usage: gci | Sort-Object @{e='Extension';Descending=$true}, @{e='Length';Descending=$true}.
+
+Sawal: powershell Select-Object -First/-Last/-Skip/-Index
+Sawal: ps Select-Object -First/-Last/-Skip/-Index kya karta hai
+Sawal: Select-Object -First/-Last/-Skip/-Index powershell command
+Sawal: powershell me Select-Object -First/-Last/-Skip/-Index ka istemal
+Sawal: Select-Object -First/-Last/-Skip/-Index cmdlet example
+Jawab: Select-Object -First/-Last/-Skip/-Index — Slicing. Usage: gci | Select -Skip 5 -First 10 (page-5-10); | Select -Last 1 (aakhri).
+
+Sawal: powershell Get-Item
+Sawal: ps Get-Item kya karta hai
+Sawal: Get-Item powershell command
+Sawal: powershell me Get-Item ka istemal
+Sawal: Get-Item cmdlet example
+Jawab: Get-Item / gi — Ek-item. Usage: (Get-Item f).LastWriteTime; (gi f).Attributes.
+
+Sawal: powershell Set-Item
+Sawal: ps Set-Item kya karta hai
+Sawal: Set-Item powershell command
+Sawal: powershell me Set-Item ka istemal
+Sawal: Set-Item cmdlet example
+Jawab: Set-Item / Set-Content -WhatIf/-Confirm — Safety-switches. Usage: -WhatIf (bas-dikhao); -Confirm:$false (poochay-bina).
+
+Sawal: robocopy /E
+Sawal: robocopy /E kya karta hai
+Sawal: robocopy me /E parameter
+Sawal: robocopy /E ka istemal
+Jawab: ROBOCOPY /E — sub-folders copy (khali-bhi)
+
+Sawal: robocopy /MIR
+Sawal: robocopy /MIR kya karta hai
+Sawal: robocopy me /MIR parameter
+Sawal: robocopy /MIR ka istemal
+Jawab: ROBOCOPY /MIR — mirror — dst ko src jaisa; EXTRA-files-URA (khayal!)
+
+Sawal: robocopy /Z
+Sawal: robocopy /Z kya karta hai
+Sawal: robocopy me /Z parameter
+Sawal: robocopy /Z ka istemal
+Jawab: ROBOCOPY /Z — restartable mode (network-safe)
+
+Sawal: robocopy /MT:n
+Sawal: robocopy /MT:n kya karta hai
+Sawal: robocopy me /MT:n parameter
+Sawal: robocopy /MT:n ka istemal
+Jawab: ROBOCOPY /MT:n — n-threads parallel (MT:8 tez)
+
+Sawal: robocopy /R:n
+Sawal: robocopy /R:n kya karta hai
+Sawal: robocopy me /R:n parameter
+Sawal: robocopy /R:n ka istemal
+Jawab: ROBOCOPY /R:n — fail-par n-retries (default 1 million!)
+
+Sawal: robocopy /W:n
+Sawal: robocopy /W:n kya karta hai
+Sawal: robocopy me /W:n parameter
+Sawal: robocopy /W:n ka istemal
+Jawab: ROBOCOPY /W:n — retry ke beech n-second wait
+
+Sawal: robocopy /XD dir
+Sawal: robocopy /XD dir kya karta hai
+Sawal: robocopy me /XD dir parameter
+Sawal: robocopy /XD dir ka istemal
+Jawab: ROBOCOPY /XD dir — ye folders chhod do (exclude)
+
+Sawal: robocopy /LOG:file
+Sawal: robocopy /LOG:file kya karta hai
+Sawal: robocopy me /LOG:file parameter
+Sawal: robocopy /LOG:file ka istemal
+Jawab: ROBOCOPY /LOG:file — poora-report file me likho
+
+Sawal: xcopy /E
+Sawal: xcopy /E kya karta hai
+Sawal: xcopy me /E parameter
+Sawal: xcopy /E ka istemal
+Jawab: XCOPY /E — subfolders (empty-bhi)
+
+Sawal: xcopy /H
+Sawal: xcopy /H kya karta hai
+Sawal: xcopy me /H parameter
+Sawal: xcopy /H ka istemal
+Jawab: XCOPY /H — hidden+system files bhi
+
+Sawal: xcopy /K
+Sawal: xcopy /K kya karta hai
+Sawal: xcopy me /K parameter
+Sawal: xcopy /K ka istemal
+Jawab: XCOPY /K — attributes-rakho
+
+Sawal: xcopy /Y
+Sawal: xcopy /Y kya karta hai
+Sawal: xcopy me /Y parameter
+Sawal: xcopy /Y ka istemal
+Jawab: XCOPY /Y — overwrite bina-poochay
+
+Sawal: xcopy /-Y
+Sawal: xcopy /-Y kya karta hai
+Sawal: xcopy me /-Y parameter
+Sawal: xcopy /-Y ka istemal
+Jawab: XCOPY /-Y — overwrite-par-ask
+
+Sawal: xcopy /D
+Sawal: xcopy /D kya karta hai
+Sawal: xcopy me /D parameter
+Sawal: xcopy /D ka istemal
+Jawab: XCOPY /D — sirf naye-purane-farq wali files
+
+Sawal: dir /a
+Sawal: dir /a kya karta hai
+Sawal: dir me /a parameter
+Sawal: dir /a ka istemal
+Jawab: DIR /a — sab-attributes (hidden/system bhi)
+
+Sawal: dir /o:n
+Sawal: dir /o:n kya karta hai
+Sawal: dir me /o:n parameter
+Sawal: dir /o:n ka istemal
+Jawab: DIR /o:n — naam-se-sort (o:d date, o:s size)
+
+Sawal: dir /s
+Sawal: dir /s kya karta hai
+Sawal: dir me /s parameter
+Sawal: dir /s ka istemal
+Jawab: DIR /s — sub-folders-bhi (recursion)
+
+Sawal: dir /b
+Sawal: dir /b kya karta hai
+Sawal: dir me /b parameter
+Sawal: dir /b ka istemal
+Jawab: DIR /b — sirf-naam (bare-format)
+
+Sawal: dir /q
+Sawal: dir /q kya karta hai
+Sawal: dir me /q parameter
+Sawal: dir /q ka istemal
+Jawab: DIR /q — owner bhi dikhao
+
+Sawal: del /f
+Sawal: del /f kya karta hai
+Sawal: del me /f parameter
+Sawal: del /f ka istemal
+Jawab: DEL /f — force (read-only-bhi)
+
+Sawal: del /q
+Sawal: del /q kya karta hai
+Sawal: del me /q parameter
+Sawal: del /q ka istemal
+Jawab: DEL /q — quiet (poochay-nahi)
+
+Sawal: del /s
+Sawal: del /s kya karta hai
+Sawal: del me /s parameter
+Sawal: del /s ka istemal
+Jawab: DEL /s — sub-folders me bhi dhoondo
+
+Sawal: del /p
+Sawal: del /p kya karta hai
+Sawal: del me /p parameter
+Sawal: del /p ka istemal
+Jawab: DEL /p — har-delete-par-poochay
+
+Sawal: copy /y
+Sawal: copy /y kya karta hai
+Sawal: copy me /y parameter
+Sawal: copy /y ka istemal
+Jawab: COPY /y — overwrite-no-ask
+
+Sawal: copy /-y
+Sawal: copy /-y kya karta hai
+Sawal: copy me /-y parameter
+Sawal: copy /-y ka istemal
+Jawab: COPY /-y — overwrite-par-ask
+
+Sawal: copy /b
+Sawal: copy /b kya karta hai
+Sawal: copy me /b parameter
+Sawal: copy /b ka istemal
+Jawab: COPY /b — binary-mode (asi-file)
+
+Sawal: copy /a
+Sawal: copy /a kya karta hai
+Sawal: copy me /a parameter
+Sawal: copy /a ka istemal
+Jawab: COPY /a — ascii-mode
+
+Sawal: chkdsk /f
+Sawal: chkdsk /f kya karta hai
+Sawal: chkdsk me /f parameter
+Sawal: chkdsk /f ka istemal
+Jawab: CHKDSK /f — ghalatiyan-theek-karo
+
+Sawal: chkdsk /r
+Sawal: chkdsk /r kya karta hai
+Sawal: chkdsk me /r parameter
+Sawal: chkdsk /r ka istemal
+Jawab: CHKDSK /r — bad-sectors-dhoondo+recover (lamba-waqt)
+
+Sawal: chkdsk /x
+Sawal: chkdsk /x kya karta hai
+Sawal: chkdsk me /x parameter
+Sawal: chkdsk /x ka istemal
+Jawab: CHKDSK /x — pehle-volume-detach
+
+Sawal: sfc /scannow
+Sawal: sfc /scannow kya karta hai
+Sawal: sfc me /scannow parameter
+Sawal: sfc /scannow ka istemal
+Jawab: SFC /scannow — sab-protected-files-janch+theek
+
+Sawal: sfc /verifyonly
+Sawal: sfc /verifyonly kya karta hai
+Sawal: sfc me /verifyonly parameter
+Sawal: sfc /verifyonly ka istemal
+Jawab: SFC /verifyonly — sirf-janch (theek-nahi)
+
+Sawal: sfc /scanfile=
+Sawal: sfc /scanfile= kya karta hai
+Sawal: sfc me /scanfile= parameter
+Sawal: sfc /scanfile= ka istemal
+Jawab: SFC /scanfile= — ek-file-theek
+
+Sawal: dism /online
+Sawal: dism /online kya karta hai
+Sawal: dism me /online parameter
+Sawal: dism /online ka istemal
+Jawab: DISM /online — chalte-huye-OS-par-kaam
+
+Sawal: dism /cleanup-image
+Sawal: dism /cleanup-image kya karta hai
+Sawal: dism me /cleanup-image parameter
+Sawal: dism /cleanup-image ka istemal
+Jawab: DISM /cleanup-image — component-store-kaam
+
+Sawal: dism /restorehealth
+Sawal: dism /restorehealth kya karta hai
+Sawal: dism me /restorehealth parameter
+Sawal: dism /restorehealth ka istemal
+Jawab: DISM /restorehealth — store-theek-karo
+
+Sawal: dism /get-packages
+Sawal: dism /get-packages kya karta hai
+Sawal: dism me /get-packages parameter
+Sawal: dism /get-packages ka istemal
+Jawab: DISM /get-packages — packages-list
+
+Sawal: taskkill /im
+Sawal: taskkill /im kya karta hai
+Sawal: taskkill me /im parameter
+Sawal: taskkill /im ka istemal
+Jawab: TASKKILL /im — image-naam se (notepad.exe)
+
+Sawal: taskkill /pid
+Sawal: taskkill /pid kya karta hai
+Sawal: taskkill me /pid parameter
+Sawal: taskkill /pid ka istemal
+Jawab: TASKKILL /pid — process-id se
+
+Sawal: taskkill /f
+Sawal: taskkill /f kya karta hai
+Sawal: taskkill me /f parameter
+Sawal: taskkill /f ka istemal
+Jawab: TASKKILL /f — force
+
+Sawal: taskkill /t
+Sawal: taskkill /t kya karta hai
+Sawal: taskkill me /t parameter
+Sawal: taskkill /t ka istemal
+Jawab: TASKKILL /t — children-tree-bhi-khatam
+
+Sawal: tasklist /v
+Sawal: tasklist /v kya karta hai
+Sawal: tasklist me /v parameter
+Sawal: tasklist /v ka istemal
+Jawab: TASKLIST /v — verbose-tafsil
+
+Sawal: tasklist /fi
+Sawal: tasklist /fi kya karta hai
+Sawal: tasklist me /fi parameter
+Sawal: tasklist /fi ka istemal
+Jawab: TASKLIST /fi — filter (memusage gt 100000)
+
+Sawal: tasklist /svc
+Sawal: tasklist /svc kya karta hai
+Sawal: tasklist me /svc parameter
+Sawal: tasklist /svc ka istemal
+Jawab: TASKLIST /svc — services-bhi-dikhao
+
+Sawal: tasklist /m
+Sawal: tasklist /m kya karta hai
+Sawal: tasklist me /m parameter
+Sawal: tasklist /m ka istemal
+Jawab: TASKLIST /m — modules-dll-list
+
+Sawal: sc query
+Sawal: sc query kya karta hai
+Sawal: sc me query parameter
+Sawal: sc query ka istemal
+Jawab: SC query — service-ka-haal
+
+Sawal: sc start
+Sawal: sc start kya karta hai
+Sawal: sc me start parameter
+Sawal: sc start ka istemal
+Jawab: SC start — service-chalao
+
+Sawal: sc stop
+Sawal: sc stop kya karta hai
+Sawal: sc me stop parameter
+Sawal: sc stop ka istemal
+Jawab: SC stop — service-roko
+
+Sawal: sc config start= auto
+Sawal: sc config start= auto kya karta hai
+Sawal: sc me config start= auto parameter
+Sawal: sc config start= auto ka istemal
+Jawab: SC config start= auto — boot-par-auto (start= ke baad SPACE zaroori)
+
+Sawal: sc description
+Sawal: sc description kya karta hai
+Sawal: sc me description parameter
+Sawal: sc description ka istemal
+Jawab: SC description — service-ka-bayan
+
+Sawal: schtasks /create
+Sawal: schtasks /create kya karta hai
+Sawal: schtasks me /create parameter
+Sawal: schtasks /create ka istemal
+Jawab: SCHTASKS /create — naya-task (/tn naam /tr kaam /sc schedule)
+
+Sawal: schtasks /run
+Sawal: schtasks /run kya karta hai
+Sawal: schtasks me /run parameter
+Sawal: schtasks /run ka istemal
+Jawab: SCHTASKS /run — task-abhi-chalao
+
+Sawal: schtasks /delete
+Sawal: schtasks /delete kya karta hai
+Sawal: schtasks me /delete parameter
+Sawal: schtasks /delete ka istemal
+Jawab: SCHTASKS /delete — task-hatao (/f)
+
+Sawal: schtasks /change
+Sawal: schtasks /change kya karta hai
+Sawal: schtasks me /change parameter
+Sawal: schtasks /change ka istemal
+Jawab: SCHTASKS /change — badlo (/disable bhi)
+
+Sawal: schtasks /query
+Sawal: schtasks /query kya karta hai
+Sawal: schtasks me /query parameter
+Sawal: schtasks /query ka istemal
+Jawab: SCHTASKS /query — sab-tasks-dikhao /v tafsil
+
+Sawal: reg add
+Sawal: reg add kya karta hai
+Sawal: reg me add parameter
+Sawal: reg add ka istemal
+Jawab: REG add — value-likena (/v naam /t type /d data /f)
+
+Sawal: reg query
+Sawal: reg query kya karta hai
+Sawal: reg me query parameter
+Sawal: reg query ka istemal
+Jawab: REG query — value-parho (/v naam)
+
+Sawal: reg delete
+Sawal: reg delete kya karta hai
+Sawal: reg me delete parameter
+Sawal: reg delete ka istemal
+Jawab: REG delete — value/key-hatao (/f)
+
+Sawal: reg export
+Sawal: reg export kya karta hai
+Sawal: reg me export parameter
+Sawal: reg export ka istemal
+Jawab: REG export — key-file-me-bachao
+
+Sawal: reg import
+Sawal: reg import kya karta hai
+Sawal: reg me import parameter
+Sawal: reg import ka istemal
+Jawab: REG import — file-se-wapas-dalo
+
+Sawal: netsh wlan show profiles
+Sawal: netsh wlan show profiles kya karta hai
+Sawal: netsh me wlan show profiles parameter
+Sawal: netsh wlan show profiles ka istemal
+Jawab: NETSH wlan show profiles — bachaye-huye-wifi-list
+
+Sawal: netsh interface ip set dns
+Sawal: netsh interface ip set dns kya karta hai
+Sawal: netsh me interface ip set dns parameter
+Sawal: netsh interface ip set dns ka istemal
+Jawab: NETSH interface ip set dns — DNS-set (static)
+
+Sawal: netsh advfirewall firewall add rule
+Sawal: netsh advfirewall firewall add rule kya karta hai
+Sawal: netsh me advfirewall firewall add rule parameter
+Sawal: netsh advfirewall firewall add rule ka istemal
+Jawab: NETSH advfirewall firewall add rule — firewall-rule (dir/protocol/localport/action)
+
+Sawal: netsh interface show interface
+Sawal: netsh interface show interface kya karta hai
+Sawal: netsh me interface show interface parameter
+Sawal: netsh interface show interface ka istemal
+Jawab: NETSH interface show interface — adapters-ka-haal
+
+Sawal: ipconfig /all
+Sawal: ipconfig /all kya karta hai
+Sawal: ipconfig me /all parameter
+Sawal: ipconfig /all ka istemal
+Jawab: IPCONFIG /all — poora-tafsil (MAC/DNS/DHCP)
+
+Sawal: ipconfig /release
+Sawal: ipconfig /release kya karta hai
+Sawal: ipconfig me /release parameter
+Sawal: ipconfig /release ka istemal
+Jawab: IPCONFIG /release — IP-chhor do
+
+Sawal: ipconfig /renew
+Sawal: ipconfig /renew kya karta hai
+Sawal: ipconfig me /renew parameter
+Sawal: ipconfig /renew ka istemal
+Jawab: IPCONFIG /renew — naya-IP-mango
+
+Sawal: ipconfig /flushdns
+Sawal: ipconfig /flushdns kya karta hai
+Sawal: ipconfig me /flushdns parameter
+Sawal: ipconfig /flushdns ka istemal
+Jawab: IPCONFIG /flushdns — DNS-cache-saaf
+
+Sawal: ipconfig /displaydns
+Sawal: ipconfig /displaydns kya karta hai
+Sawal: ipconfig me /displaydns parameter
+Sawal: ipconfig /displaydns ka istemal
+Jawab: IPCONFIG /displaydns — cache-dekho
+
+Sawal: netstat -a
+Sawal: netstat -a kya karta hai
+Sawal: netstat me -a parameter
+Sawal: netstat -a ka istemal
+Jawab: NETSTAT -a — sab-ports (listening-bhi)
+
+Sawal: netstat -n
+Sawal: netstat -n kya karta hai
+Sawal: netstat me -n parameter
+Sawal: netstat -n ka istemal
+Jawab: NETSTAT -n — naam-nahi, number
+
+Sawal: netstat -o
+Sawal: netstat -o kya karta hai
+Sawal: netstat me -o parameter
+Sawal: netstat -o ka istemal
+Jawab: NETSTAT -o — PID-dikhao
+
+Sawal: netstat -b
+Sawal: netstat -b kya karta hai
+Sawal: netstat me -b parameter
+Sawal: netstat -b ka istemal
+Jawab: NETSTAT -b — exe-naam-dikhao (admin)
+
+Sawal: netstat -ano
+Sawal: netstat -ano kya karta hai
+Sawal: netstat me -ano parameter
+Sawal: netstat -ano ka istemal
+Jawab: NETSTAT -ano — sab-mila-kar (port-kaun-pakray)
+
+Sawal: ping -n 4
+Sawal: ping -n 4 kya karta hai
+Sawal: ping me -n 4 parameter
+Sawal: ping -n 4 ka istemal
+Jawab: PING -n 4 — 4-packets (default-bhej-chal)
+
+Sawal: ping -t
+Sawal: ping -t kya karta hai
+Sawal: ping me -t parameter
+Sawal: ping -t ka istemal
+Jawab: PING -t — lagatar (CTRL+C rok)
+
+Sawal: ping -l 1400
+Sawal: ping -l 1400 kya karta hai
+Sawal: ping me -l 1400 parameter
+Sawal: ping -l 1400 ka istemal
+Jawab: PING -l 1400 — packet-size-1400-byte
+
+Sawal: ping -4 / -6
+Sawal: ping -4 / -6 kya karta hai
+Sawal: ping me -4 / -6 parameter
+Sawal: ping -4 / -6 ka istemal
+Jawab: PING -4 / -6 — IPv4/IPv6-zabardasti
+
+Sawal: shutdown /s
+Sawal: shutdown /s kya karta hai
+Sawal: shutdown me /s parameter
+Sawal: shutdown /s ka istemal
+Jawab: SHUTDOWN /s — shutdown
+
+Sawal: shutdown /r
+Sawal: shutdown /r kya karta hai
+Sawal: shutdown me /r parameter
+Sawal: shutdown /r ka istemal
+Jawab: SHUTDOWN /r — restart
+
+Sawal: shutdown /a
+Sawal: shutdown /a kya karta hai
+Sawal: shutdown me /a parameter
+Sawal: shutdown /a ka istemal
+Jawab: SHUTDOWN /a — shutdown-CANCEL (60s-ke-andar)
+
+Sawal: shutdown /t 60
+Sawal: shutdown /t 60 kya karta hai
+Sawal: shutdown me /t 60 parameter
+Sawal: shutdown /t 60 ka istemal
+Jawab: SHUTDOWN /t 60 — 60-second-intezar
+
+Sawal: shutdown /l
+Sawal: shutdown /l kya karta hai
+Sawal: shutdown me /l parameter
+Sawal: shutdown /l ka istemal
+Jawab: SHUTDOWN /l — logoff
+
+Sawal: shutdown /f
+Sawal: shutdown /f kya karta hai
+Sawal: shutdown me /f parameter
+Sawal: shutdown /f ka istemal
+Jawab: SHUTDOWN /f — apps-zabardasti-band
+
+Sawal: for /f
+Sawal: for /f kya karta hai
+Sawal: for me /f parameter
+Sawal: for /f ka istemal
+Jawab: FOR /f — file/string-parse (tokens/delims)
+
+Sawal: for /d
+Sawal: for /d kya karta hai
+Sawal: for me /d parameter
+Sawal: for /d ka istemal
+Jawab: FOR /d — sirf-folders
+
+Sawal: for /r
+Sawal: for /r kya karta hai
+Sawal: for me /r parameter
+Sawal: for /r ka istemal
+Jawab: FOR /r — recursion (sub-folders)
+
+Sawal: for /l
+Sawal: for /l kya karta hai
+Sawal: for me /l parameter
+Sawal: for /l ka istemal
+Jawab: FOR /l — number-loop (1,1,5)
+
+Sawal: findstr /i
+Sawal: findstr /i kya karta hai
+Sawal: findstr me /i parameter
+Sawal: findstr /i ka istemal
+Jawab: FINDSTR /i — case-nahi-dekhta
+
+Sawal: findstr /r
+Sawal: findstr /r kya karta hai
+Sawal: findstr me /r parameter
+Sawal: findstr /r ka istemal
+Jawab: FINDSTR /r — regex
+
+Sawal: findstr /s
+Sawal: findstr /s kya karta hai
+Sawal: findstr me /s parameter
+Sawal: findstr /s ka istemal
+Jawab: FINDSTR /s — sub-folders
+
+Sawal: findstr /m
+Sawal: findstr /m kya karta hai
+Sawal: findstr me /m parameter
+Sawal: findstr /m ka istemal
+Jawab: FINDSTR /m — sirf-file-name
+
+Sawal: findstr /c:
+Sawal: findstr /c: kya karta hai
+Sawal: findstr me /c: parameter
+Sawal: findstr /c: ka istemal
+Jawab: FINDSTR /c: — exact-phrase (spaces-wala)
+
+Sawal: findstr /v
+Sawal: findstr /v kya karta hai
+Sawal: findstr me /v parameter
+Sawal: findstr /v ka istemal
+Jawab: FINDSTR /v — matlab-hai-jis-me-NAHI
+
+Sawal: sort /+n
+Sawal: sort /+n kya karta hai
+Sawal: sort me /+n parameter
+Sawal: sort /+n ka istemal
+Jawab: SORT /+n — column-n-se-sort
+
+Sawal: sort /r
+Sawal: sort /r kya karta hai
+Sawal: sort me /r parameter
+Sawal: sort /r ka istemal
+Jawab: SORT /r — ulta (reverse)
+
+Sawal: sort /o file
+Sawal: sort /o file kya karta hai
+Sawal: sort me /o file parameter
+Sawal: sort /o file ka istemal
+Jawab: SORT /o file — output-file-me-likho
+
+Sawal: attrib +r
+Sawal: attrib +r kya karta hai
+Sawal: attrib me +r parameter
+Sawal: attrib +r ka istemal
+Jawab: ATTRIB +r — read-only-banao
+
+Sawal: attrib -r
+Sawal: attrib -r kya karta hai
+Sawal: attrib me -r parameter
+Sawal: attrib -r ka istemal
+Jawab: ATTRIB -r — read-only-hatao
+
+Sawal: attrib +h
+Sawal: attrib +h kya karta hai
+Sawal: attrib me +h parameter
+Sawal: attrib +h ka istemal
+Jawab: ATTRIB +h — hidden-banao
+
+Sawal: attrib +s
+Sawal: attrib +s kya karta hai
+Sawal: attrib me +s parameter
+Sawal: attrib +s ka istemal
+Jawab: ATTRIB +s — system-banao
+
+Sawal: attrib /s
+Sawal: attrib /s kya karta hai
+Sawal: attrib me /s parameter
+Sawal: attrib /s ka istemal
+Jawab: ATTRIB /s — sub-folders-bhi
+
+Sawal: attrib /d
+Sawal: attrib /d kya karta hai
+Sawal: attrib me /d parameter
+Sawal: attrib /d ka istemal
+Jawab: ATTRIB /d — folders-bhi
+
+Sawal: mklink (default)
+Sawal: mklink (default) kya karta hai
+Sawal: mklink me (default) parameter
+Sawal: mklink (default) ka istemal
+Jawab: MKLINK (default) — file-symbolic-link
+
+Sawal: mklink /D
+Sawal: mklink /D kya karta hai
+Sawal: mklink me /D parameter
+Sawal: mklink /D ka istemal
+Jawab: MKLINK /D — directory-symbolic-link (admin)
+
+Sawal: mklink /J
+Sawal: mklink /J kya karta hai
+Sawal: mklink me /J parameter
+Sawal: mklink /J ka istemal
+Jawab: MKLINK /J — junction (admin-NAHI-chahiye)
+
+Sawal: mklink /H
+Sawal: mklink /H kya karta hai
+Sawal: mklink me /H parameter
+Sawal: mklink /H ka istemal
+Jawab: MKLINK /H — hard-link (same-volume)
+
+Sawal: certutil -hashfile f SHA256
+Sawal: certutil -hashfile f SHA256 kya karta hai
+Sawal: certutil me -hashfile f SHA256 parameter
+Sawal: certutil -hashfile f SHA256 ka istemal
+Jawab: CERTUTIL -hashfile f SHA256 — file-ka-SHA256-hash
+
+Sawal: certutil -addstore Root c.cer
+Sawal: certutil -addstore Root c.cer kya karta hai
+Sawal: certutil me -addstore Root c.cer parameter
+Sawal: certutil -addstore Root c.cer ka istemal
+Jawab: CERTUTIL -addstore Root c.cer — certificate-store-me-dalo
+
+Sawal: certutil -encode/-decode
+Sawal: certutil -encode/-decode kya karta hai
+Sawal: certutil me -encode/-decode parameter
+Sawal: certutil -encode/-decode ka istemal
+Jawab: CERTUTIL -encode/-decode — base64-tabdeel
+
+Sawal: curl -O
+Sawal: curl -O kya karta hai
+Sawal: curl me -O parameter
+Sawal: curl -O ka istemal
+Jawab: CURL -O — naam-rakh-kar-download
+
+Sawal: curl -o f
+Sawal: curl -o f kya karta hai
+Sawal: curl me -o f parameter
+Sawal: curl -o f ka istemal
+Jawab: CURL -o f — apna-naam
+
+Sawal: curl -I
+Sawal: curl -I kya karta hai
+Sawal: curl me -I parameter
+Sawal: curl -I ka istemal
+Jawab: CURL -I — sirf-headers
+
+Sawal: curl -L
+Sawal: curl -L kya karta hai
+Sawal: curl me -L parameter
+Sawal: curl -L ka istemal
+Jawab: CURL -L — redirect-follow
+
+Sawal: curl -d
+Sawal: curl -d kya karta hai
+Sawal: curl me -d parameter
+Sawal: curl -d ka istemal
+Jawab: CURL -d — POST-body
+
+Sawal: curl -X POST
+Sawal: curl -X POST kya karta hai
+Sawal: curl me -X POST parameter
+Sawal: curl -X POST ka istemal
+Jawab: CURL -X POST — method-zabardasti
+
+Sawal: curl -H
+Sawal: curl -H kya karta hai
+Sawal: curl me -H parameter
+Sawal: curl -H ka istemal
+Jawab: CURL -H — header-bhejo
+
+Sawal: tar -czf a.tar.gz f
+Sawal: tar -czf a.tar.gz f kya karta hai
+Sawal: tar me -czf a.tar.gz f parameter
+Sawal: tar -czf a.tar.gz f ka istemal
+Jawab: TAR -czf a.tar.gz f — banao (gzip)
+
+Sawal: tar -xzf a.tar.gz
+Sawal: tar -xzf a.tar.gz kya karta hai
+Sawal: tar me -xzf a.tar.gz parameter
+Sawal: tar -xzf a.tar.gz ka istemal
+Jawab: TAR -xzf a.tar.gz — kholo
+
+Sawal: tar -xf
+Sawal: tar -xf kya karta hai
+Sawal: tar me -xf parameter
+Sawal: tar -xf ka istemal
+Jawab: TAR -xf — kholo (format-khud-pakray)
+
+Sawal: tar -tf
+Sawal: tar -tf kya karta hai
+Sawal: tar me -tf parameter
+Sawal: tar -tf ka istemal
+Jawab: TAR -tf — andar-list-dekho
+
+Sawal: tar -v
+Sawal: tar -v kya karta hai
+Sawal: tar me -v parameter
+Sawal: tar -v ka istemal
+Jawab: TAR -v — verbose
+
+Sawal: powercfg /a
+Sawal: powercfg /a kya karta hai
+Sawal: powercfg me /a parameter
+Sawal: powercfg /a ka istemal
+Jawab: POWERCFG /a — sleep-states-kya-mumkin
+
+Sawal: powercfg /list
+Sawal: powercfg /list kya karta hai
+Sawal: powercfg me /list parameter
+Sawal: powercfg /list ka istemal
+Jawab: POWERCFG /list — power-plans-list
+
+Sawal: powercfg /setactive
+Sawal: powercfg /setactive kya karta hai
+Sawal: powercfg me /setactive parameter
+Sawal: powercfg /setactive ka istemal
+Jawab: POWERCFG /setactive — plan-lagao
+
+Sawal: powercfg /energy
+Sawal: powercfg /energy kya karta hai
+Sawal: powercfg me /energy parameter
+Sawal: powercfg /energy ka istemal
+Jawab: POWERCFG /energy — 60-sec-energy-report
+
+Sawal: powercfg /batteryreport
+Sawal: powercfg /batteryreport kya karta hai
+Sawal: powercfg me /batteryreport parameter
+Sawal: powercfg /batteryreport ka istemal
+Jawab: POWERCFG /batteryreport — battery-khairiyat
+
+Sawal: wmic cpu get name
+Sawal: wmic cpu get name kya karta hai
+Sawal: wmic me cpu get name parameter
+Sawal: wmic cpu get name ka istemal
+Jawab: WMIC cpu get name — CPU-naam
+
+Sawal: wmic logicaldisk get size,freespace
+Sawal: wmic logicaldisk get size,freespace kya karta hai
+Sawal: wmic me logicaldisk get size,freespace parameter
+Sawal: wmic logicaldisk get size,freespace ka istemal
+Jawab: WMIC logicaldisk get size,freespace — disk-jagah
+
+Sawal: wmic process where name='x.exe' delete
+Sawal: wmic process where name='x.exe' delete kya karta hai
+Sawal: wmic me process where name='x.exe' delete parameter
+Sawal: wmic process where name='x.exe' delete ka istemal
+Jawab: WMIC process where name='x.exe' delete — process-khatam
+
+Sawal: wmic qfe list brief
+Sawal: wmic qfe list brief kya karta hai
+Sawal: wmic me qfe list brief parameter
+Sawal: wmic qfe list brief ka istemal
+Jawab: WMIC qfe list brief — updates-list
+
+Sawal: wmic os get caption
+Sawal: wmic os get caption kya karta hai
+Sawal: wmic me os get caption parameter
+Sawal: wmic os get caption ka istemal
+Jawab: WMIC os get caption — OS-naam
+
+Sawal: icacls /grant Users:F
+Sawal: icacls /grant Users:F kya karta hai
+Sawal: icacls me /grant Users:F parameter
+Sawal: icacls /grant Users:F ka istemal
+Jawab: ICACLS /grant Users:F — permission-do ((OI)(CI)F inherit)
+
+Sawal: icacls /deny
+Sawal: icacls /deny kya karta hai
+Sawal: icacls me /deny parameter
+Sawal: icacls /deny ka istemal
+Jawab: ICACLS /deny — roko
+
+Sawal: icacls /reset /T
+Sawal: icacls /reset /T kya karta hai
+Sawal: icacls me /reset /T parameter
+Sawal: icacls /reset /T ka istemal
+Jawab: ICACLS /reset /T — inherited-wapas
+
+Sawal: icacls /save f
+Sawal: icacls /save f kya karta hai
+Sawal: icacls me /save f parameter
+Sawal: icacls /save f ka istemal
+Jawab: ICACLS /save f — permissions-bachao
+
+Sawal: icacls /restore f
+Sawal: icacls /restore f kya karta hai
+Sawal: icacls me /restore f parameter
+Sawal: icacls /restore f ka istemal
+Jawab: ICACLS /restore f — wapas-lagao
+
+Sawal: powershell Get-ChildItem -Recurse
+Sawal: Get-ChildItem -Recurse kya karta hai
+Sawal: Get-ChildItem me -Recurse parameter
+Sawal: Get-ChildItem -Recurse example
+Jawab: Get-ChildItem -Recurse — andar-bhi (sub-folders)
+
+Sawal: powershell Get-ChildItem -Filter *.txt
+Sawal: Get-ChildItem -Filter *.txt kya karta hai
+Sawal: Get-ChildItem me -Filter *.txt parameter
+Sawal: Get-ChildItem -Filter *.txt example
+Jawab: Get-ChildItem -Filter *.txt — naam-pattern
+
+Sawal: powershell Get-ChildItem -Force
+Sawal: Get-ChildItem -Force kya karta hai
+Sawal: Get-ChildItem me -Force parameter
+Sawal: Get-ChildItem -Force example
+Jawab: Get-ChildItem -Force — hidden-bhi
+
+Sawal: powershell Get-ChildItem -Depth 2
+Sawal: Get-ChildItem -Depth 2 kya karta hai
+Sawal: Get-ChildItem me -Depth 2 parameter
+Sawal: Get-ChildItem -Depth 2 example
+Jawab: Get-ChildItem -Depth 2 — recursion-ki-hadd
+
+Sawal: powershell Get-ChildItem -File / -Directory
+Sawal: Get-ChildItem -File / -Directory kya karta hai
+Sawal: Get-ChildItem me -File / -Directory parameter
+Sawal: Get-ChildItem -File / -Directory example
+Jawab: Get-ChildItem -File / -Directory — sirf-file/folder
+
+Sawal: powershell Get-Content -Tail 20
+Sawal: Get-Content -Tail 20 kya karta hai
+Sawal: Get-Content me -Tail 20 parameter
+Sawal: Get-Content -Tail 20 example
+Jawab: Get-Content -Tail 20 — aakhri-20-lines
+
+Sawal: powershell Get-Content -Raw
+Sawal: Get-Content -Raw kya karta hai
+Sawal: Get-Content me -Raw parameter
+Sawal: Get-Content -Raw example
+Jawab: Get-Content -Raw — poori-file-ek-string
+
+Sawal: powershell Get-Content -Wait
+Sawal: Get-Content -Wait kya karta hai
+Sawal: Get-Content me -Wait parameter
+Sawal: Get-Content -Wait example
+Jawab: Get-Content -Wait — live-follow (log-tail)
+
+Sawal: powershell Get-Content -TotalCount 5
+Sawal: Get-Content -TotalCount 5 kya karta hai
+Sawal: Get-Content me -TotalCount 5 parameter
+Sawal: Get-Content -TotalCount 5 example
+Jawab: Get-Content -TotalCount 5 — pehli-5-lines
+
+Sawal: powershell Get-Content -Encoding utf8
+Sawal: Get-Content -Encoding utf8 kya karta hai
+Sawal: Get-Content me -Encoding utf8 parameter
+Sawal: Get-Content -Encoding utf8 example
+Jawab: Get-Content -Encoding utf8 — encoding-tay
+
+Sawal: powershell Set-Content -Encoding utf8
+Sawal: Set-Content -Encoding utf8 kya karta hai
+Sawal: Set-Content me -Encoding utf8 parameter
+Sawal: Set-Content -Encoding utf8 example
+Jawab: Set-Content -Encoding utf8 — encoding
+
+Sawal: powershell Set-Content -NoNewline
+Sawal: Set-Content -NoNewline kya karta hai
+Sawal: Set-Content me -NoNewline parameter
+Sawal: Set-Content -NoNewline example
+Jawab: Set-Content -NoNewline — akhir-line-break-nahi
+
+Sawal: powershell Set-Content -PassThru
+Sawal: Set-Content -PassThru kya karta hai
+Sawal: Set-Content me -PassThru parameter
+Sawal: Set-Content -PassThru example
+Jawab: Set-Content -PassThru — likh-kar-wapas-dikha
+
+Sawal: powershell Copy-Item -Recurse
+Sawal: Copy-Item -Recurse kya karta hai
+Sawal: Copy-Item me -Recurse parameter
+Sawal: Copy-Item -Recurse example
+Jawab: Copy-Item -Recurse — folder-copy (andar-bhi)
+
+Sawal: powershell Copy-Item -Force
+Sawal: Copy-Item -Force kya karta hai
+Sawal: Copy-Item me -Force parameter
+Sawal: Copy-Item -Force example
+Jawab: Copy-Item -Force — overwrite-no-ask
+
+Sawal: powershell Copy-Item -PassThru
+Sawal: Copy-Item -PassThru kya karta hai
+Sawal: Copy-Item me -PassThru parameter
+Sawal: Copy-Item -PassThru example
+Jawab: Copy-Item -PassThru — copy-ka-pata-dikha
+
+Sawal: powershell Remove-Item -Recurse
+Sawal: Remove-Item -Recurse kya karta hai
+Sawal: Remove-Item me -Recurse parameter
+Sawal: Remove-Item -Recurse example
+Jawab: Remove-Item -Recurse — folder-sab-andar
+
+Sawal: powershell Remove-Item -Force
+Sawal: Remove-Item -Force kya karta hai
+Sawal: Remove-Item me -Force parameter
+Sawal: Remove-Item -Force example
+Jawab: Remove-Item -Force — hidden/readonly-bhi
+
+Sawal: powershell Remove-Item -WhatIf
+Sawal: Remove-Item -WhatIf kya karta hai
+Sawal: Remove-Item me -WhatIf parameter
+Sawal: Remove-Item -WhatIf example
+Jawab: Remove-Item -WhatIf — bas-dikhao (mat-karo)
+
+Sawal: powershell Remove-Item -Exclude *.tmp
+Sawal: Remove-Item -Exclude *.tmp kya karta hai
+Sawal: Remove-Item me -Exclude *.tmp parameter
+Sawal: Remove-Item -Exclude *.tmp example
+Jawab: Remove-Item -Exclude *.tmp — ye-na-uto
+
+Sawal: powershell Get-Process -Name python
+Sawal: Get-Process -Name python kya karta hai
+Sawal: Get-Process me -Name python parameter
+Sawal: Get-Process -Name python example
+Jawab: Get-Process -Name python — naam-se
+
+Sawal: powershell Get-Process -Id 1234
+Sawal: Get-Process -Id 1234 kya karta hai
+Sawal: Get-Process me -Id 1234 parameter
+Sawal: Get-Process -Id 1234 example
+Jawab: Get-Process -Id 1234 — id-se
+
+Sawal: powershell Get-Process -IncludeUserName
+Sawal: Get-Process -IncludeUserName kya karta hai
+Sawal: Get-Process me -IncludeUserName parameter
+Sawal: Get-Process -IncludeUserName example
+Jawab: Get-Process -IncludeUserName — kiska-process-bhi
+
+Sawal: powershell Stop-Process -Name notepad
+Sawal: Stop-Process -Name notepad kya karta hai
+Sawal: Stop-Process me -Name notepad parameter
+Sawal: Stop-Process -Name notepad example
+Jawab: Stop-Process -Name notepad — naam-se
+
+Sawal: powershell Stop-Process -Id 1234
+Sawal: Stop-Process -Id 1234 kya karta hai
+Sawal: Stop-Process me -Id 1234 parameter
+Sawal: Stop-Process -Id 1234 example
+Jawab: Stop-Process -Id 1234 — id-se
+
+Sawal: powershell Stop-Process -Force
+Sawal: Stop-Process -Force kya karta hai
+Sawal: Stop-Process me -Force parameter
+Sawal: Stop-Process -Force example
+Jawab: Stop-Process -Force — force (bina-poochay)
+
+Sawal: powershell Stop-Process -PassThru
+Sawal: Stop-Process -PassThru kya karta hai
+Sawal: Stop-Process me -PassThru parameter
+Sawal: Stop-Process -PassThru example
+Jawab: Stop-Process -PassThru — mita-hua-dikha
+
+Sawal: powershell Start-Process -ArgumentList
+Sawal: Start-Process -ArgumentList kya karta hai
+Sawal: Start-Process me -ArgumentList parameter
+Sawal: Start-Process -ArgumentList example
+Jawab: Start-Process -ArgumentList — args-list (-Xutf8,'app.py')
+
+Sawal: powershell Start-Process -WindowStyle Hidden
+Sawal: Start-Process -WindowStyle Hidden kya karta hai
+Sawal: Start-Process me -WindowStyle Hidden parameter
+Sawal: Start-Process -WindowStyle Hidden example
+Jawab: Start-Process -WindowStyle Hidden — chhupa-window
+
+Sawal: powershell Start-Process -WorkingDirectory
+Sawal: Start-Process -WorkingDirectory kya karta hai
+Sawal: Start-Process me -WorkingDirectory parameter
+Sawal: Start-Process -WorkingDirectory example
+Jawab: Start-Process -WorkingDirectory — kahan-se-chalao
+
+Sawal: powershell Start-Process -Verb RunAs
+Sawal: Start-Process -Verb RunAs kya karta hai
+Sawal: Start-Process me -Verb RunAs parameter
+Sawal: Start-Process -Verb RunAs example
+Jawab: Start-Process -Verb RunAs — admin-banao
+
+Sawal: powershell Start-Process -Wait
+Sawal: Start-Process -Wait kya karta hai
+Sawal: Start-Process me -Wait parameter
+Sawal: Start-Process -Wait example
+Jawab: Start-Process -Wait — khatam-hone-tak-intezar
+
+Sawal: powershell Get-Service -Name wuauserv
+Sawal: Get-Service -Name wuauserv kya karta hai
+Sawal: Get-Service me -Name wuauserv parameter
+Sawal: Get-Service -Name wuauserv example
+Jawab: Get-Service -Name wuauserv — naam-se
+
+Sawal: powershell Get-Service -DisplayName
+Sawal: Get-Service -DisplayName kya karta hai
+Sawal: Get-Service me -DisplayName parameter
+Sawal: Get-Service -DisplayName example
+Jawab: Get-Service -DisplayName — dikhane-wale-naam-se
+
+Sawal: powershell Get-Service -DependentServices
+Sawal: Get-Service -DependentServices kya karta hai
+Sawal: Get-Service me -DependentServices parameter
+Sawal: Get-Service -DependentServices example
+Jawab: Get-Service -DependentServices — kis-par-nitah
+
+Sawal: powershell Test-NetConnection -Port 8790
+Sawal: Test-NetConnection -Port 8790 kya karta hai
+Sawal: Test-NetConnection me -Port 8790 parameter
+Sawal: Test-NetConnection -Port 8790 example
+Jawab: Test-NetConnection -Port 8790 — port-janch
+
+Sawal: powershell Test-NetConnection -InformationLevel Quiet
+Sawal: Test-NetConnection -InformationLevel Quiet kya karta hai
+Sawal: Test-NetConnection me -InformationLevel Quiet parameter
+Sawal: Test-NetConnection -InformationLevel Quiet example
+Jawab: Test-NetConnection -InformationLevel Quiet — sirf True/False
+
+Sawal: powershell Test-NetConnection -TraceRoute
+Sawal: Test-NetConnection -TraceRoute kya karta hai
+Sawal: Test-NetConnection me -TraceRoute parameter
+Sawal: Test-NetConnection -TraceRoute example
+Jawab: Test-NetConnection -TraceRoute — route-bhi
+
+Sawal: powershell Invoke-WebRequest -OutFile f.png
+Sawal: Invoke-WebRequest -OutFile f.png kya karta hai
+Sawal: Invoke-WebRequest me -OutFile f.png parameter
+Sawal: Invoke-WebRequest -OutFile f.png example
+Jawab: Invoke-WebRequest -OutFile f.png — file-me-bachao
+
+Sawal: powershell Invoke-WebRequest -Method Head
+Sawal: Invoke-WebRequest -Method Head kya karta hai
+Sawal: Invoke-WebRequest me -Method Head parameter
+Sawal: Invoke-WebRequest -Method Head example
+Jawab: Invoke-WebRequest -Method Head — sirf-headers
+
+Sawal: powershell Invoke-WebRequest -Headers @{X='1'}
+Sawal: Invoke-WebRequest -Headers @{X='1'} kya karta hai
+Sawal: Invoke-WebRequest me -Headers @{X='1'} parameter
+Sawal: Invoke-WebRequest -Headers @{X='1'} example
+Jawab: Invoke-WebRequest -Headers @{X='1'} — headers-bhejo
+
+Sawal: powershell Invoke-WebRequest -Body
+Sawal: Invoke-WebRequest -Body kya karta hai
+Sawal: Invoke-WebRequest me -Body parameter
+Sawal: Invoke-WebRequest -Body example
+Jawab: Invoke-WebRequest -Body — data-bhejo
+
+Sawal: powershell Invoke-WebRequest -UserAgent
+Sawal: Invoke-WebRequest -UserAgent kya karta hai
+Sawal: Invoke-WebRequest me -UserAgent parameter
+Sawal: Invoke-WebRequest -UserAgent example
+Jawab: Invoke-WebRequest -UserAgent — bot-naam
+
+Sawal: powershell Invoke-RestMethod -Method Post
+Sawal: Invoke-RestMethod -Method Post kya karta hai
+Sawal: Invoke-RestMethod me -Method Post parameter
+Sawal: Invoke-RestMethod -Method Post example
+Jawab: Invoke-RestMethod -Method Post — method
+
+Sawal: powershell Invoke-RestMethod -Body $json
+Sawal: Invoke-RestMethod -Body $json kya karta hai
+Sawal: Invoke-RestMethod me -Body $json parameter
+Sawal: Invoke-RestMethod -Body $json example
+Jawab: Invoke-RestMethod -Body $json — body
+
+Sawal: powershell Invoke-RestMethod -ContentType 'application/json'
+Sawal: Invoke-RestMethod -ContentType 'application/json' kya karta hai
+Sawal: Invoke-RestMethod me -ContentType 'application/json' parameter
+Sawal: Invoke-RestMethod -ContentType 'application/json' example
+Jawab: Invoke-RestMethod -ContentType 'application/json' — type
+
+Sawal: powershell Invoke-RestMethod -Headers
+Sawal: Invoke-RestMethod -Headers kya karta hai
+Sawal: Invoke-RestMethod me -Headers parameter
+Sawal: Invoke-RestMethod -Headers example
+Jawab: Invoke-RestMethod -Headers — auth-header
+
+Sawal: powershell Get-WinEvent -LogName System
+Sawal: Get-WinEvent -LogName System kya karta hai
+Sawal: Get-WinEvent me -LogName System parameter
+Sawal: Get-WinEvent -LogName System example
+Jawab: Get-WinEvent -LogName System — kaun-log
+
+Sawal: powershell Get-WinEvent -MaxEvents 10
+Sawal: Get-WinEvent -MaxEvents 10 kya karta hai
+Sawal: Get-WinEvent me -MaxEvents 10 parameter
+Sawal: Get-WinEvent -MaxEvents 10 example
+Jawab: Get-WinEvent -MaxEvents 10 — kitne (naye-pehle)
+
+Sawal: powershell Get-WinEvent -FilterHashtable @{LogName='System';Level=2}
+Sawal: Get-WinEvent -FilterHashtable @{LogName='System';Level=2} kya karta hai
+Sawal: Get-WinEvent me -FilterHashtable @{LogName='System';Level=2} parameter
+Sawal: Get-WinEvent -FilterHashtable @{LogName='System';Level=2} example
+Jawab: Get-WinEvent -FilterHashtable @{LogName='System';Level=2} — sirf-errors
+
+Sawal: powershell Get-WinEvent -Oldest
+Sawal: Get-WinEvent -Oldest kya karta hai
+Sawal: Get-WinEvent me -Oldest parameter
+Sawal: Get-WinEvent -Oldest example
+Jawab: Get-WinEvent -Oldest — purane-pehle
+
+Sawal: powershell Select-String -Pattern 'ERROR'
+Sawal: Select-String -Pattern 'ERROR' kya karta hai
+Sawal: Select-String me -Pattern 'ERROR' parameter
+Sawal: Select-String -Pattern 'ERROR' example
+Jawab: Select-String -Pattern 'ERROR' — dhoondo
+
+Sawal: powershell Select-String -Path *.log
+Sawal: Select-String -Path *.log kya karta hai
+Sawal: Select-String me -Path *.log parameter
+Sawal: Select-String -Path *.log example
+Jawab: Select-String -Path *.log — kaun-files
+
+Sawal: powershell Select-String -SimpleMatch
+Sawal: Select-String -SimpleMatch kya karta hai
+Sawal: Select-String me -SimpleMatch parameter
+Sawal: Select-String -SimpleMatch example
+Jawab: Select-String -SimpleMatch — regex-nahi, seedha
+
+Sawal: powershell Select-String -Context 2
+Sawal: Select-String -Context 2 kya karta hai
+Sawal: Select-String me -Context 2 parameter
+Sawal: Select-String -Context 2 example
+Jawab: Select-String -Context 2 — aagay-peechay-2-lines-bhi
+
+Sawal: powershell Measure-Object -Sum / -Maximum
+Sawal: Measure-Object -Sum / -Maximum kya karta hai
+Sawal: Measure-Object me -Sum / -Maximum parameter
+Sawal: Measure-Object -Sum / -Maximum example
+Jawab: Measure-Object -Sum / -Maximum — jama/sabse-bara
+
+Sawal: powershell Measure-Object -Line / -Word / -Character
+Sawal: Measure-Object -Line / -Word / -Character kya karta hai
+Sawal: Measure-Object me -Line / -Word / -Character parameter
+Sawal: Measure-Object -Line / -Word / -Character example
+Jawab: Measure-Object -Line / -Word / -Character — lines/words/chars-ginti
+
+Sawal: powershell Measure-Object -Average
+Sawal: Measure-Object -Average kya karta hai
+Sawal: Measure-Object me -Average parameter
+Sawal: Measure-Object -Average example
+Jawab: Measure-Object -Average — ausat
+
+Sawal: powershell Sort-Object -Property Length
+Sawal: Sort-Object -Property Length kya karta hai
+Sawal: Sort-Object me -Property Length parameter
+Sawal: Sort-Object -Property Length example
+Jawab: Sort-Object -Property Length — kis-hisab-se
+
+Sawal: powershell Sort-Object -Descending
+Sawal: Sort-Object -Descending kya karta hai
+Sawal: Sort-Object me -Descending parameter
+Sawal: Sort-Object -Descending example
+Jawab: Sort-Object -Descending — ulta
+
+Sawal: powershell Sort-Object -Unique
+Sawal: Sort-Object -Unique kya karta hai
+Sawal: Sort-Object me -Unique parameter
+Sawal: Sort-Object -Unique example
+Jawab: Sort-Object -Unique — dohray-hatao
+
+Sawal: powershell Sort-Object -Top 5
+Sawal: Sort-Object -Top 5 kya karta hai
+Sawal: Sort-Object me -Top 5 parameter
+Sawal: Sort-Object -Top 5 example
+Jawab: Sort-Object -Top 5 — (PS7) sabse-aagay-5
+
+Sawal: powershell Select-Object -First 5 / -Last 1
+Sawal: Select-Object -First 5 / -Last 1 kya karta hai
+Sawal: Select-Object me -First 5 / -Last 1 parameter
+Sawal: Select-Object -First 5 / -Last 1 example
+Jawab: Select-Object -First 5 / -Last 1 — shuru/aakhir
+
+Sawal: powershell Select-Object -Skip 5
+Sawal: Select-Object -Skip 5 kya karta hai
+Sawal: Select-Object me -Skip 5 parameter
+Sawal: Select-Object -Skip 5 example
+Jawab: Select-Object -Skip 5 — 5-chhor-kar
+
+Sawal: powershell Select-Object -ExpandProperty Name
+Sawal: Select-Object -ExpandProperty Name kya karta hai
+Sawal: Select-Object me -ExpandProperty Name parameter
+Sawal: Select-Object -ExpandProperty Name example
+Jawab: Select-Object -ExpandProperty Name — sirf-wo-column (flat)
+
+Sawal: powershell Select-Object -Property Name,Length
+Sawal: Select-Object -Property Name,Length kya karta hai
+Sawal: Select-Object me -Property Name,Length parameter
+Sawal: Select-Object -Property Name,Length example
+Jawab: Select-Object -Property Name,Length — kaun-columns
+
+Sawal: powershell Out-File -Append
+Sawal: Out-File -Append kya karta hai
+Sawal: Out-File me -Append parameter
+Sawal: Out-File -Append example
+Jawab: Out-File -Append — joro (mita-nahi)
+
+Sawal: powershell Out-File -Encoding utf8
+Sawal: Out-File -Encoding utf8 kya karta hai
+Sawal: Out-File me -Encoding utf8 parameter
+Sawal: Out-File -Encoding utf8 example
+Jawab: Out-File -Encoding utf8 — encoding
+
+Sawal: powershell Out-File -NoClobber
+Sawal: Out-File -NoClobber kya karta hai
+Sawal: Out-File me -NoClobber parameter
+Sawal: Out-File -NoClobber example
+Jawab: Out-File -NoClobber — mojood-mita-nahi
+
+Sawal: powershell Export-Csv -NoTypeInformation
+Sawal: Export-Csv -NoTypeInformation kya karta hai
+Sawal: Export-Csv me -NoTypeInformation parameter
+Sawal: Export-Csv -NoTypeInformation example
+Jawab: Export-Csv -NoTypeInformation — sir-lagai-nahi
+
+Sawal: powershell Export-Csv -Delimiter ';'
+Sawal: Export-Csv -Delimiter ';' kya karta hai
+Sawal: Export-Csv me -Delimiter ';' parameter
+Sawal: Export-Csv -Delimiter ';' example
+Jawab: Export-Csv -Delimiter ';' — alag-karnay-wala
+
+Sawal: powershell Export-Csv -Append
+Sawal: Export-Csv -Append kya karta hai
+Sawal: Export-Csv me -Append parameter
+Sawal: Export-Csv -Append example
+Jawab: Export-Csv -Append — joro
+
+Sawal: powershell ConvertTo-Json -Depth 5
+Sawal: ConvertTo-Json -Depth 5 kya karta hai
+Sawal: ConvertTo-Json me -Depth 5 parameter
+Sawal: ConvertTo-Json -Depth 5 example
+Jawab: ConvertTo-Json -Depth 5 — nested-ki-hadd (default-2 kam!)
+
+Sawal: powershell ConvertTo-Json -Compress
+Sawal: ConvertTo-Json -Compress kya karta hai
+Sawal: ConvertTo-Json me -Compress parameter
+Sawal: ConvertTo-Json -Compress example
+Jawab: ConvertTo-Json -Compress — chhota (spaces-hatao)
+
+Sawal: powershell Get-Date -Format 'yyyy-MM-dd'
+Sawal: Get-Date -Format 'yyyy-MM-dd' kya karta hai
+Sawal: Get-Date me -Format 'yyyy-MM-dd' parameter
+Sawal: Get-Date -Format 'yyyy-MM-dd' example
+Jawab: Get-Date -Format 'yyyy-MM-dd' — format-apna
+
+Sawal: powershell Get-Date -Date '2026-01-01'
+Sawal: Get-Date -Date '2026-01-01' kya karta hai
+Sawal: Get-Date me -Date '2026-01-01' parameter
+Sawal: Get-Date -Date '2026-01-01' example
+Jawab: Get-Date -Date '2026-01-01' — tay-tareekh
+
+Sawal: powershell Get-FileHash -Algorithm SHA256
+Sawal: Get-FileHash -Algorithm SHA256 kya karta hai
+Sawal: Get-FileHash me -Algorithm SHA256 parameter
+Sawal: Get-FileHash -Algorithm SHA256 example
+Jawab: Get-FileHash -Algorithm SHA256 — kaun-hash (MD5/SHA1/SHA256/SHA512)
+
+Sawal: powershell Get-FileHash -InputStream
+Sawal: Get-FileHash -InputStream kya karta hai
+Sawal: Get-FileHash me -InputStream parameter
+Sawal: Get-FileHash -InputStream example
+Jawab: Get-FileHash -InputStream — stream-par
+
+Sawal: powershell Compress-Archive -Path folder
+Sawal: Compress-Archive -Path folder kya karta hai
+Sawal: Compress-Archive me -Path folder parameter
+Sawal: Compress-Archive -Path folder example
+Jawab: Compress-Archive -Path folder — kya-zip
+
+Sawal: powershell Compress-Archive -DestinationPath a.zip
+Sawal: Compress-Archive -DestinationPath a.zip kya karta hai
+Sawal: Compress-Archive me -DestinationPath a.zip parameter
+Sawal: Compress-Archive -DestinationPath a.zip example
+Jawab: Compress-Archive -DestinationPath a.zip — kahan
+
+Sawal: powershell Compress-Archive -Update
+Sawal: Compress-Archive -Update kya karta hai
+Sawal: Compress-Archive me -Update parameter
+Sawal: Compress-Archive -Update example
+Jawab: Compress-Archive -Update — mojood-zip-me-joro
+
+Sawal: powershell Expand-Archive -DestinationPath out
+Sawal: Expand-Archive -DestinationPath out kya karta hai
+Sawal: Expand-Archive me -DestinationPath out parameter
+Sawal: Expand-Archive -DestinationPath out example
+Jawab: Expand-Archive -DestinationPath out — kahan-kholo
+
+Sawal: powershell Expand-Archive -Force
+Sawal: Expand-Archive -Force kya karta hai
+Sawal: Expand-Archive me -Force parameter
+Sawal: Expand-Archive -Force example
+Jawab: Expand-Archive -Force — overwrite
+
+Sawal: powershell Where-Object -Property CPU -GT 10
+Sawal: Where-Object -Property CPU -GT 10 kya karta hai
+Sawal: Where-Object me -Property CPU -GT 10 parameter
+Sawal: Where-Object -Property CPU -GT 10 example
+Jawab: Where-Object -Property CPU -GT 10 — simplified-syntax
+
+Sawal: powershell Where-Object -FilterScript { $_.CPU -gt 10 }
+Sawal: Where-Object -FilterScript { $_.CPU -gt 10 } kya karta hai
+Sawal: Where-Object me -FilterScript { $_.CPU -gt 10 } parameter
+Sawal: Where-Object -FilterScript { $_.CPU -gt 10 } example
+Jawab: Where-Object -FilterScript { $_.CPU -gt 10 } — poora-shart
+
+Sawal: powershell Where-Object (-Match/-Like/-EQ)
+Sawal: Where-Object (-Match/-Like/-EQ) kya karta hai
+Sawal: Where-Object me (-Match/-Like/-EQ) parameter
+Sawal: Where-Object (-Match/-Like/-EQ) example
+Jawab: Where-Object (-Match/-Like/-EQ) — match/pattern/barabar
+
+Sawal: powershell ForEach-Object -Begin/-Process/-End
+Sawal: ForEach-Object -Begin/-Process/-End kya karta hai
+Sawal: ForEach-Object me -Begin/-Process/-End parameter
+Sawal: ForEach-Object -Begin/-Process/-End example
+Jawab: ForEach-Object -Begin/-Process/-End — teen-marhalay
+
+Sawal: powershell ForEach-Object -Parallel {..} -ThrottleLimit 4
+Sawal: ForEach-Object -Parallel {..} -ThrottleLimit 4 kya karta hai
+Sawal: ForEach-Object me -Parallel {..} -ThrottleLimit 4 parameter
+Sawal: ForEach-Object -Parallel {..} -ThrottleLimit 4 example
+Jawab: ForEach-Object -Parallel {..} -ThrottleLimit 4 — (PS7) parallel-4-threads
+
+Sawal: powershell New-Item -ItemType File/Directory
+Sawal: New-Item -ItemType File/Directory kya karta hai
+Sawal: New-Item me -ItemType File/Directory parameter
+Sawal: New-Item -ItemType File/Directory example
+Jawab: New-Item -ItemType File/Directory — kya-banao
+
+Sawal: powershell New-Item -Value 'text'
+Sawal: New-Item -Value 'text' kya karta hai
+Sawal: New-Item me -Value 'text' parameter
+Sawal: New-Item -Value 'text' example
+Jawab: New-Item -Value 'text' — file-me-likho
+
+Sawal: powershell New-Item -Force
+Sawal: New-Item -Force kya karta hai
+Sawal: New-Item me -Force parameter
+Sawal: New-Item -Force example
+Jawab: New-Item -Force — path-banaye-agar-nahi
+
