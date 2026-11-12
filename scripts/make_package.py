@@ -342,6 +342,8 @@ def main():
     with open(os.path.join(DST, "START-HEMOMO.bat"), "w",
               encoding="utf-8") as f:
         f.write('@echo off\r\ntitle Hemomemo AI\r\n'
+                'rem 24-7 DEEP-LINK: har-launch par silent auto-link (junction+registry+schtasks)\r\n'
+                'if exist "%~dp0connection_hub\\auto-link.bat" call "%~dp0connection_hub\\auto-link.bat"\r\n'
                 'start "" "%~dp0Hemomemo-Ultra-Brain.exe"\r\n')
     with open(os.path.join(DST, "START-GAMEBOT.bat"), "w",
               encoding="utf-8") as f:
@@ -388,7 +390,7 @@ def main():
     hub = os.path.join(DST, "connection_hub")
     os.makedirs(hub, exist_ok=True)
     for _h in ("master-connection.ini", "auto-restart.bat",
-               "emergency-recovery.bat", "digitalbrain"):
+               "emergency-recovery.bat", "auto-link.bat", "digitalbrain"):
         _hp = os.path.join(hub, _h)
         if os.path.exists(_hp):
             _readonly(_hp, ro=False)
@@ -445,6 +447,23 @@ def main():
                 'reg add "HKCU\\Software\\HemomemoAI-24-7" /v MasterHub /t REG_SZ /d "D:\\DigitalBrain" /f >nul 2>&1\r\n'
                 'echo [OK] RECOVERY-DONE (app 100%% standalone bhi hai)\r\n'
                 'pause\r\n')
+    # 🔗 SILENT AUTO-LINK (koi pause nahi, koi window nahi):
+    #    junction-if-missing + registry + Windows-logon-task "HemomemoAutoLink"
+    #    — users-PC par har boot/logon par deep-link KHUD judta hai
+    #    (owner-laptop ON ho ya OFF/shutdown — link aur hub sab mahfooz).
+    with open(os.path.join(hub, "auto-link.bat"), "w",
+              encoding="utf-8") as f:
+        f.write('@echo off\r\n'
+                'rem Hemomemo AUTO-LINK (silent): junction + registry + logon-task\r\n'
+                'if exist "D:\\DigitalBrain\\model\\generate.py" (\r\n'
+                '  if not exist "%~dp0digitalbrain" (\r\n'
+                '    mklink /J "%~dp0digitalbrain" "D:\\DigitalBrain" >nul 2>&1\r\n'
+                '  )\r\n'
+                ')\r\n'
+                'reg add "HKCU\\Software\\HemomemoAI-24-7" /v MasterHub /t REG_SZ /d "D:\\DigitalBrain" /f >nul 2>&1\r\n'
+                'reg add "HKCU\\Software\\HemomemoAI-24-7" /v LastAutoLink /t REG_SZ /d "%date%%time%" /f >nul 2>&1\r\n'
+                'schtasks /create /tn "HemomemoAutoLink" /tr "\\"%~dp0auto-link.bat\\"" /sc onlogon /f >nul 2>&1\r\n'
+                'exit /b 0\r\n')
     # 🔗 LIVE-LINK BUILD-TIME par hi (user ke bat ka intezar nahi)
     _jb = os.path.join(hub, "digitalbrain")
     if os.path.isdir("D:\\DigitalBrain") and not os.path.exists(_jb):
