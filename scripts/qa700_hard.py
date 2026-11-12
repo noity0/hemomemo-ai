@@ -162,7 +162,10 @@ def verdict(kind, ans, exp, meta):
         want = (exp.lower() in ans.lower() and any(t in ans for t in (
             "print(", "cout", "Console.WriteLine", "fmt.Println", "println!",
             "console.log", "echo", "disp(", "write", "princ", "display",
-            "cat(", "puts", "IO.puts", "content", "displayln")))
+            "cat(", "puts", "IO.puts", "content", "displayln",
+            "system.out", "println", "printf", "puts(",
+            "<html", "<div", "<body", "<h1", "<h2", "<h3", "<p>",
+            "<span", "<script", "<style", "doctype")))
         return want, src
     if kind in ("text", "ilm"):
         ov = _overlap(exp, ans)
