@@ -35,7 +35,7 @@ import time
 
 SRC = "D:\\DigitalBrain"
 DST = "D:\\HemomemoUltra-People"
-VERSION = "v4.2.0-people"
+VERSION = "v4.3.0-people"
 
 # copy hone wale poore folders (code) — andar se dev-filth chhaant ke
 COPY_DIRS = ["core", "harvest", "security", "server", "web", "agent", "tests"]
@@ -135,12 +135,18 @@ def main():
     if os.path.isdir(DST):
         # UPDATE: purani writable files hatao (nayi aayengi), bande ki data bachao
         print("🔁 UPDATE-mode: purani system files hatao, log ki data bachao…")
+        PRESERVE = {"web", "connection_hub"}   # 🗑 nested desktop-duplicate GHAIB (user-order)
         for root, dirs, files in os.walk(DST):
+            dirs[:] = [d for d in dirs
+                       if d.lower() != "digitalbrain"
+                       and not os.path.islink(os.path.join(root, d))]
             for fn in files:
                 fp = os.path.join(root, fn)
                 rel = os.path.relpath(fp, DST)
                 if rel in keep:
                     continue
+                if rel.split("\\")[0] in PRESERVE or rel == "netlify.toml":
+                    continue              # 🌍 site + desktop-folder + hub salamat
                 _readonly(fp, ro=False)
                 try:
                     os.remove(fp)
@@ -217,7 +223,8 @@ def main():
                     "data\\corpus_big\\liveresearch.txt",
                     "data\\qa_memo.pkl",
                     "harvest\\STATE.json", "harvest\\seen.json",
-                    "data\\genone_api.json", "data\\genone_users.json"}
+                    "data\\genone_api.json", "data\\genone_users.json",
+                    "data\\chat_history_app.json"}
 
     def cpy(src, dst, ro=True):
         nonlocal copied
@@ -377,17 +384,92 @@ def main():
                 'powershell -NoProfile -ExecutionPolicy Bypass -File '
                 '"%~dp0verify_system.ps1"\r\npause\r\n')
 
+    # ---- 24/7 CONNECTION-HUB (ROOT par — desktop-app 24/7 DigitalBrain-link) ----
+    hub = os.path.join(DST, "connection_hub")
+    os.makedirs(hub, exist_ok=True)
+    for _h in ("master-connection.ini", "auto-restart.bat",
+               "emergency-recovery.bat", "digitalbrain"):
+        _hp = os.path.join(hub, _h)
+        if os.path.exists(_hp):
+            _readonly(_hp, ro=False)
+    with open(os.path.join(hub, "master-connection.ini"), "w",
+              encoding="utf-8") as f:
+        f.write("[HemomemoAI-24-7-Connection-System]\r\n"
+                "Version=5.1\r\nCreated=%s\r\nStatus=Active\r\n\r\n"
+                "[Desktop-App]\r\nPath=%s\r\nType=Standalone\r\n\r\n"
+                "[DigitalBrain-Server]\r\nPath=D:\\DigitalBrain\r\n"
+                "Type=Live-Link-24-7\r\nRequired=YES\r\n\r\n"
+                "[Qanoon]\r\nOnlyHemomemo=YES\r\nNoExternalAI=YES\r\n"
+                "NoCloud=YES\r\n" % (time.strftime("%Y-%m-%d %H:%M"), DST))
+    with open(os.path.join(DST, "CONNECT-DIGITALBRAIN.bat"), "w",
+              encoding="utf-8") as f:
+        f.write('@echo off\r\ntitle Hemomemo AI - 24/7 DigitalBrain Live-Link\r\n'
+                'echo HEMOMEMO 24/7 CONNECTION-HUB\r\n'
+                'if exist "D:\\DigitalBrain\\model\\generate.py" (\r\n'
+                '  if not exist "%~dp0connection_hub\\digitalbrain" (\r\n'
+                '    mklink /J "%~dp0connection_hub\\digitalbrain" "D:\\DigitalBrain" >nul 2>&1\r\n'
+                '  )\r\n'
+                '  if exist "%~dp0connection_hub\\digitalbrain" (\r\n'
+                '    echo [OK] LIVE-LINK ON - training/code 24/7 link me\r\n'
+                '  ) else (\r\n'
+                '    echo [!] junction nahi bana - app phir bhi 100%% standalone\r\n'
+                '  )\r\n'
+                '  reg add "HKCU\\Software\\HemomemoAI-24-7" /v MasterHub /t REG_SZ /d "D:\\DigitalBrain" /f >nul 2>&1\r\n'
+                '  reg add "HKCU\\Software\\HemomemoAI-24-7" /v AutoStart /t REG_SZ /d "1" /f >nul 2>&1\r\n'
+                ') else (\r\n'
+                '  echo [i] DigitalBrain ghaib - app 100%% standalone chalti hai\r\n'
+                ')\r\n'
+                'pause\r\n')
+    with open(os.path.join(hub, "auto-restart.bat"), "w",
+              encoding="utf-8") as f:
+        f.write('@echo off\r\ntitle Hemomemo 24/7 Auto-Restart\r\n'
+                'if exist "%~dp0..\\model\\checkpoints\\vocab.json" (\r\n'
+                '  echo [OK] dimagh ON (standalone checkpoints)\r\n'
+                ') else (\r\n'
+                '  echo [!] dimagh MISSING - naya package chahiye\r\n'
+                ')\r\n'
+                'if exist "%~dp0digitalbrain" (\r\n'
+                '  echo [OK] DigitalBrain LIVE-LINK: ON\r\n'
+                ') else (\r\n'
+                '  echo [i] link OFF (CONNECT-DIGITALBRAIN.bat chalao)\r\n'
+                ')\r\n'
+                'pause\r\n')
+    with open(os.path.join(hub, "emergency-recovery.bat"), "w",
+              encoding="utf-8") as f:
+        f.write('@echo off\r\ntitle Hemomemo Emergency Recovery\r\n'
+                'echo Recovery: junction dobara banta hai...\r\n'
+                'if exist "%~dp0digitalbrain" rmdir "%~dp0digitalbrain" >nul 2>&1\r\n'
+                'if exist "D:\\DigitalBrain\\model\\generate.py" (\r\n'
+                '  mklink /J "%~dp0digitalbrain" "D:\\DigitalBrain" >nul 2>&1\r\n'
+                ')\r\n'
+                'reg add "HKCU\\Software\\HemomemoAI-24-7" /v MasterHub /t REG_SZ /d "D:\\DigitalBrain" /f >nul 2>&1\r\n'
+                'echo [OK] RECOVERY-DONE (app 100%% standalone bhi hai)\r\n'
+                'pause\r\n')
+    # 🔗 LIVE-LINK BUILD-TIME par hi (user ke bat ka intezar nahi)
+    _jb = os.path.join(hub, "digitalbrain")
+    if os.path.isdir("D:\\DigitalBrain") and not os.path.exists(_jb):
+        os.system('mklink /J "%s" "D:\\DigitalBrain" >nul 2>&1' % _jb)
+    os.system('reg add "HKCU\\Software\\HemomemoAI-24-7" /v MasterHub '
+              '/t REG_SZ /d "D:\\DigitalBrain" /f >nul 2>&1')
+    if os.path.exists(_jb):
+        print("🔗 root connection-hub junction: ON -> D:\\DigitalBrain")
+    else:
+        print("ℹ️ junction skip (D:\\DigitalBrain ghaib) - standalone")
+
     # sha256 manifest (protected files)
     prot = []
     for root, dirs, files in os.walk(DST):
-        dirs[:] = [x for x in dirs if x not in ("__pycache__",)]
+        dirs[:] = [x for x in dirs
+                   if x not in ("__pycache__", "connection_hub")
+                   and not os.path.islink(os.path.join(root, x))]
         for fn in files:
             fp = os.path.join(root, fn)
             rel = os.path.relpath(fp, DST).lower()
             if fn in ("genone_api.json", "genone_users.json",
                       "genone_api.log", "learned_chat.txt",
                       "liveresearch.txt", "qa_memo.pkl", "STATE.json",
-                      "seen.json", "PROTECTED_MANIFEST.sha256",
+                      "seen.json", "chat_history_app.json",
+                      "PROTECTED_MANIFEST.sha256",
                       "verify_system.ps1") or rel.startswith("harvest\\"):
                 continue
             if fn.endswith((".exe", ".bat")):
