@@ -24,7 +24,7 @@ import struct
 import sys
 import threading
 import time
-from typing import Callable, Optional
+from typing import Callable, Optional, Tuple
 
 # --- Minecraft protocol version (client khud batata hai) ---
 PROTOCOL_VERSION = 763  # 1.20.1 (badal sakte hain: 767=1.21 etc.)
