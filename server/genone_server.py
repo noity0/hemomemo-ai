@@ -24,6 +24,9 @@ Endpoints (Hemomemo API v1):
     GET  /health      → JSON status + runtime (L6-guarded)
     POST /v1/chat     → {"prompt": "..."} → {"answer", "meta"} (L6-guarded)
     GET  /v1/info     → JSON (model, layers, no-AI-oath) (L6-guarded)
+    POST /v1/chat/completions → 🧩 OpenAI-shape facade {messages[]} rooted to
+                         /v1/chat policy (Bearer key chalega — L6-guarded)
+    GET  /v1/models   → OpenAI-shape model-list ["hemomemo-core"] (L6-guarded)
     GET  /style.css, /app.js  → website assets
     HEAD /            → website files (health-check)
     POST /v1/auth/signup  → 👤 APNI key lein {email, password} (bina key)
@@ -213,7 +216,8 @@ class HemomemoHandler(BaseHTTPRequestHandler):
         self.send_header("Content-Type", ctype)
         self.send_header("Content-Length", str(len(b)))
         self.send_header("Cache-Control", "no-store")
-        self._sec()
+        self._cors()          # 🌐 CORS bhi _bytes me — GET/HEAD (site/docs/
+        self._sec()            #    browser clients ke liye header-synced)
         self.end_headers()
         if not head_only:
             try:
@@ -222,25 +226,222 @@ class HemomemoHandler(BaseHTTPRequestHandler):
                 pass
 
     def _l6_ok(self, body: bytes):
-        """L6 api_gate (HMHZ-backed) — fail-closed."""
+        """L6 api_gate (HMHZ-backed) — fail-closed. THIRD-PARTY auth styles
+        bhi manzoor (Bearer / Authorization, x-api-key, X-Hemomemo-Key) — koi
+        normal chatbot client (openai SDK, curl, kisi bhi language) error-na
+        bina apni APNi Hemomemo key se chale."""
         try:
             from security.guard import api_gate as _gate
             hdr = {k.lower(): v for k, v in self.headers.items()}
+            if not str(hdr.get("x-hemomemo-key") or "").strip():
+                _auth = str(self.headers.get("Authorization") or "")
+                _bv = _auth[7:].strip() if _auth.strip().lower().startswith(
+                    "bearer ") else ""
+                if not str(hdr.get("x-hemomemo-key") or "").strip():
+                    hdr["x-hemomemo-key"] = str(
+                        hdr.get("x-api-key") or "").strip()
+                if not str(hdr.get("x-hemomemo-key") or "").strip():
+                    hdr["x-hemomemo-key"] = _bv
+            # 🎫 L6 guard ke liye FRESH ts + nonce zaroori (har request par) —
+            #     third-party clients (Bearer/x-api-key) ko bhi ye flow milta
+            #     hai — koi error na bhawe
+            hdr["x-hemomemo-ts"] = str(int(time.time()))
+            hdr["x-hemomemo-nonce"] = secrets.token_hex(8)
             ok, why = _gate(hdr, self.path, body.decode("utf-8", "ignore"))
             return ok, why
         except Exception as e:
             return False, "L6 fail-closed: %s" % str(e)[:60]
 
     def _l6_fail(self, why):
-        """L6-fail ka saaf jwab — rate-limit → 429, baqi → 401 (+hint)."""
+        """L6-fail ka saaf jwab — rate-limit → 429, baqi → 401 (+hint).
+        OpenAI-error-shape bhi use karna (koi third-party client parse na
+        kare flat string par — unhe {"error":{message,type}} hi chahiye)."""
         if "rate-limit" in why:
-            self._json(429, {"error": why,
-                             "hint": "thodi der ruk kar dobara koshish karo"})
+            self._json(429, {"error": {"message": why,
+                                      "type": "rate_limit_error",
+                                      "hint": "thodi der ruk kar dobara "
+                                              "koshish karo"}},
+                       {"Retry-After": "60"})
+            return 429
         else:
-            self._json(401, {"error": why,
-                             "hint": "headers: X-Hemomemo-Key, X-Hemomemo-Ts "
-                                     "(unix sec), X-Hemomemo-Nonce (nayi har "
-                                     "request par) — key: /docs ya 'server key'"})
+            self._json(401, {"error": {"message": why, "type": "invalid_api_key",
+                                      "hint": "headers: X-Hemomemo-Key, X-Hemomemo-Ts "
+                                              "(unix sec), X-Hemomemo-Nonce (nayi har "
+                                              "request par) — key: /docs ya 'server key'"}})
+        return 401
+
+    def _chat_completions(self):
+        """🧩 OpenAI-compatible darwaza (/v1/chat/completions) — SIRF facade.
+        OpenCode/code-tools OpenAI-shape (messages[]) bhejte hain; hum wahi
+        L6-key-check karte hain (Bearer → X-Hemomemo-Key + nayi Ts/Nonce —
+        policy-or-rate bucket /v1/chat ka hi, koi naya khalja nahi) aur jawab
+        OpenAI-shape me lotate hain (stream bhi). Poora jawab LOCAL dimagh ka —
+        koi bahar-ki API/ak toliq nahi (user-qanoon)."""
+        try:
+            n = int(self.headers.get("Content-Length") or 0)
+        except ValueError:
+            n = 0
+        if n <= 0:
+            self._json(400, {"error": {"message":
+                "body khali — OpenAI-shape bhejo: {\"messages\":"
+                "[{\"role\":\"user\",\"content\":\"...\"}]}", "type": "req"}})
+            return 400
+        if n > MAX_BODY:
+            try:
+                _left = n
+                while _left > 0:
+                    _chunk = self.rfile.read(min(_left, 65536))
+                    if not _chunk:
+                        break
+                    _left -= len(_chunk)
+            except Exception:
+                pass
+            self._json(413, {"error": {"message": "body bohat bara (max 64KB)",
+                                       "type": "req"}})
+            return 413
+        body = self.rfile.read(n)
+        # L6: wahi /v1/chat policy — Bearer-key transfer + foran Ts/Nonce
+        auth = str(self.headers.get("Authorization") or "")
+        bearer = auth[7:].strip() if auth.strip().lower().startswith(
+            "bearer ") else ""
+        hdr = {k.lower(): v for k, v in self.headers.items()}
+        if not str(hdr.get("x-hemomemo-key") or "").strip():
+            hdr["x-hemomemo-key"] = bearer
+        if not str(hdr.get("x-hemomemo-key") or "").strip():
+            hdr["x-hemomemo-key"] = str(hdr.get("x-api-key") or "").strip()
+        import secrets as _sec
+        hdr["x-hemomemo-ts"] = str(int(time.time()))
+        hdr["x-hemomemo-nonce"] = _sec.token_hex(8)
+        try:
+            from security.guard import api_gate as _gate
+            ok, why = _gate(hdr, "/v1/chat", body.decode("utf-8", "ignore"))
+        except Exception as e:
+            ok, why = False, "L6 fail-closed: %s" % str(e)[:60]
+        if not ok:
+            if "rate-limit" in why:
+                self._json(429, {"error": {"message": why,
+                                           "type": "rate_limit_error"}})
+                return 429
+            self._json(401, {"error": {"message": why, "type": "invalid_api_key",
+                                       "hint": "hemomemo key (hemo...) Bearer "
+                                               "me ya /connect me dalo"}})
+            return 401
+        try:
+            req = json.loads(body.decode("utf-8", "ignore") or "{}")
+        except Exception:
+            self._json(400, {"error": {"message": "JSON ghalat (OpenAI-shape "
+                                       "chahiye)", "type": "req"}})
+            return 400
+        if not isinstance(req, dict):
+            self._json(400, {"error": {"message": "JSON object chahiye",
+                                       "type": "req"}})
+            return 400
+        raw = req.get("messages")
+        msgs = [m for m in raw if isinstance(m, dict)] if isinstance(
+            raw, list) else []
+        pairs = []
+        for m in msgs:
+            c = m.get("content")
+            if isinstance(c, list):
+                c = " ".join(x.get("text", "") for x in c
+                             if isinstance(x, dict) and isinstance(
+                                 x.get("text"), str))
+            if str(c or "").strip():
+                pairs.append((str(m.get("role") or "").lower(),
+                              str(c).strip()))
+        if not pairs:
+            self._json(400, {"error": {"message": "messages khali",
+                                       "type": "req"}})
+            return 400
+        # 🎯 DEEP-FIX: brain ko SIRF aakhri USER-message jaati hai.
+        # (Pehle OpenCode ka mota system-prompt + history sab jod kar ja raha
+        # tha — us ke andar "0-9"-jaisa pattern kar-wahan ka nonsense-cal-
+        # tham ja raha tha → har sawal ka ek-hi jawab "hisab: 0-9 = -9".
+        # Brain Q&A dimagh hai — agent ke system-instructions us ke qanoon se
+        # bahar hain (dimagh ko sirf banday ka asli sawal chahiye).
+        ut = [c for r, c in pairs if r == "user"]
+        prompt = (ut[-1][-1500:] if ut
+                  else "\n".join(c for r, c in pairs)[-1500:])
+        model = str(req.get("model") or "hemomemo-core")[:40]
+        try:
+            from server import accounts as _acc
+            _acc.bump(str(hdr.get("x-hemomemo-key") or ""))
+        except Exception:
+            pass
+        took = None
+        m = {}
+        try:
+            from model.understand import default_token_chat
+            _t0 = time.time()
+            text, m = default_token_chat().respond(prompt)
+            took = round(time.time() - _t0, 2)
+        except Exception:
+            try:
+                from model.generate import chat_once
+                text = chat_once(prompt)
+                if not isinstance(text, tuple):
+                    text = str(text)
+                else:
+                    text = str(text[0]) if text else ""
+            except Exception as e:
+                self._json(500, {"error": {"message": "chat fail: %s" %
+                                           str(e)[:80], "type": "server"}})
+                return 500
+        _id = "chatcmpl-hemo-%s" % _sec.token_hex(6)
+        _now = int(time.time())
+        ptok = max(1, len(prompt) // 4)
+        ctok = max(1, len(str(text)) // 4)                       # approx
+        if req.get("stream") and text:
+            # 🎯 OpenAI-spec stream shape (koi bhi official SDK ko error-na
+            # bina sambhaado): pehle delta {role:"assistant}, phir content,
+            # phir finish_reason:"stop" — aur SSE events: data: {...}\n\n x3
+            # + data: [DONE]\n\n
+            c1 = {"id": _id, "object": "chat.completion.chunk",
+                  "created": _now, "model": model,
+                  "choices": [{"index": 0, "delta": {"role": "assistant"},
+                               "finish_reason": None}]}
+            c2 = {"id": _id, "object": "chat.completion.chunk",
+                  "created": _now, "model": model,
+                  "choices": [{"index": 0, "delta": {"content": str(text)},
+                               "finish_reason": None}]}
+            c3 = {"id": _id, "object": "chat.completion.chunk",
+                  "created": _now, "model": model,
+                  "choices": [{"index": 0, "delta": {},
+                               "finish_reason": "stop"}]}
+            b = (b"data: " +
+                 json.dumps(c1, ensure_ascii=False).encode("utf-8") +
+                 b"\n\n" +
+                 b"data: " +
+                 json.dumps(c2, ensure_ascii=False).encode("utf-8") +
+                 b"\n\n" +
+                 b"data: " +
+                 json.dumps(c3, ensure_ascii=False).encode("utf-8") +
+                 b"\n\n" +
+                 b"data: [DONE]\n\n")
+            self.send_response(200)
+            self.send_header("Content-Type", "text/event-stream; charset=utf-8")
+            self.send_header("Cache-Control", "no-store")
+            self.send_header("Content-Length", str(len(b)))
+            self._cors()
+            self._sec()
+            self.end_headers()
+            try:
+                self.wfile.write(b)
+            except Exception:
+                pass
+            return 200
+        self._json(200, {"id": _id, "object": "chat.completion",
+                         "created": _now, "model": model,
+                         "choices": [{"index": 0,
+                                      "message": {"role": "assistant",
+                                                  "content": str(text)},
+                                      "finish_reason": "stop"}],
+                         "usage": {"prompt_tokens": ptok,
+                                   "completion_tokens": ctok,
+                                   "total_tokens": ptok + ctok},
+                         "hemomemo": {"api": API_NAME, "took_s": took,
+                                      "meta": m if isinstance(m, dict) else {}}})
+        return 200
 
     # ---------------------------------------------------------- GET/HEAD
     # 🌐 PUBLIC WEBSITE — sirf YE pakke static files (traversal-safe): koi
@@ -297,6 +498,37 @@ class HemomemoHandler(BaseHTTPRequestHandler):
             else:
                 self._json(200, _info_obj())
             return 200
+        if p == "/v1/models":
+            # OpenAI-shape model-list (OpenCode/tools) — wahi L6 key-policy;
+            # Bearer-key bhi manzoor (wahi shim ka qanoon — naya darwaza nahi)
+            auth = str(self.headers.get("Authorization") or "")
+            bearer = auth[7:].strip() if auth.strip().lower().startswith(
+                "bearer ") else ""
+            hdr = {k.lower(): v for k, v in self.headers.items()}
+            if not str(hdr.get("x-hemomemo-key") or "").strip():
+                hdr["x-hemomemo-key"] = bearer
+            if not str(hdr.get("x-hemomemo-key") or "").strip():
+                hdr["x-hemomemo-key"] = str(hdr.get("x-api-key") or "").strip()
+            hdr["x-hemomemo-ts"] = str(int(time.time()))
+            hdr["x-hemomemo-nonce"] = secrets.token_hex(8)
+            try:
+                from security.guard import api_gate as _gate
+                ok, why = _gate(hdr, "/v1/models", "")
+            except Exception as e:
+                ok, why = False, "L6 fail-closed: %s" % str(e)[:60]
+            if not ok:
+                if "rate-limit" in why:
+                    self._json(429, {"error": {"message": why,
+                                               "type": "rate_limit_error"}})
+                    return 429
+                self._json(401, {"error": {"message": why,
+                                           "type": "invalid_api_key"}})
+                return 401
+            _now = int(time.time())
+            self._json(200, {"object": "list", "data": [
+                {"id": "hemomemo-core", "object": "model", "created": _now,
+                 "owned_by": "HMHS (Hafiz Muhammed Huzaifa Shamim) — local"}]})
+            return 200
         if p.startswith("/v1/auth"):
             ok, why = self._l6_ok(b"")       # auth-darwaza bhi rate-guarded
             if not ok:
@@ -307,8 +539,14 @@ class HemomemoHandler(BaseHTTPRequestHandler):
             self._json(404, {"error": "anjaan auth-rasta — signup/signin "
                                       "(POST) ya /v1/auth/me (GET)"})
             return 404
-        if p == "/v1/chat":
-            self._json(405, {"error": "GET nahi — /v1/chat POST hai"},
+        if p in ("/v1/chat", "/v1/chat/completions"):
+            # 🎯 wrong-method (GET/HEAD) ko OpenAI-ish 405 + Allow: POST —
+            #     koi third-party client (browser fetch / SDK) error-na bina
+            #     proper status chuney → method-not-allowed, na 401/BLOCK
+            self._json(405, {"error": {"message": "Method not allowed — "
+                                       "/v1/chat POST hai (OpenAI-shape: "
+                                       "/v1/chat/completions POST)",
+                                     "type": "method_not_allowed"}},
                        {"Allow": "POST"})
             return 405
         ok, why = self._l6_ok(b"")
@@ -327,6 +565,8 @@ class HemomemoHandler(BaseHTTPRequestHandler):
         _alog("POST", p, code, round((time.time() - t0) * 1000))
 
     def _route_post(self, p):
+        if p == "/v1/chat/completions":
+            return self._chat_completions()
         if p != "/v1/chat" and not p.startswith("/v1/auth"):
             self._json(405, {"error": "sirf /v1/chat (POST) Hemomemo API v1"},
                        {"Allow": "POST"})
@@ -540,12 +780,15 @@ taaki wo Hemomemo ke LOCAL model ko use karen. Poora saith:
 <li><code>POST /v1/auth/signup</code> — body: <code>{"email": "…@gmail.com",
 "password": "…"}</code> → <b>aap ki APNI Hemomemo key</b> (copy karo!)</li>
 <li><code>POST /v1/auth/signin</code> — wahi email/password → wahi key wapas</li>
-<li><code>GET /v1/auth/me</code> — apni key se apni usage-dekho</li></ul>
+<li><code>GET /v1/auth/me</code> — apni key se apni usage-dekho</li>
+<li><code>POST /v1/chat/completions</code> — 🧩 OpenAI-shape facade (messages[]
+→ apna local dimagh; Bearer key chalega) — OpenCode/tools ke liye</li>
+<li><code>GET /v1/models</code> — OpenAI-shape model-list (hemomemo-core)</li></ul>
 <h3>Auth (L6-HMHZ)</h3>
 <p>Chat/info/health par headers: <code>X-Hemomemo-Key</code>,
 <code>X-Hemomemo-Ts</code> (unix sec), <code>X-Hemomemo-Nonce</code> (nayi har
 request par). <b>Har bande ki apni key</b> signup/signin se milti hai —
-accounts 100% local (kisi platform API ka istemaal nahi, Google OAuth bhi
+accounts 100%% local (kisi platform API ka istemaal nahi, Google OAuth bhi
 nahi — wo platform-API hai; Gmail/Email+password aapke PC par hi mehfooz).</p>
 <h3>Security layers</h3><ul>%s</ul>
 <p style="color:#666">%s</p>
