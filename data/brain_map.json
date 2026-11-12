@@ -1,0 +1,3063 @@
+{
+ "brain": "hemomemo-master",
+ "generated": "2026-11-12 20:31",
+ "note": "A-to-Z file-map: har file ka rasta + wazan (app/deep-link/qanoon)",
+ "sections": {
+  "root": [
+   {
+    "f": "-",
+    "kb": 1.3
+   },
+   {
+    "f": "24-7-CONNECT.bat",
+    "kb": 13.8
+   },
+   {
+    "f": "APPLY-ALL-CHANGES.bat",
+    "kb": 4.6
+   },
+   {
+    "f": "APPLY-TRAINING-EVERYWHERE.bat",
+    "kb": 0.4
+   },
+   {
+    "f": "AUTONOMOUS.md",
+    "kb": 6.6
+   },
+   {
+    "f": "brain_manifest.json",
+    "kb": 0.5
+   },
+   {
+    "f": "BUILD-WINDOWS.bat",
+    "kb": 1.1
+   },
+   {
+    "f": "COMPLETE-BUILD.bat",
+    "kb": 5.0
+   },
+   {
+    "f": "CREATE-SYMLINKS.bat",
+    "kb": 5.9
+   },
+   {
+    "f": "deep_research_video_analysis.py",
+    "kb": 12.9
+   },
+   {
+    "f": "evolve.py",
+    "kb": 0.6
+   },
+   {
+    "f": "FAME-STRATEGY.md",
+    "kb": 4.9
+   },
+   {
+    "f": "FINAL-SYNC.bat",
+    "kb": 6.1
+   },
+   {
+    "f": "GenOne-Ultra-Brain.bat",
+    "kb": 0.1
+   },
+   {
+    "f": "HEMOMEMO-API-KEY.bat",
+    "kb": 1.5
+   },
+   {
+    "f": "Hemomemo-GameBot.spec",
+    "kb": 1.4
+   },
+   {
+    "f": "Hemomemo-Ultra-Brain.spec",
+    "kb": 1.2
+   },
+   {
+    "f": "hemomemo_ultra_latest.zip",
+    "kb": 134087.4
+   },
+   {
+    "f": "hmhs-autonomous-upgrade.json",
+    "kb": 32686.6
+   },
+   {
+    "f": "LICENSE",
+    "kb": 1.1
+   },
+   {
+    "f": "netlify.toml",
+    "kb": 0.1
+   },
+   {
+    "f": "owner_data.txt",
+    "kb": 1.5
+   },
+   {
+    "f": "README.md",
+    "kb": 13.8
+   },
+   {
+    "f": "requirements.txt",
+    "kb": 0.0
+   },
+   {
+    "f": "run.py",
+    "kb": 6.8
+   },
+   {
+    "f": "simulate.py",
+    "kb": 1.3
+   },
+   {
+    "f": "START-3H-TRAINING.bat",
+    "kb": 0.4
+   },
+   {
+    "f": "START-9M-TRAINER.bat",
+    "kb": 0.6
+   },
+   {
+    "f": "START-HEMOMEMO.bat",
+    "kb": 1.0
+   },
+   {
+    "f": "START-HEMOMO-LAN.bat",
+    "kb": 0.8
+   },
+   {
+    "f": "STOP-HEMOMEMO.bat",
+    "kb": 1.8
+   },
+   {
+    "f": "SYNCHRONIZE-ALL.bat",
+    "kb": 8.3
+   },
+   {
+    "f": "test_frontolobe_chat.py",
+    "kb": 1.7
+   },
+   {
+    "f": "ULTRA_REALISTIC_MOTION_VIDEO_SYSTEM.md",
+    "kb": 6.9
+   },
+   {
+    "f": "ultra_realistic_video_analysis.json",
+    "kb": 6.5
+   },
+   {
+    "f": "update_brain.ps1",
+    "kb": 3.3
+   },
+   {
+    "f": "_api_ping_test.py",
+    "kb": 1.1
+   },
+   {
+    "f": "_apply-at-logon.vbs",
+    "kb": 0.3
+   },
+   {
+    "f": "_APPLY-NOW.bat",
+    "kb": 0.6
+   },
+   {
+    "f": "_apply_training_everywhere.py",
+    "kb": 6.7
+   },
+   {
+    "f": "_ask_alien.py",
+    "kb": 0.9
+   },
+   {
+    "f": "_brainacademy.pid.txt",
+    "kb": 0.0
+   },
+   {
+    "f": "_brainacademy_2h.log",
+    "kb": 0.6
+   },
+   {
+    "f": "_brainacademy_2h.py",
+    "kb": 8.3
+   },
+   {
+    "f": "_brainacademy_cmdctrl.json",
+    "kb": 0.9
+   },
+   {
+    "f": "_brainacademy_cmdctrl.log",
+    "kb": 0.5
+   },
+   {
+    "f": "_brainacademy_codevid.json",
+    "kb": 1.0
+   },
+   {
+    "f": "_brainacademy_codevid.log",
+    "kb": 0.5
+   },
+   {
+    "f": "_brainacademy_dual.log",
+    "kb": 1.0
+   },
+   {
+    "f": "_brainacademy_dual.py",
+    "kb": 8.4
+   },
+   {
+    "f": "_brainacademy_dual_report.json",
+    "kb": 2.6
+   },
+   {
+    "f": "_brainacademy_united.json",
+    "kb": 1.0
+   },
+   {
+    "f": "_brainacademy_united.log",
+    "kb": 0.4
+   },
+   {
+    "f": "_brain_publish.ps1",
+    "kb": 4.1
+   },
+   {
+    "f": "_build_knowledge.py",
+    "kb": 81.3
+   },
+   {
+    "f": "_chain_all.ps1",
+    "kb": 2.3
+   },
+   {
+    "f": "_check_mp4.py",
+    "kb": 0.2
+   },
+   {
+    "f": "_check_probe.py",
+    "kb": 0.3
+   },
+   {
+    "f": "_clean.py",
+    "kb": 1.3
+   },
+   {
+    "f": "_comprehensive_training.json",
+    "kb": 1.0
+   },
+   {
+    "f": "_comprehensive_training.log",
+    "kb": 2.6
+   },
+   {
+    "f": "_corpusaudit.py",
+    "kb": 0.7
+   },
+   {
+    "f": "_debug_probe.py",
+    "kb": 0.4
+   },
+   {
+    "f": "_deepcheck.py",
+    "kb": 4.4
+   },
+   {
+    "f": "_demos_v3.py",
+    "kb": 0.8
+   },
+   {
+    "f": "_demo_frames.py",
+    "kb": 0.5
+   },
+   {
+    "f": "_dump_fails.py",
+    "kb": 0.7
+   },
+   {
+    "f": "_frozenfix.py",
+    "kb": 6.8
+   },
+   {
+    "f": "_gamesdata.py",
+    "kb": 9.9
+   },
+   {
+    "f": "_gh.ps1",
+    "kb": 6.0
+   },
+   {
+    "f": "_ghrename.ps1",
+    "kb": 0.9
+   },
+   {
+    "f": "_GO_TRAIN",
+    "kb": 0.0
+   },
+   {
+    "f": "_l3fix.py",
+    "kb": 0.6
+   },
+   {
+    "f": "_l3off.py",
+    "kb": 0.6
+   },
+   {
+    "f": "_l6_probe.py",
+    "kb": 1.0
+   },
+   {
+    "f": "_livecheck.py",
+    "kb": 4.0
+   },
+   {
+    "f": "_livedata.py",
+    "kb": 10.2
+   },
+   {
+    "f": "_netlify_deploy.ps1",
+    "kb": 1.1
+   },
+   {
+    "f": "_ov_probe.py",
+    "kb": 2.0
+   },
+   {
+    "f": "_owner_key_grant.py",
+    "kb": 1.5
+   },
+   {
+    "f": "_package_build.log",
+    "kb": 0.5
+   },
+   {
+    "f": "_patch_opencode_ctx.py",
+    "kb": 1.6
+   },
+   {
+    "f": "_probe_fix.py",
+    "kb": 1.3
+   },
+   {
+    "f": "_probe_oob.py",
+    "kb": 1.3
+   },
+   {
+    "f": "_probe_qa.py",
+    "kb": 0.5
+   },
+   {
+    "f": "_probe_real_oob.py",
+    "kb": 1.0
+   },
+   {
+    "f": "_probe_transition.py",
+    "kb": 1.2
+   },
+   {
+    "f": "_publish_final.ps1",
+    "kb": 1.9
+   },
+   {
+    "f": "_push_agent.ps1",
+    "kb": 7.5
+   },
+   {
+    "f": "_push_keyfix.ps1",
+    "kb": 2.3
+   },
+   {
+    "f": "_push_topics.ps1",
+    "kb": 0.9
+   },
+   {
+    "f": "_push_upgrade.ps1",
+    "kb": 3.3
+   },
+   {
+    "f": "_qa1000.py",
+    "kb": 21.0
+   },
+   {
+    "f": "_qa1000_results.txt",
+    "kb": 2.5
+   },
+   {
+    "f": "_qa20_api.py",
+    "kb": 5.1
+   },
+   {
+    "f": "_qa500.py",
+    "kb": 12.0
+   },
+   {
+    "f": "_qa500_hard.py",
+    "kb": 10.9
+   },
+   {
+    "f": "_qa500_results.txt",
+    "kb": 10.4
+   },
+   {
+    "f": "_qa700_hard.py",
+    "kb": 8.9
+   },
+   {
+    "f": "_qa_8790.py",
+    "kb": 2.0
+   },
+   {
+    "f": "_qa_api_light.py",
+    "kb": 5.1
+   },
+   {
+    "f": "_qa_debug1.py",
+    "kb": 1.1
+   },
+   {
+    "f": "_qa_debug2.py",
+    "kb": 1.0
+   },
+   {
+    "f": "_qa_video.py",
+    "kb": 7.4
+   },
+   {
+    "f": "_qa_video_diag.py",
+    "kb": 1.4
+   },
+   {
+    "f": "_qa_video_out.log",
+    "kb": 1.1
+   },
+   {
+    "f": "_quick_train_brain.py",
+    "kb": 4.6
+   },
+   {
+    "f": "_rebuild_final.ps1",
+    "kb": 0.7
+   },
+   {
+    "f": "_rebuild_zip.py",
+    "kb": 1.5
+   },
+   {
+    "f": "_restart_games.ps1",
+    "kb": 0.7
+   },
+   {
+    "f": "_set_owner_key_config.py",
+    "kb": 0.9
+   },
+   {
+    "f": "_site_root.zip",
+    "kb": 10.7
+   },
+   {
+    "f": "_smoke_anim.py",
+    "kb": 0.5
+   },
+   {
+    "f": "_sync_gh_files.ps1",
+    "kb": 1.1
+   },
+   {
+    "f": "_test_anim.py",
+    "kb": 0.6
+   },
+   {
+    "f": "_test_brain.py",
+    "kb": 1.6
+   },
+   {
+    "f": "_test_lanczos_fix.py",
+    "kb": 0.4
+   },
+   {
+    "f": "_test_mc_bot.py",
+    "kb": 0.6
+   },
+   {
+    "f": "_test_shim.py",
+    "kb": 2.4
+   },
+   {
+    "f": "_train2h.py",
+    "kb": 6.7
+   },
+   {
+    "f": "_trainer_stdout.log",
+    "kb": 0.5
+   },
+   {
+    "f": "_trainer_topic.py",
+    "kb": 4.6
+   },
+   {
+    "f": "_train_brain_15min.py",
+    "kb": 8.3
+   },
+   {
+    "f": "_train_deep5h.py",
+    "kb": 9.9
+   },
+   {
+    "f": "_upload_zip.ps1",
+    "kb": 0.7
+   },
+   {
+    "f": "_vidresearch.json",
+    "kb": 0.8
+   },
+   {
+    "f": "_vidresearch.log",
+    "kb": 0.9
+   },
+   {
+    "f": "_watch_cod.ps1",
+    "kb": 0.8
+   }
+  ],
+  ".netlify": [
+   {
+    "f": ".netlify/netlify.toml",
+    "kb": 0.3
+   }
+  ],
+  "agent": [
+   {
+    "f": "agent/animation.py",
+    "kb": 4.5
+   },
+   {
+    "f": "agent/browser_cloud.py",
+    "kb": 7.4
+   },
+   {
+    "f": "agent/console_app.py",
+    "kb": 15.6
+   },
+   {
+    "f": "agent/mc_bot.py",
+    "kb": 17.2
+   },
+   {
+    "f": "agent/modes.py",
+    "kb": 4.4
+   },
+   {
+    "f": "agent/orders.py",
+    "kb": 3.2
+   },
+   {
+    "f": "agent/pc_eye.py",
+    "kb": 10.8
+   },
+   {
+    "f": "agent/tasks.py",
+    "kb": 6.9
+   },
+   {
+    "f": "agent/ultra_realistic_motion_video.py",
+    "kb": 18.6
+   },
+   {
+    "f": "agent/ultra_realistic_motion_video_simple.py",
+    "kb": 8.2
+   },
+   {
+    "f": "agent/video_gen.py",
+    "kb": 6.1
+   },
+   {
+    "f": "agent/video_gen_restored.py",
+    "kb": 0.4
+   },
+   {
+    "f": "agent/__init__.py",
+    "kb": 0.3
+   }
+  ],
+  "app": [
+   {
+    "f": "app/genone.ico",
+    "kb": 21.0
+   },
+   {
+    "f": "app/genone.png",
+    "kb": 2.0
+   },
+   {
+    "f": "app/genone_app.py",
+    "kb": 99.2
+   },
+   {
+    "f": "app/genone_preview.png",
+    "kb": 2.7
+   },
+   {
+    "f": "app/make_icon.py",
+    "kb": 1.3
+   },
+   {
+    "f": "app/_app_log.txt",
+    "kb": 11.1
+   }
+  ],
+  "brain": [
+   {
+    "f": "brain/brain.py",
+    "kb": 4.5
+   },
+   {
+    "f": "brain/config.py",
+    "kb": 1.9
+   },
+   {
+    "f": "brain/electric.py",
+    "kb": 2.1
+   },
+   {
+    "f": "brain/glia.py",
+    "kb": 3.4
+   },
+   {
+    "f": "brain/motor.py",
+    "kb": 1.8
+   },
+   {
+    "f": "brain/neurons.py",
+    "kb": 5.8
+   },
+   {
+    "f": "brain/sensory.py",
+    "kb": 5.2
+   },
+   {
+    "f": "brain/synapses.py",
+    "kb": 5.7
+   },
+   {
+    "f": "brain/__init__.py",
+    "kb": 0.0
+   }
+  ],
+  "core": [
+   {
+    "f": "core/best_dna.npz",
+    "kb": 81.3
+   },
+   {
+    "f": "core/brain_live.npz",
+    "kb": 9142.8
+   },
+   {
+    "f": "core/heart.py",
+    "kb": 11.1
+   },
+   {
+    "f": "core/hub.py",
+    "kb": 20.0
+   },
+   {
+    "f": "core/offline_oath.py",
+    "kb": 3.3
+   },
+   {
+    "f": "core/owner.py",
+    "kb": 2.9
+   },
+   {
+    "f": "core/state.py",
+    "kb": 1.5
+   },
+   {
+    "f": "core/__init__.py",
+    "kb": 0.0
+   }
+  ],
+  "data": [
+   {
+    "f": "data/brain_map.json",
+    "kb": 59.7
+   },
+   {
+    "f": "data/brain_version.json",
+    "kb": 0.2
+   },
+   {
+    "f": "data/bukhari_master.json",
+    "kb": 0.2
+   },
+   {
+    "f": "data/chat_history_app.json",
+    "kb": 0.5
+   },
+   {
+    "f": "data/chat_learned_memory.json",
+    "kb": 32.1
+   },
+   {
+    "f": "data/corpus.txt",
+    "kb": 2.1
+   },
+   {
+    "f": "data/flow_state.json",
+    "kb": 0.1
+   },
+   {
+    "f": "data/genone_api.json",
+    "kb": 0.2
+   },
+   {
+    "f": "data/genone_api.log",
+    "kb": 9.0
+   },
+   {
+    "f": "data/genone_users.json",
+    "kb": 1.1
+   },
+   {
+    "f": "data/hadith_master.json",
+    "kb": 1.1
+   },
+   {
+    "f": "data/heart_state.json",
+    "kb": 0.2
+   },
+   {
+    "f": "data/meta_thoughts.jsonl",
+    "kb": 90.0
+   },
+   {
+    "f": "data/qa_memo.pkl",
+    "kb": 17056.8
+   },
+   {
+    "f": "data/quran_master.json",
+    "kb": 0.2
+   },
+   {
+    "f": "data/security_manifest.json",
+    "kb": 0.8
+   },
+   {
+    "f": "data/_apply_chain.log",
+    "kb": 2.1
+   },
+   {
+    "f": "data/_apply_chain2.log",
+    "kb": 0.9
+   },
+   {
+    "f": "data/_apply_chain3.log",
+    "kb": 27.0
+   },
+   {
+    "f": "data/_apply_training.log",
+    "kb": 8.3
+   },
+   {
+    "f": "data/_apply_training_summary.json",
+    "kb": 0.2
+   },
+   {
+    "f": "data/_resume_notes.txt",
+    "kb": 1.4
+   },
+   {
+    "f": "data/_trainer_5h.log",
+    "kb": 2.6
+   },
+   {
+    "f": "data/_trainer_9m.log",
+    "kb": 2.8
+   },
+   {
+    "f": "data/_trainer_pid.json",
+    "kb": 0.1
+   },
+   {
+    "f": "data/_train_err.log",
+    "kb": 0.0
+   },
+   {
+    "f": "data/_train_out.log",
+    "kb": 2.9
+   },
+   {
+    "f": "data/backups/security_policy/api_policy_20261109_123426.hmhz",
+    "kb": 0.5
+   },
+   {
+    "f": "data/backups/security_policy/api_policy_20261109_123426.hmhzsrc",
+    "kb": 2.0
+   },
+   {
+    "f": "data/corpus_big/agent_orders.txt",
+    "kb": 1.4
+   },
+   {
+    "f": "data/corpus_big/coding_deep_master.txt",
+    "kb": 22.0
+   },
+   {
+    "f": "data/corpus_big/coding_ilm.txt",
+    "kb": 33.1
+   },
+   {
+    "f": "data/corpus_big/coding_knowledge.txt",
+    "kb": 13.3
+   },
+   {
+    "f": "data/corpus_big/crawl_ilm.txt",
+    "kb": 21.2
+   },
+   {
+    "f": "data/corpus_big/dialogues_roman_urdu.txt",
+    "kb": 11.4
+   },
+   {
+    "f": "data/corpus_big/dialogues_roman_urdu_v2.txt",
+    "kb": 7.5
+   },
+   {
+    "f": "data/corpus_big/english_basics.txt",
+    "kb": 3.8
+   },
+   {
+    "f": "data/corpus_big/english_basics_v2.txt",
+    "kb": 3.3
+   },
+   {
+    "f": "data/corpus_big/formulas_master.txt",
+    "kb": 86.5
+   },
+   {
+    "f": "data/corpus_big/gamebot_tasks.txt",
+    "kb": 6.8
+   },
+   {
+    "f": "data/corpus_big/games_knowledge.txt",
+    "kb": 52.8
+   },
+   {
+    "f": "data/corpus_big/hadith_abudawud_english_sahih.txt",
+    "kb": 1727.1
+   },
+   {
+    "f": "data/corpus_big/hadith_bukhari_english_sahih.txt",
+    "kb": 4506.4
+   },
+   {
+    "f": "data/corpus_big/hadith_ibnmajah_english_sahih.txt",
+    "kb": 1163.2
+   },
+   {
+    "f": "data/corpus_big/hadith_malik_english_sahih.txt",
+    "kb": 1041.4
+   },
+   {
+    "f": "data/corpus_big/hadith_muslim_english_sahih.txt",
+    "kb": 3625.2
+   },
+   {
+    "f": "data/corpus_big/hadith_nasai_english_sahih.txt",
+    "kb": 2141.9
+   },
+   {
+    "f": "data/corpus_big/hadith_tirmidhi_english_sahih.txt",
+    "kb": 1263.1
+   },
+   {
+    "f": "data/corpus_big/harvest_ilm.txt",
+    "kb": 54.2
+   },
+   {
+    "f": "data/corpus_big/harvest_live.txt",
+    "kb": 541.9
+   },
+   {
+    "f": "data/corpus_big/harvest_quran.txt",
+    "kb": 800.8
+   },
+   {
+    "f": "data/corpus_big/ilm_akhlaq.txt",
+    "kb": 1.9
+   },
+   {
+    "f": "data/corpus_big/knowledge_ilm_deen.txt",
+    "kb": 2.0
+   },
+   {
+    "f": "data/corpus_big/learned_chat.txt",
+    "kb": 94.5
+   },
+   {
+    "f": "data/corpus_big/lifecycle_master.txt",
+    "kb": 17.9
+   },
+   {
+    "f": "data/corpus_big/liveresearch.txt",
+    "kb": 121.2
+   },
+   {
+    "f": "data/corpus_big/sacred_facts.txt",
+    "kb": 50.3
+   },
+   {
+    "f": "data/corpus_big/trainer_comprehensive_2h.txt",
+    "kb": 11.0
+   },
+   {
+    "f": "data/corpus_big/trainer_knowledge_2h.txt",
+    "kb": 25.9
+   },
+   {
+    "f": "data/corpus_big/trainer_knowledge_cmdshell.txt",
+    "kb": 118.7
+   },
+   {
+    "f": "data/corpus_big/trainer_lessons_coding_video_text.txt",
+    "kb": 4.2
+   },
+   {
+    "f": "data/corpus_big/trainer_research_vidai.txt",
+    "kb": 5.2
+   },
+   {
+    "f": "data/memory/episodic.jsonl",
+    "kb": 56.6
+   },
+   {
+    "f": "data/videos/hemomemo_100174.mp4",
+    "kb": 2998.7
+   },
+   {
+    "f": "data/videos/hemomemo_139462.mp4",
+    "kb": 129097.6
+   },
+   {
+    "f": "data/videos/hemomemo_16365.mp4",
+    "kb": 2036.4
+   },
+   {
+    "f": "data/videos/hemomemo_21710.mp4",
+    "kb": 1290.3
+   },
+   {
+    "f": "data/videos/hemomemo_227341.mp4",
+    "kb": 2356.3
+   },
+   {
+    "f": "data/videos/hemomemo_230970.mp4",
+    "kb": 770.3
+   },
+   {
+    "f": "data/videos/hemomemo_233001.mp4",
+    "kb": 1547.4
+   },
+   {
+    "f": "data/videos/hemomemo_24360.mp4",
+    "kb": 681.6
+   },
+   {
+    "f": "data/videos/hemomemo_276174.mp4",
+    "kb": 3803.1
+   },
+   {
+    "f": "data/videos/hemomemo_279459.mp4",
+    "kb": 15015.0
+   },
+   {
+    "f": "data/videos/hemomemo_288230.mp4",
+    "kb": 8088.0
+   },
+   {
+    "f": "data/videos/hemomemo_30928.mp4",
+    "kb": 1290.3
+   },
+   {
+    "f": "data/videos/hemomemo_313824.mp4",
+    "kb": 15401.0
+   },
+   {
+    "f": "data/videos/hemomemo_313921.mp4",
+    "kb": 1771.9
+   },
+   {
+    "f": "data/videos/hemomemo_32545.mp4",
+    "kb": 864.4
+   },
+   {
+    "f": "data/videos/hemomemo_33585.mp4",
+    "kb": 1336.5
+   },
+   {
+    "f": "data/videos/hemomemo_35429.mp4",
+    "kb": 16641.8
+   },
+   {
+    "f": "data/videos/hemomemo_386958.mp4",
+    "kb": 3619.1
+   },
+   {
+    "f": "data/videos/hemomemo_394800.mp4",
+    "kb": 1371.6
+   },
+   {
+    "f": "data/videos/hemomemo_408881.mp4",
+    "kb": 1070.7
+   },
+   {
+    "f": "data/videos/hemomemo_41660.mp4",
+    "kb": 681.6
+   },
+   {
+    "f": "data/videos/hemomemo_44431.mp4",
+    "kb": 1336.5
+   },
+   {
+    "f": "data/videos/hemomemo_462656.mp4",
+    "kb": 2205.2
+   },
+   {
+    "f": "data/videos/hemomemo_467797.mp4",
+    "kb": 657.5
+   },
+   {
+    "f": "data/videos/hemomemo_46826.mp4",
+    "kb": 1336.5
+   },
+   {
+    "f": "data/videos/hemomemo_48783.mp4",
+    "kb": 1336.5
+   },
+   {
+    "f": "data/videos/hemomemo_54499.mp4",
+    "kb": 681.6
+   },
+   {
+    "f": "data/videos/hemomemo_562963.mp4",
+    "kb": 12353.0
+   },
+   {
+    "f": "data/videos/hemomemo_56324.mp4",
+    "kb": 2036.4
+   },
+   {
+    "f": "data/videos/hemomemo_58624.mp4",
+    "kb": 681.6
+   },
+   {
+    "f": "data/videos/hemomemo_599513.mp4",
+    "kb": 3010.8
+   },
+   {
+    "f": "data/videos/hemomemo_602386.mp4",
+    "kb": 0.3
+   },
+   {
+    "f": "data/videos/hemomemo_618457.mp4",
+    "kb": 2688.6
+   },
+   {
+    "f": "data/videos/hemomemo_619379.mp4",
+    "kb": 1334.4
+   },
+   {
+    "f": "data/videos/hemomemo_62674.mp4",
+    "kb": 864.4
+   },
+   {
+    "f": "data/videos/hemomemo_63162.mp4",
+    "kb": 2036.4
+   },
+   {
+    "f": "data/videos/hemomemo_648783.mp4",
+    "kb": 1167.5
+   },
+   {
+    "f": "data/videos/hemomemo_664770.mp4",
+    "kb": 1230.6
+   },
+   {
+    "f": "data/videos/hemomemo_774389.mp4",
+    "kb": 5368.1
+   },
+   {
+    "f": "data/videos/hemomemo_78837.mp4",
+    "kb": 448.4
+   },
+   {
+    "f": "data/videos/hemomemo_798263.mp4",
+    "kb": 1867.9
+   },
+   {
+    "f": "data/videos/hemomemo_821845.mp4",
+    "kb": 3844.7
+   },
+   {
+    "f": "data/videos/hemomemo_82780.mp4",
+    "kb": 1145.2
+   },
+   {
+    "f": "data/videos/hemomemo_842322.mp4",
+    "kb": 9114.4
+   },
+   {
+    "f": "data/videos/hemomemo_89514.mp4",
+    "kb": 408.5
+   },
+   {
+    "f": "data/videos/hemomemo_89593.mp4",
+    "kb": 408.5
+   },
+   {
+    "f": "data/videos/hemomemo_976240.mp4",
+    "kb": 20056.0
+   },
+   {
+    "f": "data/videos/hemomemo_984219.mp4",
+    "kb": 331.9
+   },
+   {
+    "f": "data/videos/hemomemo_still_preview.png",
+    "kb": 5.2
+   },
+   {
+    "f": "data/videos/hemomemo_ultra_max_130706.mp4",
+    "kb": 0.0
+   },
+   {
+    "f": "data/videos/hemomemo_ultra_max_168201.mp4",
+    "kb": 15.2
+   },
+   {
+    "f": "data/videos/hemomemo_ultra_max_190924.mp4",
+    "kb": 7.9
+   },
+   {
+    "f": "data/videos/hemomemo_ultra_max_199524.mp4",
+    "kb": 5.9
+   },
+   {
+    "f": "data/videos/hemomemo_ultra_max_307087.mp4",
+    "kb": 5.3
+   },
+   {
+    "f": "data/videos/hemomemo_ultra_max_530771.mp4",
+    "kb": 8.4
+   },
+   {
+    "f": "data/videos/hemomemo_ultra_max_677151.mp4",
+    "kb": 0.0
+   },
+   {
+    "f": "data/videos/hemomemo_ultra_max_958771.mp4",
+    "kb": 9.8
+   },
+   {
+    "f": "data/videos/ultra_realistic_motion_1794231771.mp4",
+    "kb": 22.7
+   },
+   {
+    "f": "data/videos/ultra_realistic_motion_1794231999.mp4",
+    "kb": 22.7
+   },
+   {
+    "f": "data/videos/ultra_realistic_motion_1794232035.mp4",
+    "kb": 22.7
+   },
+   {
+    "f": "data/videos/ultra_realistic_motion_1794232406.mp4",
+    "kb": 22.7
+   },
+   {
+    "f": "data/videos/_ab_both_off.png",
+    "kb": 754.5
+   },
+   {
+    "f": "data/videos/_ab_slope_off.png",
+    "kb": 764.0
+   },
+   {
+    "f": "data/videos/_ab_tex_off.png",
+    "kb": 780.5
+   },
+   {
+    "f": "data/videos/_demo_golden.png",
+    "kb": 378.2
+   },
+   {
+    "f": "data/videos/_demo_neon.png",
+    "kb": 851.1
+   },
+   {
+    "f": "data/videos/_demo_storm.png",
+    "kb": 826.2
+   },
+   {
+    "f": "data/videos/_ov_base.png",
+    "kb": 785.0
+   },
+   {
+    "f": "data/videos/_ov_birds.png",
+    "kb": 795.2
+   },
+   {
+    "f": "data/videos/_ov_night_rain.png",
+    "kb": 1137.7
+   },
+   {
+    "f": "data/videos/_ov_snow.png",
+    "kb": 930.8
+   },
+   {
+    "f": "data/videos/_probe_bg.png",
+    "kb": 44.6
+   },
+   {
+    "f": "data/videos/_user_frame.png",
+    "kb": 73.7
+   },
+   {
+    "f": "data/videos/_v1_frame.png",
+    "kb": 101.2
+   },
+   {
+    "f": "data/videos/_v3_bench.png",
+    "kb": 792.9
+   },
+   {
+    "f": "data/videos/_v3_golden.png",
+    "kb": 777.5
+   },
+   {
+    "f": "data/videos/_v3_neon.png",
+    "kb": 832.9
+   },
+   {
+    "f": "data/videos/_v3_ocean.png",
+    "kb": 755.0
+   },
+   {
+    "f": "data/videos/_v3_storm.png",
+    "kb": 1106.6
+   },
+   {
+    "f": "data/videos/_v3_winter.png",
+    "kb": 893.8
+   }
+  ],
+  "dist": [
+   {
+    "f": "dist/Hemomemo-GameBot.exe",
+    "kb": 26045.9
+   },
+   {
+    "f": "dist/Hemomemo-Ultra-Brain.exe",
+    "kb": 83477.3
+   }
+  ],
+  "evolution": [
+   {
+    "f": "evolution/genetic.py",
+    "kb": 5.2
+   },
+   {
+    "f": "evolution/__init__.py",
+    "kb": 0.0
+   }
+  ],
+  "knowledge": [
+   {
+    "f": "knowledge/hadith_guard.py",
+    "kb": 8.0
+   },
+   {
+    "f": "knowledge/quran_guard.py",
+    "kb": 4.8
+   },
+   {
+    "f": "knowledge/README.md",
+    "kb": 2.4
+   },
+   {
+    "f": "knowledge/hadith/ara-abudawud.min.json",
+    "kb": 6467.9
+   },
+   {
+    "f": "knowledge/hadith/ara-bukhari.min.json",
+    "kb": 9189.1
+   },
+   {
+    "f": "knowledge/hadith/ara-ibnmajah.min.json",
+    "kb": 4855.2
+   },
+   {
+    "f": "knowledge/hadith/ara-malik.min.json",
+    "kb": 1961.5
+   },
+   {
+    "f": "knowledge/hadith/ara-muslim.min.json",
+    "kb": 8134.0
+   },
+   {
+    "f": "knowledge/hadith/ara-nasai.min.json",
+    "kb": 6296.1
+   },
+   {
+    "f": "knowledge/hadith/ara-tirmidhi.min.json",
+    "kb": 6429.4
+   },
+   {
+    "f": "knowledge/hadith/eng-abudawud.min.json",
+    "kb": 3504.9
+   },
+   {
+    "f": "knowledge/hadith/eng-bukhari.min.json",
+    "kb": 4708.3
+   },
+   {
+    "f": "knowledge/hadith/eng-ibnmajah.min.json",
+    "kb": 2568.1
+   },
+   {
+    "f": "knowledge/hadith/eng-malik.min.json",
+    "kb": 1438.7
+   },
+   {
+    "f": "knowledge/hadith/eng-muslim.min.json",
+    "kb": 3847.9
+   },
+   {
+    "f": "knowledge/hadith/eng-nasai.min.json",
+    "kb": 3250.8
+   },
+   {
+    "f": "knowledge/hadith/eng-tirmidhi.min.json",
+    "kb": 2527.0
+   },
+   {
+    "f": "knowledge/hadith/hadith_index.json",
+    "kb": 2.7
+   },
+   {
+    "f": "knowledge/hadith/urd-abudawud.min.json",
+    "kb": 5221.4
+   },
+   {
+    "f": "knowledge/hadith/urd-bukhari.min.json",
+    "kb": 9360.2
+   },
+   {
+    "f": "knowledge/hadith/urd-ibnmajah.min.json",
+    "kb": 3643.7
+   },
+   {
+    "f": "knowledge/hadith/urd-malik.min.json",
+    "kb": 1323.5
+   },
+   {
+    "f": "knowledge/hadith/urd-muslim.min.json",
+    "kb": 7130.5
+   },
+   {
+    "f": "knowledge/hadith/urd-nasai.min.json",
+    "kb": 3874.9
+   },
+   {
+    "f": "knowledge/hadith/urd-tirmidhi.min.json",
+    "kb": 5092.4
+   },
+   {
+    "f": "knowledge/quran/editions_index.json",
+    "kb": 54.1
+   },
+   {
+    "f": "knowledge/quran/english_saheeh.pdf",
+    "kb": 10151.1
+   },
+   {
+    "f": "knowledge/quran/translations/aar-sheikhmahmoudab.min.json",
+    "kb": 1331.5
+   },
+   {
+    "f": "knowledge/quran/translations/ace-tgkhmahjiddinju.min.json",
+    "kb": 1259.3
+   },
+   {
+    "f": "knowledge/quran/translations/afr-imammabaker.min.json",
+    "kb": 1048.7
+   },
+   {
+    "f": "knowledge/quran/translations/amh-muhammedsadiqan.min.json",
+    "kb": 1487.8
+   },
+   {
+    "f": "knowledge/quran/translations/ara-jalaladdinalmah.min.json",
+    "kb": 2069.4
+   },
+   {
+    "f": "knowledge/quran/translations/ara-kingfahadquranc.min.json",
+    "kb": 2648.4
+   },
+   {
+    "f": "knowledge/quran/translations/ara-quranacademy.min.json",
+    "kb": 1535.1
+   },
+   {
+    "f": "knowledge/quran/translations/ara-quranbazzi.min.json",
+    "kb": 1564.3
+   },
+   {
+    "f": "knowledge/quran/translations/ara-qurandoori.min.json",
+    "kb": 1603.3
+   },
+   {
+    "f": "knowledge/quran/translations/ara-qurandoorinonun.min.json",
+    "kb": 1560.7
+   },
+   {
+    "f": "knowledge/quran/translations/ara-quranindopak.min.json",
+    "kb": 1556.3
+   },
+   {
+    "f": "knowledge/quran/translations/ara-qurankhaledhosn.min.json",
+    "kb": 1551.0
+   },
+   {
+    "f": "knowledge/quran/translations/ara-qurannastaleeqn.min.json",
+    "kb": 1580.7
+   },
+   {
+    "f": "knowledge/quran/translations/ara-quranphoneticst.min.json",
+    "kb": 888.1
+   },
+   {
+    "f": "knowledge/quran/translations/ara-quranqaloon.min.json",
+    "kb": 1610.7
+   },
+   {
+    "f": "knowledge/quran/translations/ara-quranqumbul.min.json",
+    "kb": 1564.4
+   },
+   {
+    "f": "knowledge/quran/translations/ara-quranshouba.min.json",
+    "kb": 1556.3
+   },
+   {
+    "f": "knowledge/quran/translations/ara-quransimple.min.json",
+    "kb": 1501.9
+   },
+   {
+    "f": "knowledge/quran/translations/ara-quransoosi.min.json",
+    "kb": 1592.4
+   },
+   {
+    "f": "knowledge/quran/translations/ara-quransoosinonun.min.json",
+    "kb": 1551.9
+   },
+   {
+    "f": "knowledge/quran/translations/ara-quranspelled.min.json",
+    "kb": 1474.1
+   },
+   {
+    "f": "knowledge/quran/translations/ara-quranspellednod.min.json",
+    "kb": 933.8
+   },
+   {
+    "f": "knowledge/quran/translations/ara-quranuthmanienc.min.json",
+    "kb": 1535.1
+   },
+   {
+    "f": "knowledge/quran/translations/ara-quranuthmanihaf.min.json",
+    "kb": 1556.2
+   },
+   {
+    "f": "knowledge/quran/translations/ara-quranuthmanihaf1.min.json",
+    "kb": 925.8
+   },
+   {
+    "f": "knowledge/quran/translations/ara-quranwarsh.min.json",
+    "kb": 1592.3
+   },
+   {
+    "f": "knowledge/quran/translations/ara-sirajtafseer.min.json",
+    "kb": 2047.6
+   },
+   {
+    "f": "knowledge/quran/translations/ara-sirajtafseernod.min.json",
+    "kb": 1241.0
+   },
+   {
+    "f": "knowledge/quran/translations/asm-shaykhrafeequli.min.json",
+    "kb": 2502.1
+   },
+   {
+    "f": "knowledge/quran/translations/aze-alikhanmusayev.min.json",
+    "kb": 1115.6
+   },
+   {
+    "f": "knowledge/quran/translations/aze-khanmusayev.min.json",
+    "kb": 1207.7
+   },
+   {
+    "f": "knowledge/quran/translations/aze-vasimmammadaliy.min.json",
+    "kb": 1864.5
+   },
+   {
+    "f": "knowledge/quran/translations/bam-deenmuhammad.min.json",
+    "kb": 1752.7
+   },
+   {
+    "f": "knowledge/quran/translations/bam-fodisulimankant.min.json",
+    "kb": 1829.0
+   },
+   {
+    "f": "knowledge/quran/translations/bam-karamobabamamad.min.json",
+    "kb": 1758.3
+   },
+   {
+    "f": "knowledge/quran/translations/ben-abubakrzakaria.min.json",
+    "kb": 2346.6
+   },
+   {
+    "f": "knowledge/quran/translations/ben-muhiuddinkhan.min.json",
+    "kb": 2282.4
+   },
+   {
+    "f": "knowledge/quran/translations/ben-zohurulhoque.min.json",
+    "kb": 2463.8
+   },
+   {
+    "f": "knowledge/quran/translations/ber-ramdaneatmansou.min.json",
+    "kb": 810.6
+   },
+   {
+    "f": "knowledge/quran/translations/bos-besimkorkut.min.json",
+    "kb": 950.1
+   },
+   {
+    "f": "knowledge/quran/translations/bos-korkut.min.json",
+    "kb": 943.3
+   },
+   {
+    "f": "knowledge/quran/translations/bos-muhamedmehanovi.min.json",
+    "kb": 952.5
+   },
+   {
+    "f": "knowledge/quran/translations/bos-mustafamlivo.min.json",
+    "kb": 903.6
+   },
+   {
+    "f": "knowledge/quran/translations/bos-transliterim.min.json",
+    "kb": 848.3
+   },
+   {
+    "f": "knowledge/quran/translations/bos-wwwislamhouseco.min.json",
+    "kb": 937.6
+   },
+   {
+    "f": "knowledge/quran/translations/bul-tzvetantheophan.min.json",
+    "kb": 1425.2
+   },
+   {
+    "f": "knowledge/quran/translations/cat-yousseflyoussi.min.json",
+    "kb": 950.7
+   },
+   {
+    "f": "knowledge/quran/translations/ces-arnykl.min.json",
+    "kb": 1020.0
+   },
+   {
+    "f": "knowledge/quran/translations/ces-hadiabdollahian.min.json",
+    "kb": 886.8
+   },
+   {
+    "f": "knowledge/quran/translations/ces-prekladihrbek.min.json",
+    "kb": 1013.7
+   },
+   {
+    "f": "knowledge/quran/translations/dag-muhammadbabaght.min.json",
+    "kb": 1305.8
+   },
+   {
+    "f": "knowledge/quran/translations/dan-hadiabdollahian.min.json",
+    "kb": 849.7
+   },
+   {
+    "f": "knowledge/quran/translations/dan-vandetaal.min.json",
+    "kb": 1050.8
+   },
+   {
+    "f": "knowledge/quran/translations/deu-aburidamuhammad.min.json",
+    "kb": 1115.7
+   },
+   {
+    "f": "knowledge/quran/translations/deu-adeltheodorkhou.min.json",
+    "kb": 1101.7
+   },
+   {
+    "f": "knowledge/quran/translations/deu-amirzaidan.min.json",
+    "kb": 1155.5
+   },
+   {
+    "f": "knowledge/quran/translations/deu-asfbubenheimand.min.json",
+    "kb": 1130.4
+   },
+   {
+    "f": "knowledge/quran/translations/deu-frankbubenheima.min.json",
+    "kb": 1129.4
+   },
+   {
+    "f": "knowledge/quran/translations/div-officeofthepres.min.json",
+    "kb": 2785.3
+   },
+   {
+    "f": "knowledge/quran/translations/eng-abdelhaleem.min.json",
+    "kb": 979.3
+   },
+   {
+    "f": "knowledge/quran/translations/eng-abdulhye.min.json",
+    "kb": 1107.7
+   },
+   {
+    "f": "knowledge/quran/translations/eng-abdullahyusufal.min.json",
+    "kb": 1087.7
+   },
+   {
+    "f": "knowledge/quran/translations/eng-abdulmajiddarya.min.json",
+    "kb": 1030.4
+   },
+   {
+    "f": "knowledge/quran/translations/eng-abulalamaududi.min.json",
+    "kb": 1109.5
+   },
+   {
+    "f": "knowledge/quran/translations/eng-ahmedali.min.json",
+    "kb": 977.7
+   },
+   {
+    "f": "knowledge/quran/translations/eng-aishabewley.min.json",
+    "kb": 986.2
+   },
+   {
+    "f": "knowledge/quran/translations/eng-ajarberry.min.json",
+    "kb": 970.6
+   },
+   {
+    "f": "knowledge/quran/translations/eng-albilalmuhammad.min.json",
+    "kb": 1037.7
+   },
+   {
+    "f": "knowledge/quran/translations/eng-alibakhtiarinej.min.json",
+    "kb": 1002.0
+   },
+   {
+    "f": "knowledge/quran/translations/eng-aliquliqarai.min.json",
+    "kb": 1018.1
+   },
+   {
+    "f": "knowledge/quran/translations/eng-aliquliqarai1.min.json",
+    "kb": 1016.8
+   },
+   {
+    "f": "knowledge/quran/translations/eng-aliunal.min.json",
+    "kb": 1402.6
+   },
+   {
+    "f": "knowledge/quran/translations/eng-almuntakhabfita.min.json",
+    "kb": 1728.4
+   },
+   {
+    "f": "knowledge/quran/translations/eng-drkamalomar.min.json",
+    "kb": 1318.7
+   },
+   {
+    "f": "knowledge/quran/translations/eng-drlalehbakhtiar.min.json",
+    "kb": 1070.0
+   },
+   {
+    "f": "knowledge/quran/translations/eng-drmunirmunshey.min.json",
+    "kb": 1143.8
+   },
+   {
+    "f": "knowledge/quran/translations/eng-edwardhenrypalm.min.json",
+    "kb": 966.9
+   },
+   {
+    "f": "knowledge/quran/translations/eng-farookmalik.min.json",
+    "kb": 1098.4
+   },
+   {
+    "f": "knowledge/quran/translations/eng-georgesale.min.json",
+    "kb": 1117.6
+   },
+   {
+    "f": "knowledge/quran/translations/eng-hamidsaziz.min.json",
+    "kb": 986.1
+   },
+   {
+    "f": "knowledge/quran/translations/eng-johnmedowsrodwe.min.json",
+    "kb": 1014.3
+   },
+   {
+    "f": "knowledge/quran/translations/eng-literal.min.json",
+    "kb": 1214.7
+   },
+   {
+    "f": "knowledge/quran/translations/eng-maududi.min.json",
+    "kb": 1099.4
+   },
+   {
+    "f": "knowledge/quran/translations/eng-miraneesorigina.min.json",
+    "kb": 1112.7
+   },
+   {
+    "f": "knowledge/quran/translations/eng-miraneesuddin.min.json",
+    "kb": 1100.2
+   },
+   {
+    "f": "knowledge/quran/translations/eng-mohammadhabibsh.min.json",
+    "kb": 1032.6
+   },
+   {
+    "f": "knowledge/quran/translations/eng-mohammadshafi.min.json",
+    "kb": 1075.7
+   },
+   {
+    "f": "knowledge/quran/translations/eng-mohammedmarmadu.min.json",
+    "kb": 1015.1
+   },
+   {
+    "f": "knowledge/quran/translations/eng-muftitaqiusmani.min.json",
+    "kb": 1084.6
+   },
+   {
+    "f": "knowledge/quran/translations/eng-muhammadasad.min.json",
+    "kb": 1283.8
+   },
+   {
+    "f": "knowledge/quran/translations/eng-muhammadmahmoud.min.json",
+    "kb": 1190.7
+   },
+   {
+    "f": "knowledge/quran/translations/eng-muhammadsarwar.min.json",
+    "kb": 1026.6
+   },
+   {
+    "f": "knowledge/quran/translations/eng-muhammadtaqiudd.min.json",
+    "kb": 1288.8
+   },
+   {
+    "f": "knowledge/quran/translations/eng-muhammadtaqiusm.min.json",
+    "kb": 1074.0
+   },
+   {
+    "f": "knowledge/quran/translations/eng-mustafakhattaba.min.json",
+    "kb": 1055.0
+   },
+   {
+    "f": "knowledge/quran/translations/eng-mustafakhattabg.min.json",
+    "kb": 1049.3
+   },
+   {
+    "f": "knowledge/quran/translations/eng-njdawood.min.json",
+    "kb": 965.5
+   },
+   {
+    "f": "knowledge/quran/translations/eng-rowwadtranslati.min.json",
+    "kb": 1013.2
+   },
+   {
+    "f": "knowledge/quran/translations/eng-safikaskas.min.json",
+    "kb": 1004.6
+   },
+   {
+    "f": "knowledge/quran/translations/eng-safiurrahmanalm.min.json",
+    "kb": 1057.6
+   },
+   {
+    "f": "knowledge/quran/translations/eng-shabbirahmed.min.json",
+    "kb": 1322.4
+   },
+   {
+    "f": "knowledge/quran/translations/eng-syedvickarahame.min.json",
+    "kb": 1184.9
+   },
+   {
+    "f": "knowledge/quran/translations/eng-talalaitaninewt.min.json",
+    "kb": 939.9
+   },
+   {
+    "f": "knowledge/quran/translations/eng-talalitani.min.json",
+    "kb": 950.3
+   },
+   {
+    "f": "knowledge/quran/translations/eng-tbirving.min.json",
+    "kb": 992.1
+   },
+   {
+    "f": "knowledge/quran/translations/eng-themonotheistgr.min.json",
+    "kb": 963.3
+   },
+   {
+    "f": "knowledge/quran/translations/eng-themonotheistgr1.min.json",
+    "kb": 968.1
+   },
+   {
+    "f": "knowledge/quran/translations/eng-thestudyquran.min.json",
+    "kb": 990.5
+   },
+   {
+    "f": "knowledge/quran/translations/eng-wahiduddinkhan.min.json",
+    "kb": 1011.5
+   },
+   {
+    "f": "knowledge/quran/translations/eng-yusufaliorig.min.json",
+    "kb": 1081.9
+   },
+   {
+    "f": "knowledge/quran/translations/epo-hadiabdollahian.min.json",
+    "kb": 768.4
+   },
+   {
+    "f": "knowledge/quran/translations/fas-abdolmohammaday.min.json",
+    "kb": 1339.1
+   },
+   {
+    "f": "knowledge/quran/translations/fas-abolfazlbahramp.min.json",
+    "kb": 1380.2
+   },
+   {
+    "f": "knowledge/quran/translations/fas-bahaoddinkhorra.min.json",
+    "kb": 1443.9
+   },
+   {
+    "f": "knowledge/quran/translations/fas-drhussientagi.min.json",
+    "kb": 1623.6
+   },
+   {
+    "f": "knowledge/quran/translations/fas-hussainansarian.min.json",
+    "kb": 1781.7
+   },
+   {
+    "f": "knowledge/quran/translations/fas-islamhousecompe.min.json",
+    "kb": 1742.1
+   },
+   {
+    "f": "knowledge/quran/translations/fas-mahdielahighoms.min.json",
+    "kb": 1715.7
+   },
+   {
+    "f": "knowledge/quran/translations/fas-mohammadkazemmo.min.json",
+    "kb": 1290.5
+   },
+   {
+    "f": "knowledge/quran/translations/fas-mohammadmahdifo.min.json",
+    "kb": 1479.9
+   },
+   {
+    "f": "knowledge/quran/translations/fas-mohammadsadeqit.min.json",
+    "kb": 1633.9
+   },
+   {
+    "f": "knowledge/quran/translations/fas-mohsengharaati.min.json",
+    "kb": 1626.2
+   },
+   {
+    "f": "knowledge/quran/translations/fas-mostafakhorramd.min.json",
+    "kb": 2548.5
+   },
+   {
+    "f": "knowledge/quran/translations/fas-nasermakaremshi.min.json",
+    "kb": 1646.2
+   },
+   {
+    "f": "knowledge/quran/translations/fas-sayyedjalaloddi.min.json",
+    "kb": 1530.9
+   },
+   {
+    "f": "knowledge/quran/translations/fas-unknown.min.json",
+    "kb": 1566.6
+   },
+   {
+    "f": "knowledge/quran/translations/fil-abdullatifeduar.min.json",
+    "kb": 1652.2
+   },
+   {
+    "f": "knowledge/quran/translations/fil-wwwislamhouseco.min.json",
+    "kb": 1207.4
+   },
+   {
+    "f": "knowledge/quran/translations/fin-unknown.min.json",
+    "kb": 1110.0
+   },
+   {
+    "f": "knowledge/quran/translations/fra-islamicfoundati.min.json",
+    "kb": 1162.7
+   },
+   {
+    "f": "knowledge/quran/translations/fra-muhammadhameedu.min.json",
+    "kb": 1122.1
+   },
+   {
+    "f": "knowledge/quran/translations/fra-muhammadhamidul.min.json",
+    "kb": 1096.3
+   },
+   {
+    "f": "knowledge/quran/translations/fra-rashidmaash.min.json",
+    "kb": 1193.1
+   },
+   {
+    "f": "knowledge/quran/translations/fra-shahnazsaidiben.min.json",
+    "kb": 1207.9
+   },
+   {
+    "f": "knowledge/quran/translations/ful-rowadtranslatio.min.json",
+    "kb": 951.0
+   },
+   {
+    "f": "knowledge/quran/translations/guj-rabilaalomari.min.json",
+    "kb": 2300.4
+   },
+   {
+    "f": "knowledge/quran/translations/hau-abubakarmahmood.min.json",
+    "kb": 1095.7
+   },
+   {
+    "f": "knowledge/quran/translations/hau-abubakarmahmoud.min.json",
+    "kb": 1094.0
+   },
+   {
+    "f": "knowledge/quran/translations/heb-darusalamhousei.min.json",
+    "kb": 1172.6
+   },
+   {
+    "f": "knowledge/quran/translations/heb-unknown.min.json",
+    "kb": 1185.5
+   },
+   {
+    "f": "knowledge/quran/translations/hin-maulanaazizulha.min.json",
+    "kb": 2241.2
+   },
+   {
+    "f": "knowledge/quran/translations/hin-muhammadfarooqk.min.json",
+    "kb": 2302.2
+   },
+   {
+    "f": "knowledge/quran/translations/hin-suhelfarooqkhan.min.json",
+    "kb": 2532.7
+   },
+   {
+    "f": "knowledge/quran/translations/hrv-unknown.min.json",
+    "kb": 909.6
+   },
+   {
+    "f": "knowledge/quran/translations/hun-drahmedabdelrah.min.json",
+    "kb": 1150.1
+   },
+   {
+    "f": "knowledge/quran/translations/ilp-abdulazizgroaal.min.json",
+    "kb": 1182.1
+   },
+   {
+    "f": "knowledge/quran/translations/ind-indonesianislam.min.json",
+    "kb": 1266.5
+   },
+   {
+    "f": "knowledge/quran/translations/ind-jalaladdinalmah.min.json",
+    "kb": 2862.7
+   },
+   {
+    "f": "knowledge/quran/translations/ind-kingfahdcomplex.min.json",
+    "kb": 1316.1
+   },
+   {
+    "f": "knowledge/quran/translations/ind-muhammadquraish.min.json",
+    "kb": 2651.9
+   },
+   {
+    "f": "knowledge/quran/translations/ind-thesabiqcompany.min.json",
+    "kb": 1276.2
+   },
+   {
+    "f": "knowledge/quran/translations/ind-unknown.min.json",
+    "kb": 1272.0
+   },
+   {
+    "f": "knowledge/quran/translations/ita-hamzarobertopic.min.json",
+    "kb": 998.8
+   },
+   {
+    "f": "knowledge/quran/translations/jpn-ryoichimita.min.json",
+    "kb": 1406.1
+   },
+   {
+    "f": "knowledge/quran/translations/kan-abdussalamputhi.min.json",
+    "kb": 2605.5
+   },
+   {
+    "f": "knowledge/quran/translations/kaz-khalifahaltai.min.json",
+    "kb": 1588.2
+   },
+   {
+    "f": "knowledge/quran/translations/kaz-khalifahaltaich.min.json",
+    "kb": 1771.5
+   },
+   {
+    "f": "knowledge/quran/translations/khm-cambodianmuslim.min.json",
+    "kb": 3143.5
+   },
+   {
+    "f": "knowledge/quran/translations/kin-rmcrwanda.min.json",
+    "kb": 1116.4
+   },
+   {
+    "f": "knowledge/quran/translations/kin-rwandamuslimsas.min.json",
+    "kb": 1136.1
+   },
+   {
+    "f": "knowledge/quran/translations/kir-shamsaldinhakim.min.json",
+    "kb": 1893.0
+   },
+   {
+    "f": "knowledge/quran/translations/kmr-unknown.min.json",
+    "kb": 1333.5
+   },
+   {
+    "f": "knowledge/quran/translations/knx-unknown.min.json",
+    "kb": 1295.9
+   },
+   {
+    "f": "knowledge/quran/translations/kor-hamidchoi.min.json",
+    "kb": 1271.9
+   },
+   {
+    "f": "knowledge/quran/translations/kor-unknown.min.json",
+    "kb": 1231.0
+   },
+   {
+    "f": "knowledge/quran/translations/kur-burhanmuhammada.min.json",
+    "kb": 2672.7
+   },
+   {
+    "f": "knowledge/quran/translations/kur-muhammadsalehba.min.json",
+    "kb": 1813.9
+   },
+   {
+    "f": "knowledge/quran/translations/lat-hadiabdollahian.min.json",
+    "kb": 840.8
+   },
+   {
+    "f": "knowledge/quran/translations/lin-zakariyamuhamme.min.json",
+    "kb": 1026.7
+   },
+   {
+    "f": "knowledge/quran/translations/lug-fareeqmusa.min.json",
+    "kb": 1112.5
+   },
+   {
+    "f": "knowledge/quran/translations/luy-mohammadramadha.min.json",
+    "kb": 1019.6
+   },
+   {
+    "f": "knowledge/quran/translations/mal-abdulhameedmada.min.json",
+    "kb": 3326.5
+   },
+   {
+    "f": "knowledge/quran/translations/mal-cheriyamundamab.min.json",
+    "kb": 3326.1
+   },
+   {
+    "f": "knowledge/quran/translations/mal-muhammadkarakun.min.json",
+    "kb": 2943.9
+   },
+   {
+    "f": "knowledge/quran/translations/mar-muhammadshafiia.min.json",
+    "kb": 2716.5
+   },
+   {
+    "f": "knowledge/quran/translations/mkd-macedonianschol.min.json",
+    "kb": 1573.0
+   },
+   {
+    "f": "knowledge/quran/translations/mkd-sheikhhassangil.min.json",
+    "kb": 1543.3
+   },
+   {
+    "f": "knowledge/quran/translations/mlt-martinrzammitmu.min.json",
+    "kb": 1157.4
+   },
+   {
+    "f": "knowledge/quran/translations/mrw-guroalimsaroman.min.json",
+    "kb": 1145.7
+   },
+   {
+    "f": "knowledge/quran/translations/msa-abdullahmuhamma.min.json",
+    "kb": 1624.4
+   },
+   {
+    "f": "knowledge/quran/translations/mya-alinuyin.min.json",
+    "kb": 6794.5
+   },
+   {
+    "f": "knowledge/quran/translations/mya-basein.min.json",
+    "kb": 3983.3
+   },
+   {
+    "f": "knowledge/quran/translations/mya-ghazimohammadha.min.json",
+    "kb": 5463.2
+   },
+   {
+    "f": "knowledge/quran/translations/mya-hashimtinmyint.min.json",
+    "kb": 4733.7
+   },
+   {
+    "f": "knowledge/quran/translations/nep-ahlalhadithcent.min.json",
+    "kb": 2587.5
+   },
+   {
+    "f": "knowledge/quran/translations/nld-fredleemhuis.min.json",
+    "kb": 1058.9
+   },
+   {
+    "f": "knowledge/quran/translations/nld-salomokeyzer.min.json",
+    "kb": 1149.5
+   },
+   {
+    "f": "knowledge/quran/translations/nld-sofianssiregar.min.json",
+    "kb": 1125.7
+   },
+   {
+    "f": "knowledge/quran/translations/nld-unknown.min.json",
+    "kb": 1049.5
+   },
+   {
+    "f": "knowledge/quran/translations/nor-einarberg.min.json",
+    "kb": 921.1
+   },
+   {
+    "f": "knowledge/quran/translations/nya-alhajiyusufmuha.min.json",
+    "kb": 1121.4
+   },
+   {
+    "f": "knowledge/quran/translations/nya-khaledibrahimbe.min.json",
+    "kb": 1242.9
+   },
+   {
+    "f": "knowledge/quran/translations/orm-ghaliapapurapag.min.json",
+    "kb": 1057.9
+   },
+   {
+    "f": "knowledge/quran/translations/pan-drmuhamadhabibb.min.json",
+    "kb": 2352.8
+   },
+   {
+    "f": "knowledge/quran/translations/pol-jozefabielawski.min.json",
+    "kb": 1051.0
+   },
+   {
+    "f": "knowledge/quran/translations/por-helminasr.min.json",
+    "kb": 1008.3
+   },
+   {
+    "f": "knowledge/quran/translations/por-samirelhayek.min.json",
+    "kb": 1002.0
+   },
+   {
+    "f": "knowledge/quran/translations/prs-mawlawimuhammad.min.json",
+    "kb": 1588.2
+   },
+   {
+    "f": "knowledge/quran/translations/pus-abdulwalikhan.min.json",
+    "kb": 1706.9
+   },
+   {
+    "f": "knowledge/quran/translations/pus-zakariaabulsala.min.json",
+    "kb": 1713.4
+   },
+   {
+    "f": "knowledge/quran/translations/ron-georgegrigore.min.json",
+    "kb": 1014.3
+   },
+   {
+    "f": "knowledge/quran/translations/ron-hadiabdollahian.min.json",
+    "kb": 855.8
+   },
+   {
+    "f": "knowledge/quran/translations/ron-unknown.min.json",
+    "kb": 959.2
+   },
+   {
+    "f": "knowledge/quran/translations/run-sheikhamissirad.min.json",
+    "kb": 1146.0
+   },
+   {
+    "f": "knowledge/quran/translations/rus-abuadel.min.json",
+    "kb": 2916.8
+   },
+   {
+    "f": "knowledge/quran/translations/rus-elmirkuliev.min.json",
+    "kb": 1590.6
+   },
+   {
+    "f": "knowledge/quran/translations/rus-gordysemyonovic.min.json",
+    "kb": 1530.1
+   },
+   {
+    "f": "knowledge/quran/translations/rus-ignatyyulianovi.min.json",
+    "kb": 1432.1
+   },
+   {
+    "f": "knowledge/quran/translations/rus-magomednuriosma.min.json",
+    "kb": 1643.3
+   },
+   {
+    "f": "knowledge/quran/translations/rus-ministryofawqaf.min.json",
+    "kb": 2842.2
+   },
+   {
+    "f": "knowledge/quran/translations/rus-vporokhova.min.json",
+    "kb": 1682.3
+   },
+   {
+    "f": "knowledge/quran/translations/sin-naseemismailand.min.json",
+    "kb": 3231.3
+   },
+   {
+    "f": "knowledge/quran/translations/sin-wwwislamhouseco.min.json",
+    "kb": 2536.8
+   },
+   {
+    "f": "knowledge/quran/translations/slk-hadiabdollahian.min.json",
+    "kb": 817.8
+   },
+   {
+    "f": "knowledge/quran/translations/sna-abdullahjmadini.min.json",
+    "kb": 1191.3
+   },
+   {
+    "f": "knowledge/quran/translations/snd-tajmehmoodamrot.min.json",
+    "kb": 1535.2
+   },
+   {
+    "f": "knowledge/quran/translations/som-abdullahhasanja.min.json",
+    "kb": 1082.5
+   },
+   {
+    "f": "knowledge/quran/translations/som-mahmudmuhammada.min.json",
+    "kb": 931.8
+   },
+   {
+    "f": "knowledge/quran/translations/som-shaykhmahmoodmu.min.json",
+    "kb": 932.3
+   },
+   {
+    "f": "knowledge/quran/translations/sot-sheikheliaskeke.min.json",
+    "kb": 1101.8
+   },
+   {
+    "f": "knowledge/quran/translations/spa-abdulqadermouhe.min.json",
+    "kb": 1125.0
+   },
+   {
+    "f": "knowledge/quran/translations/spa-islamicfoundati.min.json",
+    "kb": 1253.3
+   },
+   {
+    "f": "knowledge/quran/translations/spa-islamicfoundati1.min.json",
+    "kb": 1251.3
+   },
+   {
+    "f": "knowledge/quran/translations/spa-juliocortes.min.json",
+    "kb": 955.2
+   },
+   {
+    "f": "knowledge/quran/translations/spa-muhammadasadabd.min.json",
+    "kb": 1274.3
+   },
+   {
+    "f": "knowledge/quran/translations/spa-muhammadisagarc.min.json",
+    "kb": 1075.9
+   },
+   {
+    "f": "knowledge/quran/translations/spa-raulgonzalezbor.min.json",
+    "kb": 1035.2
+   },
+   {
+    "f": "knowledge/quran/translations/sqi-fetimehdiu.min.json",
+    "kb": 1048.9
+   },
+   {
+    "f": "knowledge/quran/translations/sqi-hasanefendinahi.min.json",
+    "kb": 1164.0
+   },
+   {
+    "f": "knowledge/quran/translations/sqi-hassannahi.min.json",
+    "kb": 1116.1
+   },
+   {
+    "f": "knowledge/quran/translations/sqi-sherifahmeti.min.json",
+    "kb": 1133.8
+   },
+   {
+    "f": "knowledge/quran/translations/sqi-unknown.min.json",
+    "kb": 1058.7
+   },
+   {
+    "f": "knowledge/quran/translations/srp-rowwadtranslati.min.json",
+    "kb": 1488.4
+   },
+   {
+    "f": "knowledge/quran/translations/swa-abdullahmuhamma.min.json",
+    "kb": 1931.1
+   },
+   {
+    "f": "knowledge/quran/translations/swa-alimuhsinalbarw.min.json",
+    "kb": 951.9
+   },
+   {
+    "f": "knowledge/quran/translations/swe-knutbernstrom.min.json",
+    "kb": 1174.7
+   },
+   {
+    "f": "knowledge/quran/translations/tam-abdulhameedbaqa.min.json",
+    "kb": 3753.1
+   },
+   {
+    "f": "knowledge/quran/translations/tam-janturstfoundat.min.json",
+    "kb": 3439.6
+   },
+   {
+    "f": "knowledge/quran/translations/tat-yakubibnnugman.min.json",
+    "kb": 2338.4
+   },
+   {
+    "f": "knowledge/quran/translations/tel-abdulraheemmoha.min.json",
+    "kb": 2754.7
+   },
+   {
+    "f": "knowledge/quran/translations/tel-muhammadazizurr.min.json",
+    "kb": 2690.0
+   },
+   {
+    "f": "knowledge/quran/translations/tgk-abdolmohammaday.min.json",
+    "kb": 1512.9
+   },
+   {
+    "f": "knowledge/quran/translations/tgk-khojamirov.min.json",
+    "kb": 2234.8
+   },
+   {
+    "f": "knowledge/quran/translations/tgk-wwwislamhouseco.min.json",
+    "kb": 1943.6
+   },
+   {
+    "f": "knowledge/quran/translations/tha-groupfromthesoc.min.json",
+    "kb": 2789.3
+   },
+   {
+    "f": "knowledge/quran/translations/tha-kingfahadquranc.min.json",
+    "kb": 2784.7
+   },
+   {
+    "f": "knowledge/quran/translations/tur-abdulbakigolpin.min.json",
+    "kb": 1063.2
+   },
+   {
+    "f": "knowledge/quran/translations/tur-ademugur.min.json",
+    "kb": 1090.0
+   },
+   {
+    "f": "knowledge/quran/translations/tur-alibulac.min.json",
+    "kb": 1111.8
+   },
+   {
+    "f": "knowledge/quran/translations/tur-alifikriyavuz.min.json",
+    "kb": 1330.2
+   },
+   {
+    "f": "knowledge/quran/translations/tur-celalyldrm.min.json",
+    "kb": 1251.3
+   },
+   {
+    "f": "knowledge/quran/translations/tur-diyanetisleri.min.json",
+    "kb": 1162.5
+   },
+   {
+    "f": "knowledge/quran/translations/tur-diyanetisleri1.min.json",
+    "kb": 1052.1
+   },
+   {
+    "f": "knowledge/quran/translations/tur-diyanetvakfi.min.json",
+    "kb": 1083.6
+   },
+   {
+    "f": "knowledge/quran/translations/tur-edipyuksel.min.json",
+    "kb": 955.0
+   },
+   {
+    "f": "knowledge/quran/translations/tur-elmalilihamdiya.min.json",
+    "kb": 1093.6
+   },
+   {
+    "f": "knowledge/quran/translations/tur-elmallsadelesti.min.json",
+    "kb": 1071.9
+   },
+   {
+    "f": "knowledge/quran/translations/tur-elmallsadelesti1.min.json",
+    "kb": 1098.8
+   },
+   {
+    "f": "knowledge/quran/translations/tur-fizilalilkuran.min.json",
+    "kb": 1092.2
+   },
+   {
+    "f": "knowledge/quran/translations/tur-gultekinonan.min.json",
+    "kb": 1119.6
+   },
+   {
+    "f": "knowledge/quran/translations/tur-hasanbasricanta.min.json",
+    "kb": 1265.7
+   },
+   {
+    "f": "knowledge/quran/translations/tur-ibnikesir.min.json",
+    "kb": 992.6
+   },
+   {
+    "f": "knowledge/quran/translations/tur-iskenderalimihr.min.json",
+    "kb": 1224.9
+   },
+   {
+    "f": "knowledge/quran/translations/tur-latinalphabet.min.json",
+    "kb": 800.7
+   },
+   {
+    "f": "knowledge/quran/translations/tur-latinalphabet1.min.json",
+    "kb": 916.1
+   },
+   {
+    "f": "knowledge/quran/translations/tur-muhammedesed.min.json",
+    "kb": 1329.7
+   },
+   {
+    "f": "knowledge/quran/translations/tur-muhammetabay.min.json",
+    "kb": 883.5
+   },
+   {
+    "f": "knowledge/quran/translations/tur-muslimshahin.min.json",
+    "kb": 1100.5
+   },
+   {
+    "f": "knowledge/quran/translations/tur-sabanpiris.min.json",
+    "kb": 991.5
+   },
+   {
+    "f": "knowledge/quran/translations/tur-shabanbritch.min.json",
+    "kb": 1010.9
+   },
+   {
+    "f": "knowledge/quran/translations/tur-suatyildirim.min.json",
+    "kb": 1386.4
+   },
+   {
+    "f": "knowledge/quran/translations/tur-suleymanates.min.json",
+    "kb": 1058.9
+   },
+   {
+    "f": "knowledge/quran/translations/tur-tefhimulkuran.min.json",
+    "kb": 1137.9
+   },
+   {
+    "f": "knowledge/quran/translations/tur-wwwislamhouseco.min.json",
+    "kb": 1062.8
+   },
+   {
+    "f": "knowledge/quran/translations/tur-yasarnuriozturk.min.json",
+    "kb": 1080.8
+   },
+   {
+    "f": "knowledge/quran/translations/tur-yasarnuriozturk1.min.json",
+    "kb": 1080.7
+   },
+   {
+    "f": "knowledge/quran/translations/tur-ynozturk.min.json",
+    "kb": 1084.1
+   },
+   {
+    "f": "knowledge/quran/translations/twi-sheikhharounism.min.json",
+    "kb": 1151.8
+   },
+   {
+    "f": "knowledge/quran/translations/uig-muhammadsaleh.min.json",
+    "kb": 2228.8
+   },
+   {
+    "f": "knowledge/quran/translations/uig-shaykhmuhammads.min.json",
+    "kb": 2250.8
+   },
+   {
+    "f": "knowledge/quran/translations/ukr-drmikhailoyaqub.min.json",
+    "kb": 1467.1
+   },
+   {
+    "f": "knowledge/quran/translations/ukr-hadiabdollahian.min.json",
+    "kb": 1510.5
+   },
+   {
+    "f": "knowledge/quran/translations/ukr-mykhayloyakubov.min.json",
+    "kb": 1463.3
+   },
+   {
+    "f": "knowledge/quran/translations/ukr-yakubovych.min.json",
+    "kb": 1460.2
+   },
+   {
+    "f": "knowledge/quran/translations/urd-abulaalamaududi.min.json",
+    "kb": 1696.0
+   },
+   {
+    "f": "knowledge/quran/translations/urd-ahmedali.min.json",
+    "kb": 1444.3
+   },
+   {
+    "f": "knowledge/quran/translations/urd-fatehmuhammadja.min.json",
+    "kb": 1592.7
+   },
+   {
+    "f": "knowledge/quran/translations/urd-mahmoodulhassan.min.json",
+    "kb": 1437.6
+   },
+   {
+    "f": "knowledge/quran/translations/urd-muhammadhussain.min.json",
+    "kb": 1756.5
+   },
+   {
+    "f": "knowledge/quran/translations/urd-muhammadjunagar.min.json",
+    "kb": 1593.5
+   },
+   {
+    "f": "knowledge/quran/translations/urd-muhammadjunagar1.min.json",
+    "kb": 1135.6
+   },
+   {
+    "f": "knowledge/quran/translations/urd-muhammadkaramsh.min.json",
+    "kb": 1690.1
+   },
+   {
+    "f": "knowledge/quran/translations/urd-muhammadtahirul.min.json",
+    "kb": 1890.5
+   },
+   {
+    "f": "knowledge/quran/translations/urd-muhammadtaqiusm.min.json",
+    "kb": 1834.2
+   },
+   {
+    "f": "knowledge/quran/translations/urd-syedzeeshanhaid.min.json",
+    "kb": 1589.1
+   },
+   {
+    "f": "knowledge/quran/translations/uzb-alaaudeenmansou.min.json",
+    "kb": 1594.9
+   },
+   {
+    "f": "knowledge/quran/translations/uzb-alauddinmansour.min.json",
+    "kb": 2189.9
+   },
+   {
+    "f": "knowledge/quran/translations/uzb-muhammadsodikmu.min.json",
+    "kb": 2639.0
+   },
+   {
+    "f": "knowledge/quran/translations/vie-hassanabdulkari.min.json",
+    "kb": 1542.5
+   },
+   {
+    "f": "knowledge/quran/translations/vie-rowwadtranslati.min.json",
+    "kb": 1666.0
+   },
+   {
+    "f": "knowledge/quran/translations/xho-imaamismaaeelng.min.json",
+    "kb": 1109.4
+   },
+   {
+    "f": "knowledge/quran/translations/yuw-muhammadbinabdu.min.json",
+    "kb": 1309.3
+   },
+   {
+    "f": "knowledge/quran/translations/zho-anonymousgroupo.min.json",
+    "kb": 938.8
+   },
+   {
+    "f": "knowledge/quran/translations/zho-majian.min.json",
+    "kb": 923.6
+   },
+   {
+    "f": "knowledge/quran/translations/zho-majian1.min.json",
+    "kb": 934.7
+   },
+   {
+    "f": "knowledge/quran/translations/zho-mazhonggang.min.json",
+    "kb": 1035.8
+   },
+   {
+    "f": "knowledge/quran/translations/zho-muhammadmakin.min.json",
+    "kb": 935.7
+   },
+   {
+    "f": "knowledge/quran/translations/zul-iqembulezifundi.min.json",
+    "kb": 1084.2
+   },
+   {
+    "f": "knowledge/_install/install.log",
+    "kb": 3.4
+   },
+   {
+    "f": "knowledge/_install/install_report.json",
+    "kb": 0.8
+   }
+  ],
+  "model": [
+   {
+    "f": "model/aqal.py",
+    "kb": 15.6
+   },
+   {
+    "f": "model/autonomous.py",
+    "kb": 59.1
+   },
+   {
+    "f": "model/autoreload.py",
+    "kb": 4.2
+   },
+   {
+    "f": "model/cognition.py",
+    "kb": 7.5
+   },
+   {
+    "f": "model/deep_brain.py",
+    "kb": 3.7
+   },
+   {
+    "f": "model/feelings.py",
+    "kb": 11.7
+   },
+   {
+    "f": "model/frontolobe.py",
+    "kb": 17.9
+   },
+   {
+    "f": "model/gen2b_spec.json",
+    "kb": 0.5
+   },
+   {
+    "f": "model/generate.bak-tpl.py",
+    "kb": 72.6
+   },
+   {
+    "f": "model/generate.py",
+    "kb": 121.1
+   },
+   {
+    "f": "model/helper_brain.py",
+    "kb": 3.7
+   },
+   {
+    "f": "model/learner.py",
+    "kb": 4.9
+   },
+   {
+    "f": "model/live_plasticity.py",
+    "kb": 6.0
+   },
+   {
+    "f": "model/live_research.py",
+    "kb": 38.9
+   },
+   {
+    "f": "model/math_formulas.py",
+    "kb": 16.4
+   },
+   {
+    "f": "model/memory.py",
+    "kb": 8.3
+   },
+   {
+    "f": "model/metacognition.py",
+    "kb": 4.8
+   },
+   {
+    "f": "model/model_card.json",
+    "kb": 4.9
+   },
+   {
+    "f": "model/nn.py",
+    "kb": 9.3
+   },
+   {
+    "f": "model/README.md",
+    "kb": 0.8
+   },
+   {
+    "f": "model/reasoning.py",
+    "kb": 6.3
+   },
+   {
+    "f": "model/scale.py",
+    "kb": 6.5
+   },
+   {
+    "f": "model/think_level.py",
+    "kb": 5.0
+   },
+   {
+    "f": "model/tokenize.py",
+    "kb": 6.8
+   },
+   {
+    "f": "model/tokenizer.py",
+    "kb": 2.1
+   },
+   {
+    "f": "model/train.py",
+    "kb": 2.5
+   },
+   {
+    "f": "model/train_2b.py",
+    "kb": 1.1
+   },
+   {
+    "f": "model/understand.py",
+    "kb": 2.2
+   },
+   {
+    "f": "model/verify_brain.py",
+    "kb": 9.2
+   },
+   {
+    "f": "model/checkpoints/gendeep_1793702467.npz",
+    "kb": 22702.2
+   },
+   {
+    "f": "model/checkpoints/genhelper_1793780208.npz",
+    "kb": 18584.6
+   },
+   {
+    "f": "model/checkpoints/genmaster_mid.npz",
+    "kb": 32708.2
+   },
+   {
+    "f": "model/checkpoints/genverify_1793780719.npz",
+    "kb": 18584.6
+   },
+   {
+    "f": "model/checkpoints/vocab.json",
+    "kb": 2.8
+   }
+  ],
+  "public": [
+   {
+    "f": "public/404.html",
+    "kb": 0.8
+   },
+   {
+    "f": "public/brain_manifest.json",
+    "kb": 0.5
+   },
+   {
+    "f": "public/icon-180.png",
+    "kb": 2.5
+   },
+   {
+    "f": "public/icon-192.png",
+    "kb": 2.6
+   },
+   {
+    "f": "public/icon-512.png",
+    "kb": 7.8
+   },
+   {
+    "f": "public/index.html",
+    "kb": 19.1
+   },
+   {
+    "f": "public/og-image.png",
+    "kb": 22.9
+   },
+   {
+    "f": "public/robots.txt",
+    "kb": 0.1
+   },
+   {
+    "f": "public/site.webmanifest",
+    "kb": 0.5
+   },
+   {
+    "f": "public/sitemap.xml",
+    "kb": 0.3
+   }
+  ],
+  "scripts": [
+   {
+    "f": "scripts/fetch_hadith.py",
+    "kb": 3.7
+   },
+   {
+    "f": "scripts/filter_strong_hadith.py",
+    "kb": 7.4
+   },
+   {
+    "f": "scripts/install_sacred_texts.py",
+    "kb": 15.9
+   },
+   {
+    "f": "scripts/make_desktop_package.py",
+    "kb": 22.9
+   },
+   {
+    "f": "scripts/make_package.py",
+    "kb": 27.7
+   },
+   {
+    "f": "scripts/make_sacred_facts.py",
+    "kb": 5.4
+   },
+   {
+    "f": "scripts/merge_max.py",
+    "kb": 6.3
+   },
+   {
+    "f": "scripts/prepare_quran.py",
+    "kb": 3.3
+   },
+   {
+    "f": "scripts/test_master.py",
+    "kb": 7.7
+   },
+   {
+    "f": "scripts/train_master.py",
+    "kb": 10.0
+   },
+   {
+    "f": "scripts/train_max.py",
+    "kb": 4.3
+   },
+   {
+    "f": "scripts/upgrade_max.py",
+    "kb": 4.2
+   },
+   {
+    "f": "scripts/_t_autonomous.py",
+    "kb": 6.1
+   }
+  ],
+  "security": [
+   {
+    "f": "security/api_policy.hmhz",
+    "kb": 0.5
+   },
+   {
+    "f": "security/api_policy.hmhzsrc",
+    "kb": 2.2
+   },
+   {
+    "f": "security/guard.py",
+    "kb": 19.0
+   },
+   {
+    "f": "security/hmhz.py",
+    "kb": 11.4
+   },
+   {
+    "f": "security/l3_manifest.hmhz",
+    "kb": 1.2
+   },
+   {
+    "f": "security/policy.hmhz",
+    "kb": 0.5
+   },
+   {
+    "f": "security/policy.hmhzsrc",
+    "kb": 0.8
+   },
+   {
+    "f": "security/__init__.py",
+    "kb": 0.1
+   }
+  ],
+  "server": [
+   {
+    "f": "server/accounts.py",
+    "kb": 10.5
+   },
+   {
+    "f": "server/genone_server.py",
+    "kb": 41.1
+   },
+   {
+    "f": "server/server.py",
+    "kb": 5.0
+   },
+   {
+    "f": "server/__init__.py",
+    "kb": 0.1
+   }
+  ],
+  "tests": [
+   {
+    "f": "tests/test_agent_powers.py",
+    "kb": 4.1
+   },
+   {
+    "f": "tests/test_code_gen.py",
+    "kb": 3.4
+   },
+   {
+    "f": "tests/test_gamebot_50qa.py",
+    "kb": 7.6
+   },
+   {
+    "f": "tests/test_key_lifecycle.py",
+    "kb": 4.2
+   },
+   {
+    "f": "tests/test_new_modules.py",
+    "kb": 3.4
+   },
+   {
+    "f": "tests/test_tasks_system.py",
+    "kb": 2.9
+   },
+   {
+    "f": "tests/test_token_brain.py",
+    "kb": 4.0
+   }
+  ],
+  "web": [
+   {
+    "f": "web/.nojekyll",
+    "kb": 0.0
+   },
+   {
+    "f": "web/404.html",
+    "kb": 0.8
+   },
+   {
+    "f": "web/app.js",
+    "kb": 5.6
+   },
+   {
+    "f": "web/brain_manifest.json",
+    "kb": 0.5
+   },
+   {
+    "f": "web/DEPLOY.md",
+    "kb": 3.2
+   },
+   {
+    "f": "web/HemomemoUltra-People.zip",
+    "kb": 220139.0
+   },
+   {
+    "f": "web/icon-180.png",
+    "kb": 2.5
+   },
+   {
+    "f": "web/icon-192.png",
+    "kb": 2.6
+   },
+   {
+    "f": "web/icon-512.png",
+    "kb": 7.8
+   },
+   {
+    "f": "web/index.html",
+    "kb": 19.1
+   },
+   {
+    "f": "web/LIVE-KARO.md",
+    "kb": 1.8
+   },
+   {
+    "f": "web/og-image.png",
+    "kb": 22.9
+   },
+   {
+    "f": "web/robots.txt",
+    "kb": 0.1
+   },
+   {
+    "f": "web/site.webmanifest",
+    "kb": 0.5
+   },
+   {
+    "f": "web/sitemap.xml",
+    "kb": 0.3
+   },
+   {
+    "f": "web/style.css",
+    "kb": 7.7
+   }
+  ],
+  "web_surge": [
+   {
+    "f": "web_surge/.nojekyll",
+    "kb": 0.0
+   },
+   {
+    "f": "web_surge/404.html",
+    "kb": 0.8
+   },
+   {
+    "f": "web_surge/app.js",
+    "kb": 5.6
+   },
+   {
+    "f": "web_surge/brain_manifest.json",
+    "kb": 0.5
+   },
+   {
+    "f": "web_surge/icon-180.png",
+    "kb": 2.5
+   },
+   {
+    "f": "web_surge/icon-192.png",
+    "kb": 2.6
+   },
+   {
+    "f": "web_surge/icon-512.png",
+    "kb": 7.8
+   },
+   {
+    "f": "web_surge/index.html",
+    "kb": 19.1
+   },
+   {
+    "f": "web_surge/netlify.toml",
+    "kb": 0.5
+   },
+   {
+    "f": "web_surge/og-image.png",
+    "kb": 22.9
+   },
+   {
+    "f": "web_surge/robots.txt",
+    "kb": 0.1
+   },
+   {
+    "f": "web_surge/site.webmanifest",
+    "kb": 0.5
+   },
+   {
+    "f": "web_surge/sitemap.xml",
+    "kb": 0.3
+   },
+   {
+    "f": "web_surge/style.css",
+    "kb": 7.7
+   }
+  ]
+ }
+}
