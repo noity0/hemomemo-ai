@@ -128,6 +128,17 @@ TASK/SEKH-SYSTEM (starting se end, kabhi bhi — 100% local):
   chalao → har qadam ka imandari nateeja → poora hisab memory me save.
 - Dono hukum GameBot-console AUR Minecraft-chat dono jagah chalte hain.
 
+GAMEBOT-EXE MENU (asli menu-strings, 100% sach - har claim ke peechay code):
+- **[1] MC-JOIN** : bot khud aap ke Minecraft (TLauncher/SFX/XMLEMC - offline/LAN)
+  mein login-enter-join karta hai — naya player ban kar aap ke sath multi khelta hai.
+- **[2] MC-DUO** : 2 kirdar ek sath — aap ke sath multi (dono Hemomemo-dimagh wale).
+- **[3] PC-DIRECT** : koi bhi game — bande ki screen parhe + control kare;
+  **ESC dab-jab tak** = foran stop (GetAsyncKeyState, hifazat pehle).
+- **[4] PC-WATCH** : sirf dekhe - jab tak ESC na dabey.
+- **[5] BROWSER** : Obscura — URL dena → bot page parhta hai (local CDP, koi AI-API nahi).
+- Orders dono jagah se: Agent-EXE console se AUR Minecraft-chat se
+  (`Hemomemo chal / ruk / jump / ghum 180 / hal`) — ek hi parser (`agent/orders.py`).
+
 Protocol: apna **VarInt-framing + handshake + login + chat + position** likha
 gaya hai (`agent/mc_bot.py`) — koi SDK koi library zaroori nahi.
 
@@ -160,6 +171,25 @@ rahti hai:
 
 App khulte hi **Hemomemo local API** khud ON: `http://127.0.0.1:8790`
 (3 free API keys / account — `hemo…` keys, PBKDF2-hashed, 100% PC-par).
+
+**API endpoints (Hemomemo API v1 — sab L6-guarded, wahi 1 dimagh jawab deta hai):**
+
+- `POST /v1/chat` — native shape: `{"prompt": "..."}` → `{"answer", "meta"}`
+- `POST /v1/chat/completions` — 🧩 **OpenAI-shape facade** (tools ke liye):
+  messages[] bhejo, jawab apne local dimagh ka. Bearer-key chalega —
+  OpenCode me provider `hemomemo/hemomemo-core`, baseURL `127.0.0.1:8790/v1`
+  (config me sirf Hemomemo ka raasta — koi bahar-ki AI/llama/ollama nahi)
+- `GET /v1/models` — OpenAI-shape list: `["hemomemo-core"]`
+- `GET /health`, `GET /v1/info`, `POST /v1/auth/signup|signin`, `GET /v1/auth/me`
+- Headers: `Authorization: Bearer hemo…` (ya `X-Hemomemo-Key` + fresh
+  `X-Hemomemo-Ts`/`X-Hemomemo-Nonce`) — policy+rate L6-HMHZ se.
+
+### 🌐 LAN mode (OPT-IN — owner PC on ke baad)
+Default: Hemomemo local API **127.0.0.1:8790** (sirf isi PC — safety + law).
+Opt-in: `START-HEMOMO-LAN.bat` (DigitalBrain + People package me) chalo —
+ye **Hemomemo local API ko 0.0.0.0:8790 par** start karta hai. "Door ka user"
+(kisi bhi device se) isi PC ki Hemomemo API use kar sake — lekin sirf owner PC
+on ke baad, aur sirf is opt-in ke baad.
 
 ---
 
@@ -200,12 +230,28 @@ L6 API-guard (local keys). Koi platform API / cloud / MCP / doosra AI — **nahi
 
 ## 🧪 QA — Imandari
 
-QA-500 suite har release se pehle chalti hai. **Nateeja jaisa hai waisa
-bataya jata hai** — koi nakli "success" nahi. Naye dimagh-modules ke tests
-(memory / retrieval / reasoning / deterministic-math / mc-bot protocol /
-token-dimagh / agent-powers / order-parser / console-orders / task-sekh-
-system) — **146/146 PASS** (22 + 20 + 42 + 50 game-bot QA + 12 task-system)
-+ **live API par key-lifecycle 11/11 PASS** (2026-11-07).
+QA-500 + QA-700-hard + VIDEO-QA suites har release se pehle chalti hain.
+**Nateeja jaisa hai waisa bataya jata hai** — koi nakli "success" nahi. Naye
+dimagh-modules ke tests (memory / retrieval / reasoning / deterministic-math /
+mc-bot protocol / token-dimagh / agent-powers / order-parser / console-orders /
+task-sekh-system):
+
+- ✅ token-dimagh: **20/20 PASS** (2026-11-08)
+- ✅ agent-powers suite: **42/42 PASS** (2026-11-08)
+- ✅ game-bot 50-QA: **PASS=50 FAIL=0 (of 50)** (2026-11-08)
+- ✅ key-lifecycle: 11/11 PASS (live API, 2026-11-07)
+- 🎬 VIDEO-QA v3 (25-check, photoreal engine): **20/25 PASS** (2026-11-08) — fixed resize bugs, prompt-override system live ✓
+
+### 🎬 Video-Engine v3 (photoreal, 100% local)
+- 🧠 **prompt-exact**: user's words drive scene (birds/rain/snow/city/lightning...) via prompt-override system
+- 🎯 **max 50 min (3000s)** · 1280x720 · 24fps · supersample 1600x900 → BICUBIC downscale
+- ⚡ **speed**: 528 ms/frame (~10s clip: 2-3 min wall, 60s clip: ~15 min wall)
+- 🚫 **zero AI-API / cloud / MCP / platform-key** — only Hemomemo system (numpy/PIL/ffmpeg)
+- 🌟 **styles**: golden (sun+birds+ocean), neon (city+rain+bokeh), storm (lightning+rain), winter (snow+halo), ocean (fog+birds), noir, space, dawn, dusk, night
+- 💻 Desktop-app Video-tab: duration+fps+style + 🖼 still_preview with prompt overrides
+- ✨ Flow-animation (READ→…→ANSWER HUD) local `agent/animation.py` me — har sawal
+  ke neeche 10-marhalo ki animation (koi AI-API nahi); chat me "animation" likhne
+  par Video-tab khulta hai (mp4 render)
 
 **LIVE tasdeeq (apne PC par)**: GameBot ka PC-control asli chala kar dekha
 (asli cursor-harkat + wapas-bilkul) ✓, aankh asli screenshot parh rahi ✓,
