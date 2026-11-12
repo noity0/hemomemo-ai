@@ -40,6 +40,56 @@ PORT = 7812
 _HOLDER = {"brain": None, "chat_calls": 0, "bio_steps": 0}
 _WARM = {"started": False}          # 🪶 behind-the-scenes warm (pehli call fast)
 
+# 🌐 AUTO-START HEMOMEMO API SERVER (24/7 background daemon, zero idle CPU/GPU load)
+_SERVER_STARTED = False
+_SERVER_THREAD = None
+
+try:
+    import threading
+    import time
+    from server import genone_server as _gs
+    
+    def _start_server():
+        """Start server in background thread with error handling"""
+        global _SERVER_STARTED
+        try:
+            result = _gs.start()
+            if result.get("ok"):
+                _SERVER_STARTED = True
+                print("SUCCESS: Hemomemo API server started: " + result['url'])
+                # Keep the thread alive
+                while _SERVER_STARTED:
+                    time.sleep(1)
+            else:
+                print("ERROR: Server start failed: " + str(result.get('error', 'Unknown error')))
+        except Exception as e:
+            print("ERROR: Server error: " + str(e))
+    
+    def get_server_status():
+        """Check if server is running and return status"""
+        try:
+            return _gs.status()
+        except:
+            return {"on": False, "error": "Server not accessible"}
+    
+    def start_hemomemo_server():
+        """Start Hemomemo server in background"""
+        global _SERVER_THREAD, _SERVER_STARTED
+        if not _SERVER_STARTED:
+            _SERVER_THREAD = threading.Thread(target=_start_server, daemon=True, name="hemomemo-api")
+            _SERVER_THREAD.start()
+            # Give it a moment to start
+            time.sleep(2)
+            return get_server_status()
+        return get_server_status()
+    
+    # Auto-start server on import
+    start_hemomemo_server()
+    
+except Exception as e:
+    print(f"❌ Server initialization error: {str(e)}")
+
+
 
 # ----------------------------------------------------------------------
 # 1) BIO-BRAIN (shared — har process me SIRF ek instance)
