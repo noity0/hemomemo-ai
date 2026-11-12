@@ -22,3 +22,81 @@ Jawab: Bot khud server par login/enter/join karta hai (apna VarInt-protocol - TL
 
 Sawal: ruk jao hifazat kaise
 Jawab: Hifazat pehle: ESC = foran stop (PC-DIRECT/PC-WATCH), "ruk" = sab harkat band, "khatam" = alvida. Bot sirf bande ke hukum par chalta hai - bande ke control me rahta hai.
+Sawal: GameBot kya hai?
+Jawab: Hemomemo GameBot ek AI hai jo Minecraft mein khelta hai, PC screen control karta hai, aur browser chala sakta hai. 100% local hai, koi API nahi.
+
+Sawal: GameBot Minecraft mein kaise join karta hai?
+Jawab: GameBot offline/LAN server mein khud join karta hai. TLauncher/SFX/XMLEMC mein offline mode mein server start karke join karo.
+
+Sawal: GameBot ki aankhein kaise kaam karti hai?
+Jawab: PC-EYE: PIL screenshots leke, NumPy analysis karta hai. 4x4 brightness grid + dominant color detection. Kisi AI API nahi, sirf local image processing.
+
+Sawal: GameBot PC control kaise karta hai?
+Jawab: Windows API: SendInput keyboard, mouse_event mouse control. Pyautogui nahi, pure Windows API. ESC dabane se sab band ho jata hai.
+
+Sawal: GameBot browser kaise chalata hai?
+Jawab: Obscura browser (Rust based) chalta hai. Browser menu se URL do, bot fetch/screenshot karlega. Skill install bhi kar sakta hai.
+
+Sawal: MC-JOIN kya hai?
+Jawab: MC-JOIN: GameBot khud naya player ban kar aap ke Minecraft server mein join karta hai. Chat parhta hai, commands follow karta hai.
+
+Sawal: MC-DUO kya hai?
+Jawab: MC-DUO: 2 kirdar ek sath join hote hain. Dono Hemomemo dimagh wale hain. Multi-player mode mein aap ke sath khelte hain.
+
+Sawal: Minecraft commands kya hain?
+Jawab: Commands: chal (walk forward), ruk (stop), jump (jump), ghum 180 (turn 180 degrees), hal (show position), baen/daen (left/right).
+
+Sawal: Minecraft chat commands kaise chalte hain?
+Jawab: Chat mein likho: 'Hemomemo chal', 'Hemomemo ruk', etc. Bot token-dar-token parhta hai aur command follow karta hai.
+
+Sawal: Video engine kaise kaam karta hai?
+Jawab: User prompt → scene parsing → multi-shot director → 7-layer frames → ffmpeg → mp4. 100% local, koi AI API nahi.
+
+Sawal: Video styles kya hain?
+Jawab: Styles: golden (sun+birds+ocean), neon (city+rain+bokeh), storm (lightning+rain), winter (snow+halo), ocean (fog+birds), noir, space, dawn, dusk, night.
+
+Sawal: GameBot kya hai?
+Jawab: Hemomemo GameBot ek AI hai jo Minecraft mein khelta hai, PC screen control karta hai, aur browser chala sakta hai. 100% local hai, koi API nahi.
+
+Sawal: GameBot Minecraft mein kaise join karta hai?
+Jawab: GameBot offline/LAN server mein khud join karta hai. TLauncher/SFX/XMLEMC mein offline mode mein server start karke join karo.
+
+Sawal: GameBot ki aankhein kaise kaam karti hai?
+Jawab: PC-EYE: PIL screenshots leke, NumPy analysis karta hai. 4x4 brightness grid + dominant color detection. Kisi AI API nahi, sirf local image processing.
+
+Sawal: GameBot PC control kaise karta hai?
+Jawab: Windows API: SendInput keyboard, mouse_event mouse control. Pyautogui nahi, pure Windows API. ESC dabane se sab band ho jata hai.
+
+Sawal: GameBot browser kaise chalata hai?
+Jawab: Obscura browser (Rust based) chalta hai. Browser menu se URL do, bot fetch/screenshot karlega. Skill install bhi kar sakta hai.
+
+Sawal: MC-JOIN kya hai?
+Jawab: MC-JOIN: GameBot khud naya player ban kar aap ke Minecraft server mein join karta hai. Chat parhta hai, commands follow karta hai.
+
+Sawal: MC-DUO kya hai?
+Jawab: MC-DUO: 2 kirdar ek sath join hote hain. Dono Hemomemo dimagh wale hain. Multi-player mode mein aap ke sath khelte hain.
+
+Sawal: Minecraft commands kya hain?
+Jawab: Commands: chal (walk forward), ruk (stop), jump (jump), ghum 180 (turn 180 degrees), hal (show position), baen/daen (left/right).
+
+Sawal: Video engine kaise kaam karta hai?
+Jawab: User prompt → scene parsing → multi-shot director → 7-layer frames → ffmpeg → mp4. 100% local, koi AI API nahi.
+
+Sawal: Video styles kya hain?
+Jawab: Styles: golden (sun+birds+ocean), neon (city+rain+bokeh), storm (lightning+rain), winter (snow+halo), ocean (fog+birds), noir, space, dawn, dusk, night.
+
+Sawal: Video prompt overrides kya hain?
+Jawab: Prompt words drive scene: birds, rain, snow, city, lightning, meteor, halo, stars=1600, fog-delta. Exact prompt follow hota hai.
+
+Sawal: Resize error kaise fix hua?
+Jawab: LANCZOS resize bug fix kiya gaya BICUBIC se. 'index 1600 out of bounds' error ab nahi aata.
+
+Sawal: Tuple error kaise fix hua?
+Jawab: mc_bot.py mein Tuple import add kiya gaya. Duo function ab sahi chalta hai.
+
+Sawal: Brain update kaise karta hai?
+Jawab: UPDATE-BRAIN.ps1 script chalaye. Owner-published files download hote hain, SHA-256 verify hote hain.
+
+Sawal: Hemomemo 100% local kaise hai?
+Jawab: Sara local: numpy, PIL, ffmpeg, Windows API. Koi external AI API, cloud service, MCP nahi.
+
