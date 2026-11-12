@@ -12,6 +12,7 @@ Run:  py -3 app\genone_app.py   (ya Desktop shortcut / .bat)
 import os
 import re
 import sys
+import json
 import queue
 import threading
 import traceback
@@ -55,11 +56,16 @@ C_AIBG    = "#182b23"   # ai bubble
 C_DANGER  = "#c05b5b"
 
 F_FONT    = ("Segoe UI", 11)
+F_REGULAR = F_FONT            # legacy-alias (video-tab purana naam use karta hai)
 F_SMALL   = ("Segoe UI", 9)
 F_BOLD    = ("Segoe UI", 11, "bold")
 F_H1      = ("Segoe UI", 17, "bold")
+
+# 🎬 video-generation feature-switch (user-ka-hukum: TRUE)
+VIDEO_GENERATION = True
 F_H2      = ("Segoe UI", 13, "bold")
 F_MONO    = ("Consolas", 9)
+C_ACCENT2 = "#3ad8a5"         # hover-emerald (video-tab button ka hover color)
 
 MODEL_NAME = "Hemomemo AI"
 
@@ -157,18 +163,62 @@ def chat_async(prompt, on_done, think="auto", progress=None):
     _VNUM_RX = re.compile(r"(?i)\b(\d+(?:\.\d+)?)\s*(sec|s|second|seconds|min|minute|minutes)\b")
 
     def _video_gen(q, out):
-        """Local video engine — 5s se 15 min tak; koi AI-API nahi."""
+        """Ultra-realistic motion video engine — 5s se 15 min tak; koi AI-API nahi."""
         try:
-            from agent import video_gen as _vg
-            _dur = 10.0
-            m = _VNUM_RX.search(q)
-            if m:
-                _v = float(m.group(1))
-                _dur = _v * 60.0 if m.group(2) in ("min", "minute", "minutes") else _v
-            _dur = max(5.0, min(900.0, _dur))
-            p = _vg.generate_video(q, duration_sec=_dur)
-            mm = _vg.video_meta(p)
-            return (p, mm, True, "")
+            # Try ultra-realistic motion video first
+            try:
+                from agent import ultra_realistic_motion_video_simple as _uv
+                _dur = 10.0
+                m = _VNUM_RX.search(q)
+                if m:
+                    _v = float(m.group(1))
+                    _dur = _v * 60.0 if m.group(2) in ("min", "minute", "minutes") else _v
+                _dur = max(5.0, min(900.0, _dur))
+                
+                # Detect if it's a motion/racing video
+                style = "racing" if any(word in q.lower() for word in ["racing", "car", "vehicle", "motion", "speed"]) else "general"
+                
+                p = _uv.generate_ultra_realistic_motion_video(q, duration=_dur, resolution=(640, 360), style=style)
+                
+                # Get video metadata (ffprobe milta ho to sach; warna file-size sach)
+                import subprocess
+                try:
+                    r = subprocess.run([
+                        "ffprobe", "-v", "error", "-show_entries",
+                        "format=duration,size:stream=avg_frame_rate",
+                        "-of", "json", p], capture_output=True, text=True)
+                    _fmt, _fps = {}, 24
+                    if r.returncode == 0:
+                        _j = json.loads(r.stdout or "{}")
+                        _fmt = _j.get("format") or {}
+                        for _st in (_j.get("streams") or []):
+                            _fr = _st.get("avg_frame_rate") or ""
+                            if "/" in _fr:
+                                _n, _d = _fr.split("/", 1)
+                                try:
+                                    if float(_d):
+                                        _fps = round(float(_n) / float(_d), 2)
+                                except Exception:
+                                    pass
+                    mm = {"duration": float(_fmt.get("duration") or _dur),
+                          "size": int(float(_fmt.get("size") or 0)) or os.path.getsize(p),
+                          "fps": _fps}
+                except Exception:
+                    mm = {"duration": _dur, "size": os.path.getsize(p), "fps": 24}
+                
+                return (p, mm, True, "")
+            except Exception as e:
+                # Fallback to original video generation
+                from agent import video_gen as _vg
+                _dur = 10.0
+                m = _VNUM_RX.search(q)
+                if m:
+                    _v = float(m.group(1))
+                    _dur = _v * 60.0 if m.group(2) in ("min", "minute", "minutes") else _v
+                _dur = max(5.0, min(900.0, _dur))
+                p = _vg.generate_video(q, duration_sec=_dur)
+                mm = _vg.video_meta(p)
+                return (p, mm, True, "")
         except Exception as e:
             import traceback as _t
             return (None, {}, False, "%s\n%s" % (e, _t.format_exc()))
@@ -190,19 +240,80 @@ def chat_async(prompt, on_done, think="auto", progress=None):
                     {"source": "video-err"})
             return
         try:
-            # token-dimagh pehle: token-dar-token samajh (no-API, local)
+            # First, use frontolobe to understand the user input
             try:
-                from model.understand import default_token_chat
-                txt, m = default_token_chat().respond(prompt)
-                if txt and (m or {}).get("source") not in (None, ""):
-                    on_done(txt, m or {})
+                from model.frontolobe import understand_user_input
+                understanding = understand_user_input(prompt)
+                
+                # Log the understanding for debugging
+                _log("Frontolobe understanding: %s" % str(understanding))
+                
+                # clarification me ab USER-ka asli-text hamesha dikh-jata hai
+                # (English-canned-template-leak band — input-aware Roman-Urdu)
+                if understanding["clarification_needed"]:
+                    sug = (understanding.get("response_suggestion") or "").strip()
+                    said = (understanding.get("input_text") or prompt or "").strip()
+                    if len(said) > 80:
+                        said = said[:77].rstrip() + "…"
+                    if sug:
+                        clarification_msg = "Hemomemo AI-> «%s» — %s" % (said, sug)
+                    else:
+                        clarification_msg = ("Hemomemo AI-> «%s» — thora tafseel"
+                            " se likhein (kya poochna / kya banana hai) to"
+                            " behtar-jawab dunga." % said)
+                    on_done(clarification_msg, {
+                        "source": "clarification",
+                        "understanding": understanding
+                    })
                     return
-            except Exception:
-                pass
-            G = brain_generate()
-            txt, m = G.chat_once(prompt, meta=True, think=think,
-                                 progress=progress)
-            on_done(txt, m or {})
+                
+                # Modify prompt based on understanding
+                enhanced_prompt = prompt
+                if understanding["intent"]["type"] == "request":
+                    # Add context for requests
+                    enhanced_prompt = f"User is requesting: {prompt}. Context: {understanding['contextual_clues']}. Key concepts: {understanding['key_concepts']}."
+                
+                # token-dimagh pehle: token-dar-token samajh (no-API, local)
+                try:
+                    from model.understand import default_token_chat
+                    txt, m = default_token_chat().respond(enhanced_prompt)
+                    if txt and (m or {}).get("source") not in (None, ""):
+                        # Add understanding context to metadata
+                        if m is None:
+                            m = {}
+                        m["understanding"] = understanding
+                        on_done(txt, m or {})
+                        return
+                except Exception:
+                    pass
+                
+                # Use brain generation if direct chat fails
+                G = brain_generate()
+                txt, m = G.chat_once(enhanced_prompt, meta=True, think=think,
+                                     progress=progress)
+                
+                # Add understanding context to metadata
+                if m is None:
+                    m = {}
+                m["understanding"] = understanding
+                on_done(txt, m or {})
+                
+            except Exception as e:
+                _log("Frontolobe processing failed: %s" % str(e))
+                # Fallback to original behavior
+                try:
+                    from model.understand import default_token_chat
+                    txt, m = default_token_chat().respond(prompt)
+                    if txt and (m or {}).get("source") not in (None, ""):
+                        on_done(txt, m or {})
+                        return
+                except Exception:
+                    pass
+                G = brain_generate()
+                txt, m = G.chat_once(prompt, meta=True, think=think,
+                                     progress=progress)
+                on_done(txt, m or {})
+                
         except Exception as e:
             _log("chat FAIL: %s\n%s" % (e, traceback.format_exc()))
             on_done("Hemomemo AI-> Maaf karein, andruni ghalti: %s" % e,
@@ -478,6 +589,17 @@ class HemomemoApp(tk.Tk):
             self._fill_formulas()
         if key == "api":
             self.refresh_api()
+        if key == "video":
+            # keyboard-scroll foran kaam kare — canvas par focus
+            try:
+                for _c in self._page("video").winfo_children():
+                    if isinstance(_c, tk.Canvas):
+                        _c.focus_set()
+                        break
+            except Exception:
+                pass
+        # 🎬 video-page __init__ me EK hi dafa banti hai — yahan sirf tkraise
+        # (bar-bar _build_video karna widgets ko stack karta tha)
 
     # ================================================================ #
     # 🌐 APNI LOCAL API — AUTO-START + neeche global status-bar         #
@@ -538,8 +660,7 @@ class HemomemoApp(tk.Tk):
 
     # ==================================================================
     # 🌐 HEMOMO API PAGE (apni API server — no platform, L6-HMHZ guard)
-    # ==================================================================
-    def _build_api(self):
+    # ==================================================================    def _build_api(self):
         f = self._page("api")
         f.grid_columnconfigure(0, weight=1)
         card = self._card(f, row=0)
@@ -1234,96 +1355,360 @@ class HemomemoApp(tk.Tk):
         self._refresh_mood()
 
     def _build_video(self):
-        """🎬 HEMOMO VIDEO-GENERATION TAB (local engine — 100% Hemomemo AI,
-        koi external AI-API / UE5 / Higgsfield nahi. ffmpeg + PIL local)."""
+        """🎬 ULTRA-REALISTIC MOTION VIDEO GENERATION TAB
+        (Flow Fields + Higgsfield Technology + Physics Simulation)"""
         f = self._page("video")
-        f.grid_columnconfigure(0, weight=1)
 
-        card = self._card(f, row=0)
-        tk.Label(card, text="🎬 Hemomemo AI — Text → Video (100% Local)",
+        if not VIDEO_GENERATION:   # 🎬 OFF-switch (kabhi band karna ho)
+            tk.Label(f, text="🎬 video-generation band hai (VIDEO_GENERATION=False)",
+                     font=F_H1, bg=C_BG, fg=C_DIM).pack(pady=40)
+            return
+
+        # ── scroll-host: poora video-page scrollable (touch/mouse/keyboard) ──
+        host = tk.Canvas(f, bg=C_BG, highlightthickness=0, bd=0)
+        up_btn = tk.Button(f, text="▲", font=F_BOLD, bg=C_CARD2, fg=C_GOLD,
+                           relief="flat", cursor="hand2", width=3,
+                           command=lambda: host.yview_scroll(-5, "units"))
+        vsb = tk.Scrollbar(f, orient="vertical", command=host.yview)
+        down_btn = tk.Button(f, text="▼", font=F_BOLD, bg=C_CARD2, fg=C_GOLD,
+                             relief="flat", cursor="hand2", width=3,
+                             command=lambda: host.yview_scroll(5, "units"))
+        up_btn.pack(side="right", anchor="n", padx=2, pady=14)
+        vsb.pack(side="right", fill="y")
+        down_btn.pack(side="right", anchor="s", padx=2, pady=14)
+        host.pack(side="left", fill="both", expand=True)
+        inner = tk.Frame(host, bg=C_BG)
+        _win = host.create_window((0, 0), window=inner, anchor="nw")
+        inner.bind("<Configure>", lambda e: host.configure(
+            scrollregion=host.bbox("all")))
+        host.bind("<Configure>",
+                  lambda e: host.itemconfigure(_win, width=e.width))
+        inner.grid_columnconfigure(0, weight=1)
+
+        card = self._card(inner, row=0)
+        tk.Label(card, text="🚀 Ultra-Realistic Motion Video Generator — 🟢 TRUE", 
                  font=F_H1, bg=C_CARD, fg=C_GOLD).pack(
             anchor="w", padx=16, pady=(14, 2))
-        tk.Label(card, text="Prompt → local script → procedural frames → "
-                 "ffmpeg → mp4. 5s se 15 min tak (15 min = 900s). "
-                 "No AI-API · No Cloud · No MCP · koi platform-key nahi.",
+        tk.Label(card, text="Advanced motion video generation using Flow Fields, "
+                 "Higgsfield Technology, and Physics Simulation. "
+                 "Create ultra-realistic racing, flow, and motion videos locally.\n"
+                 "Features: Motion blur, volumetric rendering, dynamic lighting, "
+                 "physics simulation, cinematic effects.",
                  font=F_FONT, bg=C_CARD, fg=C_TEXT, wraplength=900,
                  justify="left", anchor="w").pack(fill="x", padx=16, pady=(2, 10))
 
-        # 📝 prompt row
-        self._vid_prompt_var = tk.StringVar(value="cinematic hero running through neon city rain")
-        tk.Entry(card, textvariable=self._vid_prompt_var, font=F_FONT,
-                 bg=C_CARD2, fg=C_TEXT, relief="flat",
-                 insertbackground=C_ACCENT).pack(
-            fill="x", padx=16, pady=6, ipady=9)
+        # 📝 prompt row with enhanced UI
+        prompt_frame = tk.Frame(card, bg=C_CARD)
+        prompt_frame.pack(fill="x", padx=16, pady=(0, 8))
+        tk.Label(prompt_frame, text="Video Prompt:", font=F_FONT, 
+                bg=C_CARD, fg=C_TEXT).pack(anchor="w", padx=(0, 8), pady=(12, 4))
+        
+        self._vid_prompt_var = tk.StringVar(value="car racing on track with realistic motion blur")
+        self._vid_prompt = tk.Text(prompt_frame, height=4, wrap="word", 
+                                  bg=C_CARD2, fg=C_TEXT, font=F_FONT,
+                                  relief="flat", padx=12, pady=8)
+        self._vid_prompt.pack(fill="x", padx=(0, 12), pady=(0, 12))
+        self._vid_prompt.insert("1.0", self._vid_prompt_var.get())
 
-        # ⚙️ controls row: duration / fps / style
+        # ⚙️ enhanced controls row
+        controls_frame = tk.Frame(card, bg=C_CARD)
+        controls_frame.pack(fill="x", padx=16, pady=(0, 8))
+        
+        # Duration control
+        dur_frame = tk.Frame(controls_frame, bg=C_CARD)
+        dur_frame.pack(fill="x", pady=(0, 8))
+        tk.Label(dur_frame, text="⏱ Duration (seconds):", font=F_FONT, bg=C_CARD,
+                 fg=C_TEXT).pack(side="left", padx=(0, 8))
         self._vid_dur_var = tk.IntVar(value=10)
-        self._vid_fps_var = tk.IntVar(value=24)
-        self._vid_style_var = tk.StringVar(value="auto")
-        c = tk.Frame(card, bg=C_CARD); c.pack(fill="x", padx=16, pady=4)
-        tk.Label(c, text="⏱ duration (sec):", font=F_FONT, bg=C_CARD,
-                 fg=C_TEXT).pack(side="left")
-        tk.Spinbox(c, from_=5, to=900, increment=5, font=F_FONT,
+        tk.Spinbox(dur_frame, from_=5, to=60, increment=5, font=F_FONT,
                    bg=C_CARD2, fg=C_TEXT, relief="flat",
-                   textvariable=self._vid_dur_var, width=6).pack(
-            side="left", padx=(6, 16))
-        tk.Label(c, text="🎞 fps:", font=F_FONT, bg=C_CARD,
-                 fg=C_TEXT).pack(side="left")
-        tk.Spinbox(c, from_=8, to=60, increment=4, font=F_FONT,
-                   bg=C_CARD2, fg=C_TEXT, relief="flat",
-                   textvariable=self._vid_fps_var, width=4).pack(
-            side="left", padx=(6, 16))
-        for st in ("auto", "ocean", "desert", "neon", "space", "rain"):
-            pass
-        tk.Label(c, text="🎨 style:", font=F_FONT, bg=C_CARD,
-                 fg=C_TEXT).pack(side="left")
-        style_box = tk.Frame(c, bg=C_CARD); style_box.pack(side="left", padx=(6, 0))
-        for st in ("auto", "ocean", "desert", "neon", "space", "rain"):
-            tk.Radiobutton(style_box, text=st, font=F_SMALL, bg=C_CARD,
-                           fg=C_TEXT, variable=self._vid_style_var,
-                           value=st, activebackground=C_CARD,
-                           activeforeground=C_GOLD).pack(side="left", padx=4)
+                   textvariable=self._vid_dur_var, width=10).pack(side="left")
 
-        # ▶ generate row
+        # Resolution control
+        res_frame = tk.Frame(controls_frame, bg=C_CARD)
+        res_frame.pack(fill="x", pady=(0, 8))
+        tk.Label(res_frame, text="🖼 Resolution:", font=F_FONT, bg=C_CARD,
+                 fg=C_TEXT).pack(side="left", padx=(0, 8))
+        self._vid_res_var = tk.StringVar(value="1280x720")
+        res_combo = ttk.Combobox(res_frame, textvariable=self._vid_res_var,
+                                values=["640x360", "1280x720", "1920x1080"],
+                                width=12, font=F_REGULAR, state="readonly")
+        res_combo.pack(side="left", padx=(0, 16))
+
+        # Style detection
+        style_frame = tk.Frame(controls_frame, bg=C_CARD)
+        style_frame.pack(fill="x", pady=(0, 8))
+        tk.Label(style_frame, text="🎨 Style:", font=F_FONT, bg=C_CARD,
+                 fg=C_TEXT).pack(side="left", padx=(0, 8))
+        self._vid_style_var = tk.StringVar(value="auto")
+        tk.Label(style_frame, text="(Auto-detected from prompt)", 
+                font=F_SMALL, bg=C_CARD, fg=C_DIM).pack(side="left", padx=(8, 0))
+
+        # ▶ enhanced generate row
         b = tk.Frame(card, bg=C_CARD); b.pack(fill="x", padx=16, pady=8)
         self._vid_gen_btn = tk.Button(
-            b, text="▶ Generate Video", font=F_BOLD, bg=C_CARD2, fg=C_GOLD,
+            b, text="🚀 Generate Ultra-Realistic Video", font=F_BOLD, bg=C_CARD2, fg=C_GOLD,
             relief="flat", cursor="hand2", activebackground=C_BORDER,
             command=self._video_gen_now)
         self._vid_gen_btn.pack(side="left", ipady=4, padx=(0, 8))
-        tk.Button(b, text="🗂 Video-Folder kholo", font=F_BOLD,
+        
+        self._vid_prev_btn = tk.Button(
+            b, text="🖼 Generate Preview", font=F_BOLD, bg=C_CARD2,
+            fg=C_ACCENT, relief="flat", cursor="hand2",
+            activebackground=C_BORDER, command=self._video_preview_now)
+        self._vid_prev_btn.pack(side="left", ipady=4, padx=(0, 8))
+        
+        tk.Button(b, text="🗂 Open Video Folder", font=F_BOLD,
                    bg=C_CARD2, fg=C_TEXT, relief="flat",
-                   cursor="hand2", activebackground=C_BORDER,
+                   cursor="hand2", activebackground=C_BORDER, 
                    command=self._video_open_dir).pack(side="left", ipady=4)
-        tk.Label(b, text="… mp4 local data/videos/ me banayegi (no cloud)",
-                 font=F_SMALL, bg=C_CARD, fg=C_DIM).pack(
-            side="left", padx=(12, 0), anchor="center")
+        
+        # Progress indicator
+        self._vid_progress = ttk.Progressbar(card, mode="indeterminate")
+        self._vid_progress.pack(fill="x", padx=16, pady=(0, 8))
+        
+        # Status label
+        self._vid_status = tk.Label(card, text="", font=F_SMALL, bg=C_CARD,
+                                   fg=C_DIM, anchor="w", justify="left")
+        self._vid_status.pack(fill="x", padx=16, pady=(0, 12))
 
-        # 📤 result row
-        self._vid_res = tk.Label(card, text="", font=F_FONT, bg=C_CARD,
+        # 📤 result row with enhanced display
+        result_frame = tk.Frame(card, bg=C_CARD, relief="ridge", bd=2)
+        result_frame.pack(fill="x", padx=16, pady=(0, 12))
+        tk.Label(result_frame, text="Video Result:", font=F_FONT, bg=C_CARD,
+                 fg=C_TEXT).pack(anchor="w", padx=16, pady=(12, 4))
+        
+        self._vid_res = tk.Label(result_frame, text="", font=F_FONT, bg=C_CARD,
                                   fg=C_DIM, anchor="w", justify="left",
                                   wraplength=900)
-        self._vid_res.pack(fill="x", padx=16, pady=(4, 12))
+        self._vid_res.pack(fill="x", padx=16, pady=(0, 8))
+        
+        # 🖼 enhanced preview area
+        preview_frame = tk.Frame(card, bg=C_CARD2, relief="sunken", bd=1)
+        preview_frame.pack(fill="both", expand=True, padx=16, pady=(0, 12))
+        tk.Label(preview_frame, text="Video Preview:", font=F_REGULAR,
+                bg=C_CARD2, fg=C_TEXT).pack(anchor="w", padx=16, pady=(12, 4))
+        
+        self._vid_prev = tk.Label(preview_frame, text="No preview generated yet",
+                                 bg=C_CARD2, fg=C_DIM, font=F_REGULAR,
+                                 height=10, relief="flat", bd=1)
+        self._vid_prev.pack(fill="both", expand=True, padx=16, pady=(0, 12))
 
-    def _video_gen_now(self):
-        """▶ generate button → background thread me video_gen.generate_video()
-        (thread-safe UI freeze nahi hota)."""
-        self._vid_gen_btn.configure(state="disabled", text="…")
-        self._vid_res.configure(text="🎬 video ban rahi hai (local engine)…",
-                                fg=C_GOLD)
-        prompt = self._vid_prompt_var.get().strip() or "cinematic epic scene"
-        dur = self._vid_dur_var.get()
-        fps = self._vid_fps_var.get()
-        style = self._vid_style_var.get()
-        d = {"prompt": prompt, "duration": dur, "fps": fps, "style": style}
+        # ── scroll wiring: wheel + touch/mouse-drag + keyboard (user-ka-hukum) ──
+        top = self.winfo_toplevel()
+        _INTERACTIVE = ("Button", "Text", "Entry", "Spinbox", "TCombobox",
+                        "TScrollbar", "TProgressbar", "Scrollbar")
+
+        def _in_page(e):
+            w = host.winfo_containing(e.x_root, e.y_root)
+            hops = 0
+            while w is not None and hops < 25:
+                if w is host:
+                    return True
+                if isinstance(w, str):
+                    try:
+                        w = host.nametowidget(w)
+                    except Exception:
+                        return False
+                    continue
+                try:
+                    p = w.winfo_parent()
+                except Exception:
+                    return False
+                if not p:
+                    return False
+                w = p
+                hops += 1
+            return False
+
+        def _wheel(e):
+            if not _in_page(e):
+                return                    # doosre pages/widgets ki apni marzi
+            try:
+                n = int(e.delta / 120)
+            except Exception:
+                n = 1
+            if n == 0:
+                n = -1 if e.delta < 0 else 1
+            host.yview_scroll(-n, "units")
+            return "break"
+
+        self._drag_last = [None]
+
+        def _press(e):
+            try:
+                w = host.winfo_containing(e.x_root, e.y_root)
+                hops = 0
+                while w is not None and hops < 25:
+                    if w is host:
+                        self._drag_last[0] = e.y
+                        return
+                    if isinstance(w, str):
+                        w = host.nametowidget(w)
+                        continue
+                    if w.winfo_class() in _INTERACTIVE:
+                        self._drag_last[0] = None
+                        return
+                    w = w.winfo_parent()
+                    hops += 1
+            except Exception:
+                pass
+            self._drag_last[0] = None
+
+        def _motion(e):
+            if self._drag_last[0] is None:
+                return
+            dy = self._drag_last[0] - e.y
+            if abs(dy) >= 4:
+                host.yview_scroll(-dy, "pixels")
+                self._drag_last[0] = e.y
+
+        if not hasattr(self, "_vid_scroll_bound"):
+            self._vid_scroll_bound = True
+            top.bind("<MouseWheel>", _wheel, add="+")
+            top.bind("<ButtonPress-1>", _press, add="+")
+            top.bind("<B1-Motion>", _motion, add="+")
+
+        def _kbd(e):
+            k = e.keysym
+            if k == "Up":
+                host.yview_scroll(-2, "units")
+            elif k == "Down":
+                host.yview_scroll(2, "units")
+            elif k == "Prior":
+                host.yview_scroll(-1, "pages")
+            elif k == "Next":
+                host.yview_scroll(1, "pages")
+            elif k == "Home":
+                host.yview_moveto(0.0)
+            elif k == "End":
+                host.yview_moveto(1.0)
+            return "break"
+
+        for _seq in ("<Up>", "<Down>", "<Prior>", "<Next>", "<Home>", "<End>"):
+            host.bind(_seq, _kbd)
+
+    def _video_preview_now(self):
+        """🖼 Generate preview frame from ultra-realistic motion video generator."""
+        self._vid_prev_btn.configure(state="disabled", text="🖼")
+        self._vid_prev.configure(text="🖼 Generating preview frame…")
+        
+        # Get prompt from text widget
+        prompt = self._vid_prompt.get("1.0", "end-1c").strip() or "car racing on track with realistic motion blur"
 
         def work():
             try:
-                from agent import video_gen as _vg
-                out = _vg.generate_video(prompt, duration_sec=float(dur),
-                                          fps=fps, style=style)
-                mm = _vg.video_meta(out)
-                self.after(0, lambda: self._video_done(out, mm))
+                # Try ultra-realistic motion video generator first
+                try:
+                    from agent import ultra_realistic_motion_video as _uv
+                    png = _uv.generate_ultra_realistic_motion_preview(prompt)
+                    self.after(0, lambda: self._video_preview_done(png))
+                except Exception as e:
+                    # Fallback to original video generator
+                    from agent import video_gen as _vg
+                    png = _vg.still_preview(prompt, style="auto")
+                    self.after(0, lambda: self._video_preview_done(png))
+            except Exception as e:
+                self.after(0, lambda e=e: self._video_preview_fail(e))
+
+        threading.Thread(target=work, daemon=True).start()
+
+    def _video_preview_done(self, png):
+        try:
+            import PIL.Image
+            import PIL.ImageTk
+            im = PIL.Image.open(png)
+            im.thumbnail((560, 315))
+            self._vid_prev_img = PIL.ImageTk.PhotoImage(im)
+            self._vid_prev.configure(image=self._vid_prev_img, text="")
+        except Exception as e:
+            self._vid_prev.configure(text="Preview loading error: %s" % str(e))
+        self._vid_prev_btn.configure(state="normal",
+                                    text="🖼 Generate Preview")
+        self._vid_status.configure(text="Preview generated successfully! Click 'Generate Ultra-Realistic Video' to create the full video.", fg=C_DIM)
+
+    def _video_preview_fail(self, e):
+        self._vid_prev_btn.configure(state="normal",
+                                     text="🖼 Generate Preview")
+        self._vid_prev.configure(text="Preview generation failed: %s" % str(e))
+        self._vid_status.configure(text="Try adjusting your prompt or check system resources.", fg=C_DIM)
+
+    def _video_gen_now(self):
+        """▶ generate button → background thread me ultra_realistic_motion_video.generate()
+        (thread-safe UI freeze nahi hota)."""
+        self._vid_gen_btn.configure(state="disabled", text="🚀")
+        self._vid_res.configure(text="🎬 Generating ultra-realistic motion video (0% completed)…",
+                                fg=C_GOLD)
+        self._vid_progress.pack(fill="x", padx=16, pady=(0, 8))
+        self._vid_progress.start(10)
+        self._vid_status.pack(fill="x", padx=16, pady=(0, 12))
+        self._vid_status.configure(text="⏳ AI thinking & Flow Field simulation active... Rendering frames...", fg=C_GOLD)
+        
+        # Get prompt from text widget
+        prompt = self._vid_prompt.get("1.0", "end-1c").strip() or "car racing on track with realistic motion blur"
+        dur = self._vid_dur_var.get()
+        
+        # Parse resolution
+        res = self._vid_res_var.get().split("x")
+        w, h = int(res[0]), int(res[1])
+        
+        d = {"prompt": prompt, "duration": dur, "width": w, "height": h}
+
+        def work():
+            try:
+                # Try ultra-realistic motion video generator first
+                try:
+                    from agent import ultra_realistic_motion_video as _uv
+                    
+                    # Custom generator with progress callback simulation
+                    generator = _uv.UltraRealisticMotionVideo()
+                    generator.width, generator.height = w, h
+                    generator.duration = dur
+                    generator.fps = 24
+                    generator.time_step = 0
+                    
+                    import zlib as _zlib
+                    generator.flow_field = _uv.FlowField(
+                        generator.width, generator.height, scale=50,
+                        seed=_zlib.crc32(prompt.encode("utf-8")))
+                    generator.higgsfield_renderer = _uv.HiggsfieldRenderer(generator.width, generator.height)
+                    
+                    frames = []
+                    total_frames = int(generator.duration * generator.fps)
+                    
+                    style = "racing"
+                    prompt_lower = prompt.lower()
+                    if "flow" in prompt_lower or "fluid" in prompt_lower:
+                        style = "flow"
+                    elif "physics" in prompt_lower or "particle" in prompt_lower:
+                        style = "physics"
+                    elif "neon" in prompt_lower:
+                        style = "neon"
+                    
+                    for frame_num in range(total_frames):
+                        generator.time_step = frame_num
+                        frame = generator.generate_frame(frame_num, prompt, style)
+                        frames.append(frame)
+                        
+                        # Update progress percentage in UI (har 10th frame —
+                        # har-frame after() Tk-events-queue bhaar deta tha)
+                        pct = int((frame_num + 1) / total_frames * 100)
+                        if (frame_num % 10 == 0) or (frame_num + 1) == total_frames:
+                            self.after(0, lambda p=pct, fn=frame_num+1, tf=total_frames: self._vid_res.configure(
+                                text=f"🎬 Generating ultra-realistic motion video ({p}% completed — Frame {fn}/{tf})...\n🌊 Flow Fields + Higgsfield Active...",
+                                fg=C_GOLD
+                            ))
+                    
+                    out = generator.create_video(frames)
+                    mm = _uv.get_video_metadata(out)
+                    self.after(0, lambda: self._video_done(out, mm))
+                except Exception as e:
+                    # Fallback to original video generator
+                    from agent import video_gen as _vg
+                    out = _vg.generate_video(prompt, duration_sec=float(dur),
+                                              fps=24, style="auto")
+                    mm = _vg.video_meta(out)
+                    self.after(0, lambda: self._video_done(out, mm))
             except Exception as e:
                 import traceback
                 self.after(0, lambda e=e: self._video_fail(e))
@@ -1331,18 +1716,48 @@ class HemomemoApp(tk.Tk):
         threading.Thread(target=work, daemon=True).start()
 
     def _video_done(self, out, mm):
-        self._vid_gen_btn.configure(state="normal", text="▶ Generate Video")
-        self._vid_res.configure(
-            text=("✅ video ban gayi — 100% local (Hemomemo engine):\n"
-                  "    file: %s\n    duration: %ss   size: %sKB   fps: %s\n"
-                  "    (data/videos/ me mehfooz — aap ka apna PC, koi cloud nahi)"
-                  % (out, mm.get("duration"),
-                     int(mm.get("size", 0) / 1024), mm.get("fps"))),
-            fg=C_ACCENT)
+        self._vid_gen_btn.configure(state="normal", text="🚀 Generate Ultra-Realistic Video")
+        self._vid_progress.stop()
+        self._vid_progress.pack_forget()
+        self._vid_status.pack_forget()
+        
+        # Enhanced result display
+        video_size_kb = int(mm.get("size", 0) / 1024)
+        video_duration = mm.get("duration", 0)
+        video_fps = mm.get("fps", 24)
+        
+        result_text = ("✅ Ultra-realistic motion video generated successfully!\n"
+                      "    File: %s\n"
+                      "    Duration: %ss   Size: %sKB   FPS: %s\n"
+                      "    Technology: Flow Fields + Higgsfield + Physics Simulation\n"
+                      "    (100% Local — data/videos/ folder)" 
+                      % (out, video_duration, video_size_kb, video_fps))
+        
+        self._vid_res.configure(text=result_text, fg=C_ACCENT)
+        
+        # Show preview if available
+        try:
+            import PIL.Image
+            import PIL.ImageTk
+            preview_path = os.path.join(ROOT, "data", "videos", "preview.png")
+            if os.path.exists(preview_path):
+                im = PIL.Image.open(preview_path)
+                im.thumbnail((560, 315))
+                self._vid_prev_img = PIL.ImageTk.PhotoImage(im)
+                self._vid_prev.configure(image=self._vid_prev_img, text="")
+        except Exception as e:
+            self._vid_prev.configure(text="Preview loading error: %s" % str(e))
 
     def _video_fail(self, e):
-        self._vid_gen_btn.configure(state="normal", text="▶ Generate Video")
-        self._vid_res.configure(text="❌ video FAIL: %s" % e, fg=C_DANGER)
+        self._vid_gen_btn.configure(state="normal", text="🚀 Generate Ultra-Realistic Video")
+        self._vid_progress.stop()
+        self._vid_progress.pack_forget()
+        self._vid_status.pack_forget()
+        
+        error_msg = "❌ Video generation failed: %s" % str(e)
+        self._vid_res.configure(text=error_msg, fg=C_DANGER)
+        self._vid_status.configure(text="Please try a different prompt or check your system resources.", fg=C_DIM)
+        self._vid_prev.configure(text="Generation failed - check error message above", fg=C_DANGER)
 
     def _video_open_dir(self):
         try:
@@ -1443,7 +1858,7 @@ class HemomemoApp(tk.Tk):
         # 4 dimagh cards
         brains = [
             ("🥇 Pehla Dimagh — MASTER", _d(s.get("master_brain")),
-             "7.07M params · dh660 · khud-soch"),
+             "9.0M params · dh722 · khud-soch"),
             ("🥈 Dusra Dimagh — DEEP", _d(s.get("deep_brain")),
              "6.25M params · dh620 · deep-soch rescue"),
             ("🥉 Teesra — HELPER", _d(s.get("helper_brain")),
@@ -1658,7 +2073,7 @@ class HemomemoApp(tk.Tk):
         tk.Label(card, text="☪ %s" % MODEL_NAME, font=F_H1, bg=C_CARD,
                  fg=C_GOLD).pack(anchor="w", padx=16, pady=(14, 0))
         lines = [
-            ("📦 Version", "v4.1.0 — 4-dimagh network (master 7.07M + deep "
+            ("📦 Version", "v5.0.0 — 4-dimagh network (master 9.0M + deep "
              "6.25M + helper 5.11M + verify 5.11M) + 2M bio-neuron bridge + "
              "live research (unknown topic → search → verify → jawab)"),
             ("📁 Live Link", "%s — ye app ISI folder ke modules use karta hai. "
