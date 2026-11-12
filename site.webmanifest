@@ -1,0 +1,14 @@
+{
+  "name": "Hemomemo AI — 100% Local AI",
+  "short_name": "Hemomemo AI",
+  "description": "Muslim-texture AI jo 100% aap ke PC par chalti hai — na cloud, na bahar-ki-API. Windows download + free Hemomemo API keys.",
+  "start_url": "./",
+  "display": "browser",
+  "background_color": "#102618",
+  "theme_color": "#102618",
+  "lang": "ur",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
