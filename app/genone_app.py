@@ -239,6 +239,29 @@ def chat_async(prompt, on_done, think="auto", progress=None):
             on_done("Hemomemo AI-> ❌ video generate FAIL: %s" % err,
                     {"source": "video-err"})
             return
+        # SEARCH-API fast-path (web-search: DDG keyless / CSE / Bing / Brave
+        # - qanoon: search-API allowed, AI-platform API KABHI nahi)
+        try:
+            from model import search_api as _sa
+            _sw, _sq = _sa.wants_search(prompt)
+            if _sw:
+                _stxt, _smeta = _sa.search_text(_sq)
+                on_done(_stxt, _smeta)
+                return
+        except Exception:
+            pass
+        # GMAIL fast-path (inbox parho / email bhejo - app-password wala)
+        try:
+            from model import gmail_link as _gl
+            _mw, _md = _gl.wants_mail(prompt)
+            if _mw:
+                _mtxt, _mmeta = (_gl.read_inbox_text()
+                                 if _mw == "read"
+                                 else _gl.send_from_command(_md))
+                on_done(_mtxt, _mmeta)
+                return
+        except Exception:
+            pass
         try:
             # First, use frontolobe to understand the user input
             try:
