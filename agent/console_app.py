@@ -54,6 +54,27 @@ def _brain_answer(prompt: str) -> str:
 
     Pehle TASK/SEKH-system dekho ("sekho ...", "kaam ...") - ye bhi
     100% local hai (token-think + data-memory). Warna seedha dimagh."""
+    # SEARCH-API fast-path (web-search - koi AI-API nahi)
+    try:
+        from model import search_api as _sa
+        _sw, _sq = _sa.wants_search(prompt)
+        if _sw:
+            _stxt, _sm = _sa.search_text(_sq)
+            print(_stxt[:800])
+            return _stxt[:800]
+    except Exception:
+        pass
+    # GMAIL fast-path (inbox/email - app-password wala)
+    try:
+        from model import gmail_link as _gl
+        _mw, _md = _gl.wants_mail(prompt)
+        if _mw:
+            _mtxt, _mm = (_gl.read_inbox_text() if _mw == "read"
+                          else _gl.send_from_command(_md))
+            print(_mtxt[:800])
+            return _mtxt[:800]
+    except Exception:
+        pass
     try:
         from agent import tasks as _t
         from model.memory import EpisodicStore
