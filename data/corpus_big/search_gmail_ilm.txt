@@ -1,0 +1,40 @@
+Sawal: web-search kaise karun?
+Jawab: "search <topic>" likho - misala: "search python dictionary", "khojo quran tafseer", "talaash world news". Hemomemo DuckDuckGo (keyless) se natije laata hai; owner ne key di ho to Google-CSE/Bing/Brave use hota hai. Title + snippet + link dikhaya jata hai. Dimagh 100% local rehta hai - sirf search-API chalti hai, koi AI-API nahi.
+Sawal: search kaun se providers use karta hai?
+Jawab: Pehla-tarjeeh: key mile to Google Custom-Search (googleapis.com/customsearch), Bing Web-Search v7, Brave Search API - warna DuckDuckGo HTML/Lite (keyless, hamesha chalta hai). Sab net_guard whitelist ke andar hain.
+Sawal: kya search ke liye AI-platform API lagti hai?
+Jawab: Nahi - hamesha nahi. Qanoon: sirf SEARCH-API (results laane wali) aur GMAIL-API allowed hai; OpenAI/Anthropic/Gemini/generativelanguage jaisi koi AI-platform API HARD-BLOCK hai (net_guard BANNED_AI_RX whitelist-se-pehle rok deta hai). Dimagh apna local token-dimagh hai.
+Sawal: search results ka format kya hai?
+Jawab: [web-search] '<sawal>' - top N natije (provider, waqt): phir har natija - number, title, 200-harf snippet, URL. Agar koi result na mile (internet band / host blocked) to wajah imandari se batayi jati hai.
+Sawal: inbox kaise check karun?
+Jawab: "inbox check karo", "meri email dikhao", "naye mail" - Hemomemo imap.gmail.com:993 (SSL) se aap ke Gmail ka haaliya 5 emails dikhata hai: subject, from, date, naya-mark aur 180-harf snippet. Iske liye data/email_link.json me app-password hona chahiye.
+Sawal: email kaise bhejun?
+Jawab: "send email to kisi@gmail.com subject: Salaam body: kaise ho?" - teeno hisse (to/subject/body) likhne par email smtp.gmail.com:587 (STARTTLS) se jata hai. Missing-field par Hemomemo format yaad dila deta hai, kabhi crash nahi hota.
+Sawal: Gmail ke liye app-password kaise banun?
+Jawab: myaccount.google.com -> Security -> 2-Step Verification ON karo -> 'App passwords' -> 16-harf code banao -> data/email_link.json me likho: {"email": "aap@gmail.com", "app_password": "abcd efgh ijkl mnop"}. Normal Gmail-password kabhi na likho - sirf app-password.
+Sawal: email_link.json kya hai?
+Jawab: Owner ki apni credential-file (email + app-password). Ye sirf owner-machine par rehti hai - zip/package me KABHI nahi jati (builders ne exclusion-lagayi hai). Iski ghayabgi par Hemomemo "App-password chahiye" ki step-by-step rahnumai deta hai.
+Sawal: kya mera Gmail-password kahin log hota hai?
+Jawab: Nahi. gmail_link module password print/log/chat me kabhi nahi lata; sirf imap/smtp login me use hota hai. Status me sirf email-address dikhaya jata hai, password hamesha chhupa rehta hai.
+Sawal: search offline ho to kya hota hai?
+Jawab: Imandari-jawab: "[web-search] koi result nahi mila - wajah: internet band ya net-guard ne host roka". Hemomemo jhooti-fake-list nahi banata; token-dimagh apne local ilm (corpus) se jawab deta rehta hai.
+Sawal: api_keys.json kya hai?
+Jawab: Optional owner-file: {"google_cse_key": ..., "google_cse_cx": ..., "bing_search_key": ..., "brave_search_key": ...}. Ye bhi zip me nahi jati. Key na ho to keyless DuckDuckGo khud chal jata hai - app pehle-se-kam-karta hai.
+Sawal: net_guard search/email hosts ko kaise handle karta hai?
+Jawab: ALLOWED_HOSTS me ab googleapis.com (CSE), api.bing.microsoft.com, api.search.brave.com, duckduckgo.com, bing.com, google.com, imap.gmail.com, smtp.gmail.com, mail.google.com shamil hain. Deny-by-default baqi sab; AI-platform hosts (openai/anthropic/gemini/generativelanguage...) HARD-BLOCK hamesha.
+Sawal: imap/smtp par net_guard ka urlopen-guard kyun nahi chalta?
+Jawab: net_guard sirf urllib.request.urlopen ko monkeypatch karta hai; imaplib/smtplib raw-socket use karte hain isliye bypass hote hain - magar hosts waise bhi ALLOWED_HOSTS me whitelisted hain (consistency + audit-log ke liye).
+Sawal: game-bot console me bhi search/email chalta hai?
+Jawab: Haan - _brain_answer me fast-path hai: "search <topic>" web-search dikhata hai, "inbox check" / "send email ..." Gmail chalata hai. Warna GameBot apna task-system/token-dimagh use karta hai.
+Sawal: search ka jawab dimagh me seekhta bhi hai?
+Jawab: Natije chat me dikhaye jate hain; lambi-research live_research module karta hai (wikipedia + page-reading, wo bhi no-AI-API). Seekh corpus me imandari-se sirf verified cheezein likhi jati hain.
+Sawal: email bhejte waqt galti ho jaye to?
+Jawab: Galat pata par "galat-email-pata" wapas aata hai; auth-fail par app-password rahnumai; network-fail par honest masla-message. Kabhi naya-crash ya fake-success nahi.
+Sawal: inbox me NAYA kaise pehchana jata hai?
+Jawab: IMAP FLAGS: \Seen na ho to email [NAYA] mark hota hai. UNSEEN-search pehle chalti hai; khali mile to haaliya emails dikhai jate hain.
+Sawal: kya Hemomemo meri emails khud padh ke kahin bhejta hai?
+Jawab: Nahi. Read sirf aap ke hukum par hota hai (inbox commands), jawab sirf aap ki screen par dikh-jata hai. Koi background-upload nahi - ye 100% local-app ka waada hai.
+Sawal: search/query cache hoti hai?
+Jawab: Session-cache (python-dict) sirf - repeat-query turant wapas. Disk par search-history nahi likhi jati (privacy).
+Sawal: agar Google-CSE key ho to kya farq parta hai?
+Jawab: Results zyada-quality (structured JSON, snippet behtar). Qanoon wahi: CSE search-API hai (AI-API nahi), isliye allowed; generativelanguage.googleapis.com (Gemini AI) phir bhi BANNED_AI_RX se HARD-BLOCK rahega.
