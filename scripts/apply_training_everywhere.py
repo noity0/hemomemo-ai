@@ -50,7 +50,8 @@ def zdir(src_dir, zpath, skip_first=("web",)):
         "email_link.json", "api_keys.json", ".env", ".netlify_token.txt",
         "netlify_token.txt", "credentials.json", "secrets.json",
         "service_account.json", "client_secret.json", "owner_key.json",
-        "token_store.json", "password.txt", "passwords.txt"}
+        "token_store.json", "password.txt", "passwords.txt",
+        "google_oauth.json", "gdrive_tokens.json"}
     if os.path.exists(zpath):
         os.remove(zpath)
     n = 0
