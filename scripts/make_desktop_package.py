@@ -50,6 +50,38 @@ IGNORE_DIRS = {"__pycache__", "archive", "_install", "quran", "hadith",
 IGNORE_EXT = (".pyc", ".tmp", ".log", ".old")
 
 
+# OWNER-CREDENTIALS (qanoon): in files ka package/zip me KABHI jana mana hai
+_SECRETS_NAMES = {
+    "email_link.json", "api_keys.json", ".env", ".netlify_token.txt",
+    "netlify_token.txt", "credentials.json", "secrets.json",
+    "service_account.json", "client_secret.json", "owner_key.json",
+    "token_store.json", "password.txt", "passwords.txt"}
+
+
+def _purge_secrets(dst: str) -> list:
+    """Aakhri-hatif: DST me kahin credential-file bachi ho to KHATAM.
+    Junction/symlink ke andar KABHI nahi utarna - owner-files mehfooz."""
+    hit = []
+    for root, dirs, files in os.walk(dst):
+        dirs[:] = [d for d in dirs if d.lower() != "digitalbrain"
+                   and not os.path.islink(os.path.join(root, d))]
+        for fn in files:
+            low = fn.lower()
+            if (low in _SECRETS_NAMES or low.endswith(".token")
+                    or low.endswith(".token.txt") or ".token." in low):
+                fp = os.path.join(root, fn)
+                try:
+                    os.chmod(fp, 0o666)
+                    os.remove(fp)
+                    hit.append(os.path.relpath(fp, dst))
+                except Exception:
+                    pass
+    if hit:
+        print("   [SECRETS-PURGE] package se hataya (owner-credentials "
+              "kabhi ship nahi hoti): %s" % ", ".join(hit))
+    return hit
+
+
 def _skip(name: str) -> bool:
     if name in IGNORE_DIRS or name.startswith("__pycache__"):
         return True
@@ -57,6 +89,8 @@ def _skip(name: str) -> bool:
         return True
     if name.startswith("_") and name.endswith((".py", ".txt", ".json", ".log")):
         return True
+    if name.lower() in _SECRETS_NAMES or name.lower().endswith(".token"):
+        return True                      # owner-credentials kabhi copy nahi
     return False
 
 
@@ -489,6 +523,9 @@ pause
     with open(os.path.join(DST, "README-HEMOMO.md"), "w",
               encoding="utf-8") as f:
         f.write(guide)
+
+    # ?? QANOON-BELT: owner-credentials package/zip me KABHI nahi
+    _purge_secrets(DST)
 
     # ---- 8) ZIP ----
     zpath = os.path.join(os.path.dirname(DST), "hemomemo_ai_desktop_complete.zip")
