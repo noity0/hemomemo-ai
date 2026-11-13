@@ -239,27 +239,25 @@ def chat_async(prompt, on_done, think="auto", progress=None):
             on_done("Hemomemo AI-> ❌ video generate FAIL: %s" % err,
                     {"source": "video-err"})
             return
-        # SEARCH-API fast-path (web-search: DDG keyless / CSE / Bing / Brave
-        # - qanoon: search-API allowed, AI-platform API KABHI nahi)
+        # POWERS fast-path (search/research/code/image/canvas/gem/mcp/
+        # mail/drive - sab local ya non-AI API; AI-platform KABHI nahi)
         try:
-            from model import search_api as _sa
-            _sw, _sq = _sa.wants_search(prompt)
-            if _sw:
-                _stxt, _smeta = _sa.search_text(_sq)
-                on_done(_stxt, _smeta)
+            from model import powers as _pw
+            _tool, _pay = _pw.wants(prompt)
+            if _tool:
+                _ptxt, _pmeta = _pw.run(_tool, _pay)
+                on_done(_ptxt, _pmeta)
                 return
         except Exception:
             pass
-        # GMAIL fast-path (inbox parho / email bhejo - app-password wala)
+        # GEM active ho to chat usi ke andaz me (local token-dimagh)
         try:
-            from model import gmail_link as _gl
-            _mw, _md = _gl.wants_mail(prompt)
-            if _mw:
-                _mtxt, _mmeta = (_gl.read_inbox_text()
-                                 if _mw == "read"
-                                 else _gl.send_from_command(_md))
-                on_done(_mtxt, _mmeta)
-                return
+            from model import gems as _gm
+            if _gm.active() is not None:
+                _gtxt, _gmeta = _gm.answer_active(prompt)
+                if _gtxt:
+                    on_done(_gtxt, _gmeta or {"source": "gem"})
+                    return
         except Exception:
             pass
         try:
