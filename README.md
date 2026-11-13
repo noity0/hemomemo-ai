@@ -43,7 +43,7 @@ Gemini/generativelanguage jaisi HAR AI-platform API/connection net-guard me
 ---
 
 **Hemomemo AI** apna **khud ka dimagh** hai - koi LLM nahi, koi bahar ka model nahi,
-koi AI-API nahi, koi cloud nahi, koi MCP nahi. Poora dimagh **pure-NumPy** ka
+koi AI-API nahi, koi cloud nahi; MCP sirf LOCAL opt-in tool-bridge hai. Poora dimagh **pure-NumPy** ka
 **2-layer LSTM** hai (7M parameters), jo **aap ke apne PC par** chalta hai.
 
 👤 **Owner / Creator:** Hafiz Muhammed Huzaifa Shamim (**HMHS**) — 17 saal ka student,
@@ -205,7 +205,7 @@ rahti hai:
 ## 📥 Download (Windows 7 → 11 Pro)
 
 **GitHub:** https://github.com/noity0/hemomemo-ai/releases/tag/v4.2.0-people
-→ **HemomemoUltra-People.zip** (~182 MB) → Extract All → **`Hemomemo-Ultra-Brain.exe`**
+→ **HemomemoUltra-People.zip** (~215 MB) → Extract All → **`Hemomemo-Ultra-Brain.exe`**
 
 **Live sites:**
 - 🌍 GitHub Pages: **https://noity0.github.io/hemomemo-ai/**
@@ -268,7 +268,8 @@ Error-handling: har build-step fail hone par ruk kar **imandari error** dikhata 
 
 L1 net-firewall (AI-API hosts HARD-BLOCK) · L2 input-guard · L3 integrity
 (SHA-256 manifest, fail-closed) · L4 sacred-guard · L5 HMHZ secret-VM ·
-L6 API-guard (local keys). Koi platform API / cloud / MCP / doosra AI — **nahi**.
+L6 API-guard (local keys). Koi platform API / cloud / doosra AI — **nahi**
+(MCP sirf LOCAL opt-in tool-bridge — koi network/AI-server nahi).
 
 ## 🧪 QA — Imandari
 
