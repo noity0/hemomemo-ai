@@ -54,25 +54,24 @@ def _brain_answer(prompt: str) -> str:
 
     Pehle TASK/SEKH-system dekho ("sekho ...", "kaam ...") - ye bhi
     100% local hai (token-think + data-memory). Warna seedha dimagh."""
-    # SEARCH-API fast-path (web-search - koi AI-API nahi)
+    # POWERS fast-path (sab tools local / non-AI-API)
     try:
-        from model import search_api as _sa
-        _sw, _sq = _sa.wants_search(prompt)
-        if _sw:
-            _stxt, _sm = _sa.search_text(_sq)
-            print(_stxt[:800])
-            return _stxt[:800]
+        from model import powers as _pw
+        _tool, _pay = _pw.wants(prompt)
+        if _tool:
+            _ptxt, _pm = _pw.run(_tool, _pay)
+            print(_ptxt[:800])
+            return _ptxt[:800]
     except Exception:
         pass
-    # GMAIL fast-path (inbox/email - app-password wala)
+    # GEM active ho to wahi andaz (local token-dimagh)
     try:
-        from model import gmail_link as _gl
-        _mw, _md = _gl.wants_mail(prompt)
-        if _mw:
-            _mtxt, _mm = (_gl.read_inbox_text() if _mw == "read"
-                          else _gl.send_from_command(_md))
-            print(_mtxt[:800])
-            return _mtxt[:800]
+        from model import gems as _gm
+        if _gm.active() is not None:
+            _gtxt, _gm2 = _gm.answer_active(prompt)
+            if _gtxt:
+                print(_gtxt[:800])
+                return _gtxt[:800]
     except Exception:
         pass
     try:
