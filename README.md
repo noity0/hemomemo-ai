@@ -1,6 +1,48 @@
 # ☪ Hemomemo AI — Apna Dimagh (100% Local AI — NO API, NO LLM, NO Cloud)
 
-**Hemomemo AI** apna **khud ka dimagh** hai — koi LLM nahi, koi bahar ka model nahi,
+## ONE-CLICK DOWNLOAD - Latest ZIP (hamesha naya)
+
+[![Download Latest ZIP](https://img.shields.io/badge/DOWNLOAD-Latest_ZIP_~215MB-2ea44f?style=for-the-badge&logo=github)](https://github.com/noity0/hemomemo-ai/releases/download/v4.2.0-people/HemomemoUltra-People.zip)
+[![Saare Releases](https://img.shields.io/badge/Releases-Saare_Versions-0969da?style=for-the-badge&logo=github)](https://github.com/noity0/hemomemo-ai/releases)
+
+**Ek click = poora app (~215 MB):** dimagh (LSTM) + ilm-corpus + GameBot + 24/7
+connection-hub + web-search/Gmail powers - sab isi zip ke andar.
+
+**Har naya update ISI HI link par aata hai** (naya zip purani file ki jagah
+replace hota hai) - dobara click karo, naya zip mil jayega. Link kabhi purana
+nahi hota.
+
+| Step | Kya karo |
+|---|---|
+| 1 | Upar hary button par click -> `HemomemoUltra-People.zip` download |
+| 2 | Zip extract karo (kisi bhi folder me) |
+| 3 | `START-HEMOMO.bat` chalao - app khul jayega (**install ki zaroorat nahi**) |
+
+Text-link (agar badge load na ho):
+[HemomemoUltra-People.zip (latest)](https://github.com/noity0/hemomemo-ai/releases/download/v4.2.0-people/HemomemoUltra-People.zip)
+| [Saare releases](https://github.com/noity0/hemomemo-ai/releases)
+
+## HEMOMEMO POWERS (sab local ya non-AI API - koi AI-platform key nahi)
+
+| Power | Hukum |
+|---|---|
+| Web-search | `search <topic>` / `khojo <topic>` |
+| Deep Research | `deep research <topic>` (pages parh ke report + sources) |
+| Code Execution | `python <code>` (local, timeout + net-guard) |
+| Image Generation | `image banao <prompt>` (100% procedural - no AI-model) |
+| Canvas | `canvas banao <naam>` / `canvas <naam> likho: ...` / `canvas list` |
+| Gems (assistants) | `gem list` / `gem use Ustad` / `gem banao <naam> role: ...` |
+| MCP | `mcp servers` / `mcp tools <srv>` / `mcp call <srv> <tool> {json}` |
+| Gmail | `inbox check` / `send email to X subject: ... body: ...` |
+| Google Drive/Docs | `drive list` / `drive upload <path>` / `doc read <naam>` |
+
+**Qanoon (pakka):** dimagh 100% local (pure-NumPy LSTM) - OpenAI/Anthropic/
+Gemini/generativelanguage jaisi HAR AI-platform API/connection net-guard me
+**HARD-BLOCK** hai. Sirf non-AI APIs chalti hain (search, mail, storage).
+
+---
+
+**Hemomemo AI** apna **khud ka dimagh** hai - koi LLM nahi, koi bahar ka model nahi,
 koi AI-API nahi, koi cloud nahi, koi MCP nahi. Poora dimagh **pure-NumPy** ka
 **2-layer LSTM** hai (7M parameters), jo **aap ke apne PC par** chalta hai.
 
