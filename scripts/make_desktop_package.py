@@ -28,6 +28,8 @@ import sys
 import time
 import zipfile
 
+_NOWIN = 0x08000000 if os.name == "nt" else 0  # CREATE_NO_WINDOW: koi cmd-window flash nahi
+
 SRC = "D:\\DigitalBrain"
 DST = "D:\\DigitalBrain\\build\\hemomemo_ai_desktop"  # 🔒 staging — users-folder me DUPLICATE nahi banega
 VERSION = "v5.1.0-desktop"
@@ -110,7 +112,7 @@ def _readonly(path: str, ro: bool = True):
         pass
     try:
         subprocess.run(["attrib", "+R" if ro else "-R", path],
-                       capture_output=True)
+                       capture_output=True, creationflags=_NOWIN)
     except Exception:
         pass
 
@@ -179,13 +181,29 @@ def main():
                     os.remove(fp)
                 except Exception:
                     pass
-        for root, dirs, files in os.walk(DST, topdown=False):
-            if os.path.abspath(root) != os.path.abspath(DST) \
-                    and not os.listdir(root):
+        # 🔗 junction-follow NAHI (empty-folder saaf, loop-se-bachao)
+        def _sweep_empty(d):
+            try:
+                ents = list(os.scandir(d))
+            except Exception:
+                return
+            for e in ents:
                 try:
-                    os.rmdir(root)
+                    if e.is_dir(follow_symlinks=False) \
+                            and not e.is_junction() \
+                            and e.name.lower() != "digitalbrain":
+                        _sweep_empty(e.path)
                 except Exception:
                     pass
+            for e in ents:
+                try:
+                    if e.is_dir(follow_symlinks=False) \
+                            and e.path != os.path.abspath(DST) \
+                            and not os.listdir(e.path):
+                        os.rmdir(e.path)
+                except Exception:
+                    pass
+        _sweep_empty(DST)
 
     # ---- 1) EXE fresh-check (+ zaroorat par rebuild) ----
     print("🔨 EXE fresh-check…")
@@ -207,7 +225,8 @@ def main():
             print("   rebuild:", spec)
             r = subprocess.run([sys.executable, "-m", "PyInstaller",
                                 "--noconfirm", spec], cwd=SRC,
-                               capture_output=True, text=True)
+                               capture_output=True, text=True,
+                               creationflags=_NOWIN)
             if r.returncode != 0 or not os.path.exists(exe):
                 print("❌ EXE-FAIL:", spec)
                 for tail in (r.stdout[-1200:], r.stderr[-1200:]):
@@ -525,6 +544,12 @@ pause
               encoding="utf-8") as f:
         f.write(guide)
 
+    # llms.txt (qanoon-doc + site-index) package-root me bhi
+    _llms = os.path.join(SRC, "web", "llms.txt")
+    if os.path.exists(_llms):
+        _copy2_retry(_llms, os.path.join(DST, "llms.txt"))
+        copied += 1
+
     # ?? QANOON-BELT: owner-credentials package/zip me KABHI nahi
     _purge_secrets(DST)
 
@@ -542,8 +567,17 @@ pause
                 fp = os.path.join(root, fn)
                 z.write(fp, os.path.relpath(fp, os.path.dirname(DST)))
 
-    size = sum(os.path.getsize(os.path.join(r, fn))
-               for r, _, fs in os.walk(DST) for fn in fs) / 1048576
+    _sz = 0
+    for r, ds, fs in os.walk(DST):
+        ds[:] = [d for d in ds
+                 if d.lower() != "digitalbrain"
+                 and not os.path.islink(os.path.join(r, d))]   # 🔗 junction NAHI
+        for fn in fs:
+            try:
+                _sz += os.path.getsize(os.path.join(r, fn))
+            except Exception:
+                pass
+    size = _sz / 1048576
     print("✅ DESKTOP-PACKAGE-OK: %s | files: %d | %.1f MB | %.0fs"
           % (DST, copied, size, time.time() - t0))
     print("🛡️ protected: %d | ZIP: %s (%.1f MB)"
