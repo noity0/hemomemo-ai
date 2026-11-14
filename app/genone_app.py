@@ -897,10 +897,14 @@ class HemomemoApp(tk.Tk):
         self._refresh_statusbar(loop=False)
 
     def _refresh_live(self):
-        on = os.path.isdir(ROOT)
-        self._live_lbl.configure(
-            text=("🟢 LIVE • %s" % ROOT) if on else "🔴 folder nahi mila",
-            fg=C_ACCENT if on else C_DANGER)
+        _hubp = os.path.join(ROOT, "connection_hub", "digitalbrain")
+        if os.path.isdir(os.path.join(_hubp, "model")):
+            txt, fg = "🟢 LIVE • D:\\DigitalBrain (hub-deep-link)", C_ACCENT
+        elif os.path.isdir(ROOT):
+            txt, fg = "🟢 LIVE • %s (standalone)" % ROOT, C_ACCENT
+        else:
+            txt, fg = "🔴 folder nahi mila", C_DANGER
+        self._live_lbl.configure(text=txt, fg=fg)
 
     def _refresh_mood(self):
         def work():
