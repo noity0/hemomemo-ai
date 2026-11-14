@@ -32,8 +32,11 @@ _CODE_RX = re.compile(
     r"(?i)^\s*(?:python|run\s+python|code\s+chalao|py)\b\s*[:,]?\s*(.*)$",
     re.S)
 _IMG_RX = re.compile(
-    r"(?i)^\s*(?:image|tasveer|picture|art|poster)\s+(?:banao|bana|"
-    r"generate|make|draw|bnao)\s*[:,]?\s*(.+?)\s*$")
+    r"(?i)^\s*(?:(?:image|tasveer|picture|art|poster)\s+(?:banao|bana|"
+    r"generate|make|draw|bnao)"                                   # noun-verb: "image banao <p>"
+    r"|(?:create|make|draw|generate)\s+(?:an?\s+|the\s+)?"
+    r"(?:image|tasveer|picture|art|poster)(?:\s+(?:of|ka|ki|about))?"  # verb-first: "create picture of ai"
+    r")\s*[:,]?\s*(.+?)\s*$")
 _CANVAS_RX = re.compile(r"(?i)^\s*canvas\s*[:,]?\s*(.*)$")
 _MCP_RX = re.compile(r"(?i)^\s*mcp\s*[:,]?\s*(.*)$")
 _DRIVE_RX = re.compile(r"(?i)^\s*(?:drive|gdrive)\s*[:,]?\s*(.*)$")
