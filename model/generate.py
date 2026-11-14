@@ -41,6 +41,22 @@ if not os.path.isdir(CKPT_DIR) and os.path.isdir(
 DATA = os.path.join(ROOT, "data")
 BIG = os.path.join(DATA, "corpus_big")
 
+# 🔗 LIVE-HUB DEEP-LINK: connection_hub\digitalbrain junction maujood ho to
+# dimagh/vocab/corpus/yaad SAB DigitalBrain (master) se LIVE load hota hai —
+# app ka jawab hub ke sabse-naye checkpoint (mid/final, vocab-exact) se.
+# Junction na ho to package apni copies (100% standalone). Sab 100% local
+# (qanoon: koi AI-API nahi — sirf is PC ki files).
+HUB_LIVE = False
+try:
+    _HUB = os.path.join(ROOT, "connection_hub", "digitalbrain")
+    if os.path.isdir(os.path.join(_HUB, "model", "checkpoints")):
+        CKPT_DIR = os.path.join(_HUB, "model", "checkpoints")
+        DATA = os.path.join(_HUB, "data")
+        BIG = os.path.join(DATA, "corpus_big")
+        HUB_LIVE = True
+except Exception:
+    HUB_LIVE = False
+
 # retrieval me fayda na dene wale aam words
 STOP = {"kya", "kyun", "hai", "hain", "ho", "hoon", "hum", "ka", "ke", "ki", "ko",
         "se", "me", "mein", "par", "aap", "tum", "tu", "main", "and", "the", "of",
