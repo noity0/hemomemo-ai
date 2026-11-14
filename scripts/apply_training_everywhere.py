@@ -21,6 +21,8 @@ import sys
 import time
 import zipfile
 
+_NOWIN = 0x08000000 if os.name == "nt" else 0  # CREATE_NO_WINDOW: koi cmd-window flash nahi
+
 SRC = "D:\\DigitalBrain"
 ROOTPKG = "D:\\HemomemoUltra-People"
 LOG = os.path.join(SRC, "data", "_apply_training.log")
@@ -38,7 +40,17 @@ def log(msg):
 
 def run(cmd, cwd=None, timeout=7200, shell=False):
     log("▶ " + " ".join(cmd))
-    r = subprocess.run(cmd, cwd=cwd or SRC, timeout=timeout, shell=shell)
+    try:
+        r = subprocess.run(cmd, cwd=cwd or SRC, timeout=timeout, shell=shell,
+                           creationflags=_NOWIN, capture_output=True,
+                           text=True, encoding="utf-8", errors="replace")
+    except Exception as e:
+        log("  RUN-EXCEPTION: %r" % (e,))
+        return False
+    out = ((r.stdout or "") + "\n" + (r.stderr or "")).strip()
+    if out:
+        for x in out.splitlines()[-30:]:
+            log("  | " + x)
     log("  rc=%s" % r.returncode)
     return r.returncode == 0
 
@@ -166,7 +178,7 @@ def main():
                 [sys.executable, "-Xutf8",
                  os.path.join(SRC, "_train_deep5h.py")],
                 cwd=SRC, stdout=lhand, stderr=subprocess.STDOUT,
-                creationflags=subprocess.DETACHED_PROCESS |
+                creationflags=subprocess.CREATE_NO_WINDOW |
                 subprocess.CREATE_NEW_PROCESS_GROUP,
                 env=env)
             lhand.close()
