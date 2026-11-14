@@ -1,0 +1,34 @@
+# Hemomemo AI
+
+> 100% local offline AI with its OWN brain (pure-NumPy 2-layer LSTM, 9M params,
+> dh722) — NOT an LLM app, NO external model, NO AI-API, NO cloud, NO MCP-daemon.
+> Runs entirely on your PC (Windows 7 → 11). Owner: Hafiz Muhammed Huzaifa
+> Shamim (HMHS), Karachi. License: MIT.
+
+## Download
+- [Latest desktop ZIP (~215 MB)](https://github.com/noity0/hemomemo-ai/releases/download/v4.2.0-people/HemomemoUltra-People.zip): full app (brain + corpus + GameBot + connection-hub) — extract & run START-HEMOMO.bat, no install needed. The same link always serves the newest build (asset replaced on each release).
+- [All releases](https://github.com/noity0/hemomemo-ai/releases)
+
+## Sites
+- [GitHub Pages](https://noity0.github.io/hemomemo-ai/)
+- [Netlify mirror](https://hemomemo-ai.netlify.app/)
+- [Repo](https://github.com/noity0/hemomemo-ai)
+
+## Powers (chat commands, all local or non-AI APIs)
+- `search <topic>` / `khojo <topic>`: web search — keyless DuckDuckGo by default; optional Google-CSE / Bing / Brave keys (search APIs only)
+- `deep research <topic>`: reads top pages itself, ranks sentences locally, report with sources [1][2]
+- `python <code>`: local Python code execution (15s timeout, 64KB output cap, net-guard injected)
+- `image banao <prompt>`: procedural image generation — pure math (NumPy+PIL): aurora / waves / rings / maze / particles / gradient; NO AI model
+- `canvas banao <naam>` / `canvas <naam> likho: ...` / `canvas list`: local document boards (+ PNG cards)
+- `gem list` / `gem use <naam>` / `gem banao <naam> role: ...`: custom assistants over the SAME local brain (Ustad, Coder, Rafiq, Reporter by default)
+- `mcp servers` / `mcp tools <srv>` / `mcp call <srv> <tool> {json}`: local stdio MCP tool-servers, opt-in config; AI-platform server configs are HARD-REJECTED
+- `inbox check` / `send email to X subject: ... body: ...`: Gmail read/send (imap 993 / smtp 587, app-password; password never logged)
+- `drive list|upload|download`, `doc read <id|naam>`: Google Workspace storage/docs (OAuth, non-AI APIs only)
+
+## Law (qanoon)
+- The brain is 100% local: a pure-NumPy 2-layer LSTM (own checkpoints on disk) + retrieval over local Sawal:/Jawab: corpora + episodic memory. No tokens, no quotas, no external model.
+- HARD-BLOCKED forever: OpenAI, Anthropic, Gemini/generativelanguage, and every AI-platform API or cloud AI connection (net_guard: deny-by-default whitelist + banned-host regex, checked BEFORE allowlist).
+- Only non-AI APIs are permitted: web search, mail (Gmail), storage/docs (Drive/Docs), plus read-only knowledge sources (Wikipedia, Quran/Hadith APIs).
+
+## Architecture (short)
+input → L1 net-firewall → L2 input-guard → INTENT → memory (episodic.jsonl) + knowledge (corpus_big/*.txt) → reasoning loop (deterministic math for numbers) → composer (own LSTM) → L4 sacred-guard + L5 HMHZ secret-VM → answer. Game agent speaks its own Minecraft VarInt protocol (no SDK); QA suites run before every release.
