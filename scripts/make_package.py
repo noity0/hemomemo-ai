@@ -28,6 +28,8 @@ Chalao:  py -3 scripts\make_package.py           (purana package → update)
 """
 import hashlib
 import os
+
+_NOWIN = 0x08000000 if os.name == "nt" else 0  # CREATE_NO_WINDOW: koi cmd-window flash nahi
 import shutil
 import subprocess
 import sys
@@ -118,7 +120,7 @@ def _readonly(path: str, ro: bool = True):
         pass
     try:
         subprocess.run(["attrib", "+R" if ro else "-R", path],
-                       capture_output=True)
+                       capture_output=True, creationflags=_NOWIN)
     except Exception:
         pass
 
@@ -153,7 +155,7 @@ def main():
     if os.path.isdir(DST) and fresh:
         print("🧹 --fresh: purana package hatao…")
         subprocess.run(["attrib", "-R", os.path.join(DST, "*.*"),
-                        "/S", "/D"], capture_output=True)
+                        "/S", "/D"], capture_output=True, creationflags=_NOWIN)
         shutil.rmtree(DST, ignore_errors=True)
     users_saved = os.path.join(DST, "data", "genone_users.json")
     key_saved = os.path.join(DST, "data", "genone_api.json")
@@ -188,22 +190,38 @@ def main():
                 except Exception:
                     pass
         # khali folder bhi saaf (quran/hadith-archive waghera ka naam-reza na bache)
-        for root, dirs, files in os.walk(DST, topdown=False):
-            if os.path.abspath(root) != os.path.abspath(DST) \
-                    and not os.listdir(root):
+        # 🔗 junction-follow NAHI: bottom-up os.walk junction me utar jata tha —
+        # DigitalBrain <-> staging junction se INFINITE loop ban gaya tha (19+ min).
+        def _sweep_empty(d):
+            try:
+                ents = list(os.scandir(d))
+            except Exception:
+                return
+            for e in ents:
                 try:
-                    os.rmdir(root)
+                    if e.is_dir(follow_symlinks=False) \
+                            and not e.is_junction() \
+                            and e.name.lower() != "digitalbrain":
+                        _sweep_empty(e.path)
                 except Exception:
                     pass
-            for dn in dirs:
-                _readonly(os.path.join(root, dn), ro=False)
+            for e in ents:
+                try:
+                    if e.is_dir(follow_symlinks=False) \
+                            and e.path != os.path.abspath(DST) \
+                            and not os.listdir(e.path):
+                        _readonly(e.path, ro=False)
+                        os.rmdir(e.path)
+                except Exception:
+                    pass
+        _sweep_empty(DST)
 
     # ---- 1) EXE fresh build (icon ☪ ke sath)
     print("🔨 EXE build (PyInstaller)…")
     exe_src = os.path.join(SRC, "dist", "Hemomemo-Ultra-Brain.exe")
     r = subprocess.run([sys.executable, "-m", "PyInstaller", "--noconfirm",
                         "Hemomemo-Ultra-Brain.spec"], cwd=SRC,
-                       capture_output=True, text=True)
+                       capture_output=True, text=True, creationflags=_NOWIN)
     # sachi-taza-check: EXE kam-az-kam sab se nayi source jaisa naya ho
     src_latest = 0
     for rel in ("app/genone_app.py", "app/genone.ico",
@@ -229,7 +247,7 @@ def main():
     agent_src = os.path.join(SRC, "dist", "Hemomemo-GameBot.exe")
     ra = subprocess.run([sys.executable, "-m", "PyInstaller", "--noconfirm",
                          "Hemomemo-GameBot.spec"], cwd=SRC,
-                        capture_output=True, text=True)
+                        capture_output=True, text=True, creationflags=_NOWIN)
     src_latest_a = 0
     for rel in ("agent/console_app.py", "agent/orders.py", "agent/mc_bot.py",
                 "Hemomemo-GameBot.spec", "model/understand.py",
@@ -299,18 +317,26 @@ def main():
     arch = os.path.join(ck, "archive")
 
     def newest_genmaster():
-        # 🧠 naya-tareen FINAL genmaster (checkpoints/ + archive/) — mid/chat/tmp
-        # nahi, sirf final (training har baar naya timestamp-wala final banata hai)
+        # 🧠 naya-tareen genmaster (checkpoints/ + archive/) — FINAL pehle,
+        # warna _mid bhi chale (hub-deep-link na ho to standalone ko bhi
+        # vocab-exact 9M checkpoint milta hai). chat/tmp kabhi nahi.
         cands = []
         for d in (ck, arch):
             if not os.path.isdir(d):
                 continue
             for f in os.listdir(d):
                 if (f.startswith("genmaster_") and f.endswith(".npz")
-                        and "_mid" not in f and "_chat" not in f
+                        and "_chat" not in f
                         and not f.endswith(".tmp.npz")):
                     cands.append(os.path.join(d, f))
-        return max(cands, key=os.path.getmtime) if cands else None
+        if not cands:
+            return None
+        # FINAL ko tarjeeh: "genmaster_<digits>.npz" (mid/chat ka naam-juz
+        # digits nahi hota) — final na mile to mid pool par chalta hai.
+        fin = [c for c in cands
+               if os.path.basename(c).rsplit("_", 1)[1].split(".")[0].isdigit()]
+        pool = fin if fin else cands
+        return max(pool, key=os.path.getmtime)
 
     gm = newest_genmaster()
     ckpt_keep = ([os.path.basename(gm)] if gm else []) + \
@@ -502,9 +528,11 @@ def main():
     # 🔗 LIVE-LINK BUILD-TIME par hi (user ke bat ka intezar nahi)
     _jb = os.path.join(hub, "digitalbrain")
     if os.path.isdir("D:\\DigitalBrain") and not os.path.exists(_jb):
-        os.system('mklink /J "%s" "D:\\DigitalBrain" >nul 2>&1' % _jb)
-    os.system('reg add "HKCU\\Software\\HemomemoAI-24-7" /v MasterHub '
-              '/t REG_SZ /d "D:\\DigitalBrain" /f >nul 2>&1')
+        subprocess.run('mklink /J "%s" "D:\\DigitalBrain" >nul 2>&1' % _jb,
+                       shell=True, creationflags=_NOWIN)
+    subprocess.run('reg add "HKCU\\Software\\HemomemoAI-24-7" /v MasterHub '
+                   '/t REG_SZ /d "D:\\DigitalBrain" /f >nul 2>&1',
+                   shell=True, creationflags=_NOWIN)
     if os.path.exists(_jb):
         print("🔗 root connection-hub junction: ON -> D:\\DigitalBrain")
     else:
@@ -628,11 +656,26 @@ Banane wale: **Hafiz Muhammed Huzaifa Shamim (HMHS)** — Alhamdulillah ☪
               encoding="utf-8") as f:
         f.write(readme)
 
+    # llms.txt (qanoon-doc + site-index) package-root me bhi
+    _llms = os.path.join(SRC, "web", "llms.txt")
+    if os.path.exists(_llms):
+        _copy2_retry(_llms, os.path.join(DST, "llms.txt"))
+        copied += 1
+
     # QANOON-BELT: owner-credentials package me KABHI nahi
     _purge_secrets(DST)
 
-    size = sum(os.path.getsize(os.path.join(r, fn))
-               for r, _, fs in os.walk(DST) for fn in fs) / 1048576
+    _sz = 0
+    for r, ds, fs in os.walk(DST):
+        ds[:] = [d for d in ds
+                 if d.lower() != "digitalbrain"
+                 and not os.path.islink(os.path.join(r, d))]   # 🔗 junction NAHI
+        for fn in fs:
+            try:
+                _sz += os.path.getsize(os.path.join(r, fn))
+            except Exception:
+                pass
+    size = _sz / 1048576
     print("✅ PACKAGE-OK: %s  |  files: %d  |  size: %.1f MB  |  %.0fs"
           % (DST, copied, size, time.time() - t0))
     print("   🛡️ protected files: %d (read-only + SHA-256 manifest)" % len(prot))
