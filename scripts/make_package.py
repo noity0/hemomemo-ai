@@ -40,13 +40,14 @@ DST = "D:\\HemomemoUltra-People"
 VERSION = "v4.3.0-people"
 
 # copy hone wale poore folders (code) — andar se dev-filth chhaant ke
-COPY_DIRS = ["core", "harvest", "security", "server", "web", "agent", "tests"]
+COPY_DIRS = ["core", "harvest", "security", "server", "web", "agent", "tests",
+             "brain", "evolution", "public"]
 
 # data me jo RUNTIME zaroori hai
 DATA_FILES = ["corpus.txt", "qa_memo.pkl", "security_manifest.json",
               "quran_master.json", "hadith_master.json", "bukhari_master.json",
               "flow_state.json", "heart_state.json", "chat_learned_memory.json",
-              "meta_thoughts.jsonl"]
+              "meta_thoughts.jsonl", "brain_map.json", "gems.json"]
 CORPUS_BIG = None   # saari *.txt (learned_chat/liveresearch writable rehte)
 
 # model checkpoints: GENMASTER = naya-tareen FINAL (dynamic, neeche) +
@@ -331,12 +332,12 @@ def main():
                     cands.append(os.path.join(d, f))
         if not cands:
             return None
-        # FINAL ko tarjeeh: "genmaster_<digits>.npz" (mid/chat ka naam-juz
-        # digits nahi hota) — final na mile to mid pool par chalta hai.
-        fin = [c for c in cands
-               if os.path.basename(c).rsplit("_", 1)[1].split(".")[0].isdigit()]
-        pool = fin if fin else cands
-        return max(pool, key=os.path.getmtime)
+        # PURE mtime-max: mid-save hamesha sabse-taza hota hai (training
+        # chalte-waqt), aur final bhi khatam-hone par sabse-taza — dono ki
+        # vocab maujooda-corpus se match karta hai. Purane-archive ke
+        # misvocab checkpoints (jaise comprehensive vocab-95) mtime-par
+        # peeche reh-jate hain.
+        return max(cands, key=os.path.getmtime)
 
     gm = newest_genmaster()
     ckpt_keep = ([os.path.basename(gm)] if gm else []) + \
@@ -410,6 +411,38 @@ def main():
               encoding="utf-8") as f:
         f.write('@echo off\r\ntitle Hemomemo Game Bot (Minecraft bot + PC-aankh)\r\n'
                 'start "" "%~dp0Hemomemo-GameBot.exe"\r\n')
+
+    # ---- GUIDE: naye cheezein kya-kya hain (ilm-pack + dimagh-modules) ----
+    try:
+        with open(os.path.join(SRC, "data", "corpus_big",
+                               "ilm_khazana.txt"), encoding="utf-8") as _g:
+            _ilm_n = sum(1 for _l in _g if _l.startswith("Sawal:"))
+    except OSError:
+        _ilm_n = 0
+    with open(os.path.join(DST, "GUIDE-AUR-CHEEZEIN.txt"), "w",
+              encoding="utf-8") as f:
+        f.write(
+            "HEMOMO AI — PACKAGE ME AUR CHEEZEIN (kya add hua)\n"
+            "=================================================\n\n"
+            "📚 ILM-KHAZANA: %d Q/A pairs (data\\corpus_big\\ilm_khazana.txt)\n"
+            "   - 197 mulk (raajdhaani/mudra/continent) + elements (118) +\n"
+            "     Asma-ul-Husna (99) + English numbers 1-6000 + math-drills\n"
+            "     + space/body/geo/tech/islamic-history facts.\n"
+            "   - Paak-safai: Qadiani/Shia-site data guard (builder me built-in).\n"
+            "\n"
+            "🌐 LIVE-RESEARCH: 'photosynthesis kya hai' jaisa sawal par app\n"
+            "   khud internet par live talash karta hai (Google/DDG/Wikipedia\n"
+            "   keyless fetch — sirf search-APIs, koi AI-platform API NAHI).\n"
+            "\n"
+            "🧠 BRAIN/ folder: dimagh-modules (electric/glia/config...)\n"
+            "🧬 EVOLUTION/ folder: genetic-algorithm evolution module\n"
+            "🌍 PUBLIC/ folder: web-Pages assets (index.html, icons...)\n"
+            "🗺️ data\\brain_map.json: dimagh ka naqsha (60KB)\n"
+            "💎 data\\gems.json: gems-system ki config\n"
+            "\n"
+            "CHAT POWERS (app me likh-kar dekho):\n"
+            "   search <topic> | deep research <topic> | python <code>\n"
+            "   image banao <prompt> | canvas banao | gem list | help\n" % _ilm_n)
 
     # ---- BRAIN-LINK: owner-published-dimagh ka rasta (sirf file-sync,
     #      koi AI/model/platform API nahi; app bina iske bhi 100% local)
