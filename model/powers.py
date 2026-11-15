@@ -29,7 +29,8 @@ _RESEARCH_RX = re.compile(
     r"(?i)^\s*(?:deep\s+research|gehri\s+research|research\s+karo"
     r"|khoj-bahri)\s*[:,]?\s*(.+?)\s*$")
 _CODE_RX = re.compile(
-    r"(?i)^\s*(?:python|run\s+python|code\s+chalao|py)\b\s*[:,]?\s*(.*)$",
+    r"(?i)^\s*(?:python|run\s+python|code\s+chalao|code\s+banao|code\s+bana"
+    r"|code\s+likho|code\s+likh|code|py)\b\s*[:,]?\s*(.*)$",
     re.S)
 _IMG_RX = re.compile(
     r"(?i)^\s*(?:(?:image|tasveer|picture|art|poster)\s+(?:banao|bana|"
@@ -47,6 +48,7 @@ _HELP = (
     "  search <topic>                - web-search (DDG keyless)\n"
     "  deep research <topic>         - multi-page report (sources ke sath)\n"
     "  python <code>                 - python-code chalao (local, timeout)\n"
+    "  code <kuch bhi>               - code BANATA hai (jaisa aap ne kaha)\n"
     "  image banao <prompt>          - procedural tasveer (100% local)\n"
     "  canvas banao <naam> | canvas <naam> likho: <text> | canvas list\n"
     "  gem list | gem use <naam> | gem banao <naam> role: ... | gem band\n"
@@ -116,7 +118,7 @@ def run(tool, payload):
             return deep_research.research(payload)
         if tool == "code":
             from model import code_exec
-            return code_exec.run_python_text(payload)
+            return code_exec.smart_code(payload)
         if tool == "image":
             from model import img_gen
             return img_gen.generate_text(payload)
