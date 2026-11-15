@@ -148,6 +148,54 @@ def ddg_lite_search(query, max_results=6, timeout=10.0):
             break
     return out
 
+def google_html_search(query, max_results=6, timeout=10.0):
+    """Google HTML results (KEYLESS — proven live_research._google pattern):
+    h3-titles + VwiC3b-snippets + non-google links."""
+    url = ("https://www.google.com/search?num=8&hl=en&q="
+           + urllib.parse.quote(query))
+    page = _fetch(url, timeout=timeout, browser_ua=True)
+    if not page:
+        return []
+    items, urls = [], []
+    for m in re.finditer(r"<h3[^>]*>(.*?)</h3>", page, re.S):
+        t = _clean(m.group(1))
+        if len(t) >= 4:
+            items.append(t)
+    for m in re.finditer(r"<a\b[^>]*href=[\"']([^\"']+)[\"'][^>]*>", page):
+        u = _fix_url(m.group(1))
+        if u and "google." not in urllib.parse.urlparse(u).netloc:
+            urls.append(u)
+    if not items:
+        return []
+    snips = [_clean(s.group(1)) for s in re.finditer(
+        r'class="[^"]*VwiC3b[^"]*"[^>]*>(.*?)</div>', page)]
+    out = []
+    for i, t in enumerate(items):
+        out.append({"title": t,
+                    "url": urls[i] if i < len(urls) else "",
+                    "snippet": (snips[i][:220] if i < len(snips) else "")})
+        if len(out) >= max_results:
+            break
+    return out
+
+
+def wikipedia_search(query, max_results=6, timeout=10.0):
+    """Wikipedia opensearch (keyless) — title + summary + url."""
+    u = ("https://en.wikipedia.org/w/api.php?action=opensearch"
+         "&format=json&limit=%d&search=%s"
+         % (max(1, min(10, max_results)), urllib.parse.quote_plus(query)))
+    j = json.loads(_fetch(u, timeout=timeout,
+                          headers={"User-Agent": _UA_HEMOMEMO}))
+    if not isinstance(j, list) or len(j) < 4:
+        return []
+    titles, desc, links = j[1], j[2], j[3]
+    out = []
+    for i, t in enumerate(titles or []):
+        out.append({"title": t,
+                    "url": links[i] if i < len(links) else "",
+                    "snippet": desc[i] if i < len(desc) else ""})
+    return out
+
 # ------------------------------------------------- 2) keyed providers
 
 
@@ -227,8 +275,10 @@ def search(query, max_results=6, timeout=10.0):
                 return name, r, ""
         except Exception as e:
             tried.append("%s: %s" % (name, e))
-    for name, fn in (("duckduckgo-html", ddg_html_search),
-                     ("duckduckgo-lite", ddg_lite_search)):
+    for name, fn in (("google-html", google_html_search),
+                     ("duckduckgo-html", ddg_html_search),
+                     ("duckduckgo-lite", ddg_lite_search),
+                     ("wikipedia", wikipedia_search)):
         try:
             r = fn(q, max_results=max_results, timeout=timeout)
             if r:
