@@ -42,18 +42,22 @@ from tkinter import ttk
 # ----------------------------------------------------------------------
 # 🎨 THEME — Muslim texture: gehra sabz + sona (emerald + gold, dark)
 # ----------------------------------------------------------------------
-C_BG      = "#0b1512"   # window background
-C_PANEL   = "#101f19"   # sidebar / header
-C_CARD    = "#152820"   # cards
-C_CARD2   = "#1a3128"   # hover / input
-C_BORDER  = "#26473a"   # card borders
-C_ACCENT  = "#2fbf8f"   # emerald
-C_GOLD    = "#d9b45b"   # gold
-C_TEXT    = "#e9f3ee"
-C_DIM     = "#8fb0a2"
-C_USERBG  = "#1f5c46"   # user bubble
-C_AIBG    = "#182b23"   # ai bubble
-C_DANGER  = "#c05b5b"
+# 🎨 MASTER-REDESIGN (14-Nov user-hukum): WhatsApp-classic GREEN + BEIGE —
+#   chat-canvas beige (#ece5dd), outgoing-bubble light-green (#d9fdd3),
+#   incoming white, header teal (#075e54), accent WhatsApp-green (#25d366).
+C_BG      = "#ece5dd"   # chat-canvas / window (beige — WhatsApp classic)
+C_PANEL   = "#ffffff"   # sidebar / header (WhatsApp Web white)
+C_CARD    = "#ffffff"   # cards (white)
+C_CARD2   = "#f0f2f5"   # hover / input (WhatsApp light-grey)
+C_BORDER  = "#d1d7db"   # card borders
+C_ACCENT  = "#25d366"   # WhatsApp green
+C_GOLD    = "#128c7e"   # WhatsApp teal (headings / accents)
+C_TEXT    = "#111b21"   # WhatsApp near-black
+C_DIM     = "#667781"   # WhatsApp secondary-grey
+C_USERBG  = "#d9fdd3"   # user bubble (outgoing light-green)
+C_AIBG    = "#ffffff"   # ai bubble (white)
+C_DANGER  = "#c0392b"
+C_WAHEAD  = "#075e54"   # WhatsApp chat-header teal
 
 F_FONT    = ("Segoe UI", 11)
 F_REGULAR = F_FONT            # legacy-alias (video-tab purana naam use karta hai)
@@ -61,11 +65,14 @@ F_SMALL   = ("Segoe UI", 9)
 F_BOLD    = ("Segoe UI", 11, "bold")
 F_H1      = ("Segoe UI", 17, "bold")
 
-# 🎬 video-generation feature-switch (user-ka-hukum: TRUE)
-VIDEO_GENERATION = True
+# 🎬 video-generation feature-switch — ABHI BAND (user-hukum 14-Nov:
+# "acha nahi hay, pehle behtar-bana-kar apply karen — abhi DISABLE, delete
+# NAHI"). Poora engine + video-tab code salamat hai; dobara chahiye to
+# sirf True karo. Chat me video-maangne par sachi-bat jayegi.
+VIDEO_GENERATION = False
 F_H2      = ("Segoe UI", 13, "bold")
 F_MONO    = ("Consolas", 9)
-C_ACCENT2 = "#3ad8a5"         # hover-emerald (video-tab button ka hover color)
+C_ACCENT2 = "#22c35e"         # hover-green (WhatsApp dark-hover)
 
 MODEL_NAME = "Hemomemo AI"
 
@@ -155,9 +162,65 @@ def reload_brain_async(done_cb=None):
     threading.Thread(target=work, daemon=True).start()
 
 
+# 🧠 DEEP-MODE (user-hukum 15-Nov): KOI BHI SAAL — chahe Roman-Urdu, math,
+# ya koi bhi boliya ("bbbbbbb") — research + soch(rethink) + reasoning par
+# jayega. Canned-clarification + token-dimmagh-shallow-reply ye dauran OFF.
+_DEEP_THOUGH = True
+
 def chat_async(prompt, on_done, think="auto", progress=None):
     """Chat worker thread — UI freeze nahi hota. Result → on_done(text, meta).
     progress(stage) — har asli marhale par UI ko bataata hai (3-soch flow)."""
+    # 🕊 QANOON-WIRING: "band karo" (chat) = server OFF (flag + stop-bat);
+    # "on karo" = flag mitao + server ON. 24/7-watcher flag ki izzat karta hai
+    # (sirf user-ke-bat se server off hota hai — khud kabhi nahi).
+    _STOP_RX = re.compile(
+        r"(?i)^\s*(?:server\s+|api\s+)?(?:band\s+karo|band\s+kar\s+do|"
+        r"server\s+off|api\s+off)\s*[.!]?\s*$")
+    _ON_RX = re.compile(
+        r"(?i)^\s*(?:server\s+|api\s+)?(?:on\s+karo|on\s+kar\s+do|start\s+"
+        r"karo|shuru\s+karo|server\s+on|api\s+on)\s*[.!]?\s*$")
+    _hubp = os.path.join(ROOT, "connection_hub", "digitalbrain")
+    _hubr = _hubp if os.path.isdir(os.path.join(_hubp, "model")) else ROOT
+    _STOP_FLAG = os.path.join(_hubr, "data", "_server_OFF.flag")
+    _STOP_BAT = os.path.join(_hubr, "_server_stop.bat")
+
+    if _STOP_RX.match(prompt):
+        def _stop_work():
+            try:
+                open(_STOP_FLAG, "w").close()
+            except Exception:
+                pass
+            try:
+                _imp("server", "genone_server").stop()
+            except Exception:
+                pass
+            note = "🛑 server band (aap ke hukum par — flag likh diya, watcher nahi uthaye-ga)"
+            try:
+                import subprocess
+                subprocess.Popen([_STOP_BAT], cwd=str(_hubr),
+                                 creationflags=0x08000000)  # CREATE_NO_WINDOW
+            except Exception as e:
+                note += " (stop-bat: %s)" % e
+            on_done(note, {"meta": "server-off"})
+        threading.Thread(target=_stop_work, daemon=True).start()
+        return
+
+    if _ON_RX.match(prompt):
+        try:
+            if os.path.exists(_STOP_FLAG):
+                os.remove(_STOP_FLAG)
+        except Exception:
+            pass
+        def _on_work():
+            try:
+                r = _imp("server", "genone_server").start()
+                note = "▶ server on: %s" % r
+            except Exception as e:
+                note = "server-on FAIL: %s" % e
+            on_done(note, {"meta": "server-on"})
+        threading.Thread(target=_on_work, daemon=True).start()
+        return
+
     _VID_RX = re.compile(r"(?i)\b(video|film|movie|animation|clip)\b")
     _VID_CMD_RX = re.compile(r"(?i)(make|create|generate|banai|banao|benao|show|showing)\b.*\b(video|film|movie|animation|clip)\b")
     _VNUM_RX = re.compile(r"(?i)\b(\d+(?:\.\d+)?)\s*(sec|s|second|seconds|min|minute|minutes)\b")
@@ -225,6 +288,12 @@ def chat_async(prompt, on_done, think="auto", progress=None):
 
     def work():
         # 🎬 VIDEO-COMMAND fast-path (local engine — koi API nahi)
+        if _VID_CMD_RX.search(prompt) and not VIDEO_GENERATION:
+            on_done("Hemomemo AI-> 🎬 video-generation filhal BAND hai — "
+                    "naya behtar version ban-rahay ke-baad wapis aayegi "
+                    "(engine delete nahi hua, sirf switch off hai).",
+                    {"source": "video-off"})
+            return
         if _VID_CMD_RX.search(prompt):
             p, mm, ok, err = _video_gen(prompt, None)
             if ok:
@@ -271,7 +340,7 @@ def chat_async(prompt, on_done, think="auto", progress=None):
                 
                 # clarification me ab USER-ka asli-text hamesha dikh-jata hai
                 # (English-canned-template-leak band — input-aware Roman-Urdu)
-                if understanding["clarification_needed"]:
+                if understanding["clarification_needed"] and not _DEEP_THOUGH:
                     sug = (understanding.get("response_suggestion") or "").strip()
                     said = (understanding.get("input_text") or prompt or "").strip()
                     if len(said) > 80:
@@ -298,7 +367,7 @@ def chat_async(prompt, on_done, think="auto", progress=None):
                 try:
                     from model.understand import default_token_chat
                     txt, m = default_token_chat().respond(enhanced_prompt)
-                    if txt and (m or {}).get("source") not in (None, ""):
+                    if txt and _DEEP_THOUGH and (m or {}).get("source") not in (None, ""):
                         # Add understanding context to metadata
                         if m is None:
                             m = {}
@@ -310,7 +379,7 @@ def chat_async(prompt, on_done, think="auto", progress=None):
                 
                 # Use brain generation if direct chat fails
                 G = brain_generate()
-                txt, m = G.chat_once(enhanced_prompt, meta=True, think=think,
+                txt, m = G.chat_once(enhanced_prompt, meta=True, think="high",
                                      progress=progress)
                 
                 # Add understanding context to metadata
@@ -325,13 +394,13 @@ def chat_async(prompt, on_done, think="auto", progress=None):
                 try:
                     from model.understand import default_token_chat
                     txt, m = default_token_chat().respond(prompt)
-                    if txt and (m or {}).get("source") not in (None, ""):
+                    if txt and _DEEP_THOUGH and (m or {}).get("source") not in (None, ""):
                         on_done(txt, m or {})
                         return
                 except Exception:
                     pass
                 G = brain_generate()
-                txt, m = G.chat_once(prompt, meta=True, think=think,
+                txt, m = G.chat_once(prompt, meta=True, think="high",
                                      progress=progress)
                 on_done(txt, m or {})
                 
@@ -542,7 +611,7 @@ class HemomemoApp(tk.Tk):
                 ("formu", "📐", " Formulas (331)"),
                 ("api", "🌐", " Hemomemo API"),
                 ("about", "ℹ️", " Baare Me"),
-                ("video", "🎬", " Video Generation")]:
+                ("video", "🎬", " Video Generation (band)")]:
             b = tk.Button(side, text="%s%s" % (icon, label), font=F_BOLD,
                            bg=C_PANEL, fg=C_DIM, activebackground=C_CARD2,
                            activeforeground=C_TEXT, relief="flat", bd=0,
@@ -552,7 +621,7 @@ class HemomemoApp(tk.Tk):
             self._nav_btns[key] = b
             # 🖱️ hover: sirf jab select nahi (selected gold rehta hai)
             b.bind("<Enter>", lambda e, k=key: (
-                self._nav_btns[k].configure(bg=C_CARD) if
+                self._nav_btns[k].configure(bg=C_CARD2) if
                 self._nav_btns[k]["fg"] == C_DIM else None))
             b.bind("<Leave>", lambda e, k=key: (
                 self._nav_btns[k].configure(bg=C_PANEL) if
@@ -771,6 +840,20 @@ class HemomemoApp(tk.Tk):
         self._acc_lbl.pack(fill="x", padx=16, pady=(2, 12))
 
     def _api_toggle(self, what):
+        # 🕊 qanoon: OFF-button = user-hukum → flag likho (24/7-watcher izzat
+        # kare) + stop-bat (standalone server bhi band); ON-button = flag
+        # mitao (watcher wapas azad) + server ON.
+        _hubp = os.path.join(ROOT, "connection_hub", "digitalbrain")
+        _hubr = _hubp if os.path.isdir(os.path.join(_hubp, "model")) else ROOT
+        try:
+            _fp = os.path.join(_hubr, "data", "_server_OFF.flag")
+            if what == "off":
+                open(_fp, "w").close()
+            elif os.path.exists(_fp):
+                os.remove(_fp)
+        except Exception:
+            pass
+
         def work():
             try:
                 api = _imp("server", "genone_server")
@@ -778,6 +861,14 @@ class HemomemoApp(tk.Tk):
                 txt = str(r)
             except Exception as e:
                 txt = "FAIL: %s" % e
+            if what == "off":
+                try:
+                    import subprocess
+                    subprocess.Popen(
+                        [os.path.join(_hubr, "_server_stop.bat")],
+                        cwd=str(_hubr), creationflags=0x08000000)
+                except Exception:
+                    pass
             self.after(0, lambda: self._api_lbl.configure(
                 text=txt, fg=C_ACCENT if "ok" in txt else C_DANGER))
             self.after(0, self.refresh_api)
@@ -961,61 +1052,55 @@ class HemomemoApp(tk.Tk):
         f.grid_rowconfigure(0, weight=1)
         f.grid_columnconfigure(0, weight=1)
 
-        wrap = tk.Frame(f, bg=C_CARD, highlightthickness=1,
+        wrap = tk.Frame(f, bg=C_BG, highlightthickness=1,
                         highlightbackground=C_BORDER)
         wrap.grid(row=0, column=0, sticky="nsew")
-        wrap.grid_rowconfigure(0, weight=1)
+        wrap.grid_rowconfigure(1, weight=1)
         wrap.grid_columnconfigure(0, weight=1)
 
-        self.chat = tk.Text(wrap, wrap="word", bg=C_AIBG, fg=C_TEXT,
-                            font=F_FONT, relief="flat", padx=16, pady=14,
-                            state="disabled", cursor="arrow",
-                            insertbackground=C_TEXT, spacing1=4, spacing3=6)
-        self.chat.grid(row=0, column=0, sticky="nsew")
+        # 🟢 WhatsApp-style chat-header (teal bar + naam + online-haalat)
+        hdr = tk.Frame(wrap, bg=C_WAHEAD, height=54)
+        hdr.grid(row=0, column=0, columnspan=2, sticky="ew")
+        hdr.grid_propagate(False)
+        tk.Label(hdr, text="💬  Hemomemo AI", font=F_H2, bg=C_WAHEAD,
+                 fg="#ffffff").pack(side="left", padx=16, anchor="center")
+        tk.Label(hdr, text="🟢 online  ·  100% local  ·  no API",
+                 font=F_SMALL, bg=C_WAHEAD, fg="#c9f0e2").pack(
+            side="right", padx=16, anchor="center")
+
+        # 🖼 CANVAS-CHAT ENGINE (15-Nov poora-rebuild): Text-widget → Canvas.
+        #    Har pegham ASLI rounded-bubble (smooth-polygon) + tail + waqt
+        #    bubble-ke-andar — bilkul WhatsApp jaisa, koi tag-hack nahi.
+        self.chat = tk.Canvas(wrap, bg=C_BG, highlightthickness=0, bd=0)
+        self.chat.grid(row=1, column=0, sticky="nsew")
         self._sb = ttk.Scrollbar(wrap, command=self.chat.yview)
-        self._sb.grid(row=0, column=1, sticky="ns")
+        self._sb.grid(row=1, column=1, sticky="ns")
         self.chat.configure(yscrollcommand=self._chat_scroll)
 
-        # tags: bubbles + naam-labels + chips
-        self.chat.tag_configure("who_u", justify="right", foreground=C_ACCENT,
-                                font=("Segoe UI", 9, "bold"), rmargin=22,
-                                spacing1=10, spacing3=1)
-        self.chat.tag_configure("who_a", justify="left", foreground=C_GOLD,
-                                font=("Segoe UI", 9, "bold"), lmargin1=16,
-                                spacing1=10, spacing3=1)
-        self.chat.tag_configure("user", justify="right", background=C_USERBG,
-                                foreground="#ffffff", lmargin1=180,
-                                lmargin2=180, rmargin=14, font=F_FONT,
-                                spacing1=2, spacing3=3)
-        self.chat.tag_configure("ai", justify="left", background=C_CARD2,
-                                foreground=C_TEXT, lmargin1=14, lmargin2=14,
-                                rmargin=180, font=F_FONT, spacing1=2,
-                                spacing3=3)
-        self.chat.tag_configure("chip", justify="left", foreground=C_DIM,
-                                font=F_SMALL, lmargin1=16, spacing3=12)
-        self.chat.tag_configure("think", justify="left", foreground=C_GOLD,
-                                font=("Segoe UI", 10, "italic"), lmargin1=16)
-        self.chat.tag_configure("welcome", justify="left", foreground=C_DIM,
-                                font=F_SMALL, lmargin1=6, spacing3=14)
-        # 💻 code-block tags (Hemomemo Coding-AI ke ```fences pyare dikhte hain)
-        self.chat.tag_configure("code_hdr", justify="left", foreground="#06231a",
-                                background=C_GOLD, font=("Segoe UI", 8, "bold"),
-                                lmargin1=14, spacing1=8, spacing3=0)
-        self.chat.tag_configure("code_blk", justify="left", wrap="char",
-                                foreground="#d7e6dd", background="#0b1f16",
-                                lmargin1=14, lmargin2=14, rmargin=180,
-                                font=("Consolas", 10), spacing1=0, spacing3=10)
+        import tkinter.font as _tkfont
+        self._cb_font = _tkfont.Font(font=F_FONT)
+        self._cb_font_ts = _tkfont.Font(font=("Segoe UI", 8))
+        self._cb_font_mono = _tkfont.Font(font=("Consolas", 10))
+        self._cb_feed = []          # draw-hue pegham (resize-par dobara)
+        self._cb_y = 18             # agle bubble ki y
+        self._cb_btn_n = 0
+        self._cb_cfg_id = None
+        self._think_item = []
+        self._think_id = None
+        self._think_y = 0
+        self.chat.bind("<MouseWheel>", self._cb_wheel)
+        self.chat.bind("<Configure>", self._cb_on_resize)
 
         # ⬇ floating jump-button (jab upar scroll kar lo)
         self._jump = tk.Button(wrap, text="⬇ sab se neeche", font=F_SMALL,
-                               bg=C_GOLD, fg="#06231a", relief="flat",
-                               activebackground="#e8c774", cursor="hand2",
+                               bg=C_GOLD, fg="#ffffff", relief="flat",
+                               activebackground="#0f6f63", cursor="hand2",
                                command=self._chat_bottom,
                                highlightthickness=0, bd=0)
         self._jump.place(relx=1.0, rely=1.0, x=-16, y=-14, anchor="se")
         self._jump.place_forget()
 
-        self._welcome()
+        self._cb_render_all()
 
         # quick-sawal chips + soch toggle
         quick = tk.Frame(f, bg=C_BG)
@@ -1049,26 +1134,32 @@ class HemomemoApp(tk.Tk):
                   cursor="hand2", command=self._chat_clear).pack(
             side="right", padx=(0, 6), ipady=2)
 
-        # input row
+        # 📥 WhatsApp input-pill (safed gol-patti + sabz Bhejo button)
         inp = tk.Frame(f, bg=C_BG)
-        inp.grid(row=2, column=0, sticky="ew")
+        inp.grid(row=2, column=0, sticky="ew", pady=(8, 10))
         inp.grid_columnconfigure(0, weight=1)
+        self.inp_cv = tk.Canvas(inp, bg=C_BG, highlightthickness=0, bd=0,
+                                height=52)
+        self.inp_cv.grid(row=0, column=0, sticky="ew")
         self._ph = "Apna sawal likhein… (Roman Urdu / English)"
-        self.entry = tk.Entry(inp, font=F_FONT, bg=C_CARD2, fg=C_DIM,
-                              relief="flat", insertbackground=C_ACCENT)
-        self.entry.grid(row=0, column=0, sticky="ew", ipady=9, padx=(0, 8))
+        self.entry = tk.Entry(self.inp_cv, font=F_FONT, bg="#ffffff",
+                              fg=C_DIM, relief="flat", bd=0,
+                              insertbackground=C_ACCENT)
         self.entry.insert(0, self._ph)
         self.entry.bind("<FocusIn>", self._ph_clear)
         self.entry.bind("<FocusOut>", self._ph_set)
         self.entry.bind("<Return>", lambda e: self._send())
         self.entry.bind("<Escape>", self._esc_clear)
         self.entry.focus_set()
+        self.inp_cv.bind("<Configure>", lambda e: self._inp_relayout())
+        self.inp_cv.after(80, self._inp_relayout)
         self.send_btn = tk.Button(inp, text="Bhejo ➤", font=F_BOLD,
-                                  bg=C_ACCENT, fg="#06231a", relief="flat",
-                                  activebackground="#3ad8a5", cursor="hand2",
-                                  command=self._send, width=12)
-        self.send_btn.grid(row=0, column=1, ipady=7)
-        self._hover(self.send_btn, C_ACCENT, "#3ad8a5")
+                                  bg=C_ACCENT, fg="#ffffff", relief="flat",
+                                  activebackground="#1da851", cursor="hand2",
+                                  command=self._send, width=10)
+        self.send_btn.grid(row=0, column=1, padx=(10, 0), ipady=10,
+                           sticky="ns")
+        self._hover(self.send_btn, C_ACCENT, "#1da851")
 
     # ---- chat scroll helpers ----
     def _chat_scroll(self, first, last):
@@ -1089,7 +1180,150 @@ class HemomemoApp(tk.Tk):
         return f + l >= 0.985 or l >= 1.0
 
     def _chat_bottom(self):
-        self.chat.see("end")
+        self.chat.yview_moveto(1.0)
+
+    # ---- 🖼 Canvas-bubble helpers (_cb_*) ----
+    def _rrect(self, cv, x0, y0, x1, y1, r=14, **kw):
+        """Gol-kono wala rect (smooth-polygon) — asli WhatsApp bubble."""
+        pts = [x0 + r, y0, x1 - r, y0, x1, y0, x1, y0 + r, x1, y1 - r,
+               x1, y1, x1 - r, y1, x0 + r, y1, x0, y1, x0, y1 - r,
+               x0, y0 + r, x0, y0]
+        return cv.create_polygon(pts, smooth=True, **kw)
+
+    def _cb_wheel(self, e):
+        try:
+            self.chat.yview_scroll(int(-e.delta / 120) * 3, "units")
+        except Exception:
+            pass
+
+    def _cb_on_resize(self, _e=None):
+        if self._cb_cfg_id:
+            try:
+                self.after_cancel(self._cb_cfg_id)
+            except Exception:
+                pass
+        self._cb_cfg_id = self.after(140, self._cb_rerender)
+
+    def _cb_rerender(self):
+        self._cb_cfg_id = None
+        if not hasattr(self, "_cb_feed"):
+            return
+        self._cb_render_all()
+
+    def _cb_render_all(self):
+        c = self.chat
+        c.delete("all")
+        self._cb_y = 18
+        self._cb_btn_n = 0
+        self._cb_welcome_draw()
+        for d in self._cb_feed:
+            if d["who"] == "chip":
+                self._cb_draw_chip(d["text"])
+            else:
+                self._cb_draw_msg(d["who"], d["text"], d["ts"])
+        self._cb_sync(True)
+        if self._think_id:
+            try:
+                self.after_cancel(self._think_id)
+            except Exception:
+                pass
+            self._think_id = None
+            self._think_y = self._cb_y
+            self._think_step()
+
+    def _cb_sync(self, stick=None):
+        c = self.chat
+        try:
+            c.configure(scrollregion=c.bbox("all") or (0, 0, 1, 1))
+        except Exception:
+            return
+        if stick is None:
+            stick = self._near_bottom()
+        if stick:
+            c.yview_moveto(1.0)
+
+    def _cb_wrap(self, s, font, maxw):
+        """Canvas-text me manual wrap (Text-widget nahi — khud lafz toerte)."""
+        lines = []
+        for para in (s or "").split("\n"):
+            if not para.strip():
+                lines.append("")
+                continue
+            cur = ""
+            for wd in para.split(" "):
+                t = (cur + " " + wd) if cur else wd
+                if font.measure(t) <= maxw or not cur:
+                    cur = t
+                else:
+                    lines.append(cur)
+                    cur = wd
+                    while font.measure(cur) > maxw:
+                        lo, hi = 1, len(cur)
+                        while lo < hi:
+                            mid = (lo + hi + 1) // 2
+                            if font.measure(cur[:mid]) <= maxw:
+                                lo = mid
+                            else:
+                                hi = mid - 1
+                        lines.append(cur[:lo])
+                        cur = cur[lo:].lstrip()
+            lines.append(cur)
+        return lines
+
+    def _cb_btn(self, x0, y0, label, val, bg=None, fg=None):
+        """Canvas par chhota copy-button (drawn pill + click → clipboard)."""
+        c = self.chat
+        f = self._cb_font_ts
+        bg = bg or C_CARD2
+        fg = fg or C_GOLD
+        w = f.measure(label) + 18
+        h = 22
+        i1 = self._rrect(c, x0, y0, x0 + w, y0 + h, r=11, fill=bg,
+                         outline="")
+        i2 = c.create_text(x0 + w / 2, y0 + h / 2, text=label, font=f,
+                           fill=fg)
+        tag = "cbtn%d" % self._cb_btn_n
+        self._cb_btn_n += 1
+        c.addtag_withtag(tag, i1)
+        c.addtag_withtag(tag, i2)
+        c.tag_bind(tag, "<Button-1>",
+                   lambda e, t=tag, v=val: self._cb_copy_hit(t, v))
+        c.tag_bind(tag, "<Enter>", lambda e: c.configure(cursor="hand2"))
+        c.tag_bind(tag, "<Leave>", lambda e: c.configure(cursor=""))
+        return w, h
+
+    def _cb_copy_hit(self, tag, val):
+        try:
+            self.clipboard_clear()
+            self.clipboard_append(val or "")
+            txts = [i for i in self.chat.find_withtag(tag)
+                    if self.chat.type(i) == "text"]
+            if txts:
+                old = self.chat.itemcget(txts[0], "text")
+                self.chat.itemconfigure(txts[0], text="✅ copy ho gaya")
+                self.after(1300, lambda: self._cb_restore(txts[0], old))
+        except Exception:
+            pass
+
+    def _cb_restore(self, iid, s):
+        try:
+            self.chat.itemconfigure(iid, text=s)
+        except Exception:
+            pass
+
+    def _inp_relayout(self):
+        cv = getattr(self, "inp_cv", None)
+        if not cv or not cv.winfo_exists():
+            return
+        w = cv.winfo_width()
+        if w < 80:
+            cv.after(200, self._inp_relayout)
+            return
+        cv.delete("pill")
+        self._rrect(cv, 0, 2, w - 8, 50, r=24, fill="#ffffff", outline="",
+                    tags="pill")
+        cv.create_window(26, 26, window=self.entry, anchor="w",
+                         width=max(160, w - 150))
 
     def _ph_clear(self, _e=None):
         if self.entry.get() == self._ph:
@@ -1139,12 +1373,10 @@ class HemomemoApp(tk.Tk):
         except Exception:
             self._hist = []
         try:
-            self.chat.configure(state="normal")
-            self.chat.delete("1.0", "end")
-            for _e in self._hist:
-                self._bubble(_e.get("text") or "", _e.get("who") or "ai")
-            self.chat.configure(state="disabled")
-            self.chat.see("end")
+            self._cb_feed = [{"who": e.get("who") or "ai",
+                              "text": e.get("text") or "",
+                              "ts": ""} for e in self._hist]
+            self._cb_render_all()
         except Exception:
             pass
 
@@ -1159,11 +1391,9 @@ class HemomemoApp(tk.Tk):
 
     def _chat_clear(self):
         """🧹 chat saaf — history + welcome dobara."""
-        self.chat.configure(state="normal")
-        self.chat.delete("1.0", "end")
-        self.chat.configure(state="disabled")
+        self._cb_feed = []
         self._hist_clear()
-        self._welcome()
+        self._cb_render_all()
 
     def _chat_copy(self):
         """📋 aakhri jawab clipboard par (feedback button-par hi)."""
@@ -1176,81 +1406,161 @@ class HemomemoApp(tk.Tk):
         except Exception:
             pass
 
-    def _welcome(self):
-        self.chat.configure(state="normal")
-        self.chat.insert("end", " ☪  %s me khush-amdeed!\n" % MODEL_NAME,
-                         "welcome")
-        self.chat.insert("end",
-                         " Ye app aapke D:\\DigitalBrain se SEEDHA juda hai — koi API key "
-                         "nahi, koi AI/cloud/MCP connection nahi. Sab kuch local NumPy "
-                         "dimagh (4 brains), 331 formulas, Quran/Hadith ilm, aqal aur "
-                         "jazbaat ke sath. Neeche likh kar bhejo — terminal me kiye "
-                         "gay changes 🔄 Brain Reload se yahan live lagte hain.\n\n",
-                         "welcome")
-        self.chat.configure(state="disabled")
-
-    def _mk_copy_btn(self, val, label="📋 copy"):
-        """📋 chat-ke-andar chhota copy-button (Text-widget me window_create).
-        val = jo clipboard jana hai; label = button par likha."""
-        b = tk.Button(self.chat, text=label, font=("Segoe UI", 8),
-                      bg="#12291d", fg=C_GOLD, relief="flat", bd=0,
-                      highlightthickness=0, activebackground=C_GOLD,
-                      activeforeground="#06231a", cursor="hand2")
-        b.configure(command=lambda: self._btn_copy(b, val, label))
-        return b
-
-    def _btn_copy(self, btn, val, label):
-        """📋 chat-copy-buttons ka clipboard-helper (feedback button-par hi)."""
-        try:
-            self.clipboard_clear()
-            self.clipboard_append(val or "")
-            btn.configure(text="✅ copy ho gaya")
-            self.after(1200, lambda: btn.configure(text=label))
-        except Exception:
-            pass
+    def _cb_welcome_draw(self):
+        """☪ Welcome-card: safed gol-card canvas par (pehla chehra)."""
+        c = self.chat
+        W = max(c.winfo_width(), 640)
+        fs = self._cb_font_ts
+        body = (" Ye app aapke D:\\DigitalBrain se SEEDHA juda hai — koi API "
+                "key nahi, koi AI/cloud/MCP connection nahi. Sab kuch local "
+                "NumPy dimagh (4 brains), 331 formulas, Quran/Hadith ilm, "
+                "aqal aur jazbaat ke sath. Neeche likh kar bhejo — terminal "
+                "me kiye gay changes 🔄 Brain Reload se yahan live lagte "
+                "hain.")
+        pad = 16
+        maxw = min(560, W - 60)
+        lines = self._cb_wrap(body, fs, maxw - 2 * pad)
+        bh = 22 + 30 + 6 + len(lines) * 15 + 16
+        bw = maxw
+        x0 = max(10, (W - bw) // 2)
+        y0 = self._cb_y
+        y1 = y0 + bh
+        self._rrect(c, x0, y0, x0 + bw, y1, r=16, fill="#ffffff",
+                    outline="")
+        c.create_text(x0 + pad, y0 + 20,
+                      text="☪  %s me khush-amdeed!" % MODEL_NAME,
+                      font=("Segoe UI", 12, "bold"), fill=C_GOLD,
+                      anchor="nw")
+        for i, l in enumerate(lines):
+            c.create_text(x0 + pad, y0 + 22 + 30 + i * 15, text=l,
+                          font=fs, fill=C_DIM, anchor="nw")
+        self._cb_y = y1 + 14
 
     def _bubble(self, text, who):
+        d = {"who": who,
+             "text": (text or "").strip() if who == "user" else (text or ""),
+             "ts": datetime.datetime.now().strftime("%H:%M")}
+        self._cb_feed.append(d)
+        if len(self._cb_feed) > 400:
+            del self._cb_feed[:len(self._cb_feed) - 400]
+        self._cb_draw_msg(d["who"], d["text"], d["ts"])
+
+    def _cb_draw_msg(self, who, text, ts=""):
+        """🖼 Canvas-par asli bubble draw (user: sabz-dahini + tail + ✓✓,
+        ai: safed-bayen + dark code-cards + copy-buttons)."""
+        c = self.chat
         stick = self._near_bottom()
-        self.chat.configure(state="normal")
+        W = max(c.winfo_width(), 640)
+        f = self._cb_font
+        fts = self._cb_font_ts
+        maxw = min(560, W - 220)
+        xi = 12
+        lh = 19
+        y0 = self._cb_y
         if who == "user":
-            self.chat.insert("end", "  ✦ Aap\n", "who_u")
-            self.chat.insert("end", " %s \n" % text.strip(), "user")
+            t = (text or "").strip()
+            lines = self._cb_wrap(t, f, maxw - 2 * xi)
+            tw = max([f.measure(l) for l in lines] + [40])
+            bw = min(maxw, tw + 2 * xi)
+            bw = max(bw, fts.measure(ts + "  ✓✓") + 2 * xi + 8, 72)
+            bh = 10 + len(lines) * lh + 6 + 14 + 8
+            x1 = W - 20
+            x0 = x1 - bw
+            y1 = y0 + bh
+            self._rrect(c, x0, y0, x1, y1, r=16, fill=C_USERBG, outline="")
+            c.create_polygon(x1, y0, x1 + 9, y0, x1, y0 + 12,
+                             fill=C_USERBG, outline="")
+            for i, l in enumerate(lines):
+                c.create_text(x0 + xi, y0 + 10 + i * lh, text=l,
+                              font=f, fill=C_TEXT, anchor="nw")
+            if ts:
+                c.create_text(x1 - xi - 2, y1 - 16, text=ts + "  ✓✓",
+                              font=fts, fill="#5e8b74", anchor="e")
+            self._cb_y = y1 + 8
         else:
-            self.chat.insert("end", "  ✦ Hemomemo AI\n", "who_a")
-            # 💻 CODE-BLOCK SYSTEM: ```lang ... ``` fences → pyare code-blocks
-            #    (monospace + dark card + gold language-label); baaki aam jawab.
-            _parts = re.split(r"```([A-Za-z0-9+#_-]*)[ \t]*\r?\n(.*?)```",
-                              (text or "").strip(), flags=re.S)
-            if len(_parts) == 1:
-                self.chat.insert("end", " %s \n" % text.strip(), "ai")
+            # 💻 CODE-BLOCK SYSTEM: ```fences → andar dark-code-card
+            parts = re.split(r"```([A-Za-z0-9+#_-]*)[ \t]*\r?\n(.*?)```",
+                             (text or "").strip(), flags=re.S)
+            segs = []
+            if len(parts) == 1:
+                if (text or "").strip():
+                    segs.append(("txt", text.strip(), ""))
             else:
-                for _i, _seg in enumerate(_parts):
-                    _m = _i % 3
-                    if _m == 0:                       # aam text
-                        if _seg.strip():
-                            self.chat.insert("end",
-                                             " %s \n" % _seg.strip(), "ai")
-                    elif _m == 1:                     # zaban (label)
-                        _lang = (_seg or "").strip() or "code"
-                        self.chat.insert("end",
-                                         " ─── 💻 %s ───\n" % _lang,
-                                         "code_hdr")
-                    else:                             # asli code + copy-code
-                        _code = _seg.rstrip("\n")
-                        self.chat.insert("end", "\n" + _code + "\n",
-                                         "code_blk")
-                        self.chat.insert("end", " ")
-                        self.chat.window_create("end", window=self._mk_copy_btn(
-                            _code, "📋 copy code"))
-                        self.chat.insert("end", "\n", "ai")
-            # 📋 copy-whole-message button (har AI-jawab ke neeche)
-            self.chat.insert("end", " ")
-            self.chat.window_create("end", window=self._mk_copy_btn(
-                (text or "").strip(), "📋 copy message"))
-            self.chat.insert("end", "\n", "ai")
-        if stick:
-            self.chat.see("end")
-        self.chat.configure(state="disabled")
+                for i, seg in enumerate(parts):
+                    m = i % 3
+                    if m == 0:
+                        if seg.strip():
+                            segs.append(("txt", seg.strip(), ""))
+                    elif m == 1:
+                        segs.append(("lang", "",
+                                     (seg or "").strip() or "code"))
+                    else:
+                        segs.append(("code", seg.rstrip("\n"), ""))
+            mono_lh = 16
+            cpad = 10
+            mono_lw = maxw - 2 * xi - 2 * cpad
+            btn_w = fts.measure("📋 copy code") + 18
+            rows = []
+            widths = []
+            for kind, s, lang in segs:
+                if kind == "txt":
+                    lines = self._cb_wrap(s, f, maxw - 2 * xi)
+                    w = max([f.measure(l) for l in lines] + [40])
+                    rows.append({"kind": "txt", "lines": lines, "w": w,
+                                 "h": len(lines) * lh})
+                    widths.append(w)
+                elif kind == "lang":
+                    pass
+                else:
+                    lines = self._cb_wrap(s, self._cb_font_mono, mono_lw)
+                    w = max([self._cb_font_mono.measure(l) for l in lines]
+                            + [fts.measure("💻 " + lang) + btn_w + 14])
+                    rows.append({"kind": "code", "lines": lines, "w": w,
+                                 "h": 22 + len(lines) * mono_lh,
+                                 "raw": s, "lang": lang})
+                    widths.append(w + 2 * cpad)
+            if not rows:
+                rows.append({"kind": "txt", "lines": [""], "w": 40,
+                             "h": lh})
+                widths.append(40)
+            bw = min(maxw, max(widths) + 2 * xi)
+            bw = max(bw, fts.measure(ts) + 2 * xi + 8, 84)
+            total = sum(r["h"] + 6 for r in rows)
+            bh = 10 + total + 18
+            x0 = 20
+            x1 = x0 + bw
+            y1 = y0 + bh
+            self._rrect(c, x0, y0, x1, y1, r=16, fill="#ffffff", outline="")
+            c.create_polygon(x0, y0, x0 - 9, y0, x0, y0 + 12,
+                             fill="#ffffff", outline="")
+            y = y0 + 10
+            for r in rows:
+                if r["kind"] == "txt":
+                    for i, l in enumerate(r["lines"]):
+                        c.create_text(x0 + xi, y + i * lh, text=l,
+                                      font=f, fill=C_TEXT, anchor="nw")
+                else:
+                    cw = r["w"] + 2 * cpad
+                    cx0 = x0 + xi
+                    self._rrect(c, cx0, y, cx0 + cw, y + r["h"], r=10,
+                                fill="#0b1f16", outline="")
+                    c.create_text(cx0 + cpad, y + 9,
+                                  text="💻 " + r["lang"], font=fts,
+                                  fill=C_GOLD, anchor="w")
+                    self._cb_btn(cx0 + cw - cpad - btn_w, y + 3,
+                                 "📋 copy code", r["raw"],
+                                 bg="#17352a", fg=C_GOLD)
+                    for i, l in enumerate(r["lines"]):
+                        c.create_text(cx0 + cpad, y + 22 + i * mono_lh,
+                                      text=l, font=self._cb_font_mono,
+                                      fill="#d7e6dd", anchor="nw")
+                y += r["h"] + 6
+            if ts:
+                c.create_text(x1 - xi - 2, y1 - 16, text=ts, font=fts,
+                              fill="#9aa7b0", anchor="e")
+            self._cb_btn(x0, y1 + 6, "📋 copy message", (text or "").strip())
+            self._cb_y = y1 + 34
+        self._cb_sync(stick)
 
     def _chip(self, m):
         try:
@@ -1269,37 +1579,60 @@ class HemomemoApp(tk.Tk):
                 bits.append("🧠 deep-rescue")
             if m.get("helper"):
                 bits.append("🤝 helper")
-            stick = self._near_bottom()
-            self.chat.configure(state="normal")
-            self.chat.insert("end", "   " + "  •  ".join(bits) + "\n", "chip")
-            if stick:
-                self.chat.see("end")
-            self.chat.configure(state="disabled")
+            s = "  •  ".join(bits)
+            self._cb_feed.append({"who": "chip", "text": s, "ts": ""})
+            self._cb_draw_chip(s)
         except Exception:
             pass
 
+    def _cb_draw_chip(self, s):
+        """🧩 source-chip: chhoti grey-pilli (canvas-drawn)."""
+        c = self.chat
+        stick = self._near_bottom()
+        f = self._cb_font_ts
+        w = f.measure(s) + 26
+        y0 = self._cb_y
+        self._rrect(c, 20, y0, 20 + w, y0 + 24, r=12, fill=C_CARD2,
+                    outline="")
+        c.create_text(33, y0 + 12, text=s, font=f, fill=C_DIM, anchor="w")
+        self._cb_y = y0 + 32
+        self._cb_sync(stick)
+
     def _think_start(self):
-        self.chat.configure(state="normal")
-        self._think_at = self.chat.index("end-1c")
+        self._think_stop()
         self._think_n = 0
         self._think_stage_txt = ""
+        self._think_y = self._cb_y
         self._think_step()
-        self.chat.see("end")
-        self.chat.configure(state="disabled")
 
     def _think_step(self):
+        """💭 Soch-animation canvas-pill (dots ghumte hain, stage badalta)."""
         self._think_n += 1
-        dots = "٫" * (1 + (self._think_n % 3))
-        stage = getattr(self, "_think_stage_txt", "") or \
-            self._think_stages[self._think_stage_i % len(self._think_stages)]
-        self._think_stage_i = getattr(self, "_think_stage_i", 0) + 1
+        c = self.chat
         try:
-            self.chat.delete(self._think_at, "%s lineend +1char" % self._think_at)
-            self.chat.insert(self._think_at, " %s%s "
-                             "(local dimagh — no API)" % (stage, dots), "think")
-            if self._near_bottom():
-                self.chat.see("end")
+            for i in self._think_item:
+                c.delete(i)
         except Exception:
+            pass
+        self._think_item = []
+        dots = "٫" * (1 + (self._think_n % 3))
+        stage = getattr(self, "_think_stage_txt", "")
+        if not stage:
+            stages = getattr(self, "_think_stages", ["🧠 soch raha hoon"])
+            stage = stages[self._think_n % len(stages)]
+        try:
+            f = self._cb_font_ts
+            txt = "💭 %s%s  (local dimagh — no API)" % (stage, dots)
+            w = f.measure(txt) + 30
+            x0, y0 = 20, self._think_y
+            i1 = self._rrect(c, x0, y0, x0 + w, y0 + 26, r=13,
+                             fill=C_CARD, outline="")
+            i2 = c.create_text(x0 + 15, y0 + 13, text=txt, font=f,
+                               fill=C_GOLD, anchor="w")
+            self._think_item = [i1, i2]
+            self._cb_sync(self._near_bottom())
+        except Exception:
+            self._think_item = []
             return
         self._think_id = self.after(450, self._think_step)
 
@@ -1307,17 +1640,13 @@ class HemomemoApp(tk.Tk):
         """🌐 3-SOCH FLOW: har asli marhale par sawal-ke-neeche animation badle
         (soch-1 → ilm → soch-2 → research → soch-3 → seekh). Thread-safe."""
         self._think_stage_txt = stage
-        try:
-            self.chat.configure(state="normal")
-            self.chat.delete(self._think_at, "%s lineend +1char" % self._think_at)
-            dots = "٫" * (1 + (self._think_n % 3))
-            self.chat.insert(self._think_at, " %s%s (local dimagh — no API)"
-                             % (stage, dots), "think")
-            if self._near_bottom():
-                self.chat.see("end")
-            self.chat.configure(state="disabled")
-        except Exception:
-            pass
+        if self._think_id:
+            try:
+                self.after_cancel(self._think_id)
+            except Exception:
+                pass
+            self._think_id = None
+        self._think_step()
 
     def _think_stop(self):
         if self._think_id:
@@ -1327,11 +1656,11 @@ class HemomemoApp(tk.Tk):
                 pass
             self._think_id = None
         try:
-            self.chat.configure(state="normal")
-            self.chat.delete(self._think_at, "%s lineend +1char" % self._think_at)
-            self.chat.configure(state="disabled")
+            for i in self._think_item:
+                self.chat.delete(i)
         except Exception:
             pass
+        self._think_item = []
 
     def _toggle_think(self):
         # auto = sawal dekh kar khud tier chunta hai (low/mid/high) —
