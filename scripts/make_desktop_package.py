@@ -35,7 +35,7 @@ DST = "D:\\DigitalBrain\\build\\hemomemo_ai_desktop"  # 🔒 staging — users-f
 VERSION = "v5.1.0-desktop"
 
 COPY_DIRS = ["core", "harvest", "security", "server", "web", "agent", "tests"]
-DATA_FILES = ["corpus.txt", "qa_memo.pkl", "security_manifest.json",
+DATA_FILES = ["corpus.txt", "security_manifest.json",
               "quran_master.json", "hadith_master.json", "bukhari_master.json",
               "flow_state.json", "heart_state.json", "chat_learned_memory.json",
               "meta_thoughts.jsonl", "brain_version.json"]
@@ -43,7 +43,6 @@ CKPT_FIXED = ["gendeep_1793702467.npz",
               "genverify_1793780719.npz", "genhelper_1793780208.npz"]
 WRITABLE_REL = {"data\\corpus_big\\learned_chat.txt",
                 "data\\corpus_big\\liveresearch.txt",
-                "data\\qa_memo.pkl",
                 "harvest\\state.json", "harvest\\seen.json",
                 "data\\genone_api.json", "data\\genone_users.json",
                 "data\\chat_history_app.json"}
@@ -159,7 +158,7 @@ def main():
     for rel in ("data\\genone_users.json", "data\\genone_api.json",
                 "data\\corpus_big\\learned_chat.txt",
                 "data\\corpus_big\\liveresearch.txt",
-                "data\\qa_memo.pkl", "data\\chat_history_app.json",
+                "data\\chat_history_app.json",
                 "harvest\\state.json", "harvest\\seen.json"):
         p = os.path.join(DST, rel)
         if os.path.exists(p):
@@ -322,6 +321,14 @@ def main():
             _readonly(dst_p, ro=False)
             copied += 1
 
+    # 🚫 QA-PURGE (user-hukum 15-Nov): qa_memo.pkl zip/push/package me KABHI
+    #    nahi jata — sirf local (app auto-rebuild karta hai)
+    try:
+        if os.path.exists(os.path.join(DST, "data", "qa_memo.pkl")):
+            os.remove(os.path.join(DST, "data", "qa_memo.pkl"))
+    except Exception:
+        pass
+
     # ---- 5) EXE + starters ----
     _copy2_retry(exe_src, os.path.join(DST, "Hemomemo-Ultra-Brain.exe"))
     copied += 1
@@ -445,7 +452,7 @@ pause
             base = fn.lower()
             if (base in ("genone_api.json", "genone_users.json",
                          "genone_api.log", "learned_chat.txt",
-                         "liveresearch.txt", "qa_memo.pkl", "state.json",
+                         "liveresearch.txt", "state.json",
                          "seen.json", "chat_history_app.json")
                     or rel.startswith("connection_hub") or rel == "connection_hub\\"):
                 continue
