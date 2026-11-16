@@ -167,7 +167,7 @@ def reload_brain_async(done_cb=None):
 # jayega. Canned-clarification + token-dimmagh-shallow-reply ye dauran OFF.
 _DEEP_THOUGH = True
 
-def chat_async(prompt, on_done, think="auto", progress=None):
+def chat_async(prompt, on_done, think="auto", progress=None, hist=None):
     """Chat worker thread — UI freeze nahi hota. Result → on_done(text, meta).
     progress(stage) — har asli marhale par UI ko bataata hai (3-soch flow)."""
     # 🕊 QANOON-WIRING: "band karo" (chat) = server OFF (flag + stop-bat);
@@ -329,6 +329,17 @@ def chat_async(prompt, on_done, think="auto", progress=None):
                     return
         except Exception:
             pass
+        # 🗒 CHAT-YAAD + 🧩 CODE-SAMAJH PROMPT-SYSTEM (100% local):
+        # upar-wale SARE messages yaad-may; AKHRI user-sawal 90% priority.
+        _ctx = ""
+        _cont = False
+        try:
+            from model.prompt_system import (build_chat_context,
+                                             is_continuation)
+            _ctx = build_chat_context(hist, prompt)
+            _cont = is_continuation(prompt)
+        except Exception:
+            _ctx = ""
         try:
             # First, use frontolobe to understand the user input
             try:
@@ -340,7 +351,8 @@ def chat_async(prompt, on_done, think="auto", progress=None):
                 
                 # clarification me ab USER-ka asli-text hamesha dikh-jata hai
                 # (English-canned-template-leak band — input-aware Roman-Urdu)
-                if understanding["clarification_needed"] and not _DEEP_THOUGH:
+                if (understanding["clarification_needed"]
+                        and not _DEEP_THOUGH and not _cont):
                     sug = (understanding.get("response_suggestion") or "").strip()
                     said = (understanding.get("input_text") or prompt or "").strip()
                     if len(said) > 80:
@@ -362,6 +374,9 @@ def chat_async(prompt, on_done, think="auto", progress=None):
                 if understanding["intent"]["type"] == "request":
                     # Add context for requests
                     enhanced_prompt = f"User is requesting: {prompt}. Context: {understanding['contextual_clues']}. Key concepts: {understanding['key_concepts']}."
+                # 🗒 chat-yaad + 🧩 code-prompt preamble (90% = akhri sawal)
+                if _ctx:
+                    enhanced_prompt = (_ctx + "\n\n" + enhanced_prompt).strip()
                 
                 # token-dimagh pehle: token-dar-token samajh (no-API, local)
                 try:
@@ -400,8 +415,9 @@ def chat_async(prompt, on_done, think="auto", progress=None):
                 except Exception:
                     pass
                 G = brain_generate()
-                txt, m = G.chat_once(prompt, meta=True, think="high",
-                                     progress=progress)
+                txt, m = G.chat_once(
+                    (_ctx + "\n" + prompt).strip() if _ctx else prompt,
+                    meta=True, think="high", progress=progress)
                 on_done(txt, m or {})
                 
         except Exception as e:
@@ -1692,7 +1708,8 @@ class HemomemoApp(tk.Tk):
             # 🧠 3-soch flow ki har marhala sawal-ke-neeche animation me
             self.after(0, lambda: self._think_stage(stage))
 
-        chat_async(q, done, think=self._think_mode, progress=prog)
+        chat_async(q, done, think=self._think_mode, progress=prog,
+                   hist=list(self._hist))
 
     def _chat_done(self, text, m):
         self._think_stop()
