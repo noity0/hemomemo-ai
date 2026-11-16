@@ -70,6 +70,7 @@ class EpisodicStore:
         if not os.path.exists(self.path):
             return []
         out = []
+        bad = 0
         try:
             with open(self.path, "r", encoding="utf-8") as fh:
                 for line in fh:
@@ -79,9 +80,21 @@ class EpisodicStore:
                     try:
                         out.append(json.loads(line))
                     except Exception:
+                        bad += 1
                         continue
         except OSError:
             return []
+        if bad:
+            # 🛡 S6 corruption-bachaw: kharab-file ki asli-copy `.corrupt`
+            #     me mehfooz (kabhi delete nahi — bande ka data salamat)
+            #     aur valid-lines ke sath kaam jari rehta hai.
+            try:
+                bak = self.path + ".corrupt"
+                if not os.path.exists(bak):
+                    with open(self.path, "rb") as src, open(bak, "wb") as dst:
+                        dst.write(src.read())
+            except OSError:
+                pass
         return out
 
     def recall(self, query: str, k: Optional[int] = None) -> List[dict]:
