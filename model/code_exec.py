@@ -193,16 +193,126 @@ def gen_program(desc):
     return "\n".join(lines)
 
 
+# ---------------- multi-zaban code-gen (CODE-AI, 100% local) ----------------
+_LANG_KEY = {
+    "python": "python", "py": "python", "python3": "python",
+    "c++": "cpp", "cpp": "cpp", "c plus plus": "cpp",
+    "c#": "csharp", "csharp": "csharp", "c sharp": "csharp",
+    "java": "java", "rust": "rust", "go": "go", "golang": "go",
+    "php": "php", "html": "html", "sql": "sql",
+    "assembly": "asm", "asm": "asm", "cobol": "cobol",
+}
+_SLOT_IN_RX = re.compile(r"(?i)\bin\s+([a-z0-9+#\-]{2,12})\s*$")
+_SLOT_ME_RX = re.compile(r"(?i)^([a-z0-9+#\-]{2,12})\s+me\s+")
+
+
+def _lang_slot(payload):
+    """'... in <zaban>' / '<zaban> me ...' ka slot nikalo:
+    -> (lang-key ('' agar zaban pehchani nahi), baqi-text, slot-mila?)"""
+    m = _SLOT_IN_RX.search(payload)
+    if m:
+        return _LANG_KEY.get(m.group(1).lower(), ""), \
+            payload[:m.start()].strip(), True
+    m = _SLOT_ME_RX.match(payload)
+    if m:
+        return _LANG_KEY.get(m.group(1).lower(), ""), \
+            payload[m.end():].strip(), True
+    return "", payload, False
+
+
+def _c_str(t):
+    """C-family string-literal (\\ aur " escape)."""
+    return '"%s"' % (t or "").replace("\\", "\\\\").replace('"', '\\"')
+
+
+def _h_esc(t):
+    """HTML-escape (& < >)."""
+    return ((t or "").replace("&", "&amp;").replace("<", "&lt;")
+            .replace(">", "&gt;"))
+
+
+def _lang_templates(lang, text):
+    """Zaban -> asli-code (rule-based, text-verbatim, koi API nahi)."""
+    t = (text or "").strip() or "hello hemomemo"
+    if lang == "python":
+        lines = ["print(%r)" % t]
+        if any(w in t.lower() for w in _FLAG_WORDS):
+            lines += ["print()", "for _r in %r:" % _PAK_FLAG, "    print(_r)"]
+        return "\n".join(lines)
+    if lang == "cpp":
+        return ("#include <iostream>\nusing namespace std;\n\n"
+                "int main() {\n    cout << %s << endl;\n    return 0;\n}"
+                % _c_str(t))
+    if lang == "csharp":
+        return ("using System;\n\nclass Program {\n    static void Main() {\n"
+                "        Console.WriteLine(%s);\n    }\n}" % _c_str(t))
+    if lang == "java":
+        return ("public class Main {\n    public static void main"
+                "(String[] args) {\n        System.out.println(%s);\n    }\n}"
+                % _c_str(t))
+    if lang == "rust":
+        return "fn main() {\n    println!(%s);\n}" % _c_str(t)
+    if lang == "go":
+        return ("package main\n\nimport \"fmt\"\n\nfunc main() {\n"
+                "    fmt.Println(%s)\n}" % _c_str(t))
+    if lang == "php":
+        return "<?php\necho %s;\n?>" % _c_str(t)
+    if lang == "html":
+        return ("<!DOCTYPE html>\n<html>\n<head>\n"
+                "    <meta charset=\"utf-8\">\n    <title>Hemomemo</title>\n"
+                "</head>\n<body>\n    <h1>%s</h1>\n</body>\n</html>"
+                % _h_esc(t))
+    if lang == "sql":
+        return ("-- Hemomemo (100%% local)\nSELECT '%s' AS message;"
+                % t.replace("'", "''"))
+    if lang == "asm":
+        msg = t.replace('"', "")
+        return ('; linux x86-64 (nasm): "%s" chhapo\nsection .data\n'
+                '    msg db "%s", 10\n    len equ $ - msg\n\nsection .text\n'
+                'global _start\n_start:\n    mov rax, 1     ; syscall: write\n'
+                '    mov rdi, 1     ; stdout\n    mov rsi, msg\n'
+                '    mov rdx, len\n    syscall\n'
+                '    mov rax, 60    ; syscall: exit\n    xor rdi, rdi\n'
+                '    syscall' % (msg, msg))
+    if lang == "cobol":
+        return ("IDENTIFICATION DIVISION.\nPROGRAM-ID. HEMOMEMO.\n"
+                "PROCEDURE DIVISION.\n    DISPLAY \"%s\".\n    STOP RUN."
+                % t.replace('"', ""))
+    return ""
+
+
 def smart_code(payload, timeout=15.0):
     """'code <x>' ka samajh-fix:
     - x asli-python lagta hai -> seedha chalao (purana python-hukum jaisa)
-    - warna x ek BAYAN hai -> usi ka code BANAO + chala-kar nateeja dikhao"""
+    - '... in <zaban>' / '<zaban> me ...' -> us-zaban ka ASLI code banao
+      (python chal-kar bhi dikhao; baqi zabanon ka code dekhne-ke-liye)
+    - zaban nahi pehchani -> imandari listing (bina-jhoot)
+    - warna x ek BAYAN hai -> usi ka python-code BANAO + chala-kar nateeja"""
     code = (payload or "").strip()
     if not code:
         return ("[code] khali hukum — 'code <kuch bhi>' likho ya "
                 "'python <code>'"), {"source": "code-gen"}
     if looks_like_python(code):
         return run_python_text(code, timeout)
+    lang, text, slot = _lang_slot(code)
+    if slot and not lang:
+        return ("[code-gen] Maaf-khwah — '%s' zaban main nahi jaanta hoon. "
+                "Ye zabanein jaanta hoon: python, c++, c#, java, rust, go, "
+                "php, html, sql, assembly, cobol — inhi me likho: "
+                "'code <baat> in <zaban>'." % (text or code),
+                {"source": "code-gen", "ok": True})
+    if lang:
+        prog = _lang_templates(lang, text or code)
+        if lang == "python":
+            exec_txt, meta = run_python_text(prog, timeout)
+            head = ("[code-gen] '%s' — samajh gaya, ye code banaya "
+                    "(100%% local):\n```python\n%s\n```" % (code[:140], prog))
+            return head + "\n" + exec_txt, {"source": "code-gen",
+                                            "ok": bool(meta.get("ok"))}
+        txt = ("[code-gen] '%s' — %s ka asli-code (100%% local; is-PC par "
+               "compiler/interpreter nahi, apne tool me chalao):\n```\n%s\n```"
+               % (code[:140], lang.upper(), prog))
+        return txt, {"source": "code-gen", "ok": True}
     prog = gen_program(code)
     exec_txt, meta = run_python_text(prog, timeout)
     head = ("[code-gen] '%s' — samajh gaya, ye code banaya (100%% local):\n"
