@@ -242,11 +242,14 @@ class HemomemoHandler(BaseHTTPRequestHandler):
                         hdr.get("x-api-key") or "").strip()
                 if not str(hdr.get("x-hemomemo-key") or "").strip():
                     hdr["x-hemomemo-key"] = _bv
-            # 🎫 L6 guard ke liye FRESH ts + nonce zaroori (har request par) —
-            #     third-party clients (Bearer/x-api-key) ko bhi ye flow milta
-            #     hai — koi error na bhawe
-            hdr["x-hemomemo-ts"] = str(int(time.time()))
-            hdr["x-hemomemo-nonce"] = secrets.token_hex(8)
+            # 🛡 SECURITY-FIX: client ne Ts/Nonce BHEJE hain to WAHI istemal
+            #     (replay-nonce + purana-ts guard asli me chalta hai — kabhi
+            #     overwrite nahi hota). Na-bhejne wale aam Bearer/curl-client
+            #     ke liye fresh bante hain — compat qaim, guard jhoot nahi.
+            if not str(hdr.get("x-hemomemo-ts") or "").strip():
+                hdr["x-hemomemo-ts"] = str(int(time.time()))
+            if not str(hdr.get("x-hemomemo-nonce") or "").strip():
+                hdr["x-hemomemo-nonce"] = secrets.token_hex(8)
             ok, why = _gate(hdr, self.path, body.decode("utf-8", "ignore"))
             return ok, why
         except Exception as e:
@@ -310,8 +313,10 @@ class HemomemoHandler(BaseHTTPRequestHandler):
         if not str(hdr.get("x-hemomemo-key") or "").strip():
             hdr["x-hemomemo-key"] = str(hdr.get("x-api-key") or "").strip()
         import secrets as _sec
-        hdr["x-hemomemo-ts"] = str(int(time.time()))
-        hdr["x-hemomemo-nonce"] = _sec.token_hex(8)
+        if not str(hdr.get("x-hemomemo-ts") or "").strip():
+            hdr["x-hemomemo-ts"] = str(int(time.time()))
+        if not str(hdr.get("x-hemomemo-nonce") or "").strip():
+            hdr["x-hemomemo-nonce"] = _sec.token_hex(8)
         try:
             from security.guard import api_gate as _gate
             ok, why = _gate(hdr, "/v1/chat", body.decode("utf-8", "ignore"))
@@ -509,8 +514,10 @@ class HemomemoHandler(BaseHTTPRequestHandler):
                 hdr["x-hemomemo-key"] = bearer
             if not str(hdr.get("x-hemomemo-key") or "").strip():
                 hdr["x-hemomemo-key"] = str(hdr.get("x-api-key") or "").strip()
-            hdr["x-hemomemo-ts"] = str(int(time.time()))
-            hdr["x-hemomemo-nonce"] = secrets.token_hex(8)
+            if not str(hdr.get("x-hemomemo-ts") or "").strip():
+                hdr["x-hemomemo-ts"] = str(int(time.time()))
+            if not str(hdr.get("x-hemomemo-nonce") or "").strip():
+                hdr["x-hemomemo-nonce"] = secrets.token_hex(8)
             try:
                 from security.guard import api_gate as _gate
                 ok, why = _gate(hdr, "/v1/models", "")
