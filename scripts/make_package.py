@@ -18,7 +18,7 @@ Kya karta hai (asli, imandar):
      VERIFY-SYSTEM.bat (PowerShell) kisi bhi PC par tasdeeq karta hai.
      In-app L3 (8 security-files ka SHA manifest) fail-closed bhi hai.
   4) 🔁 UPDATE-SAFE: bande ki apni cheezein (data\genone_api.json,
-     data\genone_users.json, learned_chat.txt, liveresearch.txt, qa_memo.pkl,
+     data\genone_users.json, learned_chat.txt, liveresearch.txt,
      harvester state) purani folder me hain to OVERWRITE NAHI hoti — log ki
      key/accounts/memory update ke baad bhi salamat.
   5) START-HEMOMO.bat + README-HEMOMO.md (log ke liye Roman-Urdu guide)
@@ -44,7 +44,7 @@ COPY_DIRS = ["core", "harvest", "security", "server", "web", "agent", "tests",
              "brain", "evolution", "public"]
 
 # data me jo RUNTIME zaroori hai
-DATA_FILES = ["corpus.txt", "qa_memo.pkl", "security_manifest.json",
+DATA_FILES = ["corpus.txt", "security_manifest.json",
               "quran_master.json", "hadith_master.json", "bukhari_master.json",
               "flow_state.json", "heart_state.json", "chat_learned_memory.json",
               "meta_thoughts.jsonl", "brain_map.json", "gems.json"]
@@ -164,7 +164,6 @@ def main():
     for p in (users_saved, key_saved,
               os.path.join(DST, "data", "corpus_big", "learned_chat.txt"),
               os.path.join(DST, "data", "corpus_big", "liveresearch.txt"),
-              os.path.join(DST, "data", "qa_memo.pkl"),
               os.path.join(DST, "harvest", "STATE.json"),
               os.path.join(DST, "harvest", "seen.json")):
         if os.path.exists(p):
@@ -275,7 +274,6 @@ def main():
     # ye files bande ki APNI hain — hamesha writable; purani ho to overwrite NAHI
     WRITABLE_REL = {"data\\corpus_big\\learned_chat.txt",
                     "data\\corpus_big\\liveresearch.txt",
-                    "data\\qa_memo.pkl",
                     "harvest\\STATE.json", "harvest\\seen.json",
                     "data\\genone_api.json", "data\\genone_users.json",
                     "data\\chat_history_app.json"}
@@ -387,12 +385,19 @@ def main():
         if not os.path.exists(dst_p) and rel not in (
                 "data\\corpus_big\\learned_chat.txt",
                 "data\\corpus_big\\liveresearch.txt",
-                "data\\qa_memo.pkl",
                 "harvest\\STATE.json", "harvest\\seen.json"):
             os.makedirs(os.path.dirname(dst_p), exist_ok=True)
             _copy2_retry(old, dst_p)
             _readonly(dst_p, ro=False)
             copied += 1
+
+    # 🚫 QA-PURGE (user-hukum 15-Nov): qa_memo.pkl zip/push/package me KABHI
+    #    nahi jata — sirf local DigitalBrain par (app auto-rebuild karta hai)
+    try:
+        if os.path.exists(os.path.join(DST, "data", "qa_memo.pkl")):
+            os.remove(os.path.join(DST, "data", "qa_memo.pkl"))
+    except Exception:
+        pass
 
     # EXE + bat + README + version + hash-manifest
     _copy2_retry(exe_src, os.path.join(DST, "Hemomemo-Ultra-Brain.exe"))
@@ -582,7 +587,7 @@ def main():
             rel = os.path.relpath(fp, DST).lower()
             if fn in ("genone_api.json", "genone_users.json",
                       "genone_api.log", "learned_chat.txt",
-                      "liveresearch.txt", "qa_memo.pkl", "STATE.json",
+                      "liveresearch.txt", "STATE.json",
                       "seen.json", "chat_history_app.json",
                       "PROTECTED_MANIFEST.sha256",
                       "verify_system.ps1") or rel.startswith("harvest\\"):
