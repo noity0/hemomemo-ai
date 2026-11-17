@@ -82,9 +82,14 @@ def _run_python_once(code, timeout=15.0):
         f.write(_GUARD_PRE + code + "\n")
     t0 = time.time()
     try:
+        # 🪟 WINDOW-SAFETY (user-hukum: screen par cmd nahi khulega):
+        #    GUI-app (pythonw) se har code-exec par naya VISIBLE console
+        #    phat-ta tha — CREATE_NO_WINDOW ab hamesha.
+        _nw = 0x08000000 if os.name == "nt" else 0    # CREATE_NO_WINDOW
         r = subprocess.run(
             [sys.executable, "-Xutf8", path],
-            capture_output=True, timeout=timeout, cwd=_ROOT)
+            capture_output=True, timeout=timeout, cwd=_ROOT,
+            creationflags=_nw)
         out = (r.stdout or b"").decode("utf-8", "replace")[:_MAX_OUT]
         err = (r.stderr or b"").decode("utf-8", "replace")[:_MAX_OUT]
         ok = (r.returncode == 0)
