@@ -19,6 +19,8 @@ from typing import Callable, List, Optional, Tuple
 from model import tokenize as tk
 from model.code_exec import smart_code
 from model.memory import EpisodicStore, KnowledgeRetrieval
+from model.prompt_system import (core_intent_text, is_self_repo_question,
+                                 self_repo_reply)
 
 # ---------------- soch-loop ke auzar (100% local, no-API) -----------------
 _SAFE_BIN = {
@@ -125,6 +127,10 @@ class TokenBrain:
         """POORA SOCH-LOOP: token -> routing -> jawab (100% local).
         Composer sirf aam-baat ka fallback hai."""
         text = (prompt or "").strip()
+        try:
+            text = core_intent_text(text)
+        except Exception:
+            pass
         u = self.read(text)
         toks = list(u.tokens) if u else []
         n_tok = len(toks)
@@ -174,6 +180,11 @@ class TokenBrain:
             return ("Main Hemomemo AI hoon — aap ka apna 100% local dimagh: "
                     "chat, code, math, ilm, yaad, gamebot — sab isi PC par, "
                     "koi AI-API nahi.", meta("pehchaan", 0.9))
+
+        # 4b) SELF-REPO — apne GitHub-repo ke sawal (noity0 = apna username):
+        #     formula/ilm/research KABHI nahi — sacha owner-jawab (100% local)
+        if is_self_repo_question(low):
+            return (self_repo_reply(), meta("self-repo", 0.9))
 
         # 5) YAAD — naam recall/save (apni yaad-dasht, JSONL)
         if self.memory:
