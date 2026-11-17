@@ -2058,6 +2058,16 @@ def chat_once(prompt: str, temperature: float = 0.5, max_new: int = None,
     except Exception:
         pass
     prompt = _smart_prompt(prompt)     # 🪄 READ: typo/garbled input bhi samajh
+    # 🎯 90%-CORE (prompt-samajh fix): [CHAT-YAAD]/[CODE-SYSTEM] preamble aur
+    #    frontolobe-wrapper intent/composer KABHI nahi dekhte — sirf AKHRI
+    #    sawal. (YAAD-ke purane numbers/formulas 'details about github repo
+    #    noity0' ko purana Spring-jawab dikha dete the.) Chat-yaad ki notes
+    #    (yaad-store retrieval) pehle-jaisa chalti hai — qanoon qaim.
+    try:
+        from model.prompt_system import core_intent_text as _coreq
+        prompt = _coreq(prompt)
+    except Exception:
+        pass
     # 🪪 OWNER FAST-PATH (kabhi ghalat nahi): "who made you" / "tumhe kisne
     #    banaya" → seedha core/owner se pak-jawab — research/web-ghalti nahi
     _own = _owner_answer(prompt)
