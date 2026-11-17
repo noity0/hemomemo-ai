@@ -2,15 +2,35 @@
 
 ## ONE-CLICK DOWNLOAD - Latest ZIP (hamesha naya)
 
-[![Download Latest ZIP](https://img.shields.io/badge/DOWNLOAD-Latest_ZIP_~215MB-2ea44f?style=for-the-badge&logo=github)](https://github.com/noity0/hemomemo-ai/releases/download/v4.2.0-people/HemomemoUltra-People.zip)
+[![Download Latest ZIP](https://img.shields.io/badge/DOWNLOAD-Latest_ZIP_~244MB-2ea44f?style=for-the-badge&logo=github)](https://github.com/noity0/hemomemo-ai/releases/download/v4.2.0-people/HemomemoUltra-People.zip)
 [![Saare Releases](https://img.shields.io/badge/Releases-Saare_Versions-0969da?style=for-the-badge&logo=github)](https://github.com/noity0/hemomemo-ai/releases)
 
-**Ek click = poora app (~215 MB):** dimagh (LSTM) + ilm-corpus + GameBot + 24/7
+**Ek click = poora app (~244 MB):** dimagh (LSTM) + ilm-corpus + GameBot + 24/7
 connection-hub + web-search/Gmail powers - sab isi zip ke andar.
 
 **Har naya update ISI HI link par aata hai** (naya zip purani file ki jagah
 replace hota hai) - dobara click karo, naya zip mil jayega. Link kabhi purana
 nahi hota.
+
+## 🆕 Naya — 2026-11-17 (aaj ka upgrade, sab test-sabit)
+
+- **Prompt-samajh ka asli-fix:** YAAD-tareekh (purani-baat) ab asli-sawal ko
+  **chher nahi sakti** — "details about github repo" jaisa sawal galat
+  math-intent me nahi jata; end-markers + core-intent-strip sab-jagah
+  (chat/TokenBrain/formulas/self-repo). Suite: **23/23 PASS**.
+- **API-endpoints suite (naya, 31/31):** har endpoint ka asli-live-test —
+  `/health` (401 bina-key), `/v1/models` (Bearer-shim), `/v1/chat`
+  (400 khali/bad-JSON/khali-prompt, 415 bad-Content-Type, GET→405),
+  `/v1/chat/completions` (OpenAI-shape + SSE stream), anjaan-rasta
+  fail-closed, rate-limit **61st-request → 429** (in-process guard-proof).
+- **100% windowless (16-Nov qanoon):** server pythonw (bina-window),
+  code-exec `CREATE_NO_WINDOW` — koi cmd/shell-window screen par **nahi**
+  khulta (probe-sabit: window-title khali, koi flash nahi).
+- **Security tighten (key-lifecycle 11/11):** replay-nonce dobara → **401**,
+  purana-ts (>120s) → **401**, chauthi-key → **429** (3 free keys/account).
+- **Site SEO-max:** FAQPage + OG/Twitter + JSON-LD, sitemap/robots/llms.txt,
+  hreflang — local-server par bhi sab site-assets (Pages/Netlify parity).
+- **Kull regression: 231/231 PASS, 0 FAIL (10 suites).**
 
 | Step | Kya karo |
 |---|---|
@@ -44,7 +64,7 @@ Gemini/generativelanguage jaisi HAR AI-platform API/connection net-guard me
 
 **Hemomemo AI** apna **khud ka dimagh** hai - koi LLM nahi, koi bahar ka model nahi,
 koi AI-API nahi, koi cloud nahi; MCP sirf LOCAL opt-in tool-bridge hai. Poora dimagh **pure-NumPy** ka
-**2-layer LSTM** hai (7M parameters), jo **aap ke apne PC par** chalta hai.
+**2-layer LSTM** hai (9M parameters — 9,015,355, asli-checkpoint se naapa gaya), jo **aap ke apne PC par** chalta hai.
 
 👤 **Owner / Creator:** Hafiz Muhammed Huzaifa Shamim (**HMHS**) — 17 saal ka student,
 DJ Science College, Karachi. Email: laptopshampoo@gmail.com · Instagram: huzaifa_464
@@ -88,7 +108,7 @@ reasoning + yaad) hai:
                                          v
                         +-----------------------------------+
                         | COMPOSER (model/generate)         |
-                        | apna 2-layer LSTM (NumPy, 7M)     |
+                        | apna 2-layer LSTM (NumPy, 9M)     |
                         | order-driven, template-NAHI       |
                         +----------------+------------------+
                                          |
@@ -205,7 +225,7 @@ rahti hai:
 ## 📥 Download (Windows 7 → 11 Pro)
 
 **GitHub:** https://github.com/noity0/hemomemo-ai/releases/tag/v4.2.0-people
-→ **HemomemoUltra-People.zip** (~215 MB) → Extract All → **`Hemomemo-Ultra-Brain.exe`**
+→ **HemomemoUltra-People.zip** (~244 MB) → Extract All → **`Hemomemo-Ultra-Brain.exe`**
 
 **Live sites:**
 - 🌍 GitHub Pages: **https://noity0.github.io/hemomemo-ai/**
@@ -225,6 +245,9 @@ App khulte hi **Hemomemo local API** khud ON: `http://127.0.0.1:8790`
 - `GET /health`, `GET /v1/info`, `POST /v1/auth/signup|signin`, `GET /v1/auth/me`
 - Headers: `Authorization: Bearer hemo…` (ya `X-Hemomemo-Key` + fresh
   `X-Hemomemo-Ts`/`X-Hemomemo-Nonce`) — policy+rate L6-HMHZ se.
+- **Rate + replay (test-sabit):** 60 requests / 10-min window → 61st par
+  **429**; wahi nonce dobara → **401**; purana-ts (>120s) → **401**;
+  chauthi-key → **429** (3 free keys/account — key-lifecycle 11/11).
 
 ### 🌐 LAN mode (OPT-IN — owner PC on ke baad)
 Default: Hemomemo local API **127.0.0.1:8790** (sirf isi PC — safety + law).
@@ -283,6 +306,12 @@ task-sekh-system):
 - ✅ agent-powers suite: **42/42 PASS** (2026-11-08)
 - ✅ game-bot 50-QA: **PASS=50 FAIL=0 (of 50)** (2026-11-08)
 - ✅ key-lifecycle: 11/11 PASS (live API, 2026-11-07)
+- ✅ api-endpoints suite (naya): **31/31 PASS** (live API, 2026-11-17) —
+  /health, /v1/chat, /v1/chat/completions (OpenAI-shape), /v1/models, auth,
+  401/400/405/404/415, rate-limit 429
+- ✅ prompt-samajh suite: **23/23 PASS** (2026-11-17)
+- ✅ code-gen suite: **16/16 PASS** (2026-11-17)
+- ✅ poori regression: **231/231 PASS, 0 FAIL (10 suites)** (2026-11-17)
 - 🎬 VIDEO-QA v3 (25-check, photoreal engine): **20/25 PASS** (2026-11-08) — fixed resize bugs, prompt-override system live ✓
 
 ### 🎬 Video-Engine v3 (photoreal, 100% local)
