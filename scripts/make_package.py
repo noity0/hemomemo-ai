@@ -451,13 +451,11 @@ def main():
 
     # ---- BRAIN-LINK: owner-published-dimagh ka rasta (sirf file-sync,
     #      koi AI/model/platform API nahi; app bina iske bhi 100% local)
-    _cks = []
-    _ck_dir = os.path.join(SRC, "model", "checkpoints")
-    if os.path.isdir(_ck_dir):
-        _cks = [os.path.join(_ck_dir, f) for f in os.listdir(_ck_dir)
-                if f.startswith("genmaster_") and f.endswith(".npz")]
-    if _cks:
-        _ck = max(_cks, key=os.path.getmtime)
+    # 🧠 FIX: WOHI genmaster jo upar package me copy hua (newest_genmaster —
+    #    _chat/.tmp filter ke sath). Purana alag-glob tmp-artifact ko
+    #    "newest" samajh-ke version "chat.tmp" jaisi jhooti-entry likhta tha.
+    _ck = newest_genmaster()
+    if _ck:
         _bname = os.path.basename(_ck)
         _bh = hashlib.sha256(open(_ck, "rb").read()).hexdigest()
         _ver = _bname.rsplit("_", 1)[-1].replace(".npz", "")
