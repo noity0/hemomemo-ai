@@ -455,7 +455,19 @@ class HemomemoHandler(BaseHTTPRequestHandler):
     _SITE_FILES = {"/": ("index.html", "text/html; charset=utf-8"),
                    "/index.html": ("index.html", "text/html; charset=utf-8"),
                    "/style.css": ("style.css", "text/css; charset=utf-8"),
-                   "/app.js": ("app.js", "application/javascript; charset=utf-8")}
+                   "/app.js": ("app.js", "application/javascript; charset=utf-8"),
+                   # 🌐 SEO-max: tamam site-assests local-server par bhi
+                   # (GitHub-Pages/Netlify jaisi parity — kuch chhupa nahi)
+                   "/robots.txt": ("robots.txt", "text/plain; charset=utf-8"),
+                   "/sitemap.xml": ("sitemap.xml", "application/xml; charset=utf-8"),
+                   "/site.webmanifest": ("site.webmanifest",
+                                         "application/manifest+json"),
+                   "/og-image.png": ("og-image.png", "image/png"),
+                   "/icon-180.png": ("icon-180.png", "image/png"),
+                   "/icon-192.png": ("icon-192.png", "image/png"),
+                   "/icon-512.png": ("icon-512.png", "image/png"),
+                   "/llms.txt": ("llms.txt", "text/plain; charset=utf-8"),
+                   "/404.html": ("404.html", "text/html; charset=utf-8")}
 
     def do_HEAD(self):
         t0 = time.time()
