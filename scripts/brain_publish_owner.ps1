@@ -16,6 +16,7 @@ $tag = "brain"
 
 # --- 1) naya-tareen FINAL brain ---
 $npz = Get-ChildItem "D:\DigitalBrain\model\checkpoints\genmaster_*.npz" |
+       Where-Object { $_.Name -notmatch "_chat" -and $_.Name -notlike "*.tmp.npz" } |
        Sort-Object LastWriteTime -Descending | Select-Object -First 1
 if (-not $npz) { "koi genmaster npz nahi - FAIL (honest)"; exit 1 }
 $ver = if ($npz.BaseName -match "(\d+)$") { $Matches[1] } else { "0" }
