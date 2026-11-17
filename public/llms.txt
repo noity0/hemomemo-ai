@@ -6,7 +6,7 @@
 > Shamim (HMHS), Karachi. License: MIT.
 
 ## Download
-- [Latest desktop ZIP (~244 MB)](https://github.com/noity0/hemomemo-ai/releases/download/v4.2.0-people/HemomemoUltra-People.zip): full app (brain + corpus + GameBot + connection-hub) — extract & run START-HEMOMO.bat, no install needed. The same link always serves the newest build (asset replaced on each release).
+- [Latest desktop ZIP (~212 MB)](https://github.com/noity0/hemomemo-ai/releases/download/v4.2.0-people/HemomemoUltra-People.zip): full app (brain + corpus + GameBot + connection-hub) — extract & run START-HEMOMO.bat, no install needed. The same link always serves the newest build (asset replaced on each release).
 - [All releases](https://github.com/noity0/hemomemo-ai/releases)
 
 ## Sites
