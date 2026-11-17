@@ -249,7 +249,8 @@ def chat_async(prompt, on_done, think="auto", progress=None, hist=None):
                     r = subprocess.run([
                         "ffprobe", "-v", "error", "-show_entries",
                         "format=duration,size:stream=avg_frame_rate",
-                        "-of", "json", p], capture_output=True, text=True)
+                        "-of", "json", p], capture_output=True, text=True,
+                        creationflags=(0x08000000 if os.name == "nt" else 0))
                     _fmt, _fps = {}, 24
                     if r.returncode == 0:
                         _j = json.loads(r.stdout or "{}")
