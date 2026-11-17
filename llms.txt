@@ -6,13 +6,21 @@
 > Shamim (HMHS), Karachi. License: MIT.
 
 ## Download
-- [Latest desktop ZIP (~215 MB)](https://github.com/noity0/hemomemo-ai/releases/download/v4.2.0-people/HemomemoUltra-People.zip): full app (brain + corpus + GameBot + connection-hub) — extract & run START-HEMOMO.bat, no install needed. The same link always serves the newest build (asset replaced on each release).
+- [Latest desktop ZIP (~244 MB)](https://github.com/noity0/hemomemo-ai/releases/download/v4.2.0-people/HemomemoUltra-People.zip): full app (brain + corpus + GameBot + connection-hub) — extract & run START-HEMOMO.bat, no install needed. The same link always serves the newest build (asset replaced on each release).
 - [All releases](https://github.com/noity0/hemomemo-ai/releases)
 
 ## Sites
 - [GitHub Pages](https://noity0.github.io/hemomemo-ai/)
 - [Netlify mirror](https://hemomemo-ai.netlify.app/)
 - [Repo](https://github.com/noity0/hemomemo-ai)
+
+## Local API (127.0.0.1:8790 — sirf Hemomemo, koi AI-platform nahi)
+- Endpoints: `/health`, `/v1/info`, `/v1/models` (OpenAI-shape), `/v1/chat`,
+  `/v1/chat/completions` (OpenAI-shape facade — jawab apna local NumPy dimagh),
+  `/v1/auth/signup|signin|key/new|me` (per-user keys, 100% local)
+- Auth: `X-Hemomemo-Key` + `X-Hemomemo-Ts` (unix sec) + `X-Hemomemo-Nonce`
+  (ya `Authorization: Bearer`); ghalat key → 401, flood → 429, bad input → 400
+- Rate: 60 requests / 10-min window (shared, flood-guard)
 
 ## Powers (chat commands, all local or non-AI APIs)
 - `search <topic>` / `khojo <topic>`: web search — keyless DuckDuckGo by default; optional Google-CSE / Bing / Brave keys (search APIs only)
