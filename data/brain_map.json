@@ -57,7 +57,7 @@
     "kb": 6.1
    },
    {
-    "f": "GenOne-Ultra-Brain.bat",
+    "f": "Hemomemo-AI.bat",
     "kb": 0.1
    },
    {
@@ -579,19 +579,19 @@
   ],
   "app": [
    {
-    "f": "app/genone.ico",
+    "f": "app/hemomemo.ico",
     "kb": 21.0
    },
    {
-    "f": "app/genone.png",
+    "f": "app/hemomemo.png",
     "kb": 2.0
    },
    {
-    "f": "app/genone_app.py",
+    "f": "app/hemomemo_app.py",
     "kb": 99.2
    },
    {
-    "f": "app/genone_preview.png",
+    "f": "app/hemomemo_preview.png",
     "kb": 2.7
    },
    {
@@ -705,15 +705,15 @@
     "kb": 0.1
    },
    {
-    "f": "data/genone_api.json",
+    "f": "data/hemomemo_api.json",
     "kb": 0.2
    },
    {
-    "f": "data/genone_api.log",
+    "f": "data/hemomemo_api.log",
     "kb": 9.0
    },
    {
-    "f": "data/genone_users.json",
+    "f": "data/hemomemo_users.json",
     "kb": 1.1
    },
    {
@@ -2893,7 +2893,7 @@
     "kb": 10.5
    },
    {
-    "f": "server/genone_server.py",
+    "f": "server/hemomemo_server.py",
     "kb": 41.1
    },
    {

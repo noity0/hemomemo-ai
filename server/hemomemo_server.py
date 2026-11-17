@@ -1,5 +1,5 @@
 """
-🌐 server/genone_server.py — HEMOMO AI ki APNI API (100% local)
+🌐 server/hemomemo_server.py — HEMOMO AI ki APNI API (100% local)
 
 User qanoon (saaf-saf): "Hemomemo kisi bhi API par NAHI chalta — na apni, na
 kisi aur ki. API sirf LOGON ke liye hai — wo hamari API use kar ke hamara
@@ -49,14 +49,14 @@ Auth (L6): har API-request par headers:
     X-Hemomemo-Ts:    <unix-seconds (±120s window)>
     X-Hemomemo-Nonce: <har request ke liye nayi kam-se-kam 8 char>
 Key terminal me 'server key' command / app me dikhti hai
-(data/genone_api.json me bhi mehfooz). 'rotate' se nayi key (purani band).
+(data/hemomemo_api.json me bhi mehfooz). 'rotate' se nayi key (purani band).
 
-Access-log: data/genone_api.log — sirf time/method/path/code/ms (prompt
+Access-log: data/hemomemo_api.log — sirf time/method/path/code/ms (prompt
 KABHI nahi likha jata — privacy). 512KB par .old me rotate.
 
 CLI:
-    py -3 server/genone_server.py start [port] [host]
-    py -3 server/genone_server.py key | rotate | status | stop
+    py -3 server/hemomemo_server.py start [port] [host]
+    py -3 server/hemomemo_server.py key | rotate | status | stop
     host = 127.0.0.1 (default, sirf isi machine) YA 0.0.0.0 (public-launch —
     DEPLOY.md Route C: apna VPS/port-forward; L6 guard har request par)
 """
@@ -81,7 +81,7 @@ if ROOT not in sys.path:
     sys.path.insert(0, ROOT)
 os.chdir(ROOT)
 
-API_KEY_PATH = os.path.join(ROOT, "data", "genone_api.json")
+API_KEY_PATH = os.path.join(ROOT, "data", "hemomemo_api.json")
 API_NAME = "Hemomemo AI API v1"
 _DEFAULT_PORT = 8790
 MAX_BODY = 64 * 1024          # body overflow-guard
@@ -90,7 +90,19 @@ MAX_PROMPT = 8000             # prompt lambai-guard
 _SRV = {"http": None, "thread": None, "port": None, "host": None,
         "t0": None, "n_req": 0}
 _LOG = deque(maxlen=200)      # aakhri 200 requests (bina prompt — privacy)
-_LOG_PATH = os.path.join(ROOT, "data", "genone_api.log")
+_LOG_PATH = os.path.join(ROOT, "data", "hemomemo_api.log")
+
+# 🔄 legacy-nam tabdeeli: purani data/log files naye naam par le-jao — sirf
+# jab nayi na ho (door ka data zaya na ho; fail-silent).
+for _newp, _oldfn in ((API_KEY_PATH, "genone_api.json"),
+                      (_LOG_PATH, "genone_api.log")):
+    if not os.path.exists(_newp):
+        _oldp = os.path.join(ROOT, "data", _oldfn)
+        if os.path.exists(_oldp):
+            try:
+                os.replace(_oldp, _newp)
+            except OSError:
+                pass
 
 
 def _alog(method: str, path: str, code: int, ms: int):
@@ -115,7 +127,7 @@ def _runtime():
     return {"requests_total": _SRV["n_req"],
             "uptime_s": (round(time.time() - _SRV["t0"], 1) if _SRV["t0"] else 0),
             "recent": list(_LOG)[-10:], "errors_recent": errs,
-            "log_file": "data/genone_api.log"}
+            "log_file": "data/hemomemo_api.log"}
 
 
 # ------------------------------------------------------------ apni key
@@ -831,7 +843,7 @@ def start(port: int = None, host: str = "127.0.0.1"):
                          "(start %d)" % (port, str(e)[:50], port + 1)}
     http.daemon_threads = True
     th = threading.Thread(target=http.serve_forever, daemon=True,
-                          name="genone-api-server")
+                          name="hemomemo-api-server")
     th.start()
     _SRV.update({"http": http, "thread": th, "port": port, "host": host,
                  "t0": time.time(), "n_req": 0})
@@ -899,5 +911,5 @@ if __name__ == "__main__":
     elif cmd == "stop":
         print(stop())
     else:
-        print("istemaal: py -3 server/genone_server.py start [port] [host] | "
+        print("istemaal: py -3 server/hemomemo_server.py start [port] [host] | "
               "key | rotate | status | stop")

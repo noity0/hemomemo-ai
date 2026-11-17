@@ -2734,7 +2734,7 @@ def chat_loop():
         if lowq.startswith("server"):
             arg = lowq.replace("server", "").strip() or "status"
             try:
-                from server import genone_server as _api
+                from server import hemomemo_server as _api
                 if arg == "on" or arg.startswith("start"):
                     p = _api.start(int(arg.split()[-1])
                                    if arg.split()[-1].isdigit() else None)

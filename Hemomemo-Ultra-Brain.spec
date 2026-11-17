@@ -2,14 +2,14 @@
 
 
 a = Analysis(
-    ['app/genone_app.py'],
+    ['app/hemomemo_app.py'],
     pathex=[],
     binaries=[],
     datas=[('security/policy.hmhz', 'security'),
            ('security/api_policy.hmhz', 'security'),
            ('security/hmhz.py', 'security'),
            ('security/guard.py', 'security')],
-    hiddenimports=['numpy', 'server', 'server.genone_server', 'server.accounts',
+    hiddenimports=['numpy', 'server', 'server.hemomemo_server', 'server.accounts',
                    'cv2', 'PIL.Image', 'PIL.ImageTk',
                    'agent', 'agent.ultra_realistic_motion_video',
                    'agent.ultra_realistic_motion_video_simple', 'agent.video_gen'],
@@ -41,5 +41,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['app/genone.ico'],
+    icon=['app/hemomemo.ico'],
 )

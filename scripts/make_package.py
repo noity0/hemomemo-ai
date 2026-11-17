@@ -17,8 +17,8 @@ Kya karta hai (asli, imandar):
      nahi kar sakte; PROTECTED_MANIFEST.sha256 (hash-list) sath me —
      VERIFY-SYSTEM.bat (PowerShell) kisi bhi PC par tasdeeq karta hai.
      In-app L3 (8 security-files ka SHA manifest) fail-closed bhi hai.
-  4) 🔁 UPDATE-SAFE: bande ki apni cheezein (data\genone_api.json,
-     data\genone_users.json, learned_chat.txt, liveresearch.txt,
+  4) 🔁 UPDATE-SAFE: bande ki apni cheezein (data\hemomemo_api.json,
+     data\hemomemo_users.json, learned_chat.txt, liveresearch.txt,
      harvester state) purani folder me hain to OVERWRITE NAHI hoti — log ki
      key/accounts/memory update ke baad bhi salamat.
   5) START-HEMOMO.bat + README-HEMOMO.md (log ke liye Roman-Urdu guide)
@@ -158,8 +158,8 @@ def main():
         subprocess.run(["attrib", "-R", os.path.join(DST, "*.*"),
                         "/S", "/D"], capture_output=True, creationflags=_NOWIN)
         shutil.rmtree(DST, ignore_errors=True)
-    users_saved = os.path.join(DST, "data", "genone_users.json")
-    key_saved = os.path.join(DST, "data", "genone_api.json")
+    users_saved = os.path.join(DST, "data", "hemomemo_users.json")
+    key_saved = os.path.join(DST, "data", "hemomemo_api.json")
     keep = {}
     for p in (users_saved, key_saved,
               os.path.join(DST, "data", "corpus_big", "learned_chat.txt"),
@@ -224,8 +224,8 @@ def main():
                        capture_output=True, text=True, creationflags=_NOWIN)
     # sachi-taza-check: EXE kam-az-kam sab se nayi source jaisa naya ho
     src_latest = 0
-    for rel in ("app/genone_app.py", "app/genone.ico",
-                "Hemomemo-Ultra-Brain.spec", "server/genone_server.py",
+    for rel in ("app/hemomemo_app.py", "app/hemomemo.ico",
+                "Hemomemo-Ultra-Brain.spec", "server/hemomemo_server.py",
                 "server/accounts.py"):
         p = os.path.join(SRC, rel)
         if os.path.exists(p):
@@ -275,7 +275,7 @@ def main():
     WRITABLE_REL = {"data\\corpus_big\\learned_chat.txt",
                     "data\\corpus_big\\liveresearch.txt",
                     "harvest\\STATE.json", "harvest\\seen.json",
-                    "data\\genone_api.json", "data\\genone_users.json",
+                    "data\\hemomemo_api.json", "data\\hemomemo_users.json",
                     "data\\chat_history_app.json"}
 
     def cpy(src, dst, ro=True):
@@ -583,8 +583,8 @@ def main():
         for fn in files:
             fp = os.path.join(root, fn)
             rel = os.path.relpath(fp, DST).lower()
-            if fn in ("genone_api.json", "genone_users.json",
-                      "genone_api.log", "learned_chat.txt",
+            if fn in ("hemomemo_api.json", "hemomemo_users.json",
+                      "hemomemo_api.log", "learned_chat.txt",
                       "liveresearch.txt", "STATE.json",
                       "seen.json", "chat_history_app.json",
                       "PROTECTED_MANIFEST.sha256",
@@ -677,7 +677,7 @@ koi development-folder zaroori NAHI**. 100% local — **koi platform/API
   koi chhed-chhar → model fail-closed block).
 
 ## Apni yaad/data
-- `data/genone_users.json` (aap ki key/accounts), `data/genone_api.json`,
+- `data/hemomemo_users.json` (aap ki key/accounts), `data/hemomemo_api.json`,
   `data/corpus_big/learned_chat.txt` (app ki nayi seekh) — ye aap ki hain;
   update me bhi mehfooz rehti hain.
 

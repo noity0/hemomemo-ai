@@ -240,7 +240,16 @@ def _l5_hmhz(prompt: str):
 _API_NONCES = {}            # nonce-key → expiry (HMHZ-seed-bound replay cache)
 _API_WINDOW = {"seed": None, "n": 0}     # HMHZ-seed rate-window
 _API_RATE = 60              # 60 requests / window (10-min HMHZ slot)
-_API_LOCAL_KEYS = os.path.join(ROOT, "data", "genone_api.json")
+_API_LOCAL_KEYS = os.path.join(ROOT, "data", "hemomemo_api.json")
+# 🔄 legacy-nam tabdeeli: purani data-file naye naam par le-jao — sirf tab
+# jab nayi mojood na ho (door ka data zaya na ho; fail-silent).
+if not os.path.exists(_API_LOCAL_KEYS):
+    _legacy = os.path.join(ROOT, "data", "genone_api.json")
+    if os.path.exists(_legacy):
+        try:
+            os.replace(_legacy, _API_LOCAL_KEYS)
+        except OSError:
+            pass
 
 
 _L6_POLICY = {"sig": None, "code": None}   # 🚀 decode-cache (mtime+size-keyed)
@@ -279,7 +288,7 @@ def _l6_api(path: str, key_ok: int, nonce_ok: int, rate_ok: int, now: float):
 
 def api_gate(headers: dict, path: str, body: str = "", now: float = None):
     """🆕 L6 — Hemomemo ki APNI API par har request ki tasdeeq (sab local):
-      1) local-key (Hemomemo apni — data/genone_api.json) constant-time HMAC
+      1) local-key (Hemomemo apni — data/hemomemo_api.json) constant-time HMAC
       2) timestamp-window (±120s) + nonce (replay-cache HMHZ-seed se)
       3) rate-window (HMHZ-seed-bound)
       4) HMHZ api_policy → ALLOW/BLOCK (tamper → fail-closed)

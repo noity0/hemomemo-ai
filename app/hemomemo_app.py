@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 r"""
-☪ Hemomemo AI — DESKTOP APP (app/genone_app.py)
+☪ Hemomemo AI — DESKTOP APP (app/hemomemo_app.py)
 ======================================================
 Poora LOCAL desktop app: koi AI API key NAHI, koi AI-model/cloud/ollama/
 MCP connection NAHI. Ye app seedha aapke D:\DigitalBrain folder ke live
 modules se juda hai — terminal/session me jo bhi changes karo (code,
 corpus, checkpoints, formulas) wo is app me 🔄 Reload se foran apply.
 
-Run:  py -3 app\genone_app.py   (ya Desktop shortcut / .bat)
+Run:  py -3 app\hemomemo_app.py   (ya Desktop shortcut / .bat)
 """
 import os
 import re
@@ -191,7 +191,7 @@ def chat_async(prompt, on_done, think="auto", progress=None, hist=None):
             except Exception:
                 pass
             try:
-                _imp("server", "genone_server").stop()
+                _imp("server", "hemomemo_server").stop()
             except Exception:
                 pass
             note = "🛑 server band (aap ke hukum par — flag likh diya, watcher nahi uthaye-ga)"
@@ -213,7 +213,7 @@ def chat_async(prompt, on_done, think="auto", progress=None, hist=None):
             pass
         def _on_work():
             try:
-                r = _imp("server", "genone_server").start()
+                r = _imp("server", "hemomemo_server").start()
                 note = "▶ server on: %s" % r
             except Exception as e:
                 note = "server-on FAIL: %s" % e
@@ -591,10 +591,10 @@ class HemomemoApp(tk.Tk):
             ppm = bytearray(b"P6\n%d %d\n255\n" % (S, S)) + bytes(body)
             d = os.path.join(tempfile.gettempdir(), "HemomemoApp")
             os.makedirs(d, exist_ok=True)
-            self._ico_path = os.path.join(d, "genone.ico")
+            self._ico_path = os.path.join(d, "hemomemo.ico")
             with open(self._ico_path, "wb") as _f:
                 _f.write(ico)
-            self._ppm_path = os.path.join(d, "genone.ppm")
+            self._ppm_path = os.path.join(d, "hemomemo.ppm")
             with open(self._ppm_path, "wb") as _f:
                 _f.write(bytes(ppm))
             self.iconphoto(True, tk.PhotoImage(file=self._ppm_path))
@@ -717,7 +717,7 @@ class HemomemoApp(tk.Tk):
         local darwaza hai — kisi platform/AI ki API se koi taluq NAHI."""
         def work():
             try:
-                api = _imp("server", "genone_server")
+                api = _imp("server", "hemomemo_server")
                 api.start()                 # pehle se chal raha ho to khamosh
             except Exception as e:
                 _log("api autostart FAIL: %s" % e)
@@ -746,7 +746,7 @@ class HemomemoApp(tk.Tk):
         """Status-bar ko zinda rakho — server + dimagh dono ki asli haalat.
         (loop=True sirf __init__ wale chain se — duplicate timers nahi)"""
         try:
-            api = _imp("server", "genone_server")
+            api = _imp("server", "hemomemo_server")
             s = api.status()
             if s.get("on"):
                 self._sb_api.configure(
@@ -873,7 +873,7 @@ class HemomemoApp(tk.Tk):
 
         def work():
             try:
-                api = _imp("server", "genone_server")
+                api = _imp("server", "hemomemo_server")
                 r = api.start() if what == "on" else api.stop()
                 txt = str(r)
             except Exception as e:
@@ -895,7 +895,7 @@ class HemomemoApp(tk.Tk):
     def _api_show_key(self):
         def work():
             try:
-                api = _imp("server", "genone_server")
+                api = _imp("server", "hemomemo_server")
                 k = api.key_info()["key"]
             except Exception as e:
                 k = "FAIL: %s" % e
@@ -913,7 +913,7 @@ class HemomemoApp(tk.Tk):
         """🌍 HMHZ Hemomemo website — Hemomemo ke APNE server se (browser me)."""
         import webbrowser
         try:
-            api = _imp("server", "genone_server")
+            api = _imp("server", "hemomemo_server")
             s = api.status()
             url = s.get("url") or "http://127.0.0.1:8790"
             if not s.get("on"):
@@ -929,7 +929,7 @@ class HemomemoApp(tk.Tk):
         """📖 chhoti API-kitab browser me (apne local server se)."""
         import webbrowser
         try:
-            api = _imp("server", "genone_server")
+            api = _imp("server", "hemomemo_server")
             s = api.status()
             if not s.get("on"):
                 api.start()
@@ -988,7 +988,7 @@ class HemomemoApp(tk.Tk):
     def refresh_api(self):
         def work():
             try:
-                api = _imp("server", "genone_server")
+                api = _imp("server", "hemomemo_server")
                 s = api.status()
                 if s.get("on"):
                     txt = ("🟢 chal raha hai — %s  |  requests: %s  |  "
@@ -1038,7 +1038,7 @@ class HemomemoApp(tk.Tk):
     def _on_close(self):
         # 🌐 apni local API bhi saaf band (koi akele-chauda process na rahe)
         try:
-            _imp("server", "genone_server").stop()
+            _imp("server", "hemomemo_server").stop()
         except Exception:
             pass
         try:

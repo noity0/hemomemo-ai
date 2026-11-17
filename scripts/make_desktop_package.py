@@ -44,7 +44,7 @@ CKPT_FIXED = ["gendeep_1793702467.npz",
 WRITABLE_REL = {"data\\corpus_big\\learned_chat.txt",
                 "data\\corpus_big\\liveresearch.txt",
                 "harvest\\state.json", "harvest\\seen.json",
-                "data\\genone_api.json", "data\\genone_users.json",
+                "data\\hemomemo_api.json", "data\\hemomemo_users.json",
                 "data\\chat_history_app.json"}
 IGNORE_DIRS = {"__pycache__", "archive", "_install", "quran", "hadith",
                "checkpoints", "temp_frames", "backups", "memory"}
@@ -155,7 +155,7 @@ def main():
 
     # ---- 0) bande ki purani data pakdo (update-safe) ----
     keep = {}
-    for rel in ("data\\genone_users.json", "data\\genone_api.json",
+    for rel in ("data\\hemomemo_users.json", "data\\hemomemo_api.json",
                 "data\\corpus_big\\learned_chat.txt",
                 "data\\corpus_big\\liveresearch.txt",
                 "data\\chat_history_app.json",
@@ -213,7 +213,7 @@ def main():
         need = not os.path.exists(exe)
         if not need:
             newest = 0
-            for rel in ("app/genone_app.py", "app/genone.ico",
+            for rel in ("app/hemomemo_app.py", "app/hemomemo.ico",
                         "Hemomemo-Ultra-Brain.spec", "agent/console_app.py",
                         "Hemomemo-GameBot.spec"):
                 p = os.path.join(SRC, rel)
@@ -450,8 +450,8 @@ pause
             fp = os.path.join(root, fn)
             rel = os.path.relpath(fp, DST).lower()
             base = fn.lower()
-            if (base in ("genone_api.json", "genone_users.json",
-                         "genone_api.log", "learned_chat.txt",
+            if (base in ("hemomemo_api.json", "hemomemo_users.json",
+                         "hemomemo_api.log", "learned_chat.txt",
                          "liveresearch.txt", "state.json",
                          "seen.json", "chat_history_app.json")
                     or rel.startswith("connection_hub") or rel == "connection_hub\\"):

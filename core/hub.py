@@ -47,7 +47,7 @@ _SERVER_THREAD = None
 try:
     import threading
     import time
-    from server import genone_server as _gs
+    from server import hemomemo_server as _gs
     
     def _start_server():
         """Start server in background thread with error handling"""
