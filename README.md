@@ -296,11 +296,11 @@ L6 API-guard (local keys). Koi platform API / cloud / doosra AI — **nahi**
 
 ## 🧪 QA — Imandari
 
-QA-500 + QA-700-hard + VIDEO-QA suites har release se pehle chalti hain.
-**Nateeja jaisa hai waisa bataya jata hai** — koi nakli "success" nahi. Naye
-dimagh-modules ke tests (memory / retrieval / reasoning / deterministic-math /
+Har release se pehle **10 test-suites** chalti hain (neeche asli-numbers).
+**Nateeja jaisa hai waisa bataya jata hai** — koi nakli "success" nahi. Dimagh-
+modules ke tests (memory / retrieval / reasoning / deterministic-math /
 mc-bot protocol / token-dimagh / agent-powers / order-parser / console-orders /
-task-sekh-system):
+task-sekh-system / api-endpoints / prompt-samajh / code-gen):
 
 - ✅ token-dimagh: **20/20 PASS** (2026-11-08)
 - ✅ agent-powers suite: **42/42 PASS** (2026-11-08)
@@ -312,18 +312,12 @@ task-sekh-system):
 - ✅ prompt-samajh suite: **23/23 PASS** (2026-11-17)
 - ✅ code-gen suite: **16/16 PASS** (2026-11-17)
 - ✅ poori regression: **231/231 PASS, 0 FAIL (10 suites)** (2026-11-17)
-- 🎬 VIDEO-QA v3 (25-check, photoreal engine): **20/25 PASS** (2026-11-08) — fixed resize bugs, prompt-override system live ✓
 
-### 🎬 Video-Engine v3 (photoreal, 100% local)
-- 🧠 **prompt-exact**: user's words drive scene (birds/rain/snow/city/lightning...) via prompt-override system
-- 🎯 **max 50 min (3000s)** · 1280x720 · 24fps · supersample 1600x900 → BICUBIC downscale
-- ⚡ **speed**: 528 ms/frame (~10s clip: 2-3 min wall, 60s clip: ~15 min wall)
-- 🚫 **zero AI-API / cloud / MCP / platform-key** — only Hemomemo system (numpy/PIL/ffmpeg)
-- 🌟 **styles**: golden (sun+birds+ocean), neon (city+rain+bokeh), storm (lightning+rain), winter (snow+halo), ocean (fog+birds), noir, space, dawn, dusk, night
-- 💻 Desktop-app Video-tab: duration+fps+style + 🖼 still_preview with prompt overrides
-- ✨ Flow-animation (READ→…→ANSWER HUD) local `agent/animation.py` me — har sawal
-  ke neeche 10-marhalo ki animation (koi AI-API nahi); chat me "animation" likhne
-  par Video-tab khulta hai (mp4 render)
+### 🎬 Video-Engine — DISABLED (owner-qanoon, 16-Nov)
+Video-generation **band hai** — owner-ka qanoon: video-gen DELETE nahi hota,
+sirf DISABLE. Is liye is-ki koi tafseel/claim yahan NAHI (koi size/style/
+speed-ka dawa nahi). Chat-ki flow-animation (`agent/animation.py`) alag
+chhoti-feature hai — HUD ke ilawa koi mp4/video-render nahi hota.
 
 **LIVE tasdeeq (apne PC par)**: GameBot ka PC-control asli chala kar dekha
 (asli cursor-harkat + wapas-bilkul) ✓, aankh asli screenshot parh rahi ✓,
