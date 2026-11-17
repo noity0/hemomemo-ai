@@ -267,6 +267,20 @@ def classify(prompt: str) -> dict:
                 is_math = True
         except Exception:
             pass
+    # 🏠 SELF-REPO PEHCHAN (prompt-samajh): apne GitHub-repo ke sawal —
+    #    formula/unknown/live-research KABHI nahi; seedha owner-facts (local)
+    if not islamic and not is_math:
+        try:
+            from model.prompt_system import is_self_repo_question as _isr
+            if _isr(low):
+                return {"kind": "self-repo", "islamic": islamic, "math": False,
+                        "qmark": qmark, "gib": False, "greet": False,
+                        "social": None, "norm": text, "fixes": [],
+                        "numbers": len(numbers), "words": tw,
+                        "topic": [w for w in re.findall(r"[a-z0-9]{3,}", low)
+                                  if w not in _STOP][:10]}
+        except Exception:
+            pass
     sm = None
     try:
         from model.understand import understand as _u
@@ -992,6 +1006,24 @@ def answer(prompt: str, notes=None, sacred=False, yaad_top=0.0, think="auto",
         out = compose_chit_chat()
         out["intent"] = kind
         return out
+
+    # 🏠 SELF-REPO: apne GitHub-repo ka sawal — seedha sacha owner-jawab
+    #    (100% local facts; formula/research/imandari-jhoot kuch nahi)
+    if kind == "self-repo":
+        try:
+            from model.prompt_system import self_repo_reply as _srr
+            _rtxt = _srr()
+        except Exception:
+            _rtxt = ("Ye mera apna GitHub repo hai: github.com/noity0/"
+                     "hemomemo-ai (username: noity0).")
+        rep = {"answer": _rtxt, "confidence": 0.95, "source": "owner",
+               "kind": kind, "verified": True,
+               "steps": ["self-repo pehchan (local owner-facts)"],
+               "facts_vs_assumptions": [{"claim": "apna repo noity0/hemomemo-ai",
+                                         "status": "fact"}],
+               "uncertainty": None, "sources": ["owner-self"], "candidates": []}
+        rep["intent"] = kind
+        return rep
 
     if kind == "identity":
         out = compose_identity(q)
