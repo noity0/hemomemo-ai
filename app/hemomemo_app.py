@@ -767,7 +767,8 @@ class HemomemoApp(tk.Tk):
 
     # ==================================================================
     # 🌐 HEMOMO API PAGE (apni API server — no platform, L6-HMHZ guard)
-    # ==================================================================    def _build_api(self):
+    # ==================================================================
+    def _build_api(self):
         f = self._page("api")
         f.grid_columnconfigure(0, weight=1)
         card = self._card(f, row=0)
@@ -2230,7 +2231,7 @@ class HemomemoApp(tk.Tk):
         # 4 dimagh cards
         brains = [
             ("🥇 Pehla Dimagh — MASTER", _d(s.get("master_brain")),
-             "9.0M params · dh722 · khud-soch"),
+             "50.0M params · dh1739 · khud-soch"),
             ("🥈 Dusra Dimagh — DEEP", _d(s.get("deep_brain")),
              "6.25M params · dh620 · deep-soch rescue"),
             ("🥉 Teesra — HELPER", _d(s.get("helper_brain")),
@@ -2445,7 +2446,7 @@ class HemomemoApp(tk.Tk):
         tk.Label(card, text="☪ %s" % MODEL_NAME, font=F_H1, bg=C_CARD,
                  fg=C_GOLD).pack(anchor="w", padx=16, pady=(14, 0))
         lines = [
-            ("📦 Version", "v5.0.0 — 4-dimagh network (master 9.0M + deep "
+            ("📦 Version", "v5.0.0 — 4-dimagh network (master 50.0M (50,014,104) + deep "
              "6.25M + helper 5.11M + verify 5.11M) + 2M bio-neuron bridge + "
              "live research (unknown topic → search → verify → jawab)"),
             ("📁 Live Link", "%s — ye app ISI folder ke modules use karta hai. "
