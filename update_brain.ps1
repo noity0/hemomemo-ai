@@ -65,7 +65,7 @@ if (Test-Path $dst) { attrib -r $dst | Out-Null; Remove-Item $dst -Force }
 Move-Item $tmp $dst -Force
 attrib +r $dst | Out-Null
 
-# purane extra genmaster (wahi version ke ilawa) ko archive nahi - seedha rehne do
+# purane extra hemomaster (wahi version ke ilawa) ko archive nahi - seedha rehne do
 $verObj = [ordered]@{ version = [string]$man.version; file = $man.file;
                       sha256 = $hash; updated = (Get-Date -Format s) }
 $verPath2 = Join-Path $root "data\brain_version.json"
