@@ -113,7 +113,7 @@
     "kb": 0.4
    },
    {
-    "f": "START-9M-TRAINER.bat",
+    "f": "START-HEMOMEMO.bat",
     "kb": 0.6
    },
    {
@@ -2649,7 +2649,7 @@
     "kb": 17.9
    },
    {
-    "f": "model/gen2b_spec.json",
+    "f": "model/model_2b_spec.json",
     "kb": 0.5
    },
    {
@@ -2737,19 +2737,19 @@
     "kb": 9.2
    },
    {
-    "f": "model/checkpoints/gendeep_1793702467.npz",
+    "f": "model/checkpoints/hemodeep_1793702467.npz",
     "kb": 22702.2
    },
    {
-    "f": "model/checkpoints/genhelper_1793780208.npz",
+    "f": "model/checkpoints/hemohelper_1793780208.npz",
     "kb": 18584.6
    },
    {
-    "f": "model/checkpoints/genmaster_mid.npz",
+    "f": "model/checkpoints/hemomaster_mid.npz",
     "kb": 32708.2
    },
    {
-    "f": "model/checkpoints/genverify_1793780719.npz",
+    "f": "model/checkpoints/hemoverify_1793780719.npz",
     "kb": 18584.6
    },
    {
