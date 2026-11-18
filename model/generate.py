@@ -139,13 +139,13 @@ def best_checkpoint():
     """Naya -> purana checkpoints walk karo; SIRF wo npz lo jiska embed-vocab
     corpus se EXACT milta ho. Stray (mismatched) checkpoint par rukna mana hai —
     usko skip karo; jab tak match na mile, chat RAG-only chalta rahega.
-    🧠 CHAAR-DIMAGH RULE: yahan sirf GENMASTER (pehla 7M dimagh) — helper/
-    verify/deep apne modules se load hote hain (genhelper_/genverify_/gendeep_).
+    🧠 CHAAR-DIMAGH RULE: yahan sirf HEMOMASTER (pehla 50M dimagh) — helper/
+    verify/deep apne modules se load hote hain (hemohelper_/hemoverify_/hemodeep_).
     ⚡ memo: result (name,mtime)-signatur par — harek tez-e-sawal par 26MB npz
     dobara scane NAIH hoti (chat 24/7 tabdeek rakhne ke liye); checkpoints
     badalne par (UPDATE-BRAIN / tarbiyat) memo khud invalidate hota hai."""
     cks = [os.path.join(CKPT_DIR, f) for f in os.listdir(CKPT_DIR)
-           if f.endswith(".npz") and f.startswith("genmaster")
+           if f.endswith(".npz") and f.startswith("hemomaster")
            and not f.endswith(".tmp.npz")]
     sig = tuple(sorted((os.path.basename(c), os.path.getmtime(c)) for c in cks))
     if _CACHE.get("best_sig") == sig:
