@@ -87,6 +87,9 @@ def zdir(src_dir, zpath, skip_first=("web",)):
                 if fn.lower().endswith(".zip"):
                     continue               # zip-ghatchia (recursion) nahi
                 _low = fn.lower()
+                if _low.endswith(".tmp") or ".tmp." in _low \
+                        or _low.startswith("~$"):
+                    continue               # temp/partial saves zip me nahi
                 if _low in _SECRETS or _low.endswith(".token") \
                         or _low.endswith(".token.txt") or ".token." in _low:
                     continue               # owner-credentials zip me KABHI nahi
