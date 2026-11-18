@@ -20,8 +20,8 @@ Kya karta hai:
     - Har turn max 1-3 micro-steps (tier ke mutabiq)
     - 1.5s cooldown between plastic turns
     - Aur jab training (train_master process) CHAL RAHI ho → loading khud
-      apne copy par, saving separate file genmaster_chat.npz (training ka
-      genmaster_mid.npz chhedta nahi — do stream alag)
+      apne copy par, saving separate file hemomaster_chat.npz (training ka
+      hemomaster_mid.npz chhedta nahi — do stream alag)
     - Save har 20 turn ke baad (tmp + os.replace — atomic)
 
  Connects: model.generate (khud wehe chat brain instance) — live update
@@ -50,7 +50,7 @@ except Exception:
 from model.tokenizer import CharTokenizer   # noqa: E402
 
 CKPT_DIR = os.path.join(ROOT, "model", "checkpoints")
-CHAT_NPZ = os.path.join(CKPT_DIR, "genmaster_chat.npz")
+CHAT_NPZ = os.path.join(CKPT_DIR, "hemomaster_chat.npz")
 LR_CAP = 0.0025
 COOLDOWN = 1.5
 SAVE_EVERY = 20
