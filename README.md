@@ -64,7 +64,7 @@ Gemini/generativelanguage jaisi HAR AI-platform API/connection net-guard me
 
 **Hemomemo AI** apna **khud ka dimagh** hai - koi LLM nahi, koi bahar ka model nahi,
 koi AI-API nahi, koi cloud nahi; MCP sirf LOCAL opt-in tool-bridge hai. Poora dimagh **pure-NumPy** ka
-**2-layer LSTM** hai (9M parameters — 9,015,355, asli-checkpoint se naapa gaya), jo **aap ke apne PC par** chalta hai.
+**2-layer LSTM** hai (50M parameters — 50,014,104, dh1739, asli-checkpoint se naapa gaya), jo **aap ke apne PC par** chalta hai.
 
 👤 **Owner / Creator:** Hafiz Muhammed Huzaifa Shamim (**HMHS**) — 17 saal ka student,
 DJ Science College, Karachi. Email: laptopshampoo@gmail.com · Instagram: huzaifa_464
@@ -108,7 +108,7 @@ reasoning + yaad) hai:
                                          v
                         +-----------------------------------+
                         | COMPOSER (model/generate)         |
-                        | apna 2-layer LSTM (NumPy, 9M)     |
+                        | apna 2-layer LSTM (NumPy, 50M)    |
                         | order-driven, template-NAHI       |
                         +----------------+------------------+
                                          |
