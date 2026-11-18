@@ -159,35 +159,5 @@ def main():
     log("==== APPLY-DONE %s ====" % ("SAB OK ✅" if summary["all_ok"]
                                      else "kuch fail — upar log dekho"))
 
-    # 7) 🔥 PENDING-9M: agar flag hai (user-ka-hukum) — master ko 9M-params
-    #    (dh722) par upgrade-trainer khud launch karo (us ki aakhiri APPLY
-    #    chain khud-ba-khud dobara sab jagah lagayegi)
-    flag = os.path.join(SRC, "data", "_pending_9m.json")
-    if os.path.exists(flag):
-        try:
-            os.remove(flag)                  # ek dafa hi chain (no-loop)
-        except Exception:
-            pass
-        log("🔥 PENDING-9M dh paci mila — master 9M-parameters upgrade"
-            " training launch (dh722 @ 180-min)…")
-        try:
-            lhand = open(os.path.join(SRC, "data", "_trainer_9m.log"),
-                         "a", encoding="utf-8")
-            env = {**os.environ, "TRAIN_DH": "722"}
-            subprocess.Popen(
-                [sys.executable, "-Xutf8",
-                 os.path.join(SRC, "_train_deep5h.py")],
-                cwd=SRC, stdout=lhand, stderr=subprocess.STDOUT,
-                creationflags=subprocess.CREATE_NO_WINDOW |
-                subprocess.CREATE_NEW_PROCESS_GROUP,
-                env=env)
-            lhand.close()
-            log("🚀 9M-TRAINER khud chal padta hai (detached) — khatam par dobara"
-                " APPLY-EVERYWHERE aap-k-hukum ke mutabiq khud hogi")
-        except Exception as e:
-            log("❌ 9M-launch FAIL: %s — py -3.12 _train_deep5h.py"
-                " (TRAIN_DH=722) khud chalao" % e)
-
-
 if __name__ == "__main__":
     main()
