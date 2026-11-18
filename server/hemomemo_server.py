@@ -92,18 +92,6 @@ _SRV = {"http": None, "thread": None, "port": None, "host": None,
 _LOG = deque(maxlen=200)      # aakhri 200 requests (bina prompt — privacy)
 _LOG_PATH = os.path.join(ROOT, "data", "hemomemo_api.log")
 
-# 🔄 legacy-nam tabdeeli: purani data/log files naye naam par le-jao — sirf
-# jab nayi na ho (door ka data zaya na ho; fail-silent).
-for _newp, _oldfn in ((API_KEY_PATH, "genone_api.json"),
-                      (_LOG_PATH, "genone_api.log")):
-    if not os.path.exists(_newp):
-        _oldp = os.path.join(ROOT, "data", _oldfn)
-        if os.path.exists(_oldp):
-            try:
-                os.replace(_oldp, _newp)
-            except OSError:
-                pass
-
 
 def _alog(method: str, path: str, code: int, ms: int):
     """Access-log: memory-ring + file (1 request = 1 line, prompt nahi)."""
@@ -262,7 +250,8 @@ class HemomemoHandler(BaseHTTPRequestHandler):
                 hdr["x-hemomemo-ts"] = str(int(time.time()))
             if not str(hdr.get("x-hemomemo-nonce") or "").strip():
                 hdr["x-hemomemo-nonce"] = secrets.token_hex(8)
-            ok, why = _gate(hdr, self.path, body.decode("utf-8", "ignore"))
+            ok, why = _gate(hdr, self.path, body.decode("utf-8", "ignore"),
+                            peer=self.client_address[0])
             return ok, why
         except Exception as e:
             return False, "L6 fail-closed: %s" % str(e)[:60]
@@ -331,7 +320,8 @@ class HemomemoHandler(BaseHTTPRequestHandler):
             hdr["x-hemomemo-nonce"] = _sec.token_hex(8)
         try:
             from security.guard import api_gate as _gate
-            ok, why = _gate(hdr, "/v1/chat", body.decode("utf-8", "ignore"))
+            ok, why = _gate(hdr, "/v1/chat", body.decode("utf-8", "ignore"),
+                            peer=self.client_address[0])
         except Exception as e:
             ok, why = False, "L6 fail-closed: %s" % str(e)[:60]
         if not ok:
@@ -544,7 +534,8 @@ class HemomemoHandler(BaseHTTPRequestHandler):
                 hdr["x-hemomemo-nonce"] = secrets.token_hex(8)
             try:
                 from security.guard import api_gate as _gate
-                ok, why = _gate(hdr, "/v1/models", "")
+                ok, why = _gate(hdr, "/v1/models", "",
+                                peer=self.client_address[0])
             except Exception as e:
                 ok, why = False, "L6 fail-closed: %s" % str(e)[:60]
             if not ok:
