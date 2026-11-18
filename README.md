@@ -5,7 +5,7 @@
 [![Download Latest ZIP](https://img.shields.io/badge/DOWNLOAD-Latest_ZIP_~212MB-2ea44f?style=for-the-badge&logo=github)](https://github.com/noity0/hemomemo-ai/releases/download/v4.2.0-people/HemomemoUltra-People.zip)
 [![Saare Releases](https://img.shields.io/badge/Releases-Saare_Versions-0969da?style=for-the-badge&logo=github)](https://github.com/noity0/hemomemo-ai/releases)
 
-**Ek click = poora app (~212 MB):** dimagh (LSTM) + ilm-corpus + GameBot + 24/7
+**Ek click = poora app (~357 MB):** dimagh (LSTM) + ilm-corpus + GameBot + 24/7
 connection-hub + web-search/Gmail powers - sab isi zip ke andar.
 
 **Har naya update ISI HI link par aata hai** (naya zip purani file ki jagah
@@ -122,7 +122,7 @@ reasoning + yaad) hai:
 ```
 
 **Har hissa local hai:** yaad `data/memory/episodic.jsonl` par, ilm
-`data/corpus_big/*.txt` par, dimagh `model/checkpoints/genmaster_*.npz` par —
+`data/corpus_big/*.txt` par, dimagh `model/checkpoints/hemomaster_*.npz` par —
 sab **aap ke PC** par. Koi token, koi quota, koi bahar-ka-server — **nahi**.
 
 ---
@@ -213,7 +213,7 @@ owner HMHS ke paas). Phir bhi app **owner ke published brain** se juri
 rahti hai:
 
 - **Owner** (jab chahe naya dimagh publish kare): `scripts/brain_publish_owner.ps1`
-  → naya genmaster GitHub-release (tag `brain`) par + `brain_manifest.json`
+  → naya hemomaster GitHub-release (tag `brain`) par + `brain_manifest.json`
   repo/sites par — **24/7 available**, chahe owner ka PC off/soya ho.
 - **Downloader**: package ke folder mein **`UPDATE-BRAIN.bat`** → owner ke
   published-brain ka naya version dekhta hai → download + **SHA-256 verify**
@@ -225,7 +225,7 @@ rahti hai:
 ## 📥 Download (Windows 7 → 11 Pro)
 
 **GitHub:** https://github.com/noity0/hemomemo-ai/releases/tag/v4.2.0-people
-→ **HemomemoUltra-People.zip** (~212 MB) → Extract All → **`Hemomemo-Ultra-Brain.exe`**
+→ **HemomemoUltra-People.zip** (~357 MB) → Extract All → **`Hemomemo-Ultra-Brain.exe`**
 
 **Live sites:**
 - 🌍 GitHub Pages: **https://noity0.github.io/hemomemo-ai/**
