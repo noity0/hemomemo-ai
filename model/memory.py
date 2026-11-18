@@ -25,15 +25,47 @@ _JUNK_RX = re.compile(r"trouble accessing|unusual traffic|captcha|"
 def _tokens(text: str) -> List[str]:
     return _WORD.findall((text or "").lower())
 
+# 🛡 aam-baat ke lafz (ilm ka saboot NAHI): in par 1.0 score dena hi
+# "hi" → GameBot-orders / "how are you" → dictionary jaisa ghalat-jawab tha.
+_STOP = {
+    "a", "an", "the", "is", "are", "was", "were", "am", "be", "been",
+    "i", "me", "my", "you", "your", "we", "our", "he", "she", "it", "they",
+    "this", "that", "these", "those", "to", "of", "in", "on", "at", "for",
+    "with", "and", "or", "but", "if", "then", "than", "so", "as", "by",
+    "from", "do", "does", "did", "have", "has", "had", "can", "could",
+    "will", "would", "should", "may", "might", "must", "not", "no", "yes",
+    "ok", "okay", "hi", "hello", "hey", "hola", "salam", "salaam",
+    "assalam", "aoa", "thanks", "thank", "please", "how", "what", "who",
+    "why", "when", "where", "which", "kaise", "kya", "kaun", "kahan",
+    "kab", "hai", "ho", "hun", "hoon", "hain", "ka", "ki", "ke", "ko",
+    "se", "me", "mein", "mera", "meri", "mujhe", "aap", "tum", "tumhara",
+    "apna", "batao", "bata",
+}
+
+
 def _overlap(query_toks: List[str], cand_toks: List[str]) -> float:
+    """Query ke *maani-khez* lafzon ki coverage — aam lafz ginte nahi.
+
+    Qanoon: ek akela aam/2-harf lafz kabhi ilm ka saboot nahi. Isi liye
+    "hi"/"you"/"kaise ho" par corpus ka koi bhi lamba jawab match nahi hota.
+    """
     if not query_toks or not cand_toks:
         return 0.0
-    q = set(query_toks)
-    c = set(cand_toks)
-    if not q or not c:
+    q = {w for w in query_toks if len(w) >= 3 and w not in _STOP}
+    if not q:
         return 0.0
-    hit = len(q & c)
-    return hit / max(1.0, float(len(q)))  # kitne sawal-ke-lafz milay
+    c = set(cand_toks)
+    hit = q & c
+    if not hit:
+        return 0.0
+    # ek chhota lafz (3-4 harf) akela kafi nahi — do hit ya ek 5+ harf wala
+    if len(hit) == 1:
+        only = next(iter(hit))
+        if len(only) < 5 and len(q) > 1:
+            return 0.0
+        if len(only) < 5 and len(q) == 1:
+            return 0.0
+    return len(hit) / float(len(q))  # kitne asli sawal-lafz milay
 
 
 class EpisodicStore:
