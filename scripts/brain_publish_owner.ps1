@@ -1,6 +1,6 @@
 # ============================================================
 #  _brain_publish.ps1 - OWNER-TOOL (sirf HMHS ke PC par)
-#  Naya-tareen genmaster brain -> GitHub-release (tag: brain) par publish
+#  Naya-tareen hemomaster brain -> GitHub-release (tag: brain) par publish
 #  + brain_manifest.json repo/sites par - 24/7 available (owner-PC off bhi
 #  ho to bhi). Downloader UPDATE-BRAIN.bat isi manifest se taza dimagh
 #  le leta hai. Yeh FILE-sync hai - koi AI/model/platform API nahi.
@@ -15,10 +15,10 @@ $repo = "noity0/hemomemo-ai"
 $tag = "brain"
 
 # --- 1) naya-tareen FINAL brain ---
-$npz = Get-ChildItem "D:\DigitalBrain\model\checkpoints\genmaster_*.npz" |
+$npz = Get-ChildItem "D:\DigitalBrain\model\checkpoints\hemomaster_*.npz" |
        Where-Object { $_.Name -notmatch "_chat" -and $_.Name -notlike "*.tmp.npz" } |
        Sort-Object LastWriteTime -Descending | Select-Object -First 1
-if (-not $npz) { "koi genmaster npz nahi - FAIL (honest)"; exit 1 }
+if (-not $npz) { "koi hemomaster npz nahi - FAIL (honest)"; exit 1 }
 $ver = if ($npz.BaseName -match "(\d+)$") { $Matches[1] } else { "0" }
 $sha = (Get-FileHash $npz.FullName -Algorithm SHA256).Hash.ToLower()
 $size = $npz.Length
@@ -33,7 +33,7 @@ $man = [ordered]@{
   file_path = "model/checkpoints/$($npz.Name)"
   size    = $size
   sha256  = $sha
-  updated = (Get-Date -AsUTC -Format "yyyy-MM-ddTHH:mm:ssZ")
+  updated = [DateTime]::UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ")
   url     = "https://github.com/$repo/releases/download/$tag/$assetName"
   note    = "owner-published brain (HMHS) - sirf file-sync, koi AI/model/platform API nahi; app bina iske bhi 100% local chalti hai"
 }
