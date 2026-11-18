@@ -39,6 +39,13 @@ _ID_RX = re.compile(
 _YAAD_SAVE_RX = re.compile(
     r"(?i)\bmera\s+naam\s+([a-z0-9]+(?:\s+[a-z0-9]+){0,2})\s+hai\b")
 _YAAD_RECALL_RX = re.compile(r"(?i)\bmera\s+naam\s+kya\s+hai\b")
+# 🗣️ chit-chat (ilm/GameBot/dictionary ka jawab KABHI nahi)
+_GREET_RX = re.compile(
+    r"(?i)^\s*(?:assalam\w*|asalam\w*|salam|salaam|aoa|hi+|hey+|hello+|hola)\b")
+_HOW_RX = re.compile(
+    r"(?i)^\s*(?:how\s+are\s+you|how\s+r\s+u|how\s+are\s+u|kaise\s+ho|"
+    r"kaisay\s+ho|kaisi\s+ho|kya\s+haal\s+hai|kya\s+haal)\b")
+_THANKS_RX = re.compile(r"(?i)^\s*(?:thanks|thank\s+you|shukriya|jazak\w*)\b")
 _EMC2_RX = re.compile(r"(?i)\be\s*=\s*mc\s*\^?\s*2\b")
 _CIRCLE_RX = re.compile(r"(?i)\b(?:circle|daira)\b")
 _CIRCLE_PERIM_RX = re.compile(r"(?i)\b(?:mohit|perimeter|circumference)\b")
@@ -185,6 +192,23 @@ class TokenBrain:
         #     formula/ilm/research KABHI nahi — sacha owner-jawab (100% local)
         if is_self_repo_question(low):
             return (self_repo_reply(), meta("self-repo", 0.9))
+
+        # 4c) SALAM / HAL-CHAAL / SHUKRIYA — chit-chat ka apna jawab.
+        #     (Pehle "hi" corpus-retrieval se GameBot-orders aur "how are you"
+        #     composer se dictionary-jaisa jawab de raha tha — ab band.)
+        if _HOW_RX.match(low):
+            return ("Main theek hoon — aap kaise hain? Main Hemomemo hoon, "
+                    "aap ka 100% local dimagh: chat, code, math, ilm, yaad, "
+                    "gamebot — sab isi PC par, koi AI-API nahi.",
+                    meta("hal-chaal", 0.9))
+        if _GREET_RX.match(low):
+            return ("Assalamu Alaikum! Main Hemomemo hoon — kya madad karun? "
+                    "(chat, code, math, ilm, yaad, gamebot — 100% local)",
+                    meta("salam", 0.9))
+        if _THANKS_RX.match(low):
+            return ("Khush rahiye! Main yahin hoon — jab bhi zaroorat ho, "
+                    "pooch lein (sab kuch 100% local).",
+                    meta("shukriya", 0.9))
 
         # 5) YAAD — naam recall/save (apni yaad-dasht, JSONL)
         if self.memory:
