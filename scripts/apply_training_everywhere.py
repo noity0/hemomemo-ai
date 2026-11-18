@@ -63,7 +63,10 @@ def zdir(src_dir, zpath, skip_first=("web",)):
         "netlify_token.txt", "credentials.json", "secrets.json",
         "service_account.json", "client_secret.json", "owner_key.json",
         "token_store.json", "password.txt", "passwords.txt",
-        "google_oauth.json", "gdrive_tokens.json"}
+        "google_oauth.json", "gdrive_tokens.json",
+        # Hemomemo owner/user credentials + private chats (public zip me NAHI)
+        "hemomemo_api.json", "hemomemo_users.json", "hemomemo_api.log",
+        "chat_history_app.json", "episodic.jsonl"}
     if os.path.exists(zpath):
         os.remove(zpath)
     n = 0
