@@ -7,7 +7,7 @@ MASTER brain (5.1M) ke SATH — "second brain first brain se CONNECT":
   • BRIDGE = bio-hub ke 2,000,000 neuron tissuess + glia — dono dimagh ka
     arousal/spiritual-state ek hub se milta hai (koi API, koi AI nahi)
   • deep ka jawab WOHI guards: _clean + _no_citation + _quality + _relevance
-  • checkpoint: model/gendeep_*.npz (gendep_mid warm-resume trainer me)
+  • checkpoint: model/hemodeep_*.npz (gendep_mid warm-resume trainer me)
 
 Tarbiyat: python scripts\\train_master.py 6000 --deep   (dh620)
 """
@@ -30,15 +30,15 @@ _DEEP = {"checked": False, "path": None}
 
 
 def checkpoint():
-    """SAB se naya deep checkpoint (gendeep_*.npz, chat.npz chor kar)."""
+    """SAB se naya deep checkpoint (hemodeep_*.npz, chat.npz chor kar)."""
     if not _DEEP["checked"]:
         _DEEP["checked"] = True
         try:
             from model.generate import CKPT_DIR
             cands = []
-            for p in glob.glob(os.path.join(CKPT_DIR, "gendeep_*.npz")):
+            for p in glob.glob(os.path.join(CKPT_DIR, "hemodeep_*.npz")):
                 base = os.path.basename(p)
-                if base.startswith("gendeep_chat"):
+                if base.startswith("hemodeep_chat"):
                     continue                      # chat-live file alag
                 cands.append(p)
             cands.sort(key=os.path.getmtime, reverse=True)
