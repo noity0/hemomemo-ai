@@ -50,10 +50,10 @@ DATA_FILES = ["corpus.txt", "security_manifest.json",
               "meta_thoughts.jsonl", "brain_map.json", "gems.json"]
 CORPUS_BIG = None   # saari *.txt (learned_chat/liveresearch writable rehte)
 
-# model checkpoints: GENMASTER = naya-tareen FINAL (dynamic, neeche) +
+# model checkpoints: HEMOMASTER = naya-tareen FINAL (dynamic, neeche) +
 # baqi 3 dimagh fixed
-CKPT_KEEP = ["gendeep_1793702467.npz",
-             "genverify_1793780719.npz", "genhelper_1793780208.npz"]
+CKPT_KEEP = ["hemodeep_1793702467.npz",
+             "hemoverify_1793780719.npz", "hemohelper_1793780208.npz"]
 
 IGNORE_DIRS = {"__pycache__", "archive", "_install", "quran", "hadith",
                "checkpoints"}   # checkpoints alag-tareeqe se
@@ -315,16 +315,16 @@ def main():
     ck = os.path.join(mroot, "checkpoints")
     arch = os.path.join(ck, "archive")
 
-    def newest_genmaster():
-        # 🧠 naya-tareen genmaster (checkpoints/ + archive/) — FINAL pehle,
+    def newest_hemomaster():
+        # 🧠 naya-tareen hemomaster (checkpoints/ + archive/) — FINAL pehle,
         # warna _mid bhi chale (hub-deep-link na ho to standalone ko bhi
-        # vocab-exact 9M checkpoint milta hai). chat/tmp kabhi nahi.
+        # vocab-exact 50M checkpoint milta hai). chat/tmp kabhi nahi.
         cands = []
         for d in (ck, arch):
             if not os.path.isdir(d):
                 continue
             for f in os.listdir(d):
-                if (f.startswith("genmaster_") and f.endswith(".npz")
+                if (f.startswith("hemomaster_") and f.endswith(".npz")
                         and "_chat" not in f
                         and not f.endswith(".tmp.npz")):
                     cands.append(os.path.join(d, f))
@@ -337,9 +337,9 @@ def main():
         # peeche reh-jate hain.
         return max(cands, key=os.path.getmtime)
 
-    gm = newest_genmaster()
+    gm = newest_hemomaster()
     ckpt_keep = ([os.path.basename(gm)] if gm else []) + \
-                [f for f in CKPT_KEEP if not f.startswith("genmaster_")]
+                [f for f in CKPT_KEEP if not f.startswith("hemomaster_")]
     for fn in ckpt_keep:
         fp = os.path.join(ck, fn)
         if not os.path.exists(fp) and os.path.exists(os.path.join(arch, fn)):
@@ -451,10 +451,10 @@ def main():
 
     # ---- BRAIN-LINK: owner-published-dimagh ka rasta (sirf file-sync,
     #      koi AI/model/platform API nahi; app bina iske bhi 100% local)
-    # 🧠 FIX: WOHI genmaster jo upar package me copy hua (newest_genmaster —
+    # 🧠 FIX: WOHI hemomaster jo upar package me copy hua (newest_hemomaster —
     #    _chat/.tmp filter ke sath). Purana alag-glob tmp-artifact ko
     #    "newest" samajh-ke version "chat.tmp" jaisi jhooti-entry likhta tha.
-    _ck = newest_genmaster()
+    _ck = newest_hemomaster()
     if _ck:
         _bname = os.path.basename(_ck)
         _bh = hashlib.sha256(open(_ck, "rb").read()).hexdigest()
@@ -630,6 +630,8 @@ def main():
 Ye folder MUKAMMAL standalone hai — aapke PC par **D:\DigitalBrain jaisa
 koi development-folder zaroori NAHI**. 100% local — **koi platform/API
 (cloud/OpenAI/Gemini/…) nahi**.
+
+🧠 Dimagh: **50M parameters (50,014,104, dh1739)** — 100% local NumPy (koi AI-API nahi).
 
 ## Chalao
 1. `START-HEMOMO.bat` (ya seedha `Hemomemo-Ultra-Brain.exe`) — app khulegi.
