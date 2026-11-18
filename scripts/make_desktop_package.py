@@ -574,6 +574,10 @@ pause
                        and not os.path.islink(os.path.join(root, x))
                        and x.lower() != "digitalbrain"]   # 🔗 junction zip me NAHI
             for fn in files:
+                low = fn.lower()
+                if (low.endswith((".tmp", ".zip")) or ".tmp." in low
+                        or low.startswith("~$")):
+                    continue          # temp/partial saves zip me nahi
                 fp = os.path.join(root, fn)
                 z.write(fp, os.path.relpath(fp, os.path.dirname(DST)))
 
