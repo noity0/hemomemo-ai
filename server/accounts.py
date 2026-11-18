@@ -44,15 +44,6 @@ if getattr(sys, "frozen", False):
 else:
     ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 USERS_PATH = os.path.join(ROOT, "data", "hemomemo_users.json")
-# 🔄 legacy-nam tabdeeli: bande ke accounts purane naam se naye naam par —
-# sirf jab nayi file na ho (fail-silent).
-if not os.path.exists(USERS_PATH):
-    _legacy_users = os.path.join(ROOT, "data", "genone_users.json")
-    if os.path.exists(_legacy_users):
-        try:
-            os.replace(_legacy_users, USERS_PATH)
-        except OSError:
-            pass
 _PBKDF2_ROUNDS = 200_000
 _EMAIL_RX = re.compile(r"^[^@\s]+@[^@\s]+\.[A-Za-z]{2,}$")
 _KEY_LIMIT = 3          # 🎫 FREE HADD (user qanoon): 3 API keys per account
