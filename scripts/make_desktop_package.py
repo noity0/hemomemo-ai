@@ -39,8 +39,8 @@ DATA_FILES = ["corpus.txt", "security_manifest.json",
               "quran_master.json", "hadith_master.json", "bukhari_master.json",
               "flow_state.json", "heart_state.json", "chat_learned_memory.json",
               "meta_thoughts.jsonl", "brain_version.json"]
-CKPT_FIXED = ["gendeep_1793702467.npz",
-              "genverify_1793780719.npz", "genhelper_1793780208.npz"]
+CKPT_FIXED = ["hemodeep_1793702467.npz",
+              "hemoverify_1793780719.npz", "hemohelper_1793780208.npz"]
 WRITABLE_REL = {"data\\corpus_big\\learned_chat.txt",
                 "data\\corpus_big\\liveresearch.txt",
                 "harvest\\state.json", "harvest\\seen.json",
@@ -131,13 +131,13 @@ def _copy2_retry(src: str, dst: str, tries: int = 6):
     raise last
 
 
-def newest_genmaster(cks: str, arch: str):
+def newest_hemomaster(cks: str, arch: str):
     cands = []
     for d in (cks, arch):
         if not os.path.isdir(d):
             continue
         for f in os.listdir(d):
-            if (f.startswith("genmaster_") and f.endswith(".npz")
+            if (f.startswith("hemomaster_") and f.endswith(".npz")
                     and "_mid" not in f and "_chat" not in f
                     and not f.endswith(".tmp.npz")):
                 cands.append(os.path.join(d, f))
@@ -276,9 +276,9 @@ def main():
             cpy(fp, os.path.join(DST, "model", fn))
     ck = os.path.join(mroot, "checkpoints")
     arch = os.path.join(ck, "archive")
-    gm = newest_genmaster(ck, arch)
+    gm = newest_hemomaster(ck, arch)
     ckpt_keep = ([os.path.basename(gm)] if gm else []) + \
-                [f for f in CKPT_FIXED if not f.startswith("genmaster_")]
+                [f for f in CKPT_FIXED if not f.startswith("hemomaster_")]
     for fn in ckpt_keep:
         fp = os.path.join(ck, fn)
         if not os.path.exists(fp) and os.path.exists(os.path.join(arch, fn)):
@@ -499,7 +499,7 @@ pause
     with open(os.path.join(DST, "VERSION.txt"), "w", encoding="utf-8") as f:
         f.write("Hemomemo AI %s\nBuilt: %s\nStandalone: YES (DigitalBrain optional)\n"
                 "Owner: Hafiz Muhammad Huzaifa Shamim (HMHS)\n"
-                "Brain: master 9.0M (dh722) + deep + helper + verify + 2M bio-bridge\n"
+                "Brain: master 50.0M (50,014,104, dh1739) + deep + helper + verify + 2M bio-bridge\n"
                 "Qanoon: SIRF Hemomemo — koi AI-API/platform/cloud nahi\n"
                 % (VERSION, time.strftime("%Y-%m-%d %H:%M")))
 
