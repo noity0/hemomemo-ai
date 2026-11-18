@@ -57,7 +57,10 @@ _SECRETS_NAMES = {
     "netlify_token.txt", "credentials.json", "secrets.json",
     "service_account.json", "client_secret.json", "owner_key.json",
     "token_store.json", "password.txt", "passwords.txt",
-    "google_oauth.json", "gdrive_tokens.json"}
+    "google_oauth.json", "gdrive_tokens.json",
+    # Hemomemo owner/user credentials + private chats (zip me NAHI)
+    "hemomemo_api.json", "hemomemo_users.json", "hemomemo_api.log",
+    "chat_history_app.json", "episodic.jsonl"}
 
 
 def _purge_secrets(dst: str) -> list:
@@ -471,7 +474,7 @@ pause
             f.write("%s  %s\n" % (h, rel))
     ps = ("$ok = $true\n"
           "Write-Host '== Hemomemo AI — SYSTEM VERIFY ==' -ForegroundColor Green\n"
-          "foreach ($line in Get-Content '$PSScriptRoot\\PROTECTED_MANIFEST.sha256') {\n"
+          "foreach ($line in Get-Content (Join-Path $PSScriptRoot 'PROTECTED_MANIFEST.sha256')) {\n"
           "  if ($line -match '^([0-9a-f]{64})  (.+)$') {\n"
           "    $p = Join-Path $PSScriptRoot $Matches[2]\n"
           "    if (-not (Test-Path $p)) { Write-Host ('GAYIB  ' + $Matches[2]) -ForegroundColor Red; $ok = $false; continue }\n"
