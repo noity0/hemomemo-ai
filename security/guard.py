@@ -241,16 +241,6 @@ _API_NONCES = {}            # nonce-key → expiry (HMHZ-seed-bound replay cache
 _API_WINDOW = {"seed": None, "n": 0}     # HMHZ-seed rate-window
 _API_RATE = 60              # 60 requests / window (10-min HMHZ slot)
 _API_LOCAL_KEYS = os.path.join(ROOT, "data", "hemomemo_api.json")
-# 🔄 legacy-nam tabdeeli: purani data-file naye naam par le-jao — sirf tab
-# jab nayi mojood na ho (door ka data zaya na ho; fail-silent).
-if not os.path.exists(_API_LOCAL_KEYS):
-    _legacy = os.path.join(ROOT, "data", "genone_api.json")
-    if os.path.exists(_legacy):
-        try:
-            os.replace(_legacy, _API_LOCAL_KEYS)
-        except OSError:
-            pass
-
 
 _L6_POLICY = {"sig": None, "code": None}   # 🚀 decode-cache (mtime+size-keyed)
 
@@ -268,7 +258,8 @@ def _l6_code():
     return _L6_POLICY["code"]
 
 
-def _l6_api(path: str, key_ok: int, nonce_ok: int, rate_ok: int, now: float):
+def _l6_api(path: str, key_ok: int, nonce_ok: int, rate_ok: int, now: float,
+            local_ok: int = 0):
     """L6 (HMHZ-backed): HMHZ-VM api_policy chala kar seed + verdict nikalo.
     Decode-fail/tamper → (None, fail-closed-reason). Koi network nahi."""
     slot = int(now // 600)
@@ -276,7 +267,8 @@ def _l6_api(path: str, key_ok: int, nonce_ok: int, rate_ok: int, now: float):
         from security import hmhz as _hmhz
         code = _l6_code()
         out = _hmhz.VM(code, {"slot": slot, "path": path, "key_ok": key_ok,
-                              "nonce_ok": nonce_ok, "rate_ok": rate_ok}).run()
+                              "nonce_ok": nonce_ok, "rate_ok": rate_ok,
+                              "local_ok": local_ok}).run()
         seed = int(out[0])
         verdict = str(out[-1])
     except Exception as e:
@@ -286,19 +278,31 @@ def _l6_api(path: str, key_ok: int, nonce_ok: int, rate_ok: int, now: float):
     return seed, "L6-HMHZ: ALLOW (slot %d)" % slot
 
 
-def api_gate(headers: dict, path: str, body: str = "", now: float = None):
+def api_gate(headers: dict, path: str, body: str = "", now: float = None,
+             peer: str = None):
     """🆕 L6 — Hemomemo ki APNI API par har request ki tasdeeq (sab local):
       1) local-key (Hemomemo apni — data/hemomemo_api.json) constant-time HMAC
       2) timestamp-window (±120s) + nonce (replay-cache HMHZ-seed se)
       3) rate-window (HMHZ-seed-bound)
       4) HMHZ api_policy → ALLOW/BLOCK (tamper → fail-closed)
+      5) 127.0.0.1 loopback (OpenCode/local tools) — wahi path+rate policy,
+         key/nonce ke baghair bhi (server sirf localhost par sunta hai).
     Return: (ok, reason)."""
     now = float(now if now is not None else time.time())
+    hdr = {str(k).lower(): str(v) for k, v in (headers or {}).items()}
+    # path normalize: query-string/trailing-slash policy-match na tore
+    p = str(path or "/").split("?", 1)[0]
+    if len(p) > 1:
+        p = p.rstrip("/") or "/"
+    loc = 0
+    if peer is not None and str(peer).strip() in (
+            "127.0.0.1", "::1", "localhost", "::ffff:127.0.0.1"):
+        loc = 1
     # --- 0) 🆕 auth-darwaza (/v1/auth/*) — key ke BAINA (yahan se bande APNI
     # key lete hain) magra rate-window shared (flood-guard). HMHZ policy me
     # RAASTA-B isi ke liye hai (auth-path + rate = 2 → ALLOW).
-    if path.startswith("/v1/auth"):
-        seed, why = _l6_api(path, 0, 0, 1, now)
+    if p.startswith("/v1/auth"):
+        seed, why = _l6_api(p, 0, 0, 1, now, loc)
         if seed is None:
             return False, why
         if _API_WINDOW["seed"] != seed:
@@ -312,7 +316,13 @@ def api_gate(headers: dict, path: str, body: str = "", now: float = None):
     try:
         with open(_API_LOCAL_KEYS, encoding="utf-8") as f:
             kdata = json.load(f)
-        sent = str(headers.get("x-hemomemo-key", ""))
+        sent = str(hdr.get("x-hemomemo-key", "") or "").strip()
+        if not sent:
+            auth = str(hdr.get("authorization", "") or "")
+            if auth.strip().lower().startswith("bearer "):
+                sent = auth[7:].strip()
+        if not sent:
+            sent = str(hdr.get("x-api-key", "") or "").strip()
         if sent and _hmac.compare_digest(sent, str(kdata.get("key", ""))):
             key_ok = 1
         else:
@@ -328,16 +338,16 @@ def api_gate(headers: dict, path: str, body: str = "", now: float = None):
         key_ok = 0
     # --- 2) ts-window + nonce
     try:
-        ts = int(str(headers.get("x-hemomemo-ts", "0")) or 0)
+        ts = int(str(hdr.get("x-hemomemo-ts", "0")) or 0)
     except ValueError:
         ts = 0
-    nonce = str(headers.get("x-hemomemo-nonce", ""))[:128]
+    nonce = str(hdr.get("x-hemomemo-nonce", ""))[:128]
     nonce_ok = 1 if (abs(now - ts) <= 120 and len(nonce) >= 8) else 0
     # --- 3) rate (window abhi ke hisab se — seed ke sath neeche final)
     seed = None
     if key_ok and nonce_ok:
         # HMHZ chalao (seed + verdict) — pehle bina replay-decision ke
-        seed, why = _l6_api(path, key_ok, nonce_ok, 1, now)
+        seed, why = _l6_api(p, key_ok, nonce_ok, 1, now, loc)
         if seed is None:
             return False, why
         # replay-cache (HMHZ-seed-bound): purani-window nonce falti
@@ -355,8 +365,21 @@ def api_gate(headers: dict, path: str, body: str = "", now: float = None):
         if _API_WINDOW["n"] > _API_RATE:
             return False, "L6: rate-limit (window me bohat zyada requests)"
         return True, why
+    # --- 3b) LOCAL-LOOPBACK: OpenCode/curl/local tools — key+nonce ke baghair
+    # bhi sirf 127.0.0.1 se, wahi path-allowlist + rate-window (HMHZ RAASTA-C).
+    # Remote/koi doosra IP ho to neeche fail-closed hi rehta hai.
+    if loc:
+        seed, why = _l6_api(p, 0, 0, 1, now, 1)
+        if seed is None:
+            return False, why
+        if _API_WINDOW["seed"] != seed:
+            _API_WINDOW.update({"seed": seed, "n": 0})
+        _API_WINDOW["n"] += 1
+        if _API_WINDOW["n"] > _API_RATE:
+            return False, "L6: rate-limit (window me bohat zyada requests)"
+        return True, "L6-HMHZ: ALLOW (local-loopback, rate-limited)"
     # flags hi fail — HMHZ ko faislane do (BLOCK dene ke liye bhi VM chalao)
-    _seed, why = _l6_api(path, key_ok, nonce_ok, 0, now)
+    _seed, why = _l6_api(p, key_ok, nonce_ok, 0, now, loc)
     if _seed is None:
         return False, why
     return False, ("L6: " + ("key ghalat/gayib" if not key_ok
