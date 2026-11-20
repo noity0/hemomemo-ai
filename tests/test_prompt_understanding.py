@@ -8,6 +8,12 @@ import os
 sys.path.append('.')
 sys.path.append('agent')
 
+try:
+    sys.stdout.reconfigure(encoding='utf-8')
+    sys.stderr.reconfigure(encoding='utf-8')
+except Exception:
+    pass
+
 from agent.prompt_understanding_interface import PromptUnderstandingInterface
 import unittest
 
@@ -167,16 +173,13 @@ class TestPromptUnderstanding(unittest.TestCase):
         """
         Test that the system has approximately 20M parameters
         """
-        # This is a rough estimate - in a real implementation, we'd count actual parameters
-        vocab_size = 50000
-        embedding_dim = 512
-        estimated_params = vocab_size * embedding_dim  # ~25.6M
+        total_params = self.interface.understanding_system.get_parameter_count()
         
-        print(f"Estimated parameters: {estimated_params:,}")
+        print(f"Total parameters: {total_params:,}")
         
-        # Verify it's in the right ballpark (15M-25M)
-        self.assertGreater(estimated_params, 15000000)
-        self.assertLess(estimated_params, 25000000)
+        # Verify it's in the right ballpark (18M-22M, target 20M)
+        self.assertGreaterEqual(total_params, 18000000)
+        self.assertLessEqual(total_params, 22000000)
 
 
 def run_tests():
@@ -213,6 +216,7 @@ def run_tests():
 if __name__ == "__main__":
     success = run_tests()
     if success:
-        print("\n✅ All tests passed!")
+        print("\nALL TESTS PASSED!")
     else:
-        print("\n❌ Some tests failed!")
+        print("\nSOME TESTS FAILED!")
+    sys.exit(0 if success else 1)

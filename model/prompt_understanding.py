@@ -19,12 +19,12 @@ class PromptUnderstandingSystem:
     """
     
     def __init__(self):
-        # 20M parameter configuration
-        self.vocab_size = 50000  # Vocabulary size
-        self.embedding_dim = 512  # Word embeddings
-        self.hidden_dim = 1024    # Hidden layer dimension
+        # 20M parameter configuration (total ≈ 20.34M weights)
+        self.vocab_size = 34000   # Vocabulary size
+        self.embedding_dim = 384  # Word embeddings
+        self.hidden_dim = 1536    # FFN hidden layer dimension
         self.num_layers = 4       # Number of layers
-        self.num_heads = 8        # Attention heads
+        self.num_heads = 6        # Attention heads (384 / 6 = 64 dim per head)
         self.dropout_rate = 0.1   # Dropout rate
         
         # Intent classification
@@ -82,6 +82,14 @@ class PromptUnderstandingSystem:
         
         return params
     
+    def get_parameter_count(self) -> int:
+        """Count actual numeric parameters (dropout masks are boolean, not weights)."""
+        total = 0
+        for value in self.parameters.values():
+            if isinstance(value, np.ndarray) and value.dtype != np.bool_:
+                total += int(value.size)
+        return total
+    
     def understand_prompt(self, prompt: str) -> Dict:
         """
         Understand user prompt with 20M parameter system
@@ -109,7 +117,7 @@ class PromptUnderstandingSystem:
         understanding = {
             'prompt': prompt,
             'intent': intent,
-            'confidence': self._calculate_confidence(processed_embeddings),
+            'confidence': self._calculate_confidence(processed_embeddings, prompt, intent),
             'context': context,
             'entities': entities,
             'timestamp': datetime.now().isoformat(),
@@ -236,9 +244,11 @@ class PromptUnderstandingSystem:
     
     def _analyze_context(self, prompt: str, intent: str) -> Dict:
         """Analyze context of the prompt"""
+        previous_intent = self.current_context.get('last_intent') if self.current_context else None
         context = {
             'intent': intent,
-            'previous_context': self.current_context,
+            'previous_context': dict(self.current_context) if self.current_context else {},
+            'previous_intent': previous_intent,
             'conversation_history': len(self.conversation_history),
             'entities': []
         }
@@ -266,12 +276,15 @@ class PromptUnderstandingSystem:
         
         return entities
     
-    def _calculate_confidence(self, embeddings: np.ndarray) -> float:
-        """Calculate confidence score for understanding"""
-        # Simple confidence calculation based on embedding magnitude
-        magnitude = np.linalg.norm(embeddings)
-        normalized_confidence = min(magnitude / 1000.0, 1.0)
-        return normalized_confidence
+    def _calculate_confidence(self, embeddings: np.ndarray, prompt: str = "", intent: str = "") -> float:
+        """Confidence score: keyword-evidence based, blended with signal strength."""
+        prompt_lower = prompt.lower()
+        keywords = self.intent_categories.get(intent, [])
+        matches = sum(1 for k in keywords if k in prompt_lower)
+        base = 0.55 if matches else 0.35
+        bonus = min(matches * 0.10, 0.35) + min(len(prompt.split()) * 0.01, 0.05)
+        signal = min(float(np.linalg.norm(embeddings)) / 5000.0, 0.04)
+        return round(min(base + bonus + signal, 0.99), 3)
     
     def get_conversation_summary(self) -> Dict:
         """Get summary of conversation"""
