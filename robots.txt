@@ -1,4 +1,19 @@
+# Hemomemo AI robots.txt
+# Allow all search engines; explicitly permit Googlebot for AI Search indexing
+
 User-agent: *
 Allow: /
 
+# Explicit Googlebot permissions
+User-agent: Googlebot
+Allow: /
+Disallow:
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemaps
 Sitemap: https://noity0.github.io/hemomemo-ai/sitemap.xml
