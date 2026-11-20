@@ -146,3 +146,14 @@ a{color:var(--em)}
 .stars .s2{top:30%;left:82%;animation-delay:1.3s}
 .stars .s3{top:8%;left:46%;animation-delay:.7s}
 section.sec{animation:fadeUp .8s ease both}
+
+/* ── AI answer blocks ── */
+.answer-block{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+  padding:16px 20px;margin:18px 0;font-size:.95rem;color:var(--txt);line-height:1.7}
+.answer-block strong{color:var(--gold2)}
+
+.answer-list{display:grid;gap:14px}
+.answer-item{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+  padding:18px 22px}
+.answer-item h3{color:var(--gold2);font-size:1.05rem;margin-bottom:8px}
+.answer-item p{color:var(--txt);font-size:.93rem;line-height:1.7}
