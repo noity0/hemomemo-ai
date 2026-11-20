@@ -157,3 +157,11 @@ section.sec{animation:fadeUp .8s ease both}
   padding:18px 22px}
 .answer-item h3{color:var(--gold2);font-size:1.05rem;margin-bottom:8px}
 .answer-item p{color:var(--txt);font-size:.93rem;line-height:1.7}
+
+/* about article */
+article.about-body{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+  padding:22px 26px}
+article.about-body p{margin-bottom:14px;line-height:1.8}
+article.about-body p:last-child{margin-bottom:0}
+article.about-body ul.about-list{list-style:none;padding:0;margin:0 0 14px}
+article.about-body ul.about-list li{margin-bottom:10px;padding-left:0}
