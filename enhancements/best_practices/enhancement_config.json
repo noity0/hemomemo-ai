@@ -1,0 +1,38 @@
+{
+  "category": "best_practices",
+  "description": "Industry-standard coding practices",
+  "created": "2026-11-21T10:04:26",
+  "levels": [
+    "basic",
+    "intermediate",
+    "advanced",
+    "expert"
+  ],
+  "file_types": [
+    "angular",
+    "bat",
+    "c",
+    "cpp",
+    "css",
+    "go",
+    "html",
+    "java",
+    "js",
+    "jsx",
+    "node",
+    "php",
+    "ps1",
+    "py",
+    "rb",
+    "react",
+    "rs",
+    "sh",
+    "ts",
+    "tsx",
+    "vue"
+  ],
+  "template_files": [
+    "code_standards.py",
+    "best_practices_guide.py"
+  ]
+}

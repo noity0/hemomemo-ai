@@ -1,0 +1,35 @@
+{
+  "category": "ai_enhanced",
+  "description": "AI-powered code generation and optimization",
+  "created": "2026-11-21T10:04:25",
+  "levels": [
+    "basic",
+    "intermediate",
+    "advanced",
+    "expert"
+  ],
+  "file_types": [
+    "bat",
+    "c",
+    "cpp",
+    "go",
+    "java",
+    "jl",
+    "js",
+    "lua",
+    "node",
+    "php",
+    "ps1",
+    "py",
+    "r",
+    "rb",
+    "rs",
+    "sh",
+    "ts"
+  ],
+  "template_files": [
+    "ai_code_generator.py",
+    "ai_review.py",
+    "ai_testing.py"
+  ]
+}

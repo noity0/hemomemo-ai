@@ -1,0 +1,38 @@
+{
+  "category": "deployment",
+  "description": "Multi-platform deployment support",
+  "created": "2026-11-21T10:04:26",
+  "levels": [
+    "basic",
+    "intermediate",
+    "advanced",
+    "expert"
+  ],
+  "file_types": [
+    "angular",
+    "bat",
+    "css",
+    "dockerfile",
+    "env",
+    "html",
+    "ini",
+    "js",
+    "json",
+    "jsx",
+    "ps1",
+    "react",
+    "sh",
+    "toml",
+    "ts",
+    "tsx",
+    "vue",
+    "xml",
+    "yaml",
+    "yml"
+  ],
+  "template_files": [
+    "deployment_manager.py",
+    "Dockerfile.template",
+    "netlify.toml"
+  ]
+}

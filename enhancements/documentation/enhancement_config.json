@@ -1,0 +1,23 @@
+{
+  "category": "documentation",
+  "description": "Automated documentation generation",
+  "created": "2026-11-21T10:04:26",
+  "levels": [
+    "basic",
+    "intermediate",
+    "advanced",
+    "expert"
+  ],
+  "file_types": [
+    "doc",
+    "docx",
+    "html",
+    "md",
+    "pdf",
+    "txt"
+  ],
+  "template_files": [
+    "doc_generator.py",
+    "README_TEMPLATE.md"
+  ]
+}

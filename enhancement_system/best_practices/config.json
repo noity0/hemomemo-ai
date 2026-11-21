@@ -1,0 +1,31 @@
+{
+  "category": "best_practices",
+  "description": "Industry-standard coding practices",
+  "file_types": [
+    "angular",
+    "bat",
+    "c",
+    "cpp",
+    "css",
+    "go",
+    "html",
+    "java",
+    "js",
+    "jsx",
+    "node",
+    "php",
+    "ps1",
+    "py",
+    "rb",
+    "react",
+    "rs",
+    "sh",
+    "ts",
+    "tsx",
+    "vue"
+  ],
+  "templates": [
+    "code_standards.py",
+    "best_practices_guide.py"
+  ]
+}

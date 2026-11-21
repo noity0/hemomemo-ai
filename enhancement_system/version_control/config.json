@@ -1,0 +1,21 @@
+{
+  "category": "version_control",
+  "description": "Git integration and workflow",
+  "file_types": [
+    "bat",
+    "dockerfile",
+    "env",
+    "ini",
+    "json",
+    "ps1",
+    "sh",
+    "toml",
+    "xml",
+    "yaml",
+    "yml"
+  ],
+  "templates": [
+    "git_workflow.py",
+    "COMMIT_TEMPLATE.md"
+  ]
+}

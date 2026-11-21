@@ -1,0 +1,28 @@
+{
+  "category": "ai_enhanced",
+  "description": "AI-powered code generation and optimization",
+  "file_types": [
+    "bat",
+    "c",
+    "cpp",
+    "go",
+    "java",
+    "jl",
+    "js",
+    "lua",
+    "node",
+    "php",
+    "ps1",
+    "py",
+    "r",
+    "rb",
+    "rs",
+    "sh",
+    "ts"
+  ],
+  "templates": [
+    "ai_code_generator.py",
+    "ai_review.py",
+    "ai_testing.py"
+  ]
+}

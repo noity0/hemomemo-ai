@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Generated link maps (regenerate with ULTIMATE_CODING_MASTER.py)
+file_links/
+
+# Local scratch
+*.broken_backup.py
+*.log
