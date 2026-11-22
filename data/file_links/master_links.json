@@ -1,0 +1,95 @@
+{
+  "created_at": "2026-11-21T10:27:53",
+  "root": "D:\\DigitalBrain",
+  "total_links": 240,
+  "categories": [
+    "ai_enhanced",
+    "multi_language",
+    "template_system",
+    "best_practices",
+    "performance",
+    "security",
+    "testing",
+    "documentation",
+    "version_control",
+    "deployment"
+  ],
+  "locations": {
+    "DigitalBrain": {
+      "path": ".",
+      "links_dir": "file_links",
+      "links": 24,
+      "writable": true
+    },
+    "Desktop App": {
+      "path": "app",
+      "links_dir": "app\\file_links",
+      "links": 24,
+      "writable": true
+    },
+    "Model": {
+      "path": "model",
+      "links_dir": "model\\file_links",
+      "links": 24,
+      "writable": true
+    },
+    "Core": {
+      "path": "core",
+      "links_dir": "core\\file_links",
+      "links": 24,
+      "writable": true
+    },
+    "Brain": {
+      "path": "brain",
+      "links_dir": "brain\\file_links",
+      "links": 24,
+      "writable": true
+    },
+    "Data": {
+      "path": "data",
+      "links_dir": "data\\file_links",
+      "links": 24,
+      "writable": true
+    },
+    "Sites": {
+      "path": "web_surge",
+      "links_dir": "web_surge\\file_links",
+      "links": 24,
+      "writable": true
+    },
+    "Public": {
+      "path": "public",
+      "links_dir": "public\\file_links",
+      "links": 24,
+      "writable": true
+    },
+    "Repository": {
+      "path": ".git",
+      "links_dir": "data\\file_links\\repository",
+      "links": 24,
+      "writable": false
+    },
+    "Enhancement System": {
+      "path": "enhancement_system",
+      "links_dir": "enhancement_system\\file_links",
+      "links": 24,
+      "writable": true
+    }
+  },
+  "enhancement_system": {
+    "name": "Ultimate Enhancement System",
+    "version": "1.1.0",
+    "capabilities": [
+      "ai_enhanced",
+      "multi_language",
+      "template_system",
+      "best_practices",
+      "performance",
+      "security",
+      "testing",
+      "documentation",
+      "version_control",
+      "deployment"
+    ]
+  }
+}

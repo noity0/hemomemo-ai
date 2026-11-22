@@ -1,0 +1,50 @@
+{
+ "books": {
+  "bukhari": "Sahih al-Bukhari",
+  "muslim": "Sahih Muslim",
+  "abudawud": "Sunan Abi Dawud",
+  "tirmidhi": "Jami' at-Tirmidhi",
+  "nasai": "Sunan an-Nasa'i",
+  "ibnmajah": "Sunan Ibn Majah",
+  "malik": "Muwatta Malik"
+ },
+ "count": 7,
+ "files": [
+  {
+   "book": "abudawud",
+   "hadiths": 3665,
+   "file": "data\\corpus_big\\hadith_abudawud_english_sahih.txt"
+  },
+  {
+   "book": "bukhari",
+   "hadiths": 7571,
+   "file": "data\\corpus_big\\hadith_bukhari_english_sahih.txt"
+  },
+  {
+   "book": "ibnmajah",
+   "hadiths": 2911,
+   "file": "data\\corpus_big\\hadith_ibnmajah_english_sahih.txt"
+  },
+  {
+   "book": "malik",
+   "hadiths": 1499,
+   "file": "data\\corpus_big\\hadith_malik_english_sahih.txt"
+  },
+  {
+   "book": "muslim",
+   "hadiths": 7359,
+   "file": "data\\corpus_big\\hadith_muslim_english_sahih.txt"
+  },
+  {
+   "book": "nasai",
+   "hadiths": 5023,
+   "file": "data\\corpus_big\\hadith_nasai_english_sahih.txt"
+  },
+  {
+   "book": "tirmidhi",
+   "hadiths": 2746,
+   "file": "data\\corpus_big\\hadith_tirmidhi_english_sahih.txt"
+  }
+ ],
+ "updated": "2026-11-04 14:12:31"
+}

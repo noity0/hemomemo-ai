@@ -1,0 +1,184 @@
+{
+  "generated_at": "2026-11-21T10:49:57.295487",
+  "qanoon_compliance": {
+    "local_only": true,
+    "no_cloud": true,
+    "no_external_ai": true,
+    "no_ffmpeg": true
+  },
+  "directories_scanned": {
+    "digitalbrain": "D:\\DigitalBrain",
+    "desktop": "C:\\Users\\user\\Desktop",
+    "app": "D:\\DigitalBrain\\app"
+  },
+  "file_counts": {
+    "digitalbrain_python": 20,
+    "digitalbrain_data": 9,
+    "digitalbrain_docs": 16,
+    "desktop_scripts": 6,
+    "desktop_config": 1,
+    "app_python": 2,
+    "app_resources": 3,
+    "zip_files": 2
+  },
+  "zip_manifest": [
+    {
+      "path": "D:\\DigitalBrain\\hemomemo_ultra_latest.zip",
+      "size_bytes": 137305533,
+      "modified": "2026-11-09T18:05:37.836182",
+      "sha256": "dc9936b71b572b13a18d2b26247812824c20e059279f02c0b479dfcdd73242e8",
+      "md5": "557c2cd158ab2fb152f1ec270be78ae9"
+    },
+    {
+      "path": "D:\\DigitalBrain\\HemomemoUltra-People.zip",
+      "size_bytes": 374068178,
+      "modified": "2026-11-20T12:49:27.285254",
+      "sha256": "ae35d989ad3c63dcbfe8b0d7c3fb2131290beb01bd7fc017dea32188a625ed4a",
+      "md5": "3e5f409a346793730ce77914980d1d16"
+    }
+  ],
+  "link_graph": {
+    "digitalbrain_to_desktop": [
+      {
+        "source": "D:\\DigitalBrain\\add_training_data.py",
+        "link_type": "reference",
+        "description": "Script available in DigitalBrain"
+      },
+      {
+        "source": "D:\\DigitalBrain\\comprehensive_programming_education.py",
+        "link_type": "reference",
+        "description": "Script available in DigitalBrain"
+      },
+      {
+        "source": "D:\\DigitalBrain\\debug_training.py",
+        "link_type": "reference",
+        "description": "Script available in DigitalBrain"
+      },
+      {
+        "source": "D:\\DigitalBrain\\deep_research_video_analysis.py",
+        "link_type": "reference",
+        "description": "Script available in DigitalBrain"
+      },
+      {
+        "source": "D:\\DigitalBrain\\enhanced_chat_with_programming_education.py",
+        "link_type": "reference",
+        "description": "Script available in DigitalBrain"
+      },
+      {
+        "source": "D:\\DigitalBrain\\enhanced_programming_education.py",
+        "link_type": "reference",
+        "description": "Script available in DigitalBrain"
+      },
+      {
+        "source": "D:\\DigitalBrain\\evolve.py",
+        "link_type": "reference",
+        "description": "Script available in DigitalBrain"
+      },
+      {
+        "source": "D:\\DigitalBrain\\file_linker.py",
+        "link_type": "reference",
+        "description": "Script available in DigitalBrain"
+      },
+      {
+        "source": "D:\\DigitalBrain\\FINAL_INTEGRATION_PROGRAMMING_EDUCATION.py",
+        "link_type": "reference",
+        "description": "Script available in DigitalBrain"
+      },
+      {
+        "source": "D:\\DigitalBrain\\generate_fast_ultra_video.py",
+        "link_type": "reference",
+        "description": "Script available in DigitalBrain"
+      }
+    ],
+    "digitalbrain_to_app": [
+      {
+        "source": "D:\\DigitalBrain\\add_training_data.py",
+        "target": "D:\\DigitalBrain\\app\\hemomemo_app.py",
+        "link_type": "copy",
+        "description": "Main app script"
+      },
+      {
+        "source": "D:\\DigitalBrain\\comprehensive_programming_education.py",
+        "target": "D:\\DigitalBrain\\app\\hemomemo_app.py",
+        "link_type": "copy",
+        "description": "Main app script"
+      },
+      {
+        "source": "D:\\DigitalBrain\\debug_training.py",
+        "target": "D:\\DigitalBrain\\app\\hemomemo_app.py",
+        "link_type": "copy",
+        "description": "Main app script"
+      },
+      {
+        "source": "D:\\DigitalBrain\\deep_research_video_analysis.py",
+        "target": "D:\\DigitalBrain\\app\\hemomemo_app.py",
+        "link_type": "copy",
+        "description": "Main app script"
+      },
+      {
+        "source": "D:\\DigitalBrain\\enhanced_chat_with_programming_education.py",
+        "target": "D:\\DigitalBrain\\app\\hemomemo_app.py",
+        "link_type": "copy",
+        "description": "Main app script"
+      }
+    ],
+    "digitalbrain_to_zip": [
+      {
+        "source": "D:\\DigitalBrain\\hemomemo_ultra_latest.zip",
+        "link_type": "archive",
+        "sha256": "dc9936b71b572b13...",
+        "size_mb": 130.94
+      },
+      {
+        "source": "D:\\DigitalBrain\\HemomemoUltra-People.zip",
+        "link_type": "archive",
+        "sha256": "ae35d989ad3c63dc...",
+        "size_mb": 356.74
+      }
+    ],
+    "desktop_to_app": [
+      {
+        "source": "C:\\Users\\user\\Desktop\\mcp.json",
+        "target": "D:\\DigitalBrain\\app\\hemomemo_app.py",
+        "link_type": "reference",
+        "description": "Config referenced by app"
+      }
+    ]
+  },
+  "file_samples": {
+    "digitalbrain": [
+      "D:\\DigitalBrain\\add_training_data.py",
+      "D:\\DigitalBrain\\comprehensive_programming_education.py",
+      "D:\\DigitalBrain\\debug_training.py",
+      "D:\\DigitalBrain\\deep_research_video_analysis.py",
+      "D:\\DigitalBrain\\enhanced_chat_with_programming_education.py",
+      "D:\\DigitalBrain\\enhanced_programming_education.py",
+      "D:\\DigitalBrain\\evolve.py",
+      "D:\\DigitalBrain\\file_linker.py",
+      "D:\\DigitalBrain\\FINAL_INTEGRATION_PROGRAMMING_EDUCATION.py",
+      "D:\\DigitalBrain\\generate_fast_ultra_video.py",
+      "D:\\DigitalBrain\\generate_ultra_video.py",
+      "D:\\DigitalBrain\\generate_ultra_video_simple.py",
+      "D:\\DigitalBrain\\HEMOMEMO_CODING_MASTER.py",
+      "D:\\DigitalBrain\\programming_education.py",
+      "D:\\DigitalBrain\\run.py",
+      "D:\\DigitalBrain\\run_programming_education_training.py",
+      "D:\\DigitalBrain\\simulate.py",
+      "D:\\DigitalBrain\\test_frontolobe_chat.py",
+      "D:\\DigitalBrain\\test_prompt_understanding_simple.py",
+      "D:\\DigitalBrain\\ULTIMATE_CODING_MASTER.py"
+    ],
+    "desktop": [
+      "C:\\Users\\user\\Desktop\\auto_mcp.py",
+      "C:\\Users\\user\\Desktop\\blender_auto_start.py",
+      "C:\\Users\\user\\Desktop\\blender_mcp_config.py",
+      "C:\\Users\\user\\Desktop\\blender_mcp_starter.py",
+      "C:\\Users\\user\\Desktop\\enable_mcp.py",
+      "C:\\Users\\user\\Desktop\\start_blender_mcp.py"
+    ],
+    "app": [
+      "D:\\DigitalBrain\\app\\hemomemo_app.py",
+      "D:\\DigitalBrain\\app\\make_icon.py"
+    ]
+  }
+}

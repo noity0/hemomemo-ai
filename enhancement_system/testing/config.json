@@ -1,0 +1,28 @@
+{
+  "category": "testing",
+  "description": "Comprehensive testing frameworks",
+  "file_types": [
+    "angular",
+    "c",
+    "cpp",
+    "css",
+    "go",
+    "html",
+    "java",
+    "js",
+    "jsx",
+    "node",
+    "php",
+    "py",
+    "rb",
+    "react",
+    "rs",
+    "ts",
+    "tsx",
+    "vue"
+  ],
+  "templates": [
+    "test_generator.py",
+    "test_runner.py"
+  ]
+}

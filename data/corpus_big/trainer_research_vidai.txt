@@ -1,0 +1,50 @@
+Sawal: what is Seedance video generation
+Jawab: Seedance is ByteDance's multimodal AI video model. It creates short video clips from text prompts, image to video, or video references. Text to video: describe a scene, model generates from scratch. Image to video: upload still image, model adds movement keeping layout and subject intact.
+
+Sawal: seedance motion realism how it works
+Jawab: Seedance generates small sections of video at a time instead of treating every frame separately, which prevents flickering and sudden changes between frames. Training on large amounts of real video helps it understand how movement normally behaves, so motion feels more believable. Audio and video come from the same generation process, so timing is inherently locked.
+
+Sawal: seedance audio sync prompt
+Jawab: If prompt describes an explosion, model generates explosion audio. To control sound, describe concrete sounds in prompt, like the crack of thunder or rain hitting a tin roof. Turn off audio generation only when sound is not wanted.
+
+Sawal: seedance camera control
+Jawab: Users can guide camera movement directly in prompts by describing pans, zooms, tracking shots. Camera terminology a cinematographer would recognize works: dolly zoom, rack focus, tracking shot, handheld, POV, aerial shot. Camera moves are literal instructions, not stylistic suggestions.
+
+Sawal: seedance realistic video prompting best structure
+Jawab: Reliable prompt structure: 1 subject and action first, 2 camera movement second, 3 sound or audio cues third, 4 shot transitions last. Long content: generate 15 second segments and use final frames as reference for next generation, creating seamless extensions. Same move reused, same prompt style for consistency.
+
+Sawal: seedance 2.5 character detail realism
+Jawab: For realistic character detail, include details like age, race, facial structure, skin color and texture, eyes, hairstyle, clothing, body shape specifically in prompt. Super specific character details encourage realistic video capturing little textures.
+
+Sawal: higgsfield cinema studio how it works
+Jawab: Higgsfield Cinema Studio is an AI-native creative suite giving full creative control. Genre, lens, sensor, color, pacing and emotion feed into generation before model runs. Kling 3.0 simulates cloth, hair, fluid behavior, contact collisions in real time, weight transfers through body, vehicles lean into turns, liquids obey gravity, holding consistent face, pose, wardrobe, voice across up to 6 camera cuts in one generation.
+
+Sawal: higgsfield realism layers
+Jawab: Realistic AI video is a combination problem. Right tool alone does not fix it, right prompt alone does not fix it. Need both working plus right settings underneath. Higgsfield uses physical realism setup: choose right light, camera behavior, model before generation starts.
+
+Sawal: higgsfield soul id character consistency
+Jawab: Soul ID trains persistent identity from real photos that works across every model and every generation. Upload 20+ photos, platform builds persistent identity model, face appears consistently across every generation without re-uploading per shot.
+
+Sawal: higgsfield multi shot same character
+Jawab: For multi shot sequence where same character needs to appear in consecutive cuts, upload previous clip as context and describe next beat, model continues from existing footage with same face, clothes, environment intact.
+
+Sawal: agens craft video generation how it works
+Jawab: Agens Craft is an AI video creation system focused on realistic live action style video, combining generation with direction control. It aims at producing video that looks like real filmed content rather than flat generated clips.
+
+Sawal: agens craft realism difference
+Jawab: Most AI video tools give six seconds, maybe ten if lucky. Agens Craft and peers focus on ultra realistic live-life moving video: real lighting, real physics, real camera behavior, real sound.
+
+Sawal: which ai video tool for realistic human motion
+Jawab: Seedance is built for realistic motion especially human movement, expressions, scene dynamics. Kling built for longer clips, multi-shot continuity, physically coherent motion, motion transfer from one video to another.
+
+Sawal: ai video generator prompt realism checklist
+Jawab: Checklist for ultra realistic AI video: 1 subject action first, 2 camera movement second, 3 audio cues third, 4 transitions last. Be specific about what moves, how it moves, what camera does. Describe lighting source, weight movement through motion, camera behavior like someone holding it.
+
+Sawal: ai video generator common failure realism
+Jawab: Failures: limbs go through bodies, character swap faces mid strike, camera does something nobody asked for, motion feels off, limbs bend like paper. Fixes: more specific prompts, blocking decisions before generation, camera position decided, reaction timing specific second.
+
+Sawal: ai video audio sync realism
+Jawab: Native audio sync: audio and video from same generation process, timing locked. Talking head vlog style: native lips sync with dialogue text inside prompt.
+
+Sawal: ai video long form generation
+Jawab: For longer content generate 15 second segments and use final frames as reference for next generation, seamless extensions. Or multi-shot generation same move across up to 6 camera cuts in one generation.

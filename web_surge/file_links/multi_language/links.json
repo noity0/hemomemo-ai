@@ -1,0 +1,26 @@
+{
+  "category": "multi_language",
+  "location": "Sites",
+  "created_at": "2026-11-21T10:27:53",
+  "count": 3,
+  "links": [
+    {
+      "source": "enhancement_system/multi_language/templates/multi_lang_framework.py",
+      "source_exists": true,
+      "target": "app/multi_lang_framework.py",
+      "target_exists": false
+    },
+    {
+      "source": "enhancement_system/multi_language/templates/language_detector.py",
+      "source_exists": true,
+      "target": "app/language_detector.py",
+      "target_exists": false
+    },
+    {
+      "source": "enhancement_system/multi_language/templates/code_converter.py",
+      "source_exists": true,
+      "target": "app/code_converter.py",
+      "target_exists": false
+    }
+  ]
+}

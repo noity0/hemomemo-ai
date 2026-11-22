@@ -1,0 +1,123 @@
+========================= tests/test_code_gen.py
+rc= 1
+==============================================================
+  FAIL [1] code i love you in c++ -> asli C++ (cout) | imandari
+  FAIL [2] python me ... ka code -> print() | imandari
+  FAIL [3] code hello world in python | imandari
+  FAIL [4] c# zaban (screenshot-bug) -> Console.WriteLine | imandari
+  FAIL [5] rust -> println! | imandari
+  FAIL [6] go -> fmt.Println | imandari
+  FAIL [7] php -> <?php echo | imandari
+  FAIL [8] html -> poora page (h1) | imandari
+  FAIL [9] sql -> SELECT | imandari
+  FAIL [10] assembly -> syscall print | imandari
+  FAIL [11] cobol -> DISPLAY | imandari
+  FAIL [12] ghair-maujood zaban -> imandari-listing | imandari
+  FAIL [13] roman-rasta (java me ... ka code) -> System.out | imandari
+  FAIL [14] math bigda nahi (2+2=4) | imandari
+  PASS [15] hadith code na bane (bina-knowledge imandari/ilm)
+  PASS [16] purana-bug salam (identity-dump nahi)
+==============================================================
+CODE-TESTS: 16 | PASS: 2 | FAIL: 14
+
+========================= tests/test_token_brain.py
+rc= 1
+== 1) TOKENIZER: todo-samjho ==
+  PASS [word-tokens]
+  PASS [key-tokens]
+  PASS [qword-kaun]
+  PASS [qword-who]
+  PASS [numbers]
+  PASS [vars]
+  PASS [sub-fuzzy]
+== 2) TOKEN-DIMAGH: poora soch-loop ==
+  FAIL [math-2+2] 
+  FAIL [math-9x5+9x4] 
+  FAIL [formula-circle] 
+  FAIL [formula-emc2] 
+  FAIL [identity-ur] 
+  FAIL [identity-en] 
+  FAIL [yaad-save] 
+  FAIL [yaad-recall] 
+  FAIL [ilm-creeper] 
+  FAIL [ilm-namaz] 
+  FAIL [ilm-python-loop] 
+  PASS [samajh-unknown-topic]
+  PASS [khaali-input]
+==================================================
+TOKEN-TESTS: 20 | PASS: 9 | FAIL: 11
+
+========================= tests/test_gamebot_50qa.py
+rc= 1
+SUCCESS: Hemomemo API server started: http://127.0.0.1:8790
+==============================================================
+  PASS [ 1] chal -> aage
+  PASS [ 2] chal 5 -> aage + 5.0m
+  PASS [ 3] aage 3 -> aage + 3.0m
+  PASS [ 4] peeche -> peeche
+  PASS [ 5] peeche 4 -> peeche + 4.0m
+  PASS [ 6] baen -> baen
+  PASS [ 7] left -> baen (English)
+  PASS [ 8] daen -> daen
+  PASS [ 9] right -> daen (English)
+  PASS [10] jump -> jump
+  PASS [11] chalang -> jump (Roman)
+  PASS [12] ruk -> ruk
+  PASS [13] stop -> ruk (English)
+  PASS [14] hal -> hal (aankhein)
+  PASS [15] dekho -> hal (Roman)
+  PASS [16] ghum -> ghum (bina darjy)
+  PASS [17] ghum 180 -> 180 darjy
+  PASS [18] ghum 400 -> 40 darjy (mod-360)
+  PASS [19] khatam -> khatam
+  PASS [20] aam-baat -> chat (dimagh)
+  PASS [21] Eye grid=4
+  PASS [22] dark-frame: error nahi
+  PASS [23] dark-frame: raushni 0.0
+  PASS [24] grid 4-row
+  PASS [25] grid 4-col
+  PASS [26] size [120,80]
+  PASS [27] ghalba_rang 3-hissa
+  PASS [28] pehla-frame harkat 0.0
+  PASS [29] bright-frame: raushni 255.0
+  PASS [30] harkat > 0 (badal gaya)
+  PASS [31] see_say bright -> 'raoshan'
+  PASS [32] see_say dark -> 'taareekh-raat'
+  PASS [33] _VK me w/a/s/d/space/enter
+  PASS [34] _VK['w'] == 0x57
+  PASS [35] _VK sab int VK-code
+  PASS [36] Hand.key(ghair-mojood) -> False (kuch nahi bheja)
+  PASS [37] Hand methods mojood
+  PASS [38] VK_ESC=0x1B + _esc_dabaa() bool (read-only)
+  PASS [39] banner: 'HEMOMEO GAME-BOT' (naam-tabadil)
+  PASS [40] console: pc_direct/pc_watch/mc_join mojood
+  PASS [41] pc-direct poora-control: k <key>/click/peeche/baen/daen
+  PASS [42] GameBot-spec: naam + PIL/numpy bundle
+  PASS [43] package: Hemomemo-GameBot.exe + START-GAMEBOT.bat
+  PASS [44] app: live-hub page HATA (Surat-e-Hal nahi)
+  PASS [45] dimagh respond_with_memory mojood (console-raasta)
+  FAIL [46] dimagh: Hemomemo bot chal | src=composer tok=0
+  FAIL [47] dimagh: game bot kya hai | src=composer tok=0
+  FAIL [48] dimagh: bot ko order kaise doon | src=composer tok=0
+  FAIL [49] dimagh: bot ruk kaise kare | src=composer tok=0
+  FAIL [50] dimagh: minecraft kya hai | src=composer tok=0
+==============================================================
+GAMEBOT-50QA: PASS=45 FAIL=5 (of 50)
+
+========================= tests/test_key_lifecycle.py
+rc= 1
+  PASS [signup->hemokey]
+  PASS [chat-with-key]
+  PASS [me-endpoint]
+  PASS [new-key-2]
+  PASS [new-key-3]
+  PASS [key-limit-429]
+  FAIL [replay-nonce-401] first=200 second=200
+  PASS [wrong-key-401]
+  FAIL [old-ts-401] c=200
+  PASS [signin-same-keys]
+  PASS [wrong-pass-403]
+==================================================
+KEY-TESTS: 11 | PASS: 9 | FAIL: 2
+
+DETAIL-DONE

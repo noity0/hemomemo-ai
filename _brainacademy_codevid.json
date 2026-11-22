@@ -1,0 +1,20 @@
+{
+ "prefix": "hemomaster_codevid",
+ "base": "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_1794211843.npz",
+ "final": "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_codevid_1794213909.npz",
+ "steps": 160,
+ "wall_s": 1204.925796508789,
+ "vocab": 95,
+ "d_h": 660,
+ "avg_loss_last100": 2.992671797275543,
+ "epochs": [
+  "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_codevid_1794213014.npz",
+  "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_codevid_1794213324.npz",
+  "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_codevid_1794213632.npz",
+  "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_codevid_1794213909.npz"
+ ],
+ "corpus": "D:\\DigitalBrain\\data\\corpus_big\\coding_knowledge.txt,D:\\DigitalBrain\\data\\corpus_big\\coding_deep_master.txt,D:\\DigitalBrain\\data\\corpus_big\\trainer_knowledge_2h.txt,D:\\DigitalBrain\\data\\corpus_big\\trainer_lessons_coding_video_text.txt",
+ "sha256": {
+  "hemomaster_codevid_1794213909.npz": "693ccb569cc30a67"
+ }
+}

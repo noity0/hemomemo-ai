@@ -1,0 +1,8 @@
+{
+ "name": "Sahih al-Bukhari",
+ "hadiths": 7571,
+ "files": [
+  "data\\corpus_big\\hadith_bukhari_english_sahih.txt"
+ ],
+ "updated": "2026-11-04 14:12:31"
+}

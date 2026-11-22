@@ -1,0 +1,1699 @@
+====================================================================
+ Hemomemo AI — FORMULAS MASTER (A to Z)
+ Duniya ka poora Math + Physics formula-khazana: naam, formula,
+ variables, tafseel. Ye file brain (QA + training + vocab) aur
+ model/math_formulas.py (plug-and-solve engine) — dono se juda hai.
+ Format har formula ka:
+   Sawal: <Naam> — <keywords>
+   Formula: <lhs> = <expression>
+   Field: Math/Physics / <shoba>
+   Vars: <v>=<matlab>; ...
+   Detail: <Roman-Urdu tafseel>
+====================================================================
+
+===== MATH: HISAB-O-KITAAB (Arithmetic + Business) =====
+Sawal: Percentage (feesad) — percentage percent feesad hissa kitna percent
+Formula: Part = (P / 100) * Total
+Field: Math / Arithmetic
+Vars: P=percent rate; Total=kul value; Part=hisso-value
+Detail: Percent nikaalna: Part = (P/100) × Total. Misaal: 20% of 50 = (20/100) × 50 = 10.
+Sawal: Percentage Change (tabdeeli ki feesad) — percentage change badlav izzafa kami
+Formula: Change% = ((New - Old) / Old) * 100
+Field: Math / Arithmetic
+Vars: New=nayi value; Old=purani value
+Detail: Purani se nayi value ki tabdeeli % me: ((New − Old) ÷ Old) × 100. Positive = izzafa, negative = kami.
+Sawal: Profit Percent (munafa) — profit munafa faida kaarobar
+Formula: Profit% = ((SP - CP) / CP) * 100
+Field: Math / Business
+Vars: SP=sale price (farokht kimat); CP=cost price (khareed kimat)
+Detail: Munafa % = ((SP − CP) ÷ CP) × 100. SP > CP hone par munafa hota hai.
+Sawal: Loss Percent (nuqsaan) — loss nuqsaan ghaata kaarobar
+Formula: Loss% = ((CP - SP) / CP) * 100
+Field: Math / Business
+Vars: CP=cost price; SP=sale price
+Detail: Nuqsaan % = ((CP − SP) ÷ CP) × 100. SP < CP hone par nuqsaan hota hai.
+Sawal: Sale Price with Profit — sale price munafa ke sath farokht
+Formula: SP = CP * (1 + Profit% / 100)
+Field: Math / Business
+Vars: CP=cost price; Profit%=munafa rate; SP=sale price
+Detail: Munafa jama kar ke sale price: SP = CP × (1 + Profit%/100).
+Sawal: Discount (raft) — discount raft bachat bazarmol
+Formula: SalePrice = MP * (1 - D / 100)
+Field: Math / Business
+Vars: MP=marked price (asal tag); D=discount %; SalePrice=sale kimat
+Detail: Discount ke baad kimat: SalePrice = MP × (1 − D/100). Misaal: MP=1000, D=10% → 900.
+Sawal: Simple Interest (sada sood) — simple interest sada sood byaaj qarz
+Formula: SI = (P * R * T) / 100
+Field: Math / Business
+Vars: P=principal (asl raqam); R=rate % per year; T=time (saal); SI=simple interest
+Detail: Sada sood: SI = (P × R × T) ÷ 100. Har saal asl raqam par ek jaisa sood.
+Sawal: Simple Interest Total Amount — total amount sada sood ke sath
+Formula: A = P * (1 + R * T / 100)
+Field: Math / Business
+Vars: P=principal; R=rate %; T=time (saal); A=total raqam
+Detail: Kul raqam: A = P + SI = P × (1 + RT/100).
+Sawal: Compound Interest (murakkab sood) — compound interest murakkab sood byaaj
+Formula: A = P * (1 + R / 100)^T
+Field: Math / Business
+Vars: P=principal; R=rate % per year; T=time (saal); A=total raqam
+Detail: Murakkab sood: A = P(1 + R/100)^T. Har saal sood asl + pichhle sood par bhi lagta hai. CI = A − P.
+Sawal: Compound Interest n times per year — compound interest n dafa saalana
+Formula: A = P * (1 + R / (100 * n))^(n * T)
+Field: Math / Business
+Vars: P=principal; R=annual rate %; n=times per year (saalana martaba); T=years; A=total
+Detail: Saal me n dafa murakkab: A = P(1 + R/(100n))^(nT). Mahana = n=12, ruba-saalana = n=2.
+Sawal: Average (ausat) — average ausat mean meanha wasat
+Formula: Avg = S / n
+Field: Math / Statistics
+Vars: S=sum of values (jama); n=count (t-daad); Avg=average
+Detail: Ausat = tamam values ka jama ÷ t-daad. Misaal: (4+6+8) ÷ 3 = 6.
+Sawal: Ratio Share (tanasp ka hissa) — ratio tanasp hissa bantna baant
+Formula: Share = (Rpart / Rsum) * Total
+Field: Math / Arithmetic
+Vars: Rpart=ye ratio hissa; Rsum=tamam ratios ka jama; Total=kul raqam; Share=is hissa ka value
+Detail: Ratio me baantna: Share = (Rpart ÷ Rsum) × Total. Misaal: 2:3 me 500 → (2/5)×500 = 200.
+Sawal: Proportion (tanasp) — proportion tanasp mutanasib cross
+Formula: a / b = c / d
+Field: Math / Arithmetic
+Vars: a,b,c,d=tanasp ke chaar numbers
+Detail: Mutanasib chaar numbers: a/b = c/d ⇔ a×d = b×c (cross-multiplication).
+Sawal: Direct Variation (seedha tanasp) — direct variation seedha tanasp y kx
+Formula: y = k * x
+Field: Math / Algebra
+Vars: k=constant (thabit); x=input; y=output
+Detail: Seedha tanasp: y = kx. x dugna → y dugna.
+Sawal: Inverse Variation (ulta tanasp) — inverse variation ulta tanasp y kx
+Formula: y = k / x
+Field: Math / Algebra
+Vars: k=constant; x=input; y=output
+Detail: Ulta tanasp: y = k/x. x dugna → y aadha.
+Sawal: Unitary Method (ikai tareeqa) — unitary method ikai ek ki keemat
+Formula: Cost = UnitCost * n
+Field: Math / Arithmetic
+Vars: UnitCost=ek cheez ki keemat; n=t-daad; Cost=kul keemat
+Detail: Pehle ek ki keemat nikalo, phir n se guna karo.
+Sawal: Tax Amount (tax raqam) — tax mahsool raqam
+Formula: Tax = (R / 100) * Income
+Field: Math / Business
+Vars: R=tax rate %; Income=income/price; Tax=tax raqam
+Detail: Tax = (rate ÷ 100) × income. Misaal: 5% of 20000 = 1000.
+Sawal: Commission (kamishan) — commission kamishan dalaali
+Formula: C = (R / 100) * Sales
+Field: Math / Business
+Vars: R=commission rate %; Sales=farokht raqam; C=commission raqam
+Detail: Dalaali/kamishan = (rate ÷ 100) × sales.
+Sawal: Fraction to Percent (kasr se feesad) — fraction percent kasr badalna
+Formula: Percent = (Num / Den) * 100
+Field: Math / Arithmetic
+Vars: Num=numerator (oper wala); Den=denominator (niche wala)
+Detail: Kasr ko % me badalna: (Num ÷ Den) × 100. Misaal: 3/4 = 75%.
+Sawal: HCF and LCM relation — hcf lcm maqsoom-musharak sada-musharak taluq
+Formula: HCF * LCM = a * b
+Field: Math / Number-Theory
+Vars: HCF=highest common factor; LCM=least common multiple; a,b=do numbers
+Detail: Do numbers ke liye: HCF × LCM = a × b. Ek maloom ho to doosra nikaal aao.
+
+===== MATH: ALGEBRA (Jabr) =====
+Sawal: (a+b) whole square — (a+b)^2 a plus b square ka formula
+Formula: (a + b)^2 = a^2 + 2*a*b + b^2
+Field: Math / Algebra
+Vars: a,b=koi bhi do numbers/expressions
+Detail: (a+b)² = a² + 2ab + b². Sab se mashhoor jabri shanakht.
+Sawal: (a-b) whole square — (a-b)^2 a minus b square ka formula
+Formula: (a - b)^2 = a^2 - 2*a*b + b^2
+Field: Math / Algebra
+Vars: a,b=koi bhi do numbers/expressions
+Detail: (a−b)² = a² − 2ab + b².
+Sawal: a square minus b square (difference of squares) — a2-b2 difference squares phoolna
+Formula: a^2 - b^2 = (a + b) * (a - b)
+Field: Math / Algebra
+Vars: a,b=koi bhi do numbers
+Detail: a² − b² = (a+b)(a−b). Factorization ka buniyadi hathiyar.
+Sawal: (a+b) whole cube — (a+b)^3 a plus b cube
+Formula: (a + b)^3 = a^3 + 3*a^2*b + 3*a*b^2 + b^3
+Field: Math / Algebra
+Vars: a,b=koi bhi do numbers
+Detail: (a+b)³ = a³ + 3a²b + 3ab² + b³.
+Sawal: (a-b) whole cube — (a-b)^3 a minus b cube
+Formula: (a - b)^3 = a^3 - 3*a^2*b + 3*a*b^2 - b^3
+Field: Math / Algebra
+Vars: a,b=koi bhi do numbers
+Detail: (a−b)³ = a³ − 3a²b + 3ab² − b³.
+Sawal: Sum of cubes (a3 plus b3) — a3+b3 cubes ka jama
+Formula: a^3 + b^3 = (a + b) * (a^2 - a*b + b^2)
+Field: Math / Algebra
+Vars: a,b=koi bhi do numbers
+Detail: a³ + b³ = (a+b)(a² − ab + b²).
+Sawal: Difference of cubes (a3 minus b3) — a3-b3 cubes ka farq
+Formula: a^3 - b^3 = (a - b) * (a^2 + a*b + b^2)
+Field: Math / Algebra
+Vars: a,b=koi bhi do numbers
+Detail: a³ − b³ = (a−b)(a² + ab + b²).
+Sawal: a3+b3+c3-3abc identity — teen cubes teen abc
+Formula: a^3 + b^3 + c^3 - 3*a*b*c = (a + b + c) * (a^2 + b^2 + c^2 - a*b - b*c - c*a)
+Field: Math / Algebra
+Vars: a,b,c=teen numbers
+Detail: a³+b³+c³−3abc = (a+b+c)(a²+b²+c²−ab−bc−ca). Agar a+b+c=0 ho to lhs = 0.
+Sawal: Quadratic Formula (dajri ka hal) — quadratic formula shams dajri roots jarr
+Formula: x = (-b + sqrt(b^2 - 4*a*c)) / (2 * a)
+Field: Math / Algebra
+Vars: a=x² ka coefficient; b=x ka coefficient; c=constant; x=root (jar)
+Detail: Dajri (quadratic) ax²+bx+c=0 ke roots: x = (−b ± √(b²−4ac)) ÷ 2a. Doosra root: −b ko + ki jagah − kar ke.
+Sawal: Discriminant (imtiaz) — discriminant d b2-4ac fitrat
+Formula: D = b^2 - 4 * a * c
+Field: Math / Algebra
+Vars: a,b,c=dajri ke coefficients; D=discriminant
+Detail: D > 0 → do asli alag roots; D = 0 → do barabar roots; D < 0 → asli roots nahi (complex).
+Sawal: Sum of Roots (jarron ka jama) — sum roots jarron ka jama dajri
+Formula: S = -b / a
+Field: Math / Algebra
+Vars: a,b=dajri coefficients; S=roots ka jama
+Detail: ax²+bx+c=0 ke roots ka jama = −b/a; product = c/a.
+Sawal: Product of Roots (jarron ka hasil) — product roots jarron ka guna
+Formula: P = c / a
+Field: Math / Algebra
+Vars: a,c=dajri coefficients; P=roots ka product
+Detail: ax²+bx+c=0 ke roots ka product = c/a.
+Sawal: Arithmetic Progression nth term (hundi silsila) — ap nth term hundi silsila d
+Formula: an = a1 + (n - 1) * d
+Field: Math / Series
+Vars: a1=pehla term; d=common farq; n=term number; an=nth term
+Detail: AP me har agla term d barhta hai: an = a1 + (n−1)d.
+Sawal: Arithmetic Progression sum — ap sum hundi silsila jama
+Formula: Sn = (n / 2) * (2 * a1 + (n - 1) * d)
+Field: Math / Series
+Vars: a1=pehla term; d=common farq; n=terms ki t-daad; Sn=n terms ka jama
+Detail: AP ka jama: Sn = n/2 [2a1 + (n−1)d] = n/2 (a1 + an).
+Sawal: Geometric Progression nth term — gp nth term hazbi silsila r
+Formula: an = a1 * r^(n - 1)
+Field: Math / Series
+Vars: a1=pehla term; r=common ratio (nisbat); n=term number; an=nth term
+Detail: GP me har agla term r se guna hota hai: an = a1·r^(n−1).
+Sawal: Geometric Progression sum — gp sum hazbi silsila jama
+Formula: Sn = a1 * (r^n - 1) / (r - 1)
+Field: Math / Series
+Vars: a1=pehla term; r=common ratio (r≠1); n=terms; Sn=jama
+Detail: GP ka jama: Sn = a1(rⁿ−1)/(r−1). r<1 ho to a1(1−rⁿ)/(1−r).
+Sawal: Infinite GP sum (la-mahdood) — infinite gp sum lamahdood hazbi
+Formula: S = a1 / (1 - r)
+Field: Math / Series
+Vars: a1=pehla term; r=common ratio (|r|<1); S=la-mahdood jama
+Detail: Jab |r| < 1 ho: S∞ = a1/(1−r). Misaal: 1 + 1/2 + 1/4 + … = 2.
+Sawal: Arithmetic Mean (hundsi ausat) — am arithmetic mean ausat
+Formula: AM = (a + b) / 2
+Field: Math / Series
+Vars: a,b=do numbers; AM=arithmetic mean
+Detail: AM = (a+b)/2 — do numbers ka seedha ausat.
+Sawal: Geometric Mean (hazbi ausat) — gm geometric mean hazbi ausat
+Formula: GM = sqrt(a * b)
+Field: Math / Series
+Vars: a,b=positive numbers; GM=geometric mean
+Detail: GM = √(ab). Rule: AM ≥ GM ≥ HM.
+Sawal: Harmonic Mean (hm ausat) — hm harmonic mean humonzd ausat
+Formula: HM = 2 * a * b / (a + b)
+Field: Math / Series
+Vars: a,b=do non-zero numbers; HM=harmonic mean
+Detail: HM = 2ab/(a+b). Speeds ka ausat (barabar faasla) HM se nikaalte hain.
+Sawal: nPr Permutation (tarteeb) — npr permutation tarteeb arrangements
+Formula: nPr = fact(n) / fact(n - r)
+Field: Math / Counting
+Vars: n=kul cheezein; r=kitni chun kar tarteeb karni hai
+Detail: Tarteeb ke sath arrangement: nPr = n!/(n−r)!. Misaal: 5P2 = 20.
+Sawal: nCr Combination (chuna) — ncr combination chuna intikhab
+Formula: nCr = fact(n) / (fact(r) * fact(n - r))
+Field: Math / Counting
+Vars: n=kul cheezein; r=kitni chunni hain
+Detail: Tarteeb ke baghair intikhab: nCr = n!/(r!(n−r)!). Misaal: 5C2 = 10.
+Sawal: Binomial Theorem general term — binomial theorem umoomi term dveet
+Formula: T = ncr(n, r) * a^(n - r) * b^r
+Field: Math / Algebra
+Vars: n=power (darja); r=term index (0 se n tak); a,b=(a+b) ke do hissa
+Detail: (a+b)ⁿ ka (r+1)-van term: T(r+1) = nCr·a^(n−r)·b^r.
+Sawal: Index law product (quwwat ka jama) — index law product quwwat tavan
+Formula: a^m * a^n = a^(m + n)
+Field: Math / Algebra
+Vars: a=base; m,n=quwwatein (powers)
+Detail: Ek hi base ke guna: quwwatein jama ho jaati hain: aᵐ·aⁿ = aᵐ⁺ⁿ.
+Sawal: Index law quotient — index law quotient quwwat farq
+Formula: a^m / a^n = a^(m - n)
+Field: Math / Algebra
+Vars: a=base (a≠0); m,n=powers
+Detail: Taqseem par quwwatein minus: aᵐ/aⁿ = aᵐ⁻ⁿ.
+Sawal: Index law power of power — index power of power quwwat ki quwwat
+Formula: (a^m)^n = a^(m * n)
+Field: Math / Algebra
+Vars: a=base; m,n=powers
+Detail: Quwwat ki quwwat: (aᵐ)ⁿ = aᵐⁿ.
+Sawal: Zero index (a0 barabar 1) — zero index a0 ek
+Formula: a^0 = 1
+Field: Math / Algebra
+Vars: a=koi bhi non-zero number
+Detail: Har non-zero number ki quwwat-0 = 1.
+Sawal: Negative index (manfi quwwat) — negative index manfi quwwat ulta
+Formula: a^-n = 1 / a^n
+Field: Math / Algebra
+Vars: a=non-zero base; n=positive quwwat
+Detail: Manfi quwwat = ulta: a⁻ⁿ = 1/aⁿ.
+Sawal: Log product rule (log jama) — log product rule logarithm jama
+Formula: log(m * n) = log(m) + log(n)
+Field: Math / Algebra
+Vars: m,n=positive numbers
+Detail: Gunaiya ke andar ka zarb bahar jama ban jata hai: log(mn) = log m + log n (us hi base par).
+Sawal: Log quotient rule — log quotient rule logarithm taqseem
+Formula: log(m / n) = log(m) - log(n)
+Field: Math / Algebra
+Vars: m,n=positive numbers
+Detail: Taqseem bahar minus ban jata hai: log(m/n) = log m − log n.
+Sawal: Log power rule — log power rule logarithm quwwat
+Formula: log(m^n) = n * log(m)
+Field: Math / Algebra
+Vars: m=positive number; n=power
+Detail: Quwwat bahar aa jaati hai: log(mⁿ) = n·log m. Isi se log table kaam karta hai.
+Sawal: Log change of base (bunyad tabdeeli) — log change of base bunyad tabdeeli
+Formula: logb(m) = log(m) / log(b)
+Field: Math / Algebra
+Vars: m=number; b=nayi bunyad (base)
+Detail: Kisi bhi base ka log doosre se: log_b(m) = log(m) ÷ log(b) (calculator sirf log10/ln rakhta hai).
+Sawal: Exponential growth (hazbi izzafa) — exponential growth hazbi izzafa barhti
+Formula: N = N0 * (1 + r)^t
+Field: Math / Growth
+Vars: N0=shuruqi value; r=growth rate (decimal); t=time; N=aakhri value
+Detail: Barhti hui growth: N = N0(1+r)^t. Abadi/raqam ki barhti (r decimal me, jaise 5% = 0.05).
+Sawal: Exponential decay (hazbi kami) — exponential decay hazbi kami ghat
+Formula: N = N0 * (1 - r)^t
+Field: Math / Growth
+Vars: N0=shuruqi value; r=decay rate (decimal); t=time; N=aakhri value
+Detail: Ghat ti value: N = N0(1−r)^t. Radioactive decay isi ka misaal hai.
+Sawal: Natural growth e (fitri izzafa) — natural growth e fitri izzafa irti faa
+Formula: N = N0 * e^(k * t)
+Field: Math / Growth
+Vars: N0=shuru value; k=rate constant; t=time; N=aakhri value
+Detail: Musalsal (continuous) growth/decay: N = N0·e^(kt). k>0 growth, k<0 decay.
+
+===== MATH: GEOMETRY (2D — Handasa) =====
+Sawal: Square ka area (murabba raqba) — square area murabba raqba
+Formula: A = s^2
+Field: Math / Geometry
+Vars: s=side (baazu); A=area (raqba)
+Detail: Murabba ka raqba: A = baazu². Misaal: s=5 → A=25.
+Sawal: Square ka perimeter — square perimeter murabba gheera
+Formula: P = 4 * s
+Field: Math / Geometry
+Vars: s=side; P=perimeter (gheera)
+Detail: Murabba ka gheera: P = 4 × baazu.
+Sawal: Square ka diagonal — square diagonal murabba watar
+Formula: d = s * sqrt(2)
+Field: Math / Geometry
+Vars: s=side; d=diagonal (watar)
+Detail: Murabba ka watar: d = s√2 (Pythagoras se).
+Sawal: Rectangle ka area (mustateel raqba) — rectangle area mustateel raqba
+Formula: A = l * w
+Field: Math / Geometry
+Vars: l=length (lambai); w=width (chaurai); A=area
+Detail: Mustateel ka raqba: lambai × chaurai.
+Sawal: Rectangle ka perimeter — rectangle perimeter mustateel gheera
+Formula: P = 2 * (l + w)
+Field: Math / Geometry
+Vars: l=lambai; w=chaurai; P=perimeter
+Detail: Mustateel ka gheera: 2(l + w).
+Sawal: Rectangle ka diagonal — rectangle diagonal mustateel watar
+Formula: d = sqrt(l^2 + w^2)
+Field: Math / Geometry
+Vars: l=lambai; w=chaurai; d=diagonal
+Detail: Mustateel ka watar Pythagoras se: √(l² + w²).
+Sawal: Triangle ka area (musallas raqba) — triangle area musallas raqba base height
+Formula: A = 0.5 * b * h
+Field: Math / Geometry
+Vars: b=base (qaida); h=height (bulandi); A=area
+Detail: Musallas ka raqba: A = ½ × qaida × bulandi.
+Sawal: Heron ka formula (sifain) — heron formula sifain teen baazu area
+Formula: A = sqrt((a + b + c) * (-a + b + c) * (a - b + c) * (a + b - c)) / 4
+Field: Math / Geometry
+Vars: a,b,c=tin baazu (sides); A=area
+Detail: Sirf teeno sides se raqba: A = ¼√[(a+b+c)(−a+b+c)(a−b+c)(a+b−c)].
+Sawal: Equilateral triangle ka area (musawi-baazu) — equilateral triangle area musawi baazu
+Formula: A = (sqrt(3) / 4) * s^2
+Field: Math / Geometry
+Vars: s=baazu (teeno barabar); A=area
+Detail: Musawi-baazu musallas: A = (√3/4)s².
+Sawal: Equilateral triangle ki height — equilateral triangle height bulandi
+Formula: h = (sqrt(3) / 2) * s
+Field: Math / Geometry
+Vars: s=baazu; h=height
+Detail: Musawi-baazu musallas ki bulandi: h = (√3/2)s.
+Sawal: Parallelogram ka area (muzammi raqba) — parallelogram area muzammi raqba
+Formula: A = b * h
+Field: Math / Geometry
+Vars: b=base; h=lambi bulandi (perpendicular); A=area
+Detail: Muzammi chaar-ruki ka raqba: qaida × bulandi.
+Sawal: Rhombus ka area (muabbar raqba) — rhombus area muabbar raqba diagonals watarain
+Formula: A = 0.5 * d1 * d2
+Field: Math / Geometry
+Vars: d1,d2=donon watarain (diagonals); A=area
+Detail: Muabbar (rhombus) ka raqba: ½ × d1 × d2.
+Sawal: Trapezoid ka area (haanze raqba) — trapezoid area haanze raqba parallel
+Formula: A = 0.5 * (a + b) * h
+Field: Math / Geometry
+Vars: a,b=mutawaazi sides; h=beech ki bulandi; A=area
+Detail: Haanze (trapezoid): A = ½(a + b)h — mutawaazi sides ka ausat × bulandi.
+Sawal: Kite ka area (patang raqba) — kite area patang raqba
+Formula: A = 0.5 * d1 * d2
+Field: Math / Geometry
+Vars: d1,d2=watarain; A=area
+Detail: Patang ka raqba: ½ × watarain ka product.
+Sawal: Circle ka area (daira raqba) — circle area daira raqba gole
+Formula: A = pi * r^2
+Field: Math / Geometry
+Vars: r=radius (nisf-qatar); A=area (raqba)
+Detail: Daire ka raqba: A = πr². Misaal: r=5 → A = π×25 ≈ 78.54.
+Sawal: Circle ki circumference (daira gheera) — circle circumference daira gheera periphery
+Formula: C = 2 * pi * r
+Field: Math / Geometry
+Vars: r=radius; C=circumference (gheera)
+Detail: Daire ka gheera: C = 2πr = πd (d=qatar/diameter).
+Sawal: Arc length (qous ki lambai) — arc length qous lambai chhap
+Formula: L = (th / 360) * 2 * pi * r
+Field: Math / Geometry
+Vars: th=central angle (degrees); r=radius; L=arc length
+Detail: Qous ki lambai = (markazi-zaviya ÷ 360) × 2πr.
+Sawal: Sector ka area (qita raqba) — sector area qita raqba pizza slice
+Formula: A = (th / 360) * pi * r^2
+Field: Math / Geometry
+Vars: th=central angle (degrees); r=radius; A=sector raqba
+Detail: Sector (pizza-slice) ka raqba = (θ÷360) × πr².
+Sawal: Segment ka area (qata raqba radians) — segment area qata radians jof
+Formula: A = 0.5 * r^2 * (th - sin(th))
+Field: Math / Geometry
+Vars: th=central angle (RADIANS me); r=radius; A=segment raqba
+Detail: Daire-kaata (segment): A = ½r²(θ − sin θ), θ radians me (degrees × π ÷ 180).
+Sawal: Annulus ka area (chhalla raqba) — annulus area chhalla ring raqba
+Formula: A = pi * (R^2 - r^2)
+Field: Math / Geometry
+Vars: R=bahar radius; r=andar radius; A=ring raqba
+Detail: Chhalla (annulus): A = π(R² − r²) — bahar wale se andar wala minus.
+Sawal: Regular polygon ka area (muntazam shakl) — regular polygon area muntazam shakl apothem
+Formula: A = 0.5 * P * a
+Field: Math / Geometry
+Vars: P=perimeter (tamam sides ka jama); a=apothem (markaz se side tak faasla); A=area
+Detail: Muntazam kasrat-abi (regular polygon): A = ½ × gheera × apothem.
+Sawal: Interior angles ka sum (andaroni zawaye jama) — interior angles sum andaroni zawaye jama kasrat
+Formula: S = (n - 2) * 180
+Field: Math / Geometry
+Vars: n=sides ki t-daad; S=andaroni zawayon ka jama (degrees)
+Detail: n-bhuj kasrat ke andaroni zawaye: S = (n−2)×180°. Misaal: sextagon n=6 → 720°.
+Sawal: Regular polygon ka har interior angle — regular polygon interior angle har zaviya
+Formula: A = ((n - 2) * 180) / n
+Field: Math / Geometry
+Vars: n=sides; A=har andaroni zaviya (degrees)
+Detail: Muntazam kasrat ka har andaroni zaviya: (n−2)180 ÷ n. Baharoni sab = 360°.
+Sawal: Polygon ke diagonals (watarain) — polygon diagonals watarain kasrat
+Formula: D = n * (n - 3) / 2
+Field: Math / Geometry
+Vars: n=sides/vertices; D=diagonals ki t-daad
+Detail: Kasrat ke watarain: D = n(n−3)/2.
+Sawal: Pythagoras theorem (saqraas ka usool) — pythagoras theorem saqraas usool watar
+Formula: c = sqrt(a^2 + b^2)
+Field: Math / Geometry
+Vars: a,b=chhote dono baazu (saamne wale zaviye); c=watar (sab se lamba side)
+Detail: Saqraas musallas me: watar² = baazu² + baazu² → c = √(a² + b²).
+Sawal: Distance formula (faasla) — distance formula faasla points nuqte
+Formula: d = sqrt((x2 - x1)^2 + (y2 - y1)^2)
+Field: Math / Coordinate
+Vars: x1,y1=pehla nuqta; x2,y2=doosra nuqta; d=faasla
+Detail: Do nuqton ka faasla: √[(x₂−x₁)² + (y₂−y₁)²] — Pythagoras ka coordinate roop.
+Sawal: Midpoint formula (darmiyani nuqta) — midpoint darmiyani nuqta beech
+Formula: M = ((x1 + x2) / 2, (y1 + y2) / 2)
+Field: Math / Coordinate
+Vars: x1,y1=pehla nuqta; x2,y2=doosra nuqta; M=darmiyani nuqta
+Detail: Do nuqton ke beech ka nuqta: har mehwar par dono coordinates ka ausat.
+Sawal: Section formula (qata nuqta) — section formula qata nuqta ratio tanasp
+Formula: P = ((m * x2 + n * x1) / (m + n), (m * y2 + n * y1) / (m + n))
+Field: Math / Coordinate
+Vars: m:n=tanasp (ratio); x1,y1,x2,y2=donon nuqte; P=muqta nuqta
+Detail: Line-kaata jo m:n tanasp me baate: P = ((m·x₂+n·x₁)/(m+n), (m·y₂+n·y₁)/(m+n)).
+Sawal: Centroid formula (markaz-atlas) — centroid markaz atlas musallas wazni markaz
+Formula: G = ((x1 + x2 + x3) / 3, (y1 + y2 + y3) / 3)
+Field: Math / Coordinate
+Vars: teen vertices ke coordinates; G=centroid
+Detail: Musallas ke teenon watarain ka aapas ka milaap — centroid: coordinates ka ausat.
+Sawal: Slope formula (dhalwan) — slope dhalwan gradient line khad
+Formula: m = (y2 - y1) / (x2 - x1)
+Field: Math / Coordinate
+Vars: do points ke coordinates; m=slope (dhalwan)
+Detail: Line ka dhalwan: rise ÷ run = (y₂−y₁)/(x₂−x₁).
+Sawal: Point-slope form (nuqta dhalwan) — point slope form line samikaran
+Formula: y - y1 = m * (x - x1)
+Field: Math / Coordinate
+Vars: m=slope; x1,y1=maloom nuqta; x,y=mutaghayyar
+Detail: Line ka samikaran jab ek nuqta aur slope maloom ho.
+Sawal: Slope-intercept form — slope intercept form y mx c line
+Formula: y = m * x + c
+Field: Math / Coordinate
+Vars: m=slope; c=y-intercept (y-mahwar kaata); x,y=mutaghayyar
+Detail: Seedhi line ka maayari roop: y = mx + c.
+Sawal: Circle ki equation (daira samikaran) — circle equation daira samikaran markaz
+Formula: (x - h)^2 + (y - k)^2 = r^2
+Field: Math / Coordinate
+Vars: h,k=markaz ke coordinates; r=radius; x,y=mutaghayyar
+Detail: Markaz (h,k) aur radius r wale daire ka samikaran.
+Sawal: Tangent ki lambai (mumass) — tangent length mumass lambai bahir nuqta
+Formula: T = sqrt(d^2 - r^2)
+Field: Math / Geometry
+Vars: d=bahir nuqta se markaz tak faasla; r=radius; T=tangent lambai
+Detail: Bahir nuqte se daire tak mumass (tangent): T = √(d² − r²).
+
+===== MATH: MENSURATION (3D — Paimaish) =====
+Sawal: Cube ka volume (ghaan volume) — cube volume ghan raqba
+Formula: V = s^3
+Field: Math / Mensuration
+Vars: s=baazu; V=volume (hajm)
+Detail: Ghan (cube) ka hajm: baazu³.
+Sawal: Cube ka surface area — cube surface area ghan satah
+Formula: S = 6 * s^2
+Field: Math / Mensuration
+Vars: s=baazu; S=total surface area
+Detail: Ghan ke 6 barabar chehre: S = 6s².
+Sawal: Cube ka diagonal — cube diagonal ghan watar
+Formula: d = s * sqrt(3)
+Field: Math / Mensuration
+Vars: s=baazu; d=space diagonal
+Detail: Ghan ka watar: d = s√3.
+Sawal: Cuboid ka volume (mustateel ghan) — cuboid volume mustateel ghan hajm
+Formula: V = l * w * h
+Field: Math / Mensuration
+Vars: l=lambai; w=chaurai; h=unchaai; V=volume
+Detail: Mustateel-ghan ka hajm: lambai × chaurai × unchaai.
+Sawal: Cuboid ka surface area — cuboid surface area mustateel satah
+Formula: S = 2 * (l * w + w * h + l * h)
+Field: Math / Mensuration
+Vars: l,w,h=aebaad; S=total surface area
+Detail: Satah = 2(lw + wh + lh) — teen jore-chehre ka jama.
+Sawal: Cuboid ka diagonal — cuboid diagonal mustateel watar
+Formula: d = sqrt(l^2 + w^2 + h^2)
+Field: Math / Mensuration
+Vars: l,w,h=aebaad; d=diagonal
+Detail: Kona-se-kona watar: √(l² + w² + h²).
+Sawal: Cylinder ka volume (ustuwana) — cylinder volume ustuwana hajm
+Formula: V = pi * r^2 * h
+Field: Math / Mensuration
+Vars: r=radius; h=unchaai; V=volume
+Detail: Ustuwana (cylinder) ka hajm: πr²h.
+Sawal: Cylinder ka CSA (pankhi satah) — cylinder csa curved satah pankhi
+Formula: C = 2 * pi * r * h
+Field: Math / Mensuration
+Vars: r=radius; h=unchaai; C=curved surface area
+Detail: Mudoon satah (CSA) = gheera × unchaai = 2πrh.
+Sawal: Cylinder ka TSA — cylinder tsa kul satah ustuwana
+Formula: S = 2 * pi * r * (r + h)
+Field: Math / Mensuration
+Vars: r=radius; h=unchaai; S=total surface area
+Detail: TSA = CSA + do daire-plate: 2πr(r + h).
+Sawal: Cone ka volume (makhroot) — cone volume makhroot hajm
+Formula: V = (1 / 3) * pi * r^2 * h
+Field: Math / Mensuration
+Vars: r=radius; h=unchaai; V=volume
+Detail: Makhroot ka hajm: ⅓πr²h — usi cylinder ka teesra hissa.
+Sawal: Cone ki slant height (tircha unchaai) — cone slant height tircha makhroot
+Formula: l = sqrt(r^2 + h^2)
+Field: Math / Mensuration
+Vars: r=radius; h=unchaai; l=slant height (tircha)
+Detail: Makhroot ki tircha lambai: l = √(r² + h²).
+Sawal: Cone ka CSA — cone csa mudoon satah makhroot
+Formula: C = pi * r * l
+Field: Math / Mensuration
+Vars: r=radius; l=slant height; C=curved surface area
+Detail: Makhroot ka mudoon satah: πrl.
+Sawal: Cone ka TSA — cone tsa kul satah makhroot
+Formula: S = pi * r * (l + r)
+Field: Math / Mensuration
+Vars: r=radius; l=slant; S=total surface area
+Detail: TSA = πrl + πr² = πr(l + r).
+Sawal: Sphere ka volume (kurra) — sphere volume kurra hajm
+Formula: V = (4 / 3) * pi * r^3
+Field: Math / Mensuration
+Vars: r=radius; V=volume
+Detail: Kurra ka hajm: (4/3)πr³.
+Sawal: Sphere ka surface area — sphere surface area kurra satah
+Formula: S = 4 * pi * r^2
+Field: Math / Mensuration
+Vars: r=radius; S=surface area
+Detail: Kurra ki satah: 4πr².
+Sawal: Hemisphere ka volume (nisf kurra) — hemisphere volume nisf kurra
+Formula: V = (2 / 3) * pi * r^3
+Field: Math / Mensuration
+Vars: r=radius; V=volume
+Detail: Aada kurra: (2/3)πr³.
+Sawal: Hemisphere ka TSA — hemisphere tsa nisf kurra satah
+Formula: S = 3 * pi * r^2
+Field: Math / Mensuration
+Vars: r=radius; S=total surface area
+Detail: Nisf kurra ka kul satah: gumbaz (2πr²) + plate (πr²) = 3πr².
+Sawal: Prism ka volume (mujtaba) — prism volume mujtaba hajm base
+Formula: V = B * h
+Field: Math / Mensuration
+Vars: B=base ka raqba; h=prism ki unchaai; V=volume
+Detail: Prism ka hajm: qaida ka raqba × unchaai (har shakl ke qaida ke liye).
+Sawal: Pyramid ka volume (ihram) — pyramid volume ihram hajm
+Formula: V = (1 / 3) * B * h
+Field: Math / Mensuration
+Vars: B=qaida ka raqba; h=unchaai; V=volume
+Detail: Ihram (pyramid) ka hajm: ⅓ × qaida × unchaai.
+Sawal: Frustum ka volume (kata hua makhroot) — frustum volume kata makhroot
+Formula: V = (1 / 3) * pi * h * (R^2 + R * r + r^2)
+Field: Math / Mensuration
+Vars: R=bahar/neeche radius; r=upar radius; h=unchaai; V=volume
+Detail: Kata hua makhroot (frustum): V = ⅓πh(R² + Rr + r²).
+Sawal: Hollow cylinder ka volume (khokhli ustuwana) — hollow cylinder volume khokhli pipe
+Formula: V = pi * h * (R^2 - r^2)
+Field: Math / Mensuration
+Vars: R=bahar radius; r=andar radius; h=lambai; V=material ka volume
+Detail: Pipe ka material-hajm: πh(R² − r²).
+
+===== MATH: TRIGONOMETRY (Ilm-ul-Aflaak) =====
+Sawal: Sin ki definition — sin definition sena zaviya
+Formula: sin = opposite / hypotenuse
+Field: Math / Trigonometry
+Vars: opposite=saamne wali baazu; hypotenuse=watar
+Detail: Saqraas musallas me: sin θ = saamne baazu ÷ watar (SOH).
+Sawal: Cos ki definition — cos definition qaeena zaviya
+Formula: cos = adjacent / hypotenuse
+Field: Math / Trigonometry
+Vars: adjacent=qaeena baazu (zaviye ke pass); hypotenuse=watar
+Detail: cos θ = qaeena baazu ÷ watar (CAH).
+Sawal: Tan ki definition — tan definition tajveeb zaviya
+Formula: tan = opposite / adjacent
+Field: Math / Trigonometry
+Vars: opposite=saamne baazu; adjacent=qaeena baazu
+Detail: tan θ = saamne ÷ qaeena (TOA) = sin θ ÷ cos θ.
+Sawal: Cosec Sec Cot (makus) — cosec sec cot makus reciprocal
+Formula: csc = 1 / sin
+Field: Math / Trigonometry
+Vars: csc=cosec; sin=sena of same zaviya
+Detail: Makus (reciprocal) taluqaat: csc θ = 1/sin θ, sec θ = 1/cos θ, cot θ = 1/tan θ.
+Sawal: Pythagorean identity (seni qaeena) — sin squared plus cos squared pythagorean identity
+Formula: sin(x)^2 + cos(x)^2 = 1
+Field: Math / Trigonometry
+Vars: x=koi bhi zaviya
+Detail: Buniyadi shanakht: sin²θ + cos²θ = 1 — har zaviye ke liye sach.
+Sawal: 1 plus tan squared identity — 1+tan2 sec2 tan sec shanakht
+Formula: 1 + tan(x)^2 = sec(x)^2
+Field: Math / Trigonometry
+Vars: x=zaviya
+Detail: 1 + tan²θ = sec²θ (sin²+cos² ko cos² se taqseem kar ke).
+Sawal: 1 plus cot squared identity — 1+cot2 csc2 cot csc shanakht
+Formula: 1 + cot(x)^2 = csc(x)^2
+Field: Math / Trigonometry
+Vars: x=zaviya
+Detail: 1 + cot²θ = csc²θ.
+Sawal: Sin(A+B) formula — sin a+b jama zaviya sena
+Formula: sin(A + B) = sin(A) * cos(B) + cos(A) * sin(B)
+Field: Math / Trigonometry
+Vars: A,B=do zawaye
+Detail: Do zawayon ke jama ki sena: sinA·cosB + cosA·sinB.
+Sawal: Sin(A-B) formula — sin a-b farq zaviya sena
+Formula: sin(A - B) = sin(A) * cos(B) - cos(A) * sin(B)
+Field: Math / Trigonometry
+Vars: A,B=do zawaye
+Detail: Farq ki sena: sinA·cosB − cosA·sinB.
+Sawal: Cos(A+B) formula — cos a+b jama qaeena
+Formula: cos(A + B) = cos(A) * cos(B) - sin(A) * sin(B)
+Field: Math / Trigonometry
+Vars: A,B=do zawaye
+Detail: Jama ki qaeena: cosA·cosB − sinA·sinB (nishaan ulta hai — yaad rakho).
+Sawal: Cos(A-B) formula — cos a-b farq qaeena
+Formula: cos(A - B) = cos(A) * cos(B) + sin(A) * sin(B)
+Field: Math / Trigonometry
+Vars: A,B=do zawaye
+Detail: Farq ki qaeena: cosA·cosB + sinA·sinB.
+Sawal: Tan(A+B) formula — tan a+b jama tajveeb
+Formula: tan(A + B) = (tan(A) + tan(B)) / (1 - tan(A) * tan(B))
+Field: Math / Trigonometry
+Vars: A,B=do zawaye
+Detail: Jama ka tajveeb: (tanA + tanB)/(1 − tanA·tanB).
+Sawal: Sin 2A (double angle sena) — sin2a double angle do guna sena
+Formula: sin(2A) = 2 * sin(A) * cos(A)
+Field: Math / Trigonometry
+Vars: A=zaviya
+Detail: Do-gunaa zaviya ki sena: sin2A = 2 sinA cosA.
+Sawal: Cos 2A (double angle qaeena) — cos2a double angle do guna qaeena
+Formula: cos(2A) = cos(A)^2 - sin(A)^2
+Field: Math / Trigonometry
+Vars: A=zaviya
+Detail: cos2A = cos²A − sin²A = 2cos²A − 1 = 1 − 2sin²A (teen roop).
+Sawal: Tan 2A (double angle tajveeb) — tan2a double angle tajveeb
+Formula: tan(2A) = 2 * tan(A) / (1 - tan(A)^2)
+Field: Math / Trigonometry
+Vars: A=zaviya
+Detail: tan2A = 2tanA ÷ (1 − tan²A).
+Sawal: Half angle sin (aadha zaviya sena) — sin half angle aadha sena
+Formula: sin(A / 2) = sqrt((1 - cos(A)) / 2)
+Field: Math / Trigonometry
+Vars: A=zaviya
+Detail: Aadha-zaviya: sin(A/2) = ±√[(1 − cosA)/2] (quadrant ke hisaab se nishaan).
+Sawal: Half angle cos (aadha zaviya qaeena) — cos half angle aadha qaeena
+Formula: cos(A / 2) = sqrt((1 + cos(A)) / 2)
+Field: Math / Trigonometry
+Vars: A=zaviya
+Detail: cos(A/2) = ±√[(1 + cosA)/2].
+Sawal: Sine rule (seni usool) — sine rule seni usool musallas zawaye
+Formula: a / sin(A) = b / sin(B)
+Field: Math / Trigonometry
+Vars: a,b=sides; A,B=unke muqabla zawaye
+Detail: Sine usool: a/sinA = b/sinB = c/sinC — side uske muqabla zaviye ki sen ke mutanasib.
+Sawal: Cosine rule (qaeeni usool) — cosine rule qaeeni usool musallas side
+Formula: a^2 = b^2 + c^2 - 2 * b * c * cos(A)
+Field: Math / Trigonometry
+Vars: a=maloom-karna side; b,c=baaqi sides; A=side a ke muqabla zaviya
+Detail: Pythagoras ka umoomi roop: a² = b² + c² − 2bc·cosA (kisi bhi musallas me).
+Sawal: Triangle area with sin (musallas raqba zaviye se) — triangle area sin zaviya raqba
+Formula: A = 0.5 * a * b * sin(C)
+Field: Math / Trigonometry
+Vars: a,b=do sides; C=unke darmiyani zaviya; A=area
+Detail: Do sides aur darmiyani zaviya se raqba: A = ½ab·sinC.
+Sawal: Radian degree conversion (radiyan darja) — radian degree tabdeeli pi 180
+Formula: rad = deg * pi / 180
+Field: Math / Trigonometry
+Vars: deg=degrees (darja); rad=radians
+Detail: 180° = π radian. Degrees → radians: ×π/180; radians → degrees: ×180/π.
+
+===== MATH: CALCULUS (Hisab-e-Mutlagh) =====
+Sawal: Power rule derivative (quwwat usool) — power rule derivative quwwat usool nikat
+Formula: d = n * x^(n - 1)
+Field: Math / Calculus
+Vars: x^d=asal function (n = darja); d=derivative (mahzubi)
+Detail: Quwwat-kaaida: d/dx(xⁿ) = n·xⁿ⁻¹. Misaal: d/dx(x³) = 3x².
+Sawal: Constant rule derivative (sabit usool) — constant derivative sabit usool
+Formula: d = 0
+Field: Math / Calculus
+Vars: c=constant value
+Detail: Sabit (constant) ka derivative 0 hota hai — wo badalta hi nahi.
+Sawal: Product rule (hasil usool) — product rule hasil usool derivative
+Formula: d = u1 * v + u * v1
+Field: Math / Calculus
+Vars: u,u1=u aur uska derivative (u′); v,v1=v aur uska derivative (v′)
+Detail: (uv)′ = u′v + uv′ — pehle ka derivative × doosra + pehla × doosre ka derivative.
+Sawal: Quotient rule (taqseem usool) — quotient rule taqseem usool derivative
+Formula: d = (u1 * v - u * v1) / v^2
+Field: Math / Calculus
+Vars: u,u1=u,u′; v,v1=v,v′ (v≠0)
+Detail: (u/v)′ = (u′v − uv′)/v².
+Sawal: Chain rule (zanjeer usool) — chain rule zanjeer usool derivative
+Formula: dy = u1 * v1
+Field: Math / Calculus
+Vars: y=f(u), u=g(x); u1=f′(u); v1=g′(x); dy=dy/dx
+Detail: Zanjeer-kaaida: dy/dx = dy/du × du/dx — andar se bahar tak derivative chain.
+Sawal: Derivative of sin (seni ka nikat) — derivative sin cos seni
+Formula: d = cos(x)
+Field: Math / Calculus
+Vars: x=radians me zaviya; d=d/dx sin x
+Detail: d/dx(sin x) = cos x.
+Sawal: Derivative of cos — derivative cos qaeena nikat
+Formula: d = -sin(x)
+Field: Math / Calculus
+Vars: x=radians me zaviya; d=d/dx cos x
+Detail: d/dx(cos x) = −sin x.
+Sawal: Derivative of tan — derivative tan tajveeb nikat
+Formula: d = 1 / cos(x)^2
+Field: Math / Calculus
+Vars: x=zaviya; d=d/dx tan x
+Detail: d/dx(tan x) = sec²x = 1/cos²x.
+Sawal: Derivative of e^x — derivative e^x irtifai nikat
+Formula: d = e^x
+Field: Math / Calculus
+Vars: d=d/dx(e^x)
+Detail: e^x ka derivative khud e^x hi — sab se khaas function.
+Sawal: Derivative of a^x — derivative a^x a ki quwwat
+Formula: d = a^x * log(a)
+Field: Math / Calculus
+Vars: a=base (>0); d=d/dx(a^x)
+Detail: d/dx(aˣ) = aˣ·ln a.
+Sawal: Derivative of ln x — derivative ln x natural log
+Formula: d = 1 / x
+Field: Math / Calculus
+Vars: x>0; d=d/dx(ln x)
+Detail: d/dx(ln x) = 1/x.
+Sawal: Derivative of log a x — derivative log base a logaritm
+Formula: d = 1 / (x * log(a))
+Field: Math / Calculus
+Vars: a=base; d=d/dx(log_a x)
+Detail: d/dx(log_a x) = 1/(x·ln a).
+Sawal: Integral of x^n (quwwat ka takamul) — integral x^n quwwat takamul antithal
+Formula: I = x^(n + 1) / (n + 1)
+Field: Math / Calculus
+Vars: n≠−1; I=∫xⁿ dx
+Detail: ∫xⁿ dx = xⁿ⁺¹/(n+1) + C (n≠−1). Har integral ke sath + C likhna zaroori.
+Sawal: Integral of 1/x — integral 1/x antithal log
+Formula: I = log(x)
+Field: Math / Calculus
+Vars: x>0; I=∫(1/x)dx
+Detail: ∫(1/x)dx = ln|x| + C.
+Sawal: Integral of e^x — integral e^x antithal
+Formula: I = e^x
+Field: Math / Calculus
+Vars: I=∫e^x dx
+Detail: ∫eˣ dx = eˣ + C.
+Sawal: Integral of a^x — integral a^x base antithal
+Formula: I = a^x / log(a)
+Field: Math / Calculus
+Vars: a=base (>0, a≠1); I=∫aˣ dx
+Detail: ∫aˣ dx = aˣ/ln a + C.
+Sawal: Integral of sin — integral sin antithal qaeena
+Formula: I = -cos(x)
+Field: Math / Calculus
+Vars: x=radians; I=∫sin x dx
+Detail: ∫sin x dx = −cos x + C.
+Sawal: Integral of cos — integral cos antithal sena
+Formula: I = sin(x)
+Field: Math / Calculus
+Vars: x=radians; I=∫cos x dx
+Detail: ∫cos x dx = sin x + C.
+Sawal: Integral of sec squared — integral sec2 tan antithal
+Formula: I = tan(x)
+Field: Math / Calculus
+Vars: I=∫sec²x dx
+Detail: ∫sec²x dx = tan x + C.
+Sawal: Integration by parts (hisson se takamul) — integration by parts hisson takamul uv
+Formula: Iuv = u * Iv - Iup
+Field: Math / Calculus
+Vars: Iuv=∫u·v dx; Iv=∫v dx; Iup=∫(u′·∫v dx) dx
+Detail: ∫u v dx = u·∫v dx − ∫(u′·∫v dx)dx — ILATE tarteeb se u chuno (Inverse, Log, Algebraic, Trig, Exponential).
+Sawal: Fundamental theorem (buniyadi usool) — fundamental theorem calculus muthannam ftc
+Formula: V = F(b) - F(a)
+Field: Math / Calculus
+Vars: F=antithal (integral function); a,b=haddain; V=∫a→b f(x)dx
+Detail: Haddo-wala integral: ∫a→b f(x)dx = F(b) − F(a).
+Sawal: Area under curve (mumassar raqba) — area under curve mumassar raqba integral
+Formula: A = F(b) - F(a)
+Field: Math / Calculus
+Vars: A=x-mehwar ke upar raqba a se b tak; F=f ka antithal
+Detail: Curve ke neeche ka raqba = usi definite integral (f ≥ 0 hone par).
+Sawal: Limit sinx/x (hadd sena) — limit sinx/x hadd 1
+Formula: L = 1
+Field: Math / Calculus
+Vars: L=lim(x→0) sin x ÷ x
+Detail: Mashhoor hadd: lim(x→0) sinx/x = 1 (x radians me).
+Sawal: L Hopital rule — l hopital usool hadd 0/0
+Formula: L = f1 / g1
+Field: Math / Calculus
+Vars: L=lim(x→a) f(x)/g(x) (0/0 ya ∞/∞); f1=g1 derivatives at a
+Detail: Ghair-mustaqeem hadd (0/0): numerator aur denominator dono ke derivatives ka nisbat lo.
+Sawal: Derivative as slope (nikat dhalwan) — derivative slope dhalwan tangent
+Formula: m = dy
+Field: Math / Calculus
+Vars: m=tangent ka slope; dy=dy/dx at that point
+Detail: Kisi nuqte par derivative = wahan tangent line ka dhalwan.
+
+===== MATH: PROBABILITY & STATISTICS (Ihtimal-o-Shumariyat) =====
+Sawal: Probability (ihtimal) — probability ihtimal chance imkaan
+Formula: P = m / n
+Field: Math / Probability
+Vars: m=maqbool nataij (favourable); n=kul mumkin nataij (total); P=ihtimal (0 se 1)
+Detail: P = faaede-mand nataij ÷ kul nataij. 0 = namumkin, 1 = yaqeeni.
+Sawal: Complement probability (makus ihtimal) — complement makus ihtimal nahi hona
+Formula: Pc = 1 - P
+Field: Math / Probability
+Vars: P=event ka ihtimal; Pc=uske na hone ka ihtimal
+Detail: P(na-hona) = 1 − P(hona).
+Sawal: Addition rule exclusive (jama qanoon) — addition rule jama qanoon ihtimal exclusive
+Formula: P = P1 + P2
+Field: Math / Probability
+Vars: P=P(A ya B) jab dono ek sath mumkin nahi; P1=P(A); P2=P(B)
+Detail: Muta-aariz (mutually exclusive) events: P(A∪B) = P(A) + P(B).
+Sawal: Addition rule general (umoomi jama) — addition general umoomi ihtimal jama
+Formula: P = P1 + P2 - P12
+Field: Math / Probability
+Vars: P1=P(A); P2=P(B); P12=P(A aur B ek sath); P=P(A∪B)
+Detail: Umoomi: P(A∪B) = P(A) + P(B) − P(A∩B) — aam hissa do dafa na gina jaye.
+Sawal: Multiplication rule independent (guna qanoon) — multiplication independent mustaqil ihtimal
+Formula: P = P1 * P2
+Field: Math / Probability
+Vars: P=P(A aur B); P1=P(A); P2=P(B) (dono mustaqil/independent)
+Detail: Mustaqil events: P(A∩B) = P(A) × P(B). Misaal: do sikke tails-tails = ¼.
+Sawal: Conditional probability (mashroot ihtimal) — conditional mashroot ihtimal de kar
+Formula: Pa = P12 / Pb
+Field: Math / Probability
+Vars: Pa=P(A|B) — B de kar A ka ihtimal; P12=P(A∩B); Pb=P(B)
+Detail: P(A|B) = P(A∩B)/P(B) — B ho chuka farz karo, ab A ka ihtimal.
+Sawal: Bayes theorem (bayes usool) — bayes theorem usool ulta ihtimal
+Formula: Pa = Pba * Pa1 / Pb
+Field: Math / Probability
+Vars: Pa=P(A|B); Pba=P(B|A); Pa1=P(A); Pb=P(B)
+Detail: Bayes: P(A|B) = P(B|A)·P(A) ÷ P(B) — nateeja de kar asal (ulta) ihtimal nikaalo.
+Sawal: Binomial probability (dvaita ihtimal) — binomial probability dvaita sikka safal
+Formula: P = ncr(n, r) * p^r * q^(n - r)
+Field: Math / Probability
+Vars: n=kul koshishain; r=kitni kamyab; p=ek kamyabi ka ihtimal; q=1−p (naqami ka)
+Detail: n azmaaishon me theek r kamyabiyan: P = nCr·pʳ·qⁿ⁻ʳ.
+Sawal: Expected value (mutawaqqe qeemat) — expected value mutawaqqe qeemat irtiba
+Formula: E = x * p
+Field: Math / Probability
+Vars: x=value; p=uska ihtimal; E=expected value (kai values ho to jama karo: Σx·P(x))
+Detail: Irtiba (expectation): E = Σ x·P(x) — har nateeja × uska ihtimal, phir jama.
+Sawal: Mean ausat shumariyat — mean ausat shumariyat data
+Formula: Mean = S / n
+Field: Math / Statistics
+Vars: S=tamam values ka jama; n=values ki t-daad
+Detail: Data ka mean = jama ÷ t-daad.
+Sawal: Median (darmiyani) — median darmiyani beech value tarteeb
+Formula: Median = middle value
+Field: Math / Statistics
+Vars: Median=tarteeb-war data ka beech wala (n ajeeb) ya do beechon ka ausat (n jaisa)
+Detail: Data ko tarteeb do; beech wali value median hai. n even ho to do beech values ka ausat.
+Sawal: Mode (mutaadi) — mode mutaadi sab se zyada mode
+Formula: Mode = most frequent value
+Field: Math / Statistics
+Vars: Mode=sab se zyada dafa aane wali value
+Detail: Mode = data me sab se zyada martaba aane wali value (ek se zyada bhi ho sakti hain).
+Sawal: Range (hadd-o-faasla) — range hadd faasla data phailao
+Formula: R = Max - Min
+Field: Math / Statistics
+Vars: Max=sab se bari value; Min=sab se chhoti value; R=range
+Detail: Range = max − min — data ki sab se sadi paimaish-e-pheilaav.
+Sawal: Variance (tawallun) — variance tawallun data bikhar
+Formula: Var = S2 / n
+Field: Math / Statistics
+Vars: S2=har value ka (x − mean)² ka jama; n=t-daad; Var=variance
+Detail: Variance = mean se farqon ke square ka ausat — data ka bikharao.
+Sawal: Standard Deviation (miyari inhiraf) — standard deviation miyari inhiraf sd bikhar
+Formula: SD = sqrt(Var)
+Field: Math / Statistics
+Vars: Var=variance; SD=standard deviation
+Detail: SD = √variance — data mean ke ird-gird kitna phaila hai, unhi units me.
+Sawal: Empirical relation (tajurbi taluq) — empirical relation tajurbi taluq mean mode median
+Formula: Mean - Mode = 3 * (Mean - Median)
+Field: Math / Statistics
+Vars: Mean,Median,Mode=data ke teen ausat
+Detail: Halka-khewa (moderately skew) data me: Mean − Mode = 3(Mean − Median).
+Sawal: Z-score (z score miyari) — z score miyari darja standard score
+Formula: Z = (x - Mean) / SD
+Field: Math / Statistics
+Vars: x=value; Mean=data ka mean; SD=standard deviation; Z=kitne SD door
+Detail: Z-score batata hai value mean se kitne SD door hai (z-table se ihtimal nikaalte hain).
+
+===== MATH: MATRICES (Maatriks) =====
+Sawal: 2x2 determinant (mustaqil) — 2x2 determinant mustaqil maatriks
+Formula: D = a * d - b * c
+Field: Math / Matrices
+Vars: maatriks rows [[a,b],[c,d]]; D=determinant
+Detail: 2×2 maatriks ka determinant: ad − bc.
+Sawal: 2x2 inverse (makus maatriks) — 2x2 inverse makus maatriks ulta
+Formula: I = (1 / D) * d
+Field: Math / Matrices
+Vars: D=determinant (ad−bc); I=inverse ka paimaish-gun; matrix [[a,b],[c,d]] → [[d,−b],[−c,a]]/D
+Detail: Inverse: [[d,−b],[−c,a]] ÷ (ad−bc). Sirf tab jab D ≠ 0 (singular = jarr-bila-hal).
+Sawal: Singular matrix (jarr-bila-hal) — singular matrix jarr bila hal determinant zero
+Formula: D = 0
+Field: Math / Matrices
+Vars: D=determinant
+Detail: Determinant 0 = singular maatriks — uska inverse nahi banta, nizam-e-muadalat ke hal makhsoos hote hain.
+Sawal: Cramer rule (cramer usool) — cramer usool nizam hal nizaam
+Formula: x = D1 / D
+Field: Math / Matrices
+Vars: D=coefficient determinant; D1=x ke sath constants badal kar bana determinant; x=hal
+Detail: Cramer: x = D₁/D, y = D₂/D (2×2 nizam ax+by=e, cx+dy=f ke liye), jab D ≠ 0.
+
+===== MATH: SERIES & NUMBERS (Silsile) =====
+Sawal: Sum of first n numbers (pehle n ka jama) — sum first n numbers pehle jama natural
+Formula: S = n * (n + 1) / 2
+Field: Math / Series
+Vars: n=kitne numbers (1 se n tak); S=jama
+Detail: 1+2+…+n = n(n+1)/2. Misaal: 1 se 100 = 5050.
+Sawal: Sum of first n odd numbers (tajveeb ka jama) — sum odd numbers tajveeb jama pehle
+Formula: S = n^2
+Field: Math / Series
+Vars: n=kitne ajeeb (odd) numbers; S=jama
+Detail: Pehle n ajeeb numbers ka jama = n². Misaal: 1+3+5+7 = 16 = 4².
+Sawal: Sum of first n even numbers (jooj ka jama) — sum even numbers jooj jama pehle
+Formula: S = n * (n + 1)
+Field: Math / Series
+Vars: n=kitne jooj (even) numbers; S=jama
+Detail: Pehle n even numbers (2+4+…+2n) ka jama = n(n+1).
+Sawal: Sum of squares (murabbaat ka jama) — sum squares murabbaat jama
+Formula: S = n * (n + 1) * (2 * n + 1) / 6
+Field: Math / Series
+Vars: n=kitne numbers; S=1²+2²+…+n²
+Detail: Murabbaat ka jama: n(n+1)(2n+1)/6.
+Sawal: Sum of cubes (mukaab ka jama) — sum cubes mukaab jama
+Formula: S = (n * (n + 1) / 2)^2
+Field: Math / Series
+Vars: n=kitne numbers; S=1³+2³+…+n³
+Detail: Mukaab ka jama = [n(n+1)/2]² — jama-ka-ka-jama ka murabba! Nicomachus ka theorem.
+
+===== MATH: COMPLEX NUMBERS (Murakkab Aadad) =====
+Sawal: Imaginary unit i (khayali ikai) — imaginary unit i khayali ikai
+Formula: i^2 = -1
+Field: Math / Complex
+Vars: i=imaginary ikai (√−1)
+Detail: i = √−1, isi liye i² = −1; i³ = −i; i⁴ = 1 (chakr chalti hai).
+Sawal: Modulus of complex (murakkab maqdar) — modulus complex murakkab maqdar z
+Formula: M = sqrt(a^2 + b^2)
+Field: Math / Complex
+Vars: z=a+bi; M=|z| (modulus)
+Detail: z = a+bi ka modulus: |z| = √(a²+b²) — asal-mehwar se faasla.
+Sawal: Conjugate product (murakkab conjugate) — conjugate product murakkab conjugate
+Formula: C = a^2 + b^2
+Field: Math / Complex
+Vars: z=a+bi; C=z·z̄
+Detail: z·z̄ = |z|² = a² + b² — conjugate se modulus nikaalna.
+Sawal: Euler formula (euler usool) — euler formula euler usool exponential
+Formula: e^(i * th) = cos(th) + i * sin(th)
+Field: Math / Complex
+Vars: th=zaviya (radians); e=2.71828…
+Detail: Euler ka usool: e^(iθ) = cosθ + i·sinθ — math ka sab se khoobsurat formula.
+Sawal: De Moivre theorem (de moivre usool) — de moivre theorem usool quwwat
+Formula: (cos(th) + i * sin(th))^n = cos(n * th) + i * sin(n * th)
+Field: Math / Complex
+Vars: th=zaviya; n=quwwat
+Detail: De Moivre: complex number ki quwwat nikaalne ka usool.
+
+===== PHYSICS: MECHANICS (Mekanik — Harakat-o-Quwwat) =====
+Sawal: Speed (raftaar) — speed raftaar faasla waqt
+Formula: v = d / t
+Field: Physics / Mechanics
+Vars: d=distance (faasla, meter); t=time (waqt, second); v=speed (raftaar, m/s)
+Detail: Raftaar = faasla ÷ waqt. Misaal: 100 m 20 s me → 5 m/s.
+Sawal: Average velocity (ausat surat) — average velocity ausat surat displace
+Formula: v = dd / dt
+Field: Physics / Mechanics
+Vars: dd=displacement (hilao-faasla); dt=waqt ka farq; v=ausat velocity
+Detail: Ausat surat = kul displacement ÷ kul waqt (velocity rakmi hai — simt rakhti hai).
+Sawal: Acceleration (izdiyaad-e-surat) — acceleration izdiyaad surat sabr shatroo
+Formula: a = (v - u) / t
+Field: Physics / Mechanics
+Vars: u=shuruqi velocity; v=aakhri velocity; t=waqt; a=acceleration (m/s²)
+Detail: Izdiyaad-e-surat = velocity ki tabdeeli ÷ waqt = (v−u)/t.
+Sawal: First equation of motion (pehla qanoon harakat) — first equation motion pehla qanoon v=u+at
+Formula: v = u + a * t
+Field: Physics / Mechanics
+Vars: u=initial velocity; a=acceleration; t=time; v=final velocity
+Detail: Harakat ka pehla muadal: v = u + at (barabar-izdiyaad acceleration ke liye).
+Sawal: Second equation of motion (doosra qanoon) — second equation motion doosra qanoon s=ut+half
+Formula: s = u * t + 0.5 * a * t^2
+Field: Physics / Mechanics
+Vars: s=distance (faasla); u,a,t=jaise upar
+Detail: Doosra muadal: s = ut + ½at².
+Sawal: Third equation of motion (teesra qanoon) — third equation motion teesra qanoon v2-u2
+Formula: v^2 = u^2 + 2 * a * s
+Field: Physics / Mechanics
+Vars: u,v,a,s=jaise upar
+Detail: Teesra muadal: v² = u² + 2as (waqt ke baghair velocity-faasla taluq).
+Sawal: Projectile time of flight (qazafiya waqt) — projectile time flight qazafiya uchhal
+Formula: T = 2 * u * sin(th) / g
+Field: Physics / Mechanics
+Vars: u=launch velocity; th=launch angle (radians); g=9.81 (constant); T=waqt-e-udaan
+Detail: Qazafiya (projectile) ki kul udaan-ka-waqt: T = 2u·sinθ/g.
+Sawal: Projectile max height (qazafiya bulandi) — projectile max height qazafiya azeem bulandi
+Formula: H = u^2 * sin(th)^2 / (2 * g)
+Field: Physics / Mechanics
+Vars: u,th,g=jaise upar; H=azeem bulandi
+Detail: Sab se unchi bulandi: H = u²sin²θ/(2g).
+Sawal: Projectile range (qazafiya marhala) — projectile range qazafiya marhala faasla
+Formula: R = u^2 * sin(2 * th) / g
+Field: Physics / Mechanics
+Vars: u=velocity; th=angle; g=gravity constant (9.81); R=range (faasla)
+Detail: Udan ka marhala: R = u²sin2θ/g — 45° par sab se zyada.
+Sawal: Newton second law (newton doosra qanoon) — newton second law doosra qanoon force quwwat
+Formula: F = m * a
+Field: Physics / Mechanics
+Vars: m=mass (wazni-miyaar, kg); a=acceleration (m/s²); F=force (quwwat, Newton)
+Detail: Qanoon-e-doveem: F = ma — quwwat wazni-miyaar × izdiyaad-e-surat. Misaal: m=10, a=3 → F=30 N.
+Sawal: Weight (wazan) — weight wazan gravity thakel
+Formula: W = m * g
+Field: Physics / Mechanics
+Vars: m=mass (kg); g=gravity (constant 9.81 m/s²); W=weight (Newton)
+Detail: Wazan = mg — gravity ki kashish. Mass har jagah same, wazan jagah ke hisaab se badalta hai.
+Sawal: Momentum (harkat-miyaar) — momentum harkat miyaar p mv
+Formula: p = m * v
+Field: Physics / Mechanics
+Vars: m=mass; v=velocity; p=momentum (kg·m/s)
+Detail: Harkat-miyaar: p = mv — vector miyaar (simt rakhta hai).
+Sawal: Impulse (dastak-thakka) — impulse dastak thakka force time
+Formula: J = F * t
+Field: Physics / Mechanics
+Vars: F=force; t=contact waqt; J=impulse (N·s) = momentum ki tabdeeli
+Detail: Dastak (impulse) = F×t = Δp (momentum ki tabdeeli).
+Sawal: Conservation of momentum (harkat-miyaar hifz) — conservation momentum hifz harkat miyaar takrao
+Formula: m1 * u1 + m2 * u2 = m1 * v1 + m2 * v2
+Field: Physics / Mechanics
+Vars: m1,m2=masses; u1,u2=pehle velocities; v1,v2=baad ki velocities
+Detail: Band-shuda nizam me kul momentum hifz rehta hai (takrao ke pehle = baad).
+Sawal: Friction force (rakawan quwwat) — friction rakawan quwwat ragar normal
+Formula: f = mu * N
+Field: Physics / Mechanics
+Vars: mu=coefficient of friction (rakawan-tanasub); N=normal reaction (quwwat)
+Detail: Ragar ki quwwat: f = μN — satah ki khurdari aur dabao par munhasir.
+Sawal: Centripetal acceleration (markazi izdiyaad) — centripetal acceleration markazi izdiyaad daire
+Formula: a = v^2 / r
+Field: Physics / Mechanics
+Vars: v=tangential velocity; r=dairay ka radius; a=centripetal acceleration
+Detail: Dairay me ghoomte hue markaz ki taraf izdiyaad-e-surat: v²/r.
+Sawal: Centripetal force (markazi quwwat) — centripetal force markazi quwwat ghoomna
+Formula: F = m * v^2 / r
+Field: Physics / Mechanics
+Vars: m=mass; v=velocity; r=radius; F=centripetal force
+Detail: Daire-maarg ke liye zaroori markaz-kash quwwat: mv²/r.
+Sawal: Angular velocity (zaviyai surat) — angular velocity zaviyai surat omega ghoomna
+Formula: w = v / r
+Field: Physics / Mechanics
+Vars: v=tangential velocity; r=radius; w=angular velocity (omega, rad/s)
+Detail: Zaviyai surat: ω = v/r = 2πf.
+Sawal: Angular acceleration (zaviyai izdiyaad) — angular acceleration zaviyai izdiyaad alpha
+Formula: al = (w2 - w1) / t
+Field: Physics / Mechanics
+Vars: w1,w2=shuru/aakhir angular velocity; t=waqt; al=angular acceleration (rad/s²)
+Detail: Zaviyai surat ki tabdeeli ki raftaar.
+Sawal: Torque (paich-quwwat) — torque paich quwwat moment r f
+Formula: tau = r * F * sin(th)
+Field: Physics / Mechanics
+Vars: r=arm ka lamba faasla (pivot se); F=force; th=darmiyani zaviya; tau=torque (N·m)
+Detail: Ghumaane ki quwwat: τ = rF·sinθ — wrench jaisa (lambi arm = zyada torque).
+Sawal: Moment of inertia (wazni-lahaza) — moment of inertia wazni lahaza ghoomna mazammat
+Formula: I = m * r^2
+Field: Physics / Mechanics
+Vars: m=mass; r=axis se faasla; I=moment of inertia (kg·m²)
+Detail: Nuqta-wazni ka inertia (ghoomne ki mukhalfat): I = mr² (jism-shakl ke hisaab se formula badalta hai).
+Sawal: Angular momentum (zaviyai harkat) — angular momentum zaviyai harkat miyaar
+Formula: L = I * w
+Field: Physics / Mechanics
+Vars: I=moment of inertia; w=angular velocity; L=angular momentum
+Detail: Zaviyai harkat-miyaar: L = Iω — band nizam me hifz rehta hai (figure-skater ka khel).
+Sawal: Rotational kinetic energy (ghoomti harkati quwwat) — rotational kinetic energy ghoomti harkati
+Formula: KE = 0.5 * I * w^2
+Field: Physics / Mechanics
+Vars: I=inertia; w=angular velocity; KE=rotational KE (Joule)
+Detail: Ghoomne ki harkati-quwwat: ½Iω².
+Sawal: Work (kaam) — work kaam quwwat faasla joule
+Formula: W = F * d * cos(th)
+Field: Physics / Mechanics
+Vars: F=force; d=displacement; th=darmiyani zaviya; W=work (Joule)
+Detail: Kaam = F·d·cosθ — quwwat ke simti-hisse ka kaam. θ=90° → kaam zero.
+Sawal: Kinetic energy (harkati quwwat) — kinetic energy harkati quwwat raftar
+Formula: KE = 0.5 * m * v^2
+Field: Physics / Mechanics
+Vars: m=mass; v=velocity; KE=harkati quwwat (Joule)
+Detail: Raftar ki quwwat: KE = ½mv². Misaal: m=2 kg, v=3 m/s → 9 J.
+Sawal: Potential energy gravity (imkani quwwat) — potential energy imkani quwwat bulandi mgh
+Formula: PE = m * g * h
+Field: Physics / Mechanics
+Vars: m=mass; g=gravity constant (9.81); h=height (bulandi); PE=potential energy (J)
+Detail: Bulandi ki jama-shuda quwwat: PE = mgh.
+Sawal: Spring potential energy (chashni imkani) — spring potential energy chashni imkani kx
+Formula: PE = 0.5 * k * x^2
+Field: Physics / Mechanics
+Vars: k=spring constant (N/m); x=extension (tanao); PE=spring quwwat
+Detail: Chashni me jama quwwat: ½kx².
+Sawal: Work-energy theorem (kaam-quwwat usool) — work energy theorem kaam quwwat usool
+Formula: W = KE2 - KE1
+Field: Physics / Mechanics
+Vars: W=kul kaam; KE1,KE2=shuru/aakhir kinetic energy
+Detail: Jism par kiya gaya kul kaam = uski kinetic energy ki tabdeeli.
+Sawal: Power (quwwat-e-kar) — power quwwat kar joule per second watt
+Formula: P = W / t
+Field: Physics / Mechanics
+Vars: W=work (J); t=time (s); P=power (Watt, W)
+Detail: Quwwat-e-kar = kaam ÷ waqt. Doosra roop: P = Fv.
+Sawal: Efficiency (kaar-aamad) — efficiency kaar aamad machine hasil
+Formula: Eff = (Out / In) * 100
+Field: Physics / General
+Vars: Out=output energy/kaam (nateeja); In=input energy; Eff=kaar-aamad %
+Detail: Kisi bhi machine ki kaar-aamad: (nateeja ÷ input) × 100. 100% mumkin nahi — kuch kharaab/gharmi me jata hai.
+Sawal: Hooke law (hooke qanoon) — hooke qanoon chashni tanao f kx
+Formula: F = k * x
+Field: Physics / Mechanics
+Vars: k=spring constant; x=extension; F=restoring quwwat
+Detail: Chashni (elastic) limit ke andar: F = kx — tanao quwwat ke mutanasib.
+Sawal: Stress (tanab) — stress tanab dabao area f a
+Formula: St = F / A
+Field: Physics / Mechanics
+Vars: F=force; A=cross-section raqba (m²); St=stress (Pa)
+Detail: Tanab (stress) = quwwat ÷ raqba — unit raqba par dabao.
+Sawal: Strain (khinchaav) — strain khinchaav lambai tabdeeli
+Formula: Sr = dL / L
+Field: Physics / Mechanics
+Vars: dL=lambai ki tabdeeli; L=asli lambai; Sr=strain (unit-less)
+Detail: Khinchaav (strain) = tabdeeli-lambai ÷ asli-lambai — nisbat, koi unit nahi.
+Sawal: Young modulus (young miyaar) — young modulus miyaar lachak stress strain
+Formula: Y = (F * L) / (A * dL)
+Field: Physics / Mechanics
+Vars: F,L,A,dL=jaise stress/strain me; Y=Young modulus (Pa)
+Detail: Young modulus = stress ÷ strain — material ki saakhti (steel ≈ 2×10¹¹ Pa).
+Sawal: Pressure (dabao) — pressure dabao force area
+Formula: P = F / A
+Field: Physics / Fluids
+Vars: F=perpendicular force; A=raqba (m²); P=pressure (Pascal = N/m²)
+Detail: Dabao = quwwat ÷ raqba. Chhurri tez patli ho (chhota A) → zyada pressure.
+Sawal: Pressure with depth (gehrai dabao) — pressure depth gehrai paani liquid
+Formula: P = rho * g * h
+Field: Physics / Fluids
+Vars: rho=density (kg/m³); g=gravity constant (9.81); h=gehrai; P=dabao
+Detail: Maia-gehrai h par dabao: ρgh. Hamesha (har simt me) barabar asar karta hai.
+Sawal: Density (kasaafat) — density kasaafat mass volume
+Formula: rho = m / V
+Field: Physics / General
+Vars: m=mass (kg); V=volume (m³); rho=density (kg/m³)
+Detail: Kasaafat = wazni-miyaar ÷ hajm. Paani = 1000 kg/m³; hawa ≈ 1.2.
+Sawal: Archimedes buoyancy (arkmidus shanaavari) — archimedes buoyancy shanaavari tairna quwwat
+Formula: Fb = rho * g * V
+Field: Physics / Fluids
+Vars: rho=maia ki density; g=gravity; V=displaced hajm; Fb=buoyant quwwat
+Detail: Arshmidus: tairne wale jism par upar ki quwwat = hataye gaye maia ka wazan.
+Sawal: Pascal law hydraulic (pasqal qanoon) — pascal law hydraulic pasqal qanoon press dabao
+Formula: F1 / A1 = F2 / A2
+Field: Physics / Fluids
+Vars: F1,A1=chhote piston; F2,A2=baray piston
+Detail: Band maia me dabao har simt me barabar phailta hai — hydraulic jack isi par chalta hai.
+Sawal: Bernoulli principle (burnoli usool) — bernoulli principle burnoli usool hawa raftaar
+Formula: P + 0.5 * rho * v^2 + rho * g * h = constant
+Field: Physics / Fluids
+Vars: P=pressure; rho=density; v=velocity; h=height
+Detail: Behte maia me: raftaar badhe → dabao ghat jata hai (hawai-jahaz parand ka asool).
+
+===== PHYSICS: GRAVITATION (Kashish-e-Asmani) =====
+Sawal: Newton law of gravitation (newton kashish) — newton gravitation kashish qanoon asmani
+Formula: F = G * m1 * m2 / r^2
+Field: Physics / Gravitation
+Vars: m1,m2=masses (kg); r=markazon ka faasla; G=6.674e-11 (constant); F=quwwat (N)
+Detail: Har do jism kashish karte hain: F = Gm₁m₂/r² — faasla dugna → quwwat chauthai.
+Sawal: Gravity at surface (satah ki giryat) — gravity surface satah giryat g jaise
+Formula: g = G * M / R^2
+Field: Physics / Gravitation
+Vars: G=6.674e-11 (constant); M=polith ki mass; R=polith ka radius; g=gravity acceleration
+Detail: Satah par gravity: g = GM/R². Zameen par 9.81 m/s²; chand par ≈ 1.6.
+Sawal: Orbital velocity (madaari surat) — orbital velocity madaari surat satellite mansoob
+Formula: v = sqrt(G * M / r)
+Field: Physics / Gravitation
+Vars: G,M=markaz (polith) ke liye; r=madaari radius; v=orbital speed
+Detail: Madaar (orbit) me rukne ki surat: v = √(GM/r). Zameen ke qareeb ≈ 7.9 km/s.
+Sawal: Escape velocity (fraar surat) — escape velocity fraar surat kashish bhagna
+Formula: Ve = sqrt(2 * G * M / r)
+Field: Physics / Gravitation
+Vars: G,M,r=jaise upar; Ve=escape speed
+Detail: Kashish se hameshgi ke liye surat: √(2GM/r). Zameen par ≈ 11.2 km/s.
+Sawal: Gravitational potential energy (kashishi imkani) — gravitational potential kashishi imkani quwwat
+Formula: U = -G * m1 * m2 / r
+Field: Physics / Gravitation
+Vars: m1,m2,r,G=jaise upar; U=gravitational PE (manfi = bandha hua)
+Detail: Kashishi imkani-quwwat: U = −Gm₁m₂/r (∞ par zero liya jata hai).
+Sawal: Kepler third law (kaipalar teesra) — kepler third law kaipalar teesra madaari waqt
+Formula: T^2 / r^3 = constant
+Field: Physics / Gravitation
+Vars: T=madaari period (waqt); r=madaari radius
+Detail: Kaipalar-3: T² ∝ r³ — door ke madaar aahista ghoomte hain (nizam-e-shamsi me sab sach).
+
+===== PHYSICS: THERMODYNAMICS (Ilm-e-Hararat) =====
+Sawal: Celsius to Kelvin (salcius se kalvin) — celsius kelvin tabdeeli hararat temperature
+Formula: K = C + 273.15
+Field: Physics / Thermodynamics
+Vars: C=temperature °C; K=temperature Kelvin
+Detail: Kalvin = salcius + 273.15. 0 K = absolute zero (−273.15°C).
+Sawal: Fahrenheit to Celsius (faranhait se salcius) — fahrenheit celsius tabdeeli hararat
+Formula: C = (F - 32) * 5 / 9
+Field: Physics / Thermodynamics
+Vars: F=°F; C=°C
+Detail: (F − 32) × 5/9. Misaal: 98.6°F (jism) = 37°C.
+Sawal: Celsius to Fahrenheit (salcius se faranhait) — celsius fahrenheit tabdeeli hararat
+Formula: F = (C * 9 / 5) + 32
+Field: Physics / Thermodynamics
+Vars: C=°C; F=°F
+Detail: F = (C × 9/5) + 32. Misaal: 100°C = 212°F (paani ka ubaal).
+Sawal: Specific heat (khususi hararat) — specific heat khususi hararat q mc t
+Formula: Q = m * c * dT
+Field: Physics / Thermodynamics
+Vars: m=mass; c=specific heat (J/kg·K); dT=hararat tabdeeli; Q=harara (Joule)
+Detail: Hararat tabdeeli ke liye chahiye: Q = mcΔT. Paani ka c = 4186 J/kg·K (sab se zyada).
+Sawal: Latent heat (pinhan hararat) — latent heat pinhan hararat halijan ubaal
+Formula: Q = m * L
+Field: Physics / Thermodynamics
+Vars: m=mass; L=latent heat (J/kg); Q=hararat (halijan/ubaal ke liye)
+Detail: Halat tabdeeli me hararat lagta hai magar hararat NAHI badalti: Q = mL. Barf ka Lf = 3.34e5, bhaap ka Lv = 2.26e6 J/kg.
+Sawal: Linear expansion (khati tankush) — linear expansion khati tankush lambai garmi
+Formula: dL = al * L * dT
+Field: Physics / Thermodynamics
+Vars: al=linear expansion coefficient (1/K); L=asli lambai; dT=hararat farq; dL=lambai izafa
+Detail: Garami se chizain phailti hain: ΔL = αLΔT (railway-gap isi liye hota hai).
+Sawal: Volume expansion (hajmi tankush) — volume expansion hajmi tankush tankush garmi
+Formula: dV = be * V * dT
+Field: Physics / Thermodynamics
+Vars: be=volume coefficient (≈3α); V=asli hajm; dT=hararat farq; dV=hajm izafa
+Detail: Hajmi phailao: ΔV = βVΔT, β ≈ 3α.
+Sawal: Ideal gas law (mazeed-gas qanoon) — ideal gas law mazeed gas qanoon pv nrt
+Formula: P * V = n * R * T
+Field: Physics / Thermodynamics
+Vars: P=pressure (Pa); V=volume (m³); n=moles; R=8.314 (constant); T=temperature (Kelvin!)
+Detail: Mazeed-gas qanoon: PV = nRT — 3 gazon ke mashroo qawaneen ka jama.
+Sawal: Boyle law (boyle qanoon) — boyle qanoon boyle pressure volume isothermal
+Formula: P1 * V1 = P2 * V2
+Field: Physics / Thermodynamics
+Vars: P1,V1=shuru; P2,V2=baad (T constant)
+Detail: Boyle: constant T par P ∝ 1/V — hawa dabao → hajm ghat.
+Sawal: Charles law (charles qanoon) — charles qanoon charles volume temperature
+Formula: V1 / T1 = V2 / T2
+Field: Physics / Thermodynamics
+Vars: V1,V2=hajm; T1,T2=Kelvin temperature (P constant)
+Detail: Charles: constant P par V ∝ T — garam gas phailta hai.
+Sawal: Gay-Lussac law (gay-lusak qanoon) — gay lussac qanoon pressure temperature
+Formula: P1 / T1 = P2 / T2
+Field: Physics / Thermodynamics
+Vars: P1,P2=pressure; T1,T2=Kelvin (V constant)
+Detail: Band vessel me garmi → dabao barhta hai (tyre garmi me phool jati hai).
+Sawal: Work by gas (gas ka kaam) — work by gas gas kaam pressure volume
+Formula: W = P * dV
+Field: Physics / Thermodynamics
+Vars: P=constant pressure; dV=hajm tabdeeli; W=kaam (J)
+Detail: Gas ka phailao-kaam: W = PΔV (barograph/PV-graph ke neeche raqba).
+Sawal: First law thermodynamics (pehla qanoon) — first law thermodynamics pehla qanoon energy
+Formula: dU = Q - W
+Field: Physics / Thermodynamics
+Vars: dU=andruni quwwat tabdeeli; Q=di gayi hararat; W=gas se kiya kaam
+Detail: Quwwat ki hifz: andruni-quwwat izafa = di hararat − kiya kaam. Quwwat paida nahi hoti, sirf badalti hai.
+Sawal: Heat engine efficiency (hararat-mashin kaar-aamad) — heat engine efficiency hararat mashin kaar aamad
+Formula: Eff = (1 - Q2 / Q1) * 100
+Field: Physics / Thermodynamics
+Vars: Q1=li hararat; Q2=lautai hararat; Eff=%
+Detail: Hararat-mashin kabhi 100% nahi — kuch hararat hamesha thanda hisse me jati hai.
+Sawal: Carnot efficiency (karno kaar-aamad) — carnot efficiency karno kaar aamad azeem
+Formula: Eff = (1 - T2 / T1) * 100
+Field: Physics / Thermodynamics
+Vars: T1=sourc Kelvin; T2=sink Kelvin; Eff=azeem mumkin %
+Detail: Karno (ideal) kaar-aamad: 1 − T₂/T₁ — hararat-farq jitna zyada, mashin utni behtar.
+Sawal: Entropy (inshiraj) — entropy inshiraj rashan tabdeeli
+Formula: dS = Q / T
+Field: Physics / Thermodynamics
+Vars: Q=hararat tabdeeli; T=Kelvin hararat; dS=entropy tabdeeli (J/K)
+Detail: Entropy = be-tarteebi ka paimaish — kunain (universe) ka entropy hamesha barhta hai (qanoon-2).
+Sawal: Heat conduction (hararat rawangi) — heat conduction hararat rawangi rawangi q
+Formula: H = k * A * dT / L
+Field: Physics / Thermodynamics
+Vars: k=thermal conductivity; A=cross raqba; dT=hararat farq; L=lambai; H=hararat raftaar (W)
+Detail: Chhaat (conduction) se hararat rawangi: H = kAΔT/L — loha k achhe chalak, lakri ghat.
+
+===== PHYSICS: WAVES, SHM & SOUND (Maujein aur Awaz) =====
+Sawal: Wave equation (mauji muadal) — wave equation mauji muadal v f lambda mauj
+Formula: v = f * lam
+Field: Physics / Waves
+Vars: f=frequency (Hertz); lam=wavelength (lambda, m); v=wave speed (m/s)
+Detail: Mauji muadal: v = fλ — har mauj ke liye sach (roshni, awaz, paani sab).
+Sawal: Frequency period relation (dour-o-tadaad) — frequency period dour tadaad t f
+Formula: T = 1 / f
+Field: Physics / Waves
+Vars: T=period (ek mauj ka waqt, s); f=frequency (Hz)
+Detail: Dour (period) aur tadaad-e-mauj (frequency) aapas me makus: T = 1/f.
+Sawal: SHM displacement (mutawaazan harakat) — shm displacement mutawaazan harakat x a cos
+Formula: x = A * cos(w * t)
+Field: Physics / SHM
+Vars: A=amplitude (faasla); w=angular frequency (rad/s); t=waqt; x=displacement
+Detail: Sadah-harakat-e-tawazun (SHM): x = A·cos(ωt) — pendulum/chashni jaisi harakat.
+Sawal: SHM max velocity (afla surat) — shm max velocity afla surat aw
+Formula: Vmax = A * w
+Field: Physics / SHM
+Vars: A=amplitude; w=angular frequency; Vmax=sab se tez velocity (markaz par)
+Detail: SHM me sab se tez velocity markaz par: Vmax = Aω.
+Sawal: Spring period (chashni dour) — spring period chashni dour t 2pi sqrt mk
+Formula: T = 2 * pi * sqrt(m / k)
+Field: Physics / SHM
+Vars: m=mass; k=spring constant; T=period
+Detail: Chashni-jhoole ka dour: T = 2π√(m/k) — gravity se mukhtaas, sirf m aur k par.
+Sawal: Simple pendulum (sada pendulum) — simple pendulum sada pendulum dour t 2pi sqrt lg
+Formula: T = 2 * pi * sqrt(L / g)
+Field: Physics / SHM
+Vars: L=lambai (meter); g=gravity constant (9.81); T=period (dour)
+Detail: Pendulum ka dour: T = 2π√(L/g) — mass par munhasir NAHI; ghanti ke lambai se badalta hai.
+Sawal: Wave speed on string (doree par mauj) — wave speed string doree par mauj tanao
+Formula: v = sqrt(Tt / mu)
+Field: Physics / Waves
+Vars: Tt=tanao (tension, N); mu=mass per unit lambai (kg/m); v=wave speed
+Detail: Doree (string) par mauj ki raftaar: √(T/μ) — tanao zyada → mauj tez (veena/sitar).
+Sawal: Sound intensity level (awaz shiddat) — sound intensity level awaz shiddat decibel bel
+Formula: Be = 10 * log10(I / I0)
+Field: Physics / Sound
+Vars: I=intensity (W/m²); I0=1e-12 (sunne ki hadd); Be=level (decibel dB)
+Detail: Awaz ka paimana (dB): 10·log₁₀(I/I₀). Har 10 dB = shiddat 10 guna.
+Sawal: Doppler effect approaching (doppler qareeb) — doppler effect qareeb doppler awaz siren
+Formula: F2 = F1 * (v + Vo) / (v - Vs)
+Field: Physics / Sound
+Vars: F1=asli frequency; v=awaz speed; Vo=mehtaram (observer) ki surat (qareeb); Vs=sarot (source) ki surat (qareeb); F2=sooni frequency
+Detail: Doppler (qareeb aate hue): frequency sunai zyada deti hai — sireen qareeb aate tez lagti hai.
+Sawal: Doppler effect receding (doppler door) — doppler effect door doppler awaz jata
+Formula: F2 = F1 * (v - Vo) / (v + Vs)
+Field: Physics / Sound
+Vars: F1=asli; v=awaz speed; Vo,Vs=door jaane ki suratein; F2=sooni
+Detail: Door jaate hue frequency kam sunai deti hai — sireen guzarne ke baad dheemi.
+Sawal: Beats (dhankein) — beats dhankein do awaz frequency farq
+Formula: Fb = abs(F1 - F2)
+Field: Physics / Sound
+Vars: F1,F2=do nazdeek frequencies; Fb=beats per second
+Detail: Do nazdeek awazein mil kar dhankein (beats) banati hain — dhankein ki tadaad = |f₁ − f₂| (instrument-tune me kaam aati hai).
+Sawal: String harmonics (doree sur) — string harmonics doree sur fundamental sargam
+Formula: Fn = n * V / (2 * L)
+Field: Physics / Sound
+Vars: n=harmonic number (1,2,3…); V=wave speed; L=doree lambai; Fn=harmonic frequency
+Detail: Doree ke sur: fₙ = nV/2L — fundamental (n=1) aur uske gune (harmonics) — sargam ka asool.
+
+===== PHYSICS: ELECTRICITY & MAGNETISM (Bijli-o-Magnet) =====
+Sawal: Coulomb law (colomb qanoon) — coulomb law colomb qanoon charge quwwat bijli
+Formula: F = k * q1 * q2 / r^2
+Field: Physics / Electricity
+Vars: q1,q2=charges (Coulomb); r=faasla; k=8.99e9 (constant); F=quwwat (N)
+Detail: Do charges ki kashish/ikhtilaf: F = kq₁q₂/r² — gravity jaisa, magar quwwat bohat zyada.
+Sawal: Electric field point charge (bijli maidan) — electric field bijli maidan point charge
+Formula: E = k * q / r^2
+Field: Physics / Electricity
+Vars: q=charge; r=faasla; k=8.99e9 (constant); E=field strength (N/C)
+Detail: Nuqta-charge ka maidan (field): E = kq/r² — charge se door kamzor.
+Sawal: Electric field definition (maidan tareef) — electric field definition maidan tareef e f q
+Formula: E = F / q
+Field: Physics / Electricity
+Vars: F=charge par quwwat; q=charge (test); E=field (N/C)
+Detail: Maidan ki tareef: unit charge par quwwat: E = F/q.
+Sawal: Electric potential (bijli imkani) — electric potential bijli imkani voltage point
+Formula: V = k * q / r
+Field: Physics / Electricity
+Vars: q=charge; r=faasla; k=8.99e9 (constant); V=potential (Volt)
+Detail: Nuqta-charge ka imkani-farq: V = kq/r (scalar — jama ho jata hai).
+Sawal: Capacitance (tahfeemi) — capacitance tahfeemi capacitor q v
+Formula: C = Q / V
+Field: Physics / Electricity
+Vars: Q=charge stored; V=voltage; C=capacitance (Farad)
+Detail: Tahfeem (capacitor) ki gunga: C = Q/V — kitna charge 1 Volt par samaan.
+Sawal: Parallel plate capacitance (mutawaazi plate) — parallel plate capacitance mutawaazi plate tahfeemi
+Formula: C = eps0 * A / d
+Field: Physics / Electricity
+Vars: eps0=8.854e-12 (constant); A=plate raqba; d=plates ka faasla; C=capacitance
+Detail: Mutawaazi plates: C = ε₀A/d — raqba zyada/faasla kam → zyada capacitance.
+Sawal: Capacitor energy (tahfeemi quwwat) — capacitor energy tahfeemi quwwat cv2
+Formula: U = 0.5 * C * V^2
+Field: Physics / Electricity
+Vars: C=capacitance; V=voltage; U=jama quwwat (J)
+Detail: Capacitor me jama quwwat: ½CV².
+Sawal: Capacitors in series (silsla tahfeemi) — capacitors series silsla tahfeemi jor
+Formula: 1 / C = 1 / C1 + 1 / C2
+Field: Physics / Electricity
+Vars: C1,C2=do capacitors; C=kul (equivalent)
+Detail: Silsile (series) me capacitance GHAATTI hai: 1/C = 1/C₁ + 1/C₂.
+Sawal: Capacitors in parallel (mutawaazi tahfeemi) — capacitors parallel mutawaazi tahfeemi jor
+Formula: C = C1 + C2
+Field: Physics / Electricity
+Vars: C1,C2=do capacitors; C=kul
+Detail: Mutawaazi (parallel) me capacitance jama hoti hai — resistor ka ULTA.
+Sawal: Electric current (bijli rawan) — electric current bijli rawan charge waqt ampere
+Formula: I = Q / t
+Field: Physics / Electricity
+Vars: Q=charge (Coulomb); t=waqt (s); I=current (Ampere)
+Detail: Current = charge ka rawan: I = Q/t. 1 A = 1 C/s.
+Sawal: Ohm law (ohm qanoon) — ohm law ohm qanoon voltage current resistance
+Formula: V = I * R
+Field: Physics / Electricity
+Vars: V=voltage (Volt); I=current (Ampere); R=resistance (Ohm)
+Detail: Ohm ka qanoon: V = IR — circuit ka buniyadi qanoon. Misaal: 12V, 4Ω → I=3A.
+Sawal: Resistance formula (muzahamat) — resistance muzahamat rho lambai raqba
+Formula: R = rho * L / A
+Field: Physics / Electricity
+Vars: rho=resistivity (material ki); L=lambai; A=cross raqba; R=resistance
+Detail: Tar ki muzahamat: R = ρL/A — lambi-patla tar = zyada muzahamat.
+Sawal: Resistors in series (silsila muzahamat) — resistors series silsla muzahamat jor
+Formula: R = R1 + R2
+Field: Physics / Electricity
+Vars: R1,R2=do resistors; R=kul
+Detail: Silsile (series) me muzahamat jama hoti hai.
+Sawal: Resistors in parallel (mutawaazi muzahamat) — resistors parallel mutawaazi muzahamat
+Formula: 1 / R = 1 / R1 + 1 / R2
+Field: Physics / Electricity
+Vars: R1,R2=do resistors; R=kul (equivalent)
+Detail: Mutawaazi (parallel) me kul muzahamat GHAAT jati hai (1/R jama).
+Sawal: Electric power VI (bijli quwwat) — electric power bijli quwwat vi watt
+Formula: P = V * I
+Field: Physics / Electricity
+Vars: V=voltage; I=current; P=power (Watt)
+Detail: Bijli ki quwwat: P = VI. Doosre roop: P = I²R = V²/R.
+Sawal: Electric power I2R — electric power i2r bijli quwwat garmi
+Formula: P = I^2 * R
+Field: Physics / Electricity
+Vars: I=current; R=resistance; P=heat power (W)
+Detail: Tar me garmi ki quwwat: P = I²R (heater/bulb-filament isi se garam).
+Sawal: Electric power V2R — electric power v2r bijli quwwat
+Formula: P = V^2 / R
+Field: Physics / Electricity
+Vars: V=voltage; R=resistance; P=power
+Detail: P = V²/R — voltage fix ho to R zyada → power kam.
+Sawal: Electrical energy kWh (bijli tadaad) — electrical energy bijli tadaad kwh unit
+Formula: E = P * t
+Field: Physics / Electricity
+Vars: P=power (Watt); t=waqt (second); E=energy (Joule); kWh = P(kW)×t(hour)
+Detail: Bijli ka unit: 1 kWh = 3.6e6 J — meter isi se chalta hai.
+Sawal: EMF internal resistance (mahzooz muzahamat) — emf internal resistance mahzooz muzahamat cell
+Formula: V = Emf - I * r
+Field: Physics / Electricity
+Vars: Emf=cell ki mahzooz-quwwat; r=andruni muzahamat; I=current; V=terminal voltage
+Detail: Cell ke bahar voltage = emf − Ir (andruni muzahamat ka nuqsan).
+Sawal: Lorentz force (lorenc quwwat) — lorentz force lorenc quwwat charge magnet
+Formula: F = q * v * B * sin(th)
+Field: Physics / Magnetism
+Vars: q=charge; v=velocity; B=magnetic field (Tesla); th=zaviya; F=quwwat (N)
+Detail: Magnetic-maidan me chalte charge par quwwat: F = qvB·sinθ (simt: right-hand rule).
+Sawal: Force on current wire (tar par quwwat) — force current wire tar par quwwat magnet
+Formula: F = B * I * L * sin(th)
+Field: Physics / Magnetism
+Vars: B=field; I=current; L=tar ki lambai (field me); th=zaviya; F=quwwat
+Detail: Current-wala tar magnet me dakhela: F = BIL·sinθ (motor ka asool).
+Sawal: Field of long wire (lambe tar ka maidan) — field long wire lambe tar maidan bijli
+Formula: B = mu0 * I / (2 * pi * r)
+Field: Physics / Magnetism
+Vars: mu0=1.257e-6 (constant); I=current; r=faasla; B=field (T)
+Detail: Seedhe lambe tar ka magnetic-maidan: B = μ₀I/2πr — gird-gard (circular) lines.
+Sawal: Solenoid field (suleinai maidan) — solenoid field suleinai maidan coil lop
+Formula: B = mu0 * n * I
+Field: Physics / Magnetism
+Vars: n=turns per meter (lappet-dar-mitaar); I=current; mu0=1.257e-6 (constant); B=andar field
+Detail: Suleinai (coil) ke andar ek-jaisa maidan: B = μ₀nI — electromagnet.
+Sawal: Faraday law (farade qanoon) — faraday law farade qanoon induction emf
+Formula: Emf = -N * dphi / dt
+Field: Physics / Magnetism
+Vars: N=coil turns; dphi/dt=magnetic flux ki tabdeeli raftaar; Emf=imkani-farq
+Detail: Farade (induction): flux badle to EMF paida hoti hai — generator ka asool. Manfi nishaan = Lenz (mukhalfat).
+Sawal: Motional EMF (harakati mahzooz) — motional emf harakati mahzooz rod field
+Formula: Emf = B * L * v
+Field: Physics / Magnetism
+Vars: B=field; L=rod lambai; v=velocity (field ke saamne); Emf=imkani-farq
+Detail: Field me chalne wali rod: EMF = BLv — rail-dor ka mashhoor masla.
+Sawal: Transformer (mubaddal) — transformer mubaddal bijli voltage nisbat
+Formula: Vs / Vp = Ns / Np
+Field: Physics / Electricity
+Vars: Vp,Np=pehlu (primary); Vs,Ns=doosra (secondary)
+Detail: Mubaddal: V ∝ turns — Ns zyada = step-up (pahiye: power W same rehti hai).
+Sawal: RMS voltage (musaawi jarr) — rms voltage musaawi jarr peak bijli
+Formula: Vrms = Vpeak / sqrt(2)
+Field: Physics / Electricity
+Vars: Vpeak=choti (peak) voltage; Vrms=effectif (RMS) value
+Detail: AC ka asar-RMS: V/√2. Ghar ka 220V RMS hai — peak ≈ 311V.
+Sawal: Inductive reactance (lahazi muzahamat) — inductive reactance lahazi muzahamat xl
+Formula: XL = 2 * pi * f * L
+Field: Physics / AC
+Vars: f=frequency; L=inductance (Henry); XL=reactance (Ohm)
+Detail: Coil ki AC-muzahamat: XL = 2πfL — frequency zyada → rukawat zyada.
+Sawal: Capacitive reactance (tahfeemi muzahamat) — capacitive reactance tahfeemi muzahamat xc
+Formula: XC = 1 / (2 * pi * f * C)
+Field: Physics / AC
+Vars: f=frequency; C=capacitance; XC=reactance (Ohm)
+Detail: Capacitor ki AC-rukawat: XC = 1/(2πfC) — frequency zyada → rukawat KAM (ulta).
+Sawal: Impedance RLC (mane muzahamat) — impedance rlc mane muzahamat z
+Formula: Z = sqrt(R^2 + (XL - XC)^2)
+Field: Physics / AC
+Vars: R=resistance; XL,XC=reactances; Z=impedance (Ohm)
+Detail: RLC circuit ki kul rukawat: Z = √(R² + (X_L−X_C)²).
+Sawal: Resonance frequency (gunj tadaad) — resonance frequency gunj tadaad rlc tank
+Formula: F0 = 1 / (2 * pi * sqrt(L * C))
+Field: Physics / AC
+Vars: L=inductance; C=capacitance; F0=resonance frequency
+Detail: Gunj (resonance): XL = XC par — radio-tuning isi par chalta hai.
+
+===== PHYSICS: OPTICS (Ilm-ul-Manazir) =====
+Sawal: Refractive index (inkasir miyaar) — refractive index inkasir miyaar n c v
+Formula: n = c / v
+Field: Physics / Optics
+Vars: c=roshni ki speed (constant 3e8); v=maia me speed; n=refractive index
+Detail: Inkasir-miyaar: n = c/v — maia me roshni aahisti (paani n=1.33, sheesha 1.5).
+Sawal: Snell law (snel qanoon) — snell law snel qanoon inkasir zaviya
+Formula: n1 * sin(th1) = n2 * sin(th2)
+Field: Physics / Optics
+Vars: n1,n2=maia ke indices; th1,th2=zawaye (normal se)
+Detail: Snel ka qanoon: roshni maia badle to mudil (bend) hoti hai — n sinθ constant.
+Sawal: Critical angle (haddi zaviya) — critical angle haddi zaviya mukammal inikas
+Formula: sin(thc) = 1 / n
+Field: Physics / Optics
+Vars: n=maia ka index (ghane se halki taraf); thc=critical angle
+Detail: θ se zyada haddi zaviya par mukammal-andaroni inikas (TIR) — optic-fiber ka asool.
+Sawal: Lens formula (adaasa muadal) — lens formula adaasa muadal 1f 1v 1u
+Formula: 1 / f = 1 / v - 1 / u
+Field: Physics / Optics
+Vars: f=focal length; v=image faasla; u=object faasla (manfi convention)
+Detail: Adaasa (lens) muadal: 1/f = 1/v − 1/u — image ki jagah nikaalna.
+Sawal: Lens magnification (adaasa Bareek) — lens magnification adaasa bareek taseer
+Formula: M = v / u
+Field: Physics / Optics
+Vars: v=image faasla; u=object faasla; M=magnification
+Detail: Bareek-namai (magnification): M = v/u — kitna bara taseer bana.
+Sawal: Mirror formula (aaina muadal) — mirror formula aaina muadal 1f 1v 1u
+Formula: 1 / f = 1 / v + 1 / u
+Field: Physics / Optics
+Vars: f=focal length; v=image; u=object (concave: f>0)
+Detail: Aaine ka muadal: 1/f = 1/v + 1/u (spherical mirrors).
+Sawal: Mirror magnification (aaina bareek) — mirror magnification aaina bareek taseer
+Formula: M = -v / u
+Field: Physics / Optics
+Vars: v,u=faasle; M=magnification (manfi = ulta taseer)
+Detail: Aaine ki bareek-namai: M = −v/u.
+Sawal: Lens power (adaasa quwwat) — lens power adaasa quwwat diopter
+Formula: P = 1 / f
+Field: Physics / Optics
+Vars: f=focal length (meter); P=power (Dioptre)
+Detail: Adaasa ki quwwat: P = 1/f (dioptre) — chaashma number isi ka hai.
+Sawal: Lenses in contact (jore adaase) — lenses contact jore adaase combination
+Formula: 1 / f = 1 / f1 + 1 / f2
+Field: Physics / Optics
+Vars: f1,f2=do adaase; f=kul focal
+Detail: Mila hua jor: quwwatein jama hoti hain: P = P₁ + P₂.
+Sawal: Diffraction grating (munfatil jali) — diffraction grating munfatil jali mauj roshni
+Formula: d * sin(th) = n * lam
+Field: Physics / Optics
+Vars: d=slits ka faasla; th=zaviya; n=order; lam=wavelength
+Detail: Jali (grating) se roshni ka batjao: dsinθ = nλ — rangon ka hijaab.
+Sawal: Brewster angle (bruistar zaviya) — brewster angle bruistar zaviya polarize
+Formula: n = tan(thB)
+Field: Physics / Optics
+Vars: n=refractive index; thB=Brewster angle
+Detail: Is zaviya par tabakas (reflection) poora qutbi (polarized) — sunglasses ka asool.
+
+===== PHYSICS: MODERN PHYSICS (Jadid Fizik) =====
+Sawal: Mass energy equivalence (mass quwwat) — mass energy equivalence mass quwwat e mc2 einstein
+Formula: E = m * c^2
+Field: Physics / Modern
+Vars: m=mass (kg); c=3e8 (constant roshni ki raftaar); E=quwwat (Joule)
+Detail: Einstein: mass aur quwwat ek jaan hain — E = mc². Misaal: 1 kg mass ≈ 9e16 J (atom-bomb/nuclear-plant ka asool).
+Sawal: Binding energy (bandhan quwwat) — binding energy bandhan quwwat nucleus mass defect
+Formula: BE = dm * c^2
+Field: Physics / Modern
+Vars: dm=mass defect (nuqsaan, kg); c=3e8 (constant); BE=bandhan quwwat (J)
+Detail: Nucleus ke mass-nuqsan se bandhan-quwwat: BE = Δm·c² — nucleus ko jorne wali quwwat.
+Sawal: Photon energy (photon quwwat) — photon quwwat roshni hf planck
+Formula: E = h * f
+Field: Physics / Modern
+Vars: h=6.626e-34 (constant Planck); f=frequency (Hz); E=photon quwwat (J)
+Detail: Roshni ka bund (photon): E = hf — frequency zyada → photon zabardast (blue > red).
+Sawal: Photon energy wavelength (photon lembi) — photon wavelength lembi hc lambda roshni
+Formula: E = h * c / lam
+Field: Physics / Modern
+Vars: h=Planck constant (6.626e-34); c=roshni raftaar constant (3e8); lam=wavelength (m); E=photon energy
+Detail: E = hc/λ — chhoti wavelength → zyada quwwat.
+Sawal: Photoelectric equation (roshni-bijli muadal) — photoelectric equation roshni bijli muadal einstein
+Formula: h * f = Phi + KE
+Field: Physics / Modern
+Vars: hf=photon quwwat; Phi=nikas (work-function, metal ki); KE=photon-ejected ki harkati quwwat
+Detail: Photon ka kam-surat hissa metal chhodne me lagta hai: hf = φ + KE_max — Einstein ka Nobel-wala kaam.
+Sawal: De Broglie wavelength (de broglie lembi) — de broglie wavelength de broglie lembi matter mauj
+Formula: lam = h / (m * v)
+Field: Physics / Modern
+Vars: h=constant; m=mass; v=velocity; lam=matter wavelength
+Detail: Har cheezein mauj bhi hai: λ = h/mv — electron ke bare me bohat ahem (microscope me istemal).
+Sawal: Bohr energy levels (bohr satah) — bohr energy levels bohr satah atom electron
+Formula: En = -13.6 / n^2
+Field: Physics / Modern
+Vars: n=level number (1,2,3…); En=level quwwat (eV)
+Detail: Hydrogen-atom ke satah: En = −13.6/n² eV — n=1 ground (−13.6 eV), ∞ par 0.
+Sawal: Rydberg formula (ridberg muadal) — rydberg formula ridberg muadal spectral khatt
+Formula: 1 / lam = R * (1 / n1^2 - 1 / n2^2)
+Field: Physics / Modern
+Vars: R=1.097e7 (constant); n1,n2=levels; lam=emitted roshni ki wavelength
+Detail: Hydrogen ke spectral-khatt: 1/λ = R(1/n₁² − 1/n₂²) — rangon ki pehchaan.
+Sawal: Radioactive decay law (shua-inhiraf qanoon) — radioactive decay law shua inhiraf qanoon n n0
+Formula: N = N0 * e^(-lam * t)
+Field: Physics / Modern
+Vars: N0=shuru nuclei; lam=decay constant; t=waqt; N=baaqi nuclei
+Detail: Radioactive toot: N = N₀e^(−λt) — aahista-aahista kam hota hai.
+Sawal: Half life (aadhi zindagi) — half life aadhi zindagi t half decay
+Formula: Th = 0.693 / lam
+Field: Physics / Modern
+Vars: lam=decay constant; Th=half-life (aadhi zindagi ka waqt)
+Detail: Aadhi zindagi: 0.693/λ — har Th me aadha material tootta hai (carbon-dating ka asool).
+Sawal: Heisenberg uncertainty (haizanberg ghair-yaqeeni) — heisenberg uncertainty haizanberg ghair yaqeeni principle
+Formula: dx * dp = h / (4 * pi)
+Field: Physics / Modern
+Vars: dx=position ghair-yaqeeni; dp=momentum ghair-yaqeeni; h=Planck constant (6.626e-34)
+Detail: Jagah aur harkat-miyaar ek sath mu-aayan pakka nahi — dx·dp ≥ h/4π (quantom ki buniyad).
+
+===== PHYSICS: BUNYADI SAWANIH (Constants) =====
+Sawal: Speed of light (roshni raftaar) — speed of light roshni raftaar c constant
+Formula: c = 299792458
+Field: Physics / Constants
+Vars: c=roshni ki raftaar (m/s) — kunain ki hadd
+Detail: c = 2.998e8 m/s ≈ 3,00,000 km/s — koi cheez isse tez nahi (Einstein ka usool).
+Sawal: Gravity acceleration (girya aavur) — gravity acceleration girya aavur g zameen
+Formula: g = 9.81
+Field: Physics / Constants
+Vars: g=zameen ki gravity (m/s²)
+Detail: g ≈ 9.81 m/s² — har second raftaar 9.81 m/s barhti hai (mukta girne par).
+Sawal: Gravitational constant (kashishi sabit) — gravitational constant kashishi sabit g bada
+Formula: G = 6.674e-11
+Field: Physics / Constants
+Vars: G=universal kashishi constant (N·m²/kg²)
+Detail: G = 6.674×10⁻¹¹ — kashish bohat kamzor si hai, magar hamesha mehfooz.
+Sawal: Planck constant (planck sabit) — planck constant planck sabit h quantam
+Formula: h = 6.626e-34
+Field: Physics / Constants
+Vars: h=Planck constant (J·s)
+Detail: h = 6.626×10⁻³⁴ J·s — quantam-duniya ka paimana (E = hf me aata hai).
+Sawal: Elementary charge (buniyadi charge) — elementary charge buniyadi charge electron
+Formula: Ec = 1.602e-19
+Field: Physics / Constants
+Vars: Ec=electron/proton ka charge (Coulomb)
+Detail: e = 1.602×10⁻¹⁹ C — sab se chhota charge-bund (quantum of charge).
+Sawal: Electron mass (electron wazni) — electron mass electron wazni me
+Formula: Me = 9.109e-31
+Field: Physics / Constants
+Vars: Me=electron mass (kg)
+Detail: Electron ka mass = 9.109×10⁻³¹ kg — proton se ~1836 guna halka.
+Sawal: Proton mass (proton wazni) — proton mass proton wazni mp
+Formula: Mp = 1.673e-27
+Field: Physics / Constants
+Vars: Mp=proton mass (kg)
+Detail: Proton mass = 1.673×10⁻²⁷ kg — nucleus ka bhaari hissa.
+Sawal: Coulomb constant (colomb sabit) — coulomb constant colomb sabit k
+Formula: K = 8.988e9
+Field: Physics / Constants
+Vars: K=Coulomb constant (N·m²/C²) = 1/(4πε₀)
+Detail: K = 8.99×10⁹ — bijli-kashish ka zor-yar (F = kq₁q₂/r²).
+Sawal: Vacuum permittivity (khaali-rizq) — vacuum permittivity khaali rizq eps0
+Formula: Eps0 = 8.854e-12
+Field: Physics / Constants
+Vars: eps0=vacuum permittivity (F/m)
+Detail: ε₀ = 8.854×10⁻¹² F/m — khali-fiza bijli-maidan ko kitna rakh-ti hai.
+Sawal: Vacuum permeability (khaali-nufuz) — vacuum permeability khaali nufuz mu0
+Formula: Mu0 = 1.257e-6
+Field: Physics / Constants
+Vars: mu0=vacuum permeability (T·m/A)
+Detail: μ₀ = 4π×10⁻⁷ — khali-fiza magnetic-maidan ka nufuz.
+Sawal: Avogadro number (avogadro aadaad) — avogadro number avogadro aadaad mole
+Formula: Na = 6.022e23
+Field: Physics / Constants
+Vars: Na=Avogadro number (per mole)
+Detail: Nₐ = 6.022×10²³ — ek mole me itne bund (particles).
+Sawal: Gas constant (gas sabit) — gas constant gas sabit r
+Formula: R = 8.314
+Field: Physics / Constants
+Vars: R=universal gas constant (J/mol·K)
+Detail: R = 8.314 — PV = nRT me aata hai.
+Sawal: Boltzmann constant (boltzman sabit) — boltzmann constant boltzman sabit kb
+Formula: Kb = 1.381e-23
+Field: Physics / Constants
+Vars: kb=Boltzmann constant (J/K)
+Detail: kb = R/Nₐ = 1.381×10⁻²³ — har bund ki hararat-quwwat ka paimana.
+Sawal: Stefan constant (stefan sabit) — stefan constant stefan sabit sigma radiation
+Formula: Sigma = 5.67e-8
+Field: Physics / Constants
+Vars: sigma=Stefan-Boltzmann constant (W/m²·K⁴)
+Detail: σ = 5.67×10⁻⁸ — garam jism ki chapkaav (radiation): P = σAeT⁴.
+Sawal: Atmospheric pressure (fiza dabao) — atmospheric pressure fiza dabao hawa atm
+Formula: Atm = 101325
+Field: Physics / Constants
+Vars: Atm=1 atmosphere (Pa)
+Detail: 1 atm = 101325 Pa ≈ 1 kg har cm² par — hawa hum par yahi bojh rakhti hai.
+

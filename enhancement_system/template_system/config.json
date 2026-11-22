@@ -1,0 +1,41 @@
+{
+  "category": "template_system",
+  "description": "Comprehensive template library",
+  "file_types": [
+    "angular",
+    "c",
+    "cpp",
+    "css",
+    "doc",
+    "docx",
+    "env",
+    "go",
+    "html",
+    "ini",
+    "java",
+    "js",
+    "json",
+    "jsx",
+    "md",
+    "node",
+    "pdf",
+    "php",
+    "py",
+    "rb",
+    "react",
+    "rs",
+    "toml",
+    "ts",
+    "tsx",
+    "txt",
+    "vue",
+    "xml",
+    "yaml",
+    "yml"
+  ],
+  "templates": [
+    "template_engine.py",
+    "template_library.py",
+    "template_generator.py"
+  ]
+}

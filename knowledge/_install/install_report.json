@@ -1,0 +1,50 @@
+{
+ "quran_ok": 308,
+ "quran_skip": 181,
+ "quran_err": 0,
+ "quran_banned": 3,
+ "hadith_ok": 0,
+ "hadith_err": 0,
+ "forbidden_hits": {
+  "quran/yor-shaykhaburahima": "mirza ghulam"
+ },
+ "bytes": 566490080,
+ "corpus": [
+  {
+   "book": "bukhari",
+   "hadiths": 7580,
+   "bytes": 4615316
+  },
+  {
+   "book": "muslim",
+   "hadiths": 7360,
+   "bytes": 3712802
+  },
+  {
+   "book": "abudawud",
+   "hadiths": 5272,
+   "bytes": 2550385
+  },
+  {
+   "book": "tirmidhi",
+   "hadiths": 3926,
+   "bytes": 1860082
+  },
+  {
+   "book": "nasai",
+   "hadiths": 5679,
+   "bytes": 2477017
+  },
+  {
+   "book": "ibnmajah",
+   "hadiths": 4340,
+   "bytes": 1777831
+  },
+  {
+   "book": "malik",
+   "hadiths": 1818,
+   "bytes": 1328583
+  }
+ ],
+ "secs": 898.1
+}

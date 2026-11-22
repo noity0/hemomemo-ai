@@ -1,0 +1,506 @@
+Sawal: video engine kya karta hai
+Jawab: prompt parse karke scene banata hai, har frame numpy se render hota hai, aur ffmpeg pipe se mp4 banta hai. Sab 100% local hai.
+Sawal: video max duration kitni hai
+Jawab: 5 seconds se 50 minutes tak. MIN_DUR 5.0 aur MAX_DUR 3000.0 hai.
+Sawal: video resolution kitni hai
+Jawab: final 1280x720 at 24 fps. Andar supersample 1600x900 pe render ho kar LANCZOS se niche la raha hai.
+Sawal: video engine kya use karta hai
+Jawab: sirf numpy, PIL aur ffmpeg. Koi AI API, koi cloud, koi key nahi.
+Sawal: prompt scene kaise control karta hai
+Jawab: prompt ke lafz _prompt_overrides se scene element chunte hain: birds, rain, snow, lightning, city, stars, meteor, halo, fog.
+Sawal: birds likhne par kya hota hai
+Jawab: V-shaped parinde sky me uarte hain - 13px wings yak-sath phail kar.
+Sawal: barish likhne par kya hota hai
+Jawab: 22px slanted rain streaks aate hain - 16px main aur 6px tail.
+Sawal: bijli likhne par kya hota hai
+Jawab: lightning schedule ban jati hai aur sky me foran carkh roshni bolti hai.
+Sawal: barfbari likhne par kya hota hai
+Jawab: soft snow sprites girte hain gaussian core ke sath.
+Sawal: city likhne par kya hota hai
+Jawab: dark buildings + colorful bokeh discs (cyan magenta amber green white) aati hai.
+Sawal: sitaray likhne par kya hota hai
+Jawab: 1600 stars render hote hain - default 850 se ziyada.
+Sawal: suraj kaise render hota hai
+Jawab: gaussian core + wide glow + pillar glare ka prebaked patch hota hai - u16 premultiplied blend.
+Sawal: halo kya hai
+Jawab: chand ke gird soft ring - winter style me prebaked patch.
+Sawal: fog likhne par kya hota hai
+Jawab: scene fog 0.10 barh jata hai - range 0.22 se 0.75 lover clamp.
+Sawal: supersample kya hai
+Jawab: 1600x900 pe render phir 1280x720 pe LANCZOS - 2x anti-aliasing asli lens jaisi.
+Sawal: film LUT kya hai
+Jawab: per-style gamma table jo scene filmic grade deti hai (1.10 se 1.34).
+Sawal: chromatic aberration kya hai
+Jawab: red channel +1 aur blue channel -1 ripple - lens ka asli thandak-farq.
+Sawal: motion blur hota kaise
+Jawab: pichle uint16 frame aur current ka average - halka temporal softness.
+Sawal: bloom kya hai
+Jawab: highlights saifeed 232 se ooper bleed karte hain - thriler blur + PIL screen.
+Sawal: vignette kya hai
+Jawab: kunno par halka dapthi - lens ki naram parade, u16 multiply.
+Sawal: film grain kya hai
+Jawab: per shot 4 int16 grain pools, har frame par panchayat - zamin film ki asli texture.
+Sawal: letterbox kya hai
+Jawab: ooper-niche 2.39:1 kaale bands (7.5% height) - cinematic frame hota hai.
+Sawal: 50 minute video kaise ban jati hai
+Jawab: MAX_DUR 3000 hai - user hukum: 50 minutes tak allowed.
+Sawal: shots kya hote hain video me
+Jawab: har shot apna camera + seed + palette - aur 0.7 second cross-fade transition.
+Sawal: chota video single-shot kunon hoti
+Jawab: 12 second se kam duration hai to n_shots=1 - seaml3ss single shot.
+Sawal: cross-fade kya hota hai
+Jawab: shot-ant pin 0.7 s bevell agla shot al-weight sath floac wa blen hota hai.
+Sawal: ffmpeg encode kaise hota hai
+Jawab: rawvideo rgb24 stdin pipe, libx264 veryfast crf 19, yuv420p, faststart.
+Sawal: raw file kun nahi hoti
+Jawab: 50 min raw 720p file 250GB ke barabar hoti - frames seedha pipe jate hain, disk par kabhi nahi.
+Sawal: video filename kaise banta hai
+Jawab: hemomemo_%d.mp4 - hash FNV-1a (prompt|dur) mod 1000000.
+Sawal: video QA kaise hota hai
+Jawab: _qa_video.py 25 checks - mp4 magic, duration, size, fps, speed walls, styles, no raw, no API strings.
+Sawal: QA speed limit actionable
+Jawab: 10s video wall limit 240s, 60s video wall limit 900s - measured 528ms/frame as basis.
+Sawal: QA check-3 kya check karta hai
+Jawab: source me urllib/socket/http jaisi diwar-taraf strings NAHI hota - 100% local law.
+Sawal: QA check-20 kya hai
+Jawab: koi .raw file baqi NAHI - pipe-engine ka faith.
+Sawal: golden style kya hai
+Jawab: warm sunset sky, soft sun glow, hazier horizon, hills, birds aur water-glint.
+Sawal: neon style kya hai
+Jawab: night city, purple clouds, colorful round bokeh discs, moon - shahri raat.
+Sawal: storm style kya hai
+Jawab: gray rain streaks, dark ridges, moody sky, lightning flashes.
+Sawal: winter style kya hai
+Jawab: barf particles, bund aura, moon halo, cold blue palette.
+Sawal: ocean style kya hai
+Jawab: water-line blue, fog, sun-glint, headlands, aur door birds.
+Sawal: noir style kya hai
+Jawab: high contrast mono, dark tone, ziyada grain.
+Sawal: space style kya hai
+Jawab: raat sky me stars + nebula muqaddash shade aur deep blues.
+Sawal: dawn dusk night kya hain
+Jawab: subah hot pink-orange, shaam purple-amber, raat dark-blue styles.
+Sawal: desert forest kya schemes hain
+Jawab: desert warm-mycean khali plain, forest green me dark ridges aur fog.
+Sawal: still_preview kya hai
+Jawab: pehla-frame PNG preview, prompt overrides ke sath - app Video tab me.
+Sawal: video tab app me kya hai
+Jawab: duration + fps + style select karke generate button dabaya jata hai.
+Sawal: video honesty kaise qaim hai
+Jawab: har QA check PASS/FAIL sach, walls real-measured, margins documented - no fake.
+Sawal: coding brain kya hai
+Jawab: 49 canonical languages ka template engine - prompt se asli program locally banata hai.
+Sawal: c++ me hello ka code
+Jawab: iostream include karke std::cout << "hello" std::endl main function me.
+Sawal: python me hello ka code
+Jawab: print("hello") ek hi line main wal.
+Sawal: rust me hello ka code
+Jawab: fn main() { println!("hello"); } - modern fast systems language.
+Sawal: cobol me hello ka code
+Jawab: IDENTIFICATION + PROCEDURE DIVISION me DISPLAY "hello".
+Sawal: assembly me hello
+Jawab: write syscall rax=1 rdi=1 msg_len rsi se - linux x86-64.
+Sawal: kon si languages available hain
+Jawab: 49 languages: python c++ c csharp java javascript typescript go rust php ruby swift kotlin dart lua perl bash powershell r matlab sql html css json yaml scala haskell julia fortran pascal basic zig nim crystal elixir clojure erlang ocaml assembly cobol prolog lisp delphi objectivec aur aur.
+Sawal: concept sawal ko coding kun nahi
+Jawab: "what is/explain/kya hai" wale alfaz par brain ilm-jawab deta hai - code-banane ka order alag cheez hai.
+Sawal: coding answer kahan banta hai
+Jawab: TokenBrain.wjw _code() function me template + escaping handling.
+Sawal: HTML animation ka code
+Jawab: style-tag CSS keyframes + div block - animated html template.
+Sawal: Code QA kaise hota hai
+Jawab: test_code_gen.py - c++ iostream cout, python print, csharp WriteLine, asm syscall, cobol DISPLAY.
+Sawal: kon sa organ code samajhta hai
+Jawab: model/tokenize + model/understand + model/generate - sub apna system local.
+Sawal: tasks system kya hai
+Jawab: agent/tasks.py TaskSystem - sekho (learn) aur kaam (multi-step plan + report).
+Sawal: sekho kaise kaam karta hai
+Jawab: "sekho sawal = jawab" likho - token-think karke episodic memory + tasks file dono me save.
+Sawal: kaam itjihat kya hai
+Jawab: "kaam x phir y..." multi-step plan banata hai, step-by-step chalata, ant me imandari report.
+Sawal: test_gamebot_50qa kya hai
+Jawab: GameBot 50-check honest test suite - orders parse, eye synthetic frames, hand safety, menu strings.
+Sawal: token brain kya hai
+Jawab: model/tokenize.py word_tokens + understand() - har sawal token ke sath parse hota hai.
+Sawal: episodic memory kya hai
+Jawab: data/memory/episodic.jsonl - har baat timestamp ke sath append hoti hai (append-only).
+Sawal: brain version file kya hai
+Jawab: data/brain_version.json - published version + sha256 + filename.
+Sawal: update brain kya karta hai
+Jawab: owner manifest read -> version compare -> download -> sha256 verify -> install (fail-closed).
+Sawal: brain link me internet kis kam aata
+Jawab: sirf owner-files npz + manifest download. Koi AI API nahi. App offline bhi chalti hai.
+Sawal: GameBot menu kya hai
+Jawab: [1] MC-JOIN [2] MC-DUO [3] PC-DIRECT [4] PC-WATCH [5] BROWSER [0] KHATAM.
+Sawal: MC protocol kaise hai
+Jawab: raw socket: VarInt framing + handshake STATE_LOGIN + login start - protocol 763 (Minecraft 1.20.1), koi SDK nahi.
+Sawal: chat order kaise milta hai
+Jawab: chat packet list (0x30 0x31 0x64 0x6F) se log 50 items, "Hemomemo chal" filter + orders.py parse.
+Sawal: ghum 180 kya hota
+Jawab: yaw 180 degree turn look packet se.
+Sawal: MC-DUO kya hai
+Jawab: 2 kirdar ek sath server par join - 0.5 second gap - dono local-dimagh wale.
+Sawal: pc eye kya karta hai
+Jawab: screen grab + 4x4 brightness grid + dominant color + motion detect numpy sath.
+Sawal: pc hand kya karta hai
+Jawab: ctypes SendInput keyboard + mouse_event - pure Windows API.
+Sawal: ESC stop kaise hota hai
+Jawab: GetAsyncKeyState VK_ESC 0x1B & 0x8000 - foran stop hifazat pehle.
+Sawal: Obscura browser kya hai
+Jawab: Rust headless browser, local CDP port 9222, fetch/screenshot/mcp commands.
+Sawal: offline kaise chalta hai
+Jawab: dimagh local, local API host-only, browser local CDP - internet sirf owner-brain sync ke liye.
+Sawal: no API law kya hai
+Jawab: koi openai/anthropic/gemini/groq api key nahi - sara dimagh numpy py own (net_guard + offline oath blocks).
+Sawal: sha256 verify kya hai brain me
+Jawab: Get-FileHash SHA256 == manifest sha256, warna fail-closed (tmp delete, install nahi).
+Sawal: 24/7 brain connection kaise
+Jawab: owner ki published file always remote (Pages/Netlify + GitHub release) - local app whenever online foran naya brain.
+Sawal: package deep link kya hai
+Jawab: GameBot exe desktop-app folder me rehta hai aur wahi model/ + data/ istemal karta hai - ek hi dimagh.
+Sawal: package me kya kya aata hai
+Jawab: main app exe, GameBot exe, START bat, UPDATE-BRAIN bat, VERIFY bat, model/, data/, PROTECTED manifest sha256, README.
+Sawal: local API kya hai
+Jawab: 127.0.0.1:8790 (host-only) - /v1/chat - signup local - PBKDF2 hemo keys - 3 free per user.
+Sawal: multi-task dimagh kaise
+Jawab: wahi token-ilm + episodic + corpus + task system sab interleaved data-memory structure me.
+Sawal: append only kun
+Jawab: episodic jsonl "a" mode, tasks corpus "a" mode, checkpoints naya file - kabhi koi purana data delete nahi.
+Sawal: hardest ilm kya hota
+Jawab: multi-step math + physics + logic puzzles + plan tree - step-dar-step + honest report (ant se aghaz tak).
+Sawal: math ke maan kaise bante
+Jawab: variables r=5 E=mc2 parse - token numbers + kitab routing + representative steps.
+Sawal: live training kya hai
+Jawab: live_plasticity chat-turn micro-updates, hemomaster_chat.npz alag stream, cooldown + busy guard.
+Sawal: training timeline kya
+Jawab: corpus grow -> 2h micro-train -> checkpoint epoch save -> owner manifest publish -> users UPDATE-BRAIN -> sab jagah new dimagh.
+Sawal: overfit kaise bachte hain
+Jawab: window stride + random shuffe + lr sched monotonically down (0.010 -> 0.004) - generalization qaim.
+Sawal: user ka app online hota to kya hota hai
+Jawab: UPDATE-BRAIN check - naya version web pe? -> download + sha256 faal -> install aur read-only attract - brain fresh.
+Sawal: qa1000 BAD words kya hain
+Jawab: blocked AI-platform names kabhi output ya code me nahi aa sakte - no-API pakka (QA scan).
+Sawal: file locking kya hai
+Jawab: learn file append-only + atomic tmp-rename checkpoint saves - data integrity qaim.
+Sawal: virtual system training kya
+Jawab: People-package (users folder) me bhi corpus + episodic + checkpoints ki tarbiyat phail jati hai - ek hi dimagh jaisa.
+Sawal: brain publish kya karta hai owner
+Jawab: new hemomaster npz @ version epoch + brain_manifest.json (sha256, size, urls) repudiate Pages/Netlify + release.
+Sawal: API trap kitna hai
+Jawab: ZERO - sara system numpy PIL ffmpeg + own socket (Minecraft + local CDP only).
+Sawal: alien kya hai
+Jawab: alien ka matlab bahar-ki-uloom mein zindagi hai (extraterrestrial life) - jo zameen ke ilawa kisi aur planet par ho. Science ke paas iska pukhta saboot abhi nahi - Fermi paradox kehta hai galaxy barahum khali lagti hai. Sach yehi hai: ajnabi-uloom apni zindagat naye maqam mein mumkin hai, lekin 2026 tak koi asali-imanda ab tak nahi.
+Sawal: kya aliens zameen par aate hain
+Jawab: koi verified saboot nahi. U-S dekhne ke sau reports hain lekin science parunga check nahi hua ki in mein se ek ya kimmatwali chamakdw orna kis aasmaan ya hawa ki cheez hoti hai. Behatari zabaan false-feeling se doorimaan hai.
+Sawal: fermi paradox kya hai
+Jawab: physicist Enrico Fermi ka sawal: galaxy meaarab leans 100 billion+ sitaray hain, to yehi aeon samajh sakte hain ki jahaan hain sab aliens? Answer abhi nahi hai - possibility ek Great-Filter hai ya space-time dur hai.
+Sawal: black hole kya hai
+Jawab: itna dense jism ki escape velocity roshni ki raftaar se badkar hai - koi cheez wapas nahi jati. Event horizon usi ki surat hoti hai. Gravity phool ke barabar asar kaati hai.
+Sawal: gravity kya hai
+Jawab: Einstein ke mutabiq gravity mas-n ki space-time me kol hui twist hai. Newton ka formula F = G*m1*m2/r^2 - dekhne wali value se dour jalkar m dheelta hai.
+Sawal: extraterrestrial life search kaise hota hai
+Jawab: SETI radio-signal scan, exoplanets ke atmosphere me oxygen/methane bharpurchakha (JWST), aur Mars/Europa ke sample-analysis - sab science ki tool, koi banni-ghar nahi.
+
+Sawal: video engine kya karta hai
+Jawab: prompt parse karke scene banata hai, har frame numpy se render hota hai, aur ffmpeg pipe se mp4 banta hai. Sab 100% local hai.
+
+Sawal: video max duration kitni hai
+Jawab: 5 seconds se 50 minutes tak. MIN_DUR 5.0 aur MAX_DUR 3000.0 hai.
+
+Sawal: video resolution kitni hai
+Jawab: final 1280x720 at 24 fps. Andar supersample 1600x900 pe render ho kar LANCZOS se niche la raha hai.
+
+Sawal: video engine kya use karta hai
+Jawab: sirf numpy, PIL aur ffmpeg. Koi AI API, koi cloud, koi key nahi.
+
+Sawal: prompt scene kaise control karta hai
+Jawab: prompt ke lafz _prompt_overrides se scene element chunte hain: birds, rain, snow, lightning, city, stars, meteor, halo, fog.
+
+Sawal: birds likhne par kya hota hai
+Jawab: V-shaped parinde sky me uarte hain - 13px wings yak-sath phail kar.
+
+Sawal: barish likhne par kya hota hai
+Jawab: 22px slanted rain streaks aate hain - 16px main aur 6px tail.
+
+Sawal: bijli likhne par kya hota hai
+Jawab: lightning schedule ban jati hai aur sky me foran carkh roshni bolti hai.
+
+Sawal: barfbari likhne par kya hota hai
+Jawab: soft snow sprites girte hain gaussian core ke sath.
+
+Sawal: city likhne par kya hota hai
+Jawab: dark buildings + colorful bokeh discs (cyan magenta amber green white) aati hai.
+
+Sawal: sitaray likhne par kya hota hai
+Jawab: 1600 stars render hote hain - default 850 se ziyada.
+
+Sawal: suraj kaise render hota hai
+Jawab: gaussian core + wide glow + pillar glare ka prebaked patch hota hai - u16 premultiplied blend.
+
+Sawal: halo kya hai
+Jawab: chand ke gird soft ring - winter style me prebaked patch.
+
+Sawal: fog likhne par kya hota hai
+Jawab: scene fog 0.10 barh jata hai - range 0.22 se 0.75 lover clamp.
+
+Sawal: supersample kya hai
+Jawab: 1600x900 pe render phir 1280x720 pe LANCZOS - 2x anti-aliasing asli lens jaisi.
+
+Sawal: film LUT kya hai
+Jawab: per-style gamma table jo scene filmic grade deti hai (1.10 se 1.34).
+
+Sawal: chromatic aberration kya hai
+Jawab: red channel +1 aur blue channel -1 ripple - lens ka asli thandak-farq.
+
+Sawal: motion blur hota kaise
+Jawab: pichle uint16 frame aur current ka average - halka temporal softness.
+
+Sawal: bloom kya hai
+Jawab: highlights saifeed 232 se ooper bleed karte hain - thriler blur + PIL screen.
+
+Sawal: vignette kya hai
+Jawab: kunno par halka dapthi - lens ki naram parade, u16 multiply.
+
+Sawal: film grain kya hai
+Jawab: per shot 4 int16 grain pools, har frame par panchayat - zamin film ki asli texture.
+
+Sawal: letterbox kya hai
+Jawab: ooper-niche 2.39:1 kaale bands (7.5% height) - cinematic frame hota hai.
+
+Sawal: 50 minute video kaise ban jati hai
+Jawab: MAX_DUR 3000 hai - user hukum: 50 minutes tak allowed.
+
+Sawal: shots kya hote hain video me
+Jawab: har shot apna camera + seed + palette - aur 0.7 second cross-fade transition.
+
+Sawal: chota video single-shot kunon hoti
+Jawab: 12 second se kam duration hai to n_shots=1 - seaml3ss single shot.
+
+Sawal: cross-fade kya hota hai
+Jawab: shot-ant pin 0.7 s bevell agla shot al-weight sath floac wa blen hota hai.
+
+Sawal: ffmpeg encode kaise hota hai
+Jawab: rawvideo rgb24 stdin pipe, libx264 veryfast crf 19, yuv420p, faststart.
+
+Sawal: raw file kun nahi hoti
+Jawab: 50 min raw 720p file 250GB ke barabar hoti - frames seedha pipe jate hain, disk par kabhi nahi.
+
+Sawal: video filename kaise banta hai
+Jawab: hemomemo_%d.mp4 - hash FNV-1a (prompt|dur) mod 1000000.
+
+Sawal: video QA kaise hota hai
+Jawab: _qa_video.py 25 checks - mp4 magic, duration, size, fps, speed walls, styles, no raw, no API strings.
+
+Sawal: QA speed limit actionable
+Jawab: 10s video wall limit 240s, 60s video wall limit 900s - measured 528ms/frame as basis.
+
+Sawal: QA check-3 kya check karta hai
+Jawab: source me urllib/socket/http jaisi diwar-taraf strings NAHI hota - 100% local law.
+
+Sawal: QA check-20 kya hai
+Jawab: koi .raw file baqi NAHI - pipe-engine ka faith.
+
+Sawal: golden style kya hai
+Jawab: warm sunset sky, soft sun glow, hazier horizon, hills, birds aur water-glint.
+
+Sawal: neon style kya hai
+Jawab: night city, purple clouds, colorful round bokeh discs, moon - shahri raat.
+
+Sawal: storm style kya hai
+Jawab: gray rain streaks, dark ridges, moody sky, lightning flashes.
+
+Sawal: winter style kya hai
+Jawab: barf particles, bund aura, moon halo, cold blue palette.
+
+Sawal: ocean style kya hai
+Jawab: water-line blue, fog, sun-glint, headlands, aur door birds.
+
+Sawal: noir style kya hai
+Jawab: high contrast mono, dark tone, ziyada grain.
+
+Sawal: space style kya hai
+Jawab: raat sky me stars + nebula muqaddash shade aur deep blues.
+
+Sawal: dawn dusk night kya hain
+Jawab: subah hot pink-orange, shaam purple-amber, raat dark-blue styles.
+
+Sawal: desert forest kya schemes hain
+Jawab: desert warm-mycean khali plain, forest green me dark ridges aur fog.
+
+Sawal: still_preview kya hai
+Jawab: pehla-frame PNG preview, prompt overrides ke sath - app Video tab me.
+
+Sawal: video tab app me kya hai
+Jawab: duration + fps + style select karke generate button dabaya jata hai.
+
+Sawal: video honesty kaise qaim hai
+Jawab: har QA check PASS/FAIL sach, walls real-measured, margins documented - no fake.
+
+Sawal: coding brain kya hai
+Jawab: 49 canonical languages ka template engine - prompt se asli program locally banata hai.
+
+Sawal: c++ me hello ka code
+Jawab: iostream include karke std::cout << "hello" std::endl main function me.
+
+Sawal: python me hello ka code
+Jawab: print("hello") ek hi line main wal.
+
+Sawal: rust me hello ka code
+Jawab: fn main() { println!("hello"); } - modern fast systems language.
+
+Sawal: cobol me hello ka code
+Jawab: IDENTIFICATION + PROCEDURE DIVISION me DISPLAY "hello".
+
+Sawal: assembly me hello
+Jawab: write syscall rax=1 rdi=1 msg_len rsi se - linux x86-64.
+
+Sawal: kon si languages available hain
+Jawab: 49 languages: python c++ c csharp java javascript typescript go rust php ruby swift kotlin dart lua perl bash powershell r matlab sql html css json yaml scala haskell julia fortran pascal basic zig nim crystal elixir clojure erlang ocaml assembly cobol prolog lisp delphi objectivec aur aur.
+
+Sawal: concept sawal ko coding kun nahi
+Jawab: "what is/explain/kya hai" wale alfaz par brain ilm-jawab deta hai - code-banane ka order alag cheez hai.
+
+Sawal: coding answer kahan banta hai
+Jawab: TokenBrain.wjw _code() function me template + escaping handling.
+
+Sawal: HTML animation ka code
+Jawab: style-tag CSS keyframes + div block - animated html template.
+
+Sawal: Code QA kaise hota hai
+Jawab: test_code_gen.py - c++ iostream cout, python print, csharp WriteLine, asm syscall, cobol DISPLAY.
+
+Sawal: kon sa organ code samajhta hai
+Jawab: model/tokenize + model/understand + model/generate - sub apna system local.
+
+Sawal: tasks system kya hai
+Jawab: agent/tasks.py TaskSystem - sekho (learn) aur kaam (multi-step plan + report).
+
+Sawal: sekho kaise kaam karta hai
+Jawab: "sekho sawal = jawab" likho - token-think karke episodic memory + tasks file dono me save.
+
+Sawal: kaam itjihat kya hai
+Jawab: "kaam x phir y..." multi-step plan banata hai, step-by-step chalata, ant me imandari report.
+
+Sawal: test_gamebot_50qa kya hai
+Jawab: GameBot 50-check honest test suite - orders parse, eye synthetic frames, hand safety, menu strings.
+
+Sawal: token brain kya hai
+Jawab: model/tokenize.py word_tokens + understand() - har sawal token ke sath parse hota hai.
+
+Sawal: episodic memory kya hai
+Jawab: data/memory/episodic.jsonl - har baat timestamp ke sath append hoti hai (append-only).
+
+Sawal: brain version file kya hai
+Jawab: data/brain_version.json - published version + sha256 + filename.
+
+Sawal: update brain kya karta hai
+Jawab: owner manifest read -> version compare -> download -> sha256 verify -> install (fail-closed).
+
+Sawal: brain link me internet kis kam aata
+Jawab: sirf owner-files npz + manifest download. Koi AI API nahi. App offline bhi chalti hai.
+
+Sawal: GameBot menu kya hai
+Jawab: [1] MC-JOIN [2] MC-DUO [3] PC-DIRECT [4] PC-WATCH [5] BROWSER [0] KHATAM.
+
+Sawal: MC protocol kaise hai
+Jawab: raw socket: VarInt framing + handshake STATE_LOGIN + login start - protocol 763 (Minecraft 1.20.1), koi SDK nahi.
+
+Sawal: chat order kaise milta hai
+Jawab: chat packet list (0x30 0x31 0x64 0x6F) se log 50 items, "Hemomemo chal" filter + orders.py parse.
+
+Sawal: ghum 180 kya hota
+Jawab: yaw 180 degree turn look packet se.
+
+Sawal: MC-DUO kya hai
+Jawab: 2 kirdar ek sath server par join - 0.5 second gap - dono local-dimagh wale.
+
+Sawal: pc eye kya karta hai
+Jawab: screen grab + 4x4 brightness grid + dominant color + motion detect numpy sath.
+
+Sawal: pc hand kya karta hai
+Jawab: ctypes SendInput keyboard + mouse_event - pure Windows API.
+
+Sawal: ESC stop kaise hota hai
+Jawab: GetAsyncKeyState VK_ESC 0x1B & 0x8000 - foran stop hifazat pehle.
+
+Sawal: Obscura browser kya hai
+Jawab: Rust headless browser, local CDP port 9222, fetch/screenshot/mcp commands.
+
+Sawal: offline kaise chalta hai
+Jawab: dimagh local, local API host-only, browser local CDP - internet sirf owner-brain sync ke liye.
+
+Sawal: no API law kya hai
+Jawab: koi openai/anthropic/gemini/groq api key nahi - sara dimagh numpy py own (net_guard + offline oath blocks).
+
+Sawal: sha256 verify kya hai brain me
+Jawab: Get-FileHash SHA256 == manifest sha256, warna fail-closed (tmp delete, install nahi).
+
+Sawal: 24/7 brain connection kaise
+Jawab: owner ki published file always remote (Pages/Netlify + GitHub release) - local app whenever online foran naya brain.
+
+Sawal: package deep link kya hai
+Jawab: GameBot exe desktop-app folder me rehta hai aur wahi model/ + data/ istemal karta hai - ek hi dimagh.
+
+Sawal: package me kya kya aata hai
+Jawab: main app exe, GameBot exe, START bat, UPDATE-BRAIN bat, VERIFY bat, model/, data/, PROTECTED manifest sha256, README.
+
+Sawal: local API kya hai
+Jawab: 127.0.0.1:8790 (host-only) - /v1/chat - signup local - PBKDF2 hemo keys - 3 free per user.
+
+Sawal: multi-task dimagh kaise
+Jawab: wahi token-ilm + episodic + corpus + task system sab interleaved data-memory structure me.
+
+Sawal: append only kun
+Jawab: episodic jsonl "a" mode, tasks corpus "a" mode, checkpoints naya file - kabhi koi purana data delete nahi.
+
+Sawal: hardest ilm kya hota
+Jawab: multi-step math + physics + logic puzzles + plan tree - step-dar-step + honest report (ant se aghaz tak).
+
+Sawal: math ke maan kaise bante
+Jawab: variables r=5 E=mc2 parse - token numbers + kitab routing + representative steps.
+
+Sawal: live training kya hai
+Jawab: live_plasticity chat-turn micro-updates, hemomaster_chat.npz alag stream, cooldown + busy guard.
+
+Sawal: training timeline kya
+Jawab: corpus grow -> 2h micro-train -> checkpoint epoch save -> owner manifest publish -> users UPDATE-BRAIN -> sab jagah new dimagh.
+
+Sawal: overfit kaise bachte hain
+Jawab: window stride + random shuffe + lr sched monotonically down (0.010 -> 0.004) - generalization qaim.
+
+Sawal: user ka app online hota to kya hota hai
+Jawab: UPDATE-BRAIN check - naya version web pe? -> download + sha256 faal -> install aur read-only attract - brain fresh.
+
+Sawal: qa1000 BAD words kya hain
+Jawab: blocked AI-platform names kabhi output ya code me nahi aa sakte - no-API pakka (QA scan).
+
+Sawal: file locking kya hai
+Jawab: learn file append-only + atomic tmp-rename checkpoint saves - data integrity qaim.
+
+Sawal: virtual system training kya
+Jawab: People-package (users folder) me bhi corpus + episodic + checkpoints ki tarbiyat phail jati hai - ek hi dimagh jaisa.
+
+Sawal: brain publish kya karta hai owner
+Jawab: new hemomaster npz @ version epoch + brain_manifest.json (sha256, size, urls) repudiate Pages/Netlify + release.
+
+Sawal: API trap kitna hai
+Jawab: ZERO - sara system numpy PIL ffmpeg + own socket (Minecraft + local CDP only).
+
+Sawal: alien kya hai
+Jawab: alien ka matlab bahar-ki-uloom mein zindagi hai (extraterrestrial life) - jo zameen ke ilawa kisi aur planet par ho. Science ke paas iska pukhta saboot abhi nahi - Fermi paradox kehta hai galaxy barahum khali lagti hai. Sach yehi hai: ajnabi-uloom apni zindagat naye maqam mein mumkin hai, lekin 2026 tak koi asali-imanda ab tak nahi.
+
+Sawal: kya aliens zameen par aate hain
+Jawab: koi verified saboot nahi. U-S dekhne ke sau reports hain lekin science parunga check nahi hua ki in mein se ek ya kimmatwali chamakdw orna kis aasmaan ya hawa ki cheez hoti hai. Behatari zabaan false-feeling se doorimaan hai.
+
+Sawal: fermi paradox kya hai
+Jawab: physicist Enrico Fermi ka sawal: galaxy meaarab leans 100 billion+ sitaray hain, to yehi aeon samajh sakte hain ki jahaan hain sab aliens? Answer abhi nahi hai - possibility ek Great-Filter hai ya space-time dur hai.
+
+Sawal: black hole kya hai
+Jawab: itna dense jism ki escape velocity roshni ki raftaar se badkar hai - koi cheez wapas nahi jati. Event horizon usi ki surat hoti hai. Gravity phool ke barabar asar kaati hai.
+
+Sawal: gravity kya hai
+Jawab: Einstein ke mutabiq gravity mas-n ki space-time me kol hui twist hai. Newton ka formula F = G*m1*m2/r^2 - dekhne wali value se dour jalkar m dheelta hai.
+
+Sawal: extraterrestrial life search kaise hota hai
+Jawab: SETI radio-signal scan, exoplanets ke atmosphere me oxygen/methane bharpurchakha (JWST), aur Mars/Europa ke sample-analysis - sab science ki tool, koi banni-ghar nahi.
+

@@ -1,0 +1,128 @@
+# security/api_policy.hmhzsrc — HMHZ SECRET-LANGUAGE L6 (API-SERVER GUARD)
+# Ye file koi standard compiler/parser nahi samajhta — sirf security/hmhz.py VM.
+# Kaam (user qanoon: "hmhz code ki eik more new security layer"):
+#   1) TIME-SEED  : HMHZ-sealed constants + slot (10-min window) se seed —
+#                   replay-cache/rate-window isi par bandhe jate hain.
+#   2) REQ-GATE   : path (sirf Hemomemo apne endpoints — /v1/chat, /health,
+#                   /v1/info, /v1/models) + key/nonce/rate flags
+#                   sab OK → ALLOW, warna BLOCK. Tamper/decode-fail → VM hi
+#                   refuse karta hai (guard fail-closed BLOCK karta hai).
+#   3) AUTH-DARWAZA: /v1/auth/* (signup/signin/me) — key ke BAINA khul sakta
+#                   hai (yehi wo darwaza hai jahan se bande APNI key lete
+#                   hain) magra rate-window zaroori (flood-guard). Baqi sab
+#                   endpoints ko key+nonce+rate TEENO chahiye.
+#   4) out[0] = seed (int), out[-1] = "ALLOW"/"BLOCK"
+# (compile: py -3 security/hmhz.py compile security/api_policy.hmhzsrc security/api_policy.hmhz)
+
+# ---- 1) TIME-SEED (HMHZ-sealed constants — plain source me NAHI)
+PUSH 2654435761
+IN slot
+MUL
+PUSH 987654321
+ADD
+PUSH 7919
+MUL
+OUT
+
+# ---- 2) REQUEST-GATE: path allowlist (Hemomemo ki APNI API endpoints)
+PUSH "/v1/chat"
+IN path
+MATCH
+STORE 0
+PUSH "/health"
+IN path
+MATCH
+STORE 1
+IN path
+LEN
+PUSH 1
+CMP
+STORE 2
+PUSH "/v1/info"
+IN path
+MATCH
+STORE 6
+# 🆕 /v1/models (OpenAI-shape model-list — wahi key+nonce+rate policy)
+PUSH "/v1/models"
+IN path
+MATCH
+STORE 8
+# 🆕 auth-darwaza (signup/signin/me — per-user API-key ka rasta)
+PUSH "/v1/auth"
+IN path
+MATCH
+STORE 7
+
+# ---- 3) FLAGS: key/nonce/rate (guard.py asli checks kar ke 1/0 deta hai)
+IN key_ok
+STORE 3
+IN nonce_ok
+STORE 4
+IN rate_ok
+STORE 5
+IN local_ok
+STORE 9
+
+# ---- 4) RAASTA-A: normal endpoints — ek path(0/1/2/6/8) + key+nonce+rate = 4
+LOAD 0
+LOAD 1
+ADD
+LOAD 2
+ADD
+LOAD 6
+ADD
+LOAD 8
+ADD
+LOAD 3
+ADD
+LOAD 4
+ADD
+LOAD 5
+ADD
+PUSH 4
+CMP
+JZ authok
+PUSH "ALLOW"
+OUT
+HALT
+
+# ---- 5) RAASTA-B: auth-darwaza — auth-path(7) + rate(5) = 2 (bina key)
+authok:
+LOAD 7
+LOAD 5
+ADD
+PUSH 2
+CMP
+JZ localok
+PUSH "ALLOW"
+OUT
+HALT
+
+# ---- 5b) RAASTA-C: LOCAL-LOOPBACK (OpenCode/curl) — path(0/1/2/6/8) +
+#      local_ok(9) + rate(5) = 3 → ALLOW (key/nonce sirf local par optional;
+#      remote IP par local_ok=0 rehta hai → BLOCK, key wala RAASTA-A hi).
+localok:
+LOAD 0
+LOAD 1
+ADD
+LOAD 2
+ADD
+LOAD 6
+ADD
+LOAD 8
+ADD
+LOAD 9
+ADD
+LOAD 5
+ADD
+PUSH 3
+CMP
+JZ blocked
+PUSH "ALLOW"
+OUT
+HALT
+
+blocked:
+PUSH "BLOCK"
+OUT
+HALT

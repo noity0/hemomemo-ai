@@ -1,0 +1,20 @@
+{
+  "category": "best_practices",
+  "location": "Brain",
+  "created_at": "2026-11-21T10:27:53",
+  "count": 2,
+  "links": [
+    {
+      "source": "enhancement_system/best_practices/templates/code_standards.py",
+      "source_exists": true,
+      "target": "app/code_standards.py",
+      "target_exists": false
+    },
+    {
+      "source": "enhancement_system/best_practices/templates/best_practices_guide.py",
+      "source_exists": true,
+      "target": "docs/best_practices_guide.py",
+      "target_exists": false
+    }
+  ]
+}

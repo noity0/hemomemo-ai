@@ -1,0 +1,222 @@
+Sawal: what is ethical hacking
+Jawab: Ethical hacking is testing systems for weaknesses WITH written permission from the owner, so the weaknesses can be fixed before criminals abuse them. Rules: 1 get written authorization first, 2 stay inside the agreed scope, 3 cause zero harm, 4 protect every finding, 5 report honestly and help fix.
+
+Sawal: white hat vs black hat
+Jawab: A white hat has permission, works in scope, and reports bugs to the owner. A black hat attacks without permission for money or damage, which is a crime. A grey hat probes without permission and then reports, which is still illegal. Rule: no permission means no test, ever.
+
+Sawal: bug bounty rules
+Jawab: Bug bounty steps: 1 read the program scope and rules, 2 test only in-scope targets, 3 never touch real user data, 4 write a clear report with steps to reproduce, 5 submit and wait, 6 never demand payment as a threat. Payment comes from the program only.
+
+Sawal: responsible disclosure steps
+Jawab: Responsible disclosure steps: 1 find the issue, 2 write proof of concept that causes no damage, 3 notify the owner privately, 4 give them a fair window such as 90 days, 5 publish only after the fix or the agreed window, 6 always credit the fix team.
+
+Sawal: what is reconnaissance
+Jawab: Reconnaissance is the first phase of an authorized test: collecting public information about the target. Passive recon reads public sources like DNS records, job posts, and certificate logs. Active recon touches the target, for example port scanning, so it must stay inside the authorized scope.
+
+Sawal: what is nmap
+Jawab: Nmap is a network scanner used with permission to list live hosts, open ports, and service versions. Steps: 1 ping sweep to find live hosts, 2 port scan to find open doors, 3 version detection to name services, 4 document every finding. Defense: close unused ports and keep an asset inventory.
+
+Sawal: what is a port scan defense
+Jawab: Defenses: 1 run a host firewall and deny by default, 2 expose only needed services, 3 use rate limiting to slow scans, 4 monitor for scan patterns in logs, 5 keep services patched so a found version is not exploitable.
+
+Sawal: what is owasp top 10
+Jawab: The OWASP Top 10 is a list of the most critical web application risks: broken access control, cryptographic failures, injection, insecure design, security misconfiguration, vulnerable components, authentication failures, data integrity failures, logging failures, and server side request forgery. Defense: validate input, enforce access checks on the server, keep components patched, and log with alerts.
+
+Sawal: what is sql injection and defense
+Jawab: SQL injection is when crafted input changes a database query. Defense: 1 use parameterized queries or prepared statements always, 2 never glue user text into SQL, 3 validate input types, 4 give the database account least privileges, 5 test with a scanner in an authorized test.
+
+Sawal: what is xss and defense
+Jawab: Cross site scripting is when attacker text runs as script in a victim browser. Defense: 1 escape output by context, 2 use a strict Content Security Policy, 3 mark cookies HttpOnly and Secure, 4 never trust user HTML, 5 sanitize with a proven library when HTML is required.
+
+Sawal: what is csrf and defense
+Jawab: Cross site request forgery tricks a logged in browser into sending unwanted requests. Defense: 1 use a per session CSRF token in forms, 2 check SameSite cookies, 3 require re-authentication for sensitive actions, 4 verify Origin and Referer headers.
+
+Sawal: what is broken access control
+Jawab: Broken access control is when a user reaches data or actions that are not theirs, for example changing an id in the URL. Defense: check authorization on the server for every request, use indirect references, deny by default, and log denial spikes.
+
+Sawal: password storage defense
+Jawab: Store passwords with a slow salted hash such as bcrypt, scrypt or argon2. Never store plain text, never use fast hashes like md5 or sha1 for passwords. Steps: 1 generate a unique salt per user, 2 hash with a work factor, 3 rehash on login when you raise the work factor.
+
+Sawal: what is jwt and its defense
+Jawab: A JSON web token is a signed token carrying claims. Defenses: 1 sign with a strong secret or key, 2 verify signature and expiry on the server, 3 do not store sensitive data inside it, 4 support revocation through short life and refresh tokens.
+
+Sawal: what is encryption at rest and in transit
+Jawab: In transit means TLS on every connection so nobody reads traffic on the way. At rest means encrypt stored data such as disks and backups with AES. Steps: 1 force HTTPS, 2 use modern ciphers, 3 manage keys in a separate safe place, 4 rotate keys on schedule.
+
+Sawal: what is a firewall
+Jawab: A firewall filters traffic by rules such as source, destination, and port. Defense steps: 1 default deny, 2 allow only needed ports, 3 log dropped traffic, 4 review rules on every change, 5 separate internal networks from the public internet.
+
+Sawal: what is a vpn
+Jawab: A virtual private network builds an encrypted tunnel between devices or offices. Uses: protect traffic on untrusted networks and connect remote workers to private systems. Defense note: a vpn is a door, so protect it with strong keys, patches, and monitoring.
+
+Sawal: what is incident response
+Jawab: Incident response steps: 1 prepare a plan and contacts, 2 detect and analyze the alert, 3 contain the damage, 4 eradicate the cause, 5 recover services carefully, 6 hold a lesson learned review and improve controls.
+
+Sawal: what is least privilege
+Jawab: Least privilege means every user, service and process gets only the rights it needs, nothing more. Steps: 1 separate admin from daily accounts, 2 give services read only where possible, 3 review rights on schedule, 4 remove access the same day it is no longer needed.
+
+Sawal: what is two factor authentication
+Jawab: Two factor authentication adds a second proof beyond the password, such as an app code or a hardware key. Defense steps: 1 enable it for all admin accounts first, 2 prefer app or hardware codes over sms, 3 give backup codes safely, 4 watch for repeated prompt attacks and rate limit.
+
+Sawal: what is secure coding review
+Jawab: A secure code review reads new code for risk before release. Checklist: 1 every input validated, 2 every query parameterized, 3 every output escaped, 4 every check done on the server, 5 secrets never in code, 6 errors handled without leaking details, 7 tests for the security cases.
+
+Sawal: what is secrets management
+Jawab: Secrets are passwords, keys and tokens. Rules: 1 never hardcode them in source, 2 keep them in a vault or environment store, 3 rotate on schedule and after staff changes, 4 give each service only its own secret, 5 scan repositories for leaked keys.
+
+Sawal: what is a honeypot
+Jawab: A honeypot is a decoy system with no real users, deployed so any touch is suspicious. Use: it alerts the defenders, wastes attacker time, and teaches which attacks are coming. Rule: isolate it so it can never reach real systems.
+
+Sawal: what is patch management
+Jawab: Patch management is updating software on schedule to close known holes. Steps: 1 keep an inventory of systems and versions, 2 watch vendor advisories, 3 test patches, 4 deploy fast for critical holes, 5 verify with a scan that the hole is closed.
+
+Sawal: what is log monitoring for defense
+Jawab: Defense watches logs for patterns: many failed logins, strange hours, big downloads, new admin accounts, and repeated denials. Steps: 1 centralize logs, 2 set alerts on the patterns, 3 keep clocks synced, 4 protect the logs from deletion, 5 practice the response plan.
+
+Sawal: what is wireshark used for in defense
+Jawab: Wireshark captures network traffic so defenders can see what really flows. Legal note: capture only on networks you own or are authorized to monitor. Uses: find plaintext traffic, spot strange destinations, debug protocols, and teach teams what attackers can see.
+
+Sawal: what is metasploit in an authorized test
+Jawab: Metasploit is a framework that runs known exploits, used by permission to prove a hole is real. Rules: 1 written scope, 2 a lab or test system first, 3 no destructive modules on production, 4 document every use, 5 help the owner patch and retest.
+
+Sawal: what is social engineering defense
+Jawab: Social engineering attacks trick people, not machines. Defenses: 1 verify identity through a second channel before sharing anything, 2 never share codes or passwords on request, 3 train the team with safe simulations, 4 make reporting easy and blame free.
+
+Sawal: what is phishing defense
+Jawab: Phishing defense steps: 1 check the real sender domain, 2 hover links before clicking, 3 never enter passwords from an email link, 4 report suspicious mail, 5 use mail filters and blocklists, 6 enable two factor so a stolen password is not enough.
+
+Sawal: what is a vulnerability scan vs a pentest
+Jawab: A vulnerability scan is automated and lists known weaknesses. A penetration test is a human authorized test that chains weaknesses to prove real impact. Steps: scan often, pentest on schedule and after big changes, fix by risk order, retest after fixes.
+
+Sawal: what is hardening a server
+Jawab: Hardening steps: 1 remove unused services and accounts, 2 default deny firewall, 3 ssh with keys only, 4 automatic security patches, 5 least privilege for every service, 6 central logs with alerts, 7 backups tested by restore.
+
+Sawal: what is a reverse proxy defense
+Jawab: A reverse proxy sits in front of an app and adds control: TLS ending, rate limits, header rules, and hiding internal servers. Defense value: one hardened door instead of many weak doors, and easy traffic logging in one place.
+
+Sawal: what is rate limiting
+Jawab: Rate limiting allows only a fair number of requests per minute from one source. Defense value: slows brute force, slows scraping, and keeps the service alive under floods. Steps: count per key or ip, return 429 politely, log the abusers, and raise limits with verified accounts.
+
+Sawal: what is input validation defense
+Jawab: Input validation steps: 1 allowlist the exact shape you expect, 2 check type, length, range and format, 3 reject early with a clean error, 4 never rely on client side checks alone, 5 encode output by context where the data lands.
+
+Sawal: what is a security header
+Jawab: Important security headers: Content Security Policy to block injected scripts, Strict Transport Security to force https, X Content Type Options to stop mime sniffing, X Frame Options to stop framing, Referrer Policy to limit leaks. Defense: send them on every response and test with a scanner.
+
+Sawal: what is an ai agent
+Jawab: An AI agent is a program that perceives input, thinks with a model, and acts through tools to reach a goal. Loop: 1 read the state, 2 plan the next step, 3 call a tool, 4 read the result, 5 repeat until done, 6 report honestly what it did.
+
+Sawal: agent tool use steps
+Jawab: Tool use steps: 1 define each tool with a name, purpose, inputs and outputs, 2 the agent chooses a tool only when it helps the goal, 3 validate the arguments before running, 4 run with least privileges, 5 return the result into the agent memory, 6 cap the loop so it can never run forever.
+
+Sawal: agent memory design
+Jawab: Agent memory has layers: short term memory holds the current task context, long term memory stores learned notes and facts with timestamps, and working scratch holds intermediate results. Rules: 1 write lessons after every task, 2 recall by similarity, 3 forget stale data, 4 never store secrets in memory.
+
+Sawal: agent planning steps
+Jawab: Planning steps: 1 restate the goal clearly, 2 break the goal into small ordered steps, 3 for each step choose a tool or a thought, 4 mark dependencies between steps, 5 execute one step at a time, 6 replan when a step fails, 7 stop when the goal is truly met.
+
+Sawal: agent guardrails
+Jawab: Agent guardrails: 1 allowlist the tools and hosts it may touch, 2 cap spend, time and loops, 3 block dangerous actions and require human approval for them, 4 validate every input and output, 5 keep an audit log of every action, 6 a stop button that always works.
+
+Sawal: multi agent systems basics
+Jawab: In a multi agent system each agent has a role such as planner, coder, tester and reviewer. They pass messages in a fixed protocol. Rules: 1 one clear job per agent, 2 shared state stored in one place, 3 a referee that resolves disagreement, 4 a global budget that stops all agents.
+
+Sawal: local offline agent architecture
+Jawab: A local offline agent runs its brain on the machine: a small model for thinking, a retrieval store for knowledge, and python functions as tools. Flow: user goal, plan, tool calls, verify each result against rules, answer. No cloud, no external ai, everything logged locally.
+
+Sawal: how does an agent call functions
+Jawab: Steps: 1 the agent outputs a structured call such as name and arguments, 2 the host validates the arguments against a schema, 3 the host runs the function, 4 the result goes back as a message, 5 the agent continues thinking. Rule: the agent never runs code directly, the host does.
+
+Sawal: agent testing steps
+Jawab: Agent testing steps: 1 unit test each tool alone, 2 test the planner with fake tools, 3 test failure paths such as a tool that always fails, 4 test the budget and the stop button, 5 run end to end tasks in a sandbox, 6 score results and fix the weakest step.
+
+Sawal: what is full stack development
+Jawab: Full stack development means building the whole app: the frontend the user sees, the backend that holds the logic, the database that stores data, and the deployment that serves it. Steps of a project: 1 write the goal, 2 design the data, 3 build the api, 4 build the screens, 5 connect, 6 test, 7 deploy, 8 monitor and improve.
+
+Sawal: frontend basics
+Jawab: The frontend is html for structure, css for style, and javascript for behaviour. Rules: 1 semantic html with one h1 per page, 2 mobile first responsive css with flexbox and grid, 3 keep state small and predictable, 4 fetch data through one api layer, 5 accessibility with labels and keyboard paths.
+
+Sawal: backend basics
+Jawab: The backend listens for requests, checks rules, works with data, and returns json. Steps per request: 1 authenticate, 2 validate input, 3 do the work in a service layer, 4 read or write the database, 5 return a status code with a clean body, 6 log the action.
+
+Sawal: rest api design rules
+Jawab: Rest design rules: 1 resources are nouns in plural paths such as users, 2 methods carry meaning get read, post create, put patch update, delete remove, 3 status codes tell the truth 200 201 400 401 403 404 429, 4 version the api such as v1, 5 pagination on every list, 6 errors return a clear message and a code.
+
+Sawal: database schema design steps
+Jawab: Schema steps: 1 list the entities and their fields, 2 set a primary key per table, 3 connect tables with foreign keys, 4 normalize until it is clean, denormalize only for measured speed, 5 index columns used in search and joins, 6 add created and updated timestamps.
+
+Sawal: sql vs nosql
+Jawab: Sql databases store structured rows with strong relations and transactions. Nosql stores documents or keys with flexible shapes and easy scaling. Choice rule: money and relations want sql, huge flexible streams want nosql, and many teams use both for different jobs.
+
+Sawal: authentication vs authorization
+Jawab: Authentication proves who you are, authorization decides what you may do. Steps: 1 authenticate with password plus second factor, 2 issue a session or token, 3 authorize every action against roles and ownership, 4 log both. Rule: never confuse a logged in user with an allowed action.
+
+Sawal: session vs token auth
+Jawab: Sessions store state on the server and send a cookie id, easy to revoke. Tokens like jwt carry signed claims and need expiry and refresh. Choice: classic web apps often use sessions, apis often use short tokens with refresh, and both need https everywhere.
+
+Sawal: orm basics
+Jawab: An orm maps tables to objects so code writes typed queries instead of sql strings. Rules: 1 migrations for every schema change, 2 beware n plus one queries and use eager loading, 3 raw parameterized sql is allowed for hard cases, 4 never trust the orm alone for security checks.
+
+Sawal: api error handling rules
+Jawab: Error rules: 1 catch at the edge and answer in one format, 2 return a code, a human message and a request id, 3 never leak stack traces or sql to users, 4 log the full detail on the server, 5 retry only safe operations with backoff.
+
+Sawal: input validation in apis
+Jawab: Api validation steps: 1 define a schema for every endpoint, 2 check types, ranges and lengths, 3 reject unknown extra fields, 4 sanitize file uploads and check type and size, 5 answer 400 with the exact field problem.
+
+Sawal: cors basics
+Jawab: Cors tells browsers which origins may call the api. Rules: 1 allowlist exact origins, never a wildcard with credentials, 2 set allowed methods and headers explicitly, 3 the server answers the preflight, 4 cors is browser protection, not auth, so still verify the key.
+
+Sawal: caching basics
+Jawab: Caching keeps answers close so repeats are fast. Layers: browser cache, cdn, server memory, and database buffer. Rules: 1 cache answers that rarely change, 2 give every cache a lifetime, 3 invalidate on write, 4 measure hit rate before trusting it.
+
+Sawal: docker basics
+Jawab: Docker packs an app with its dependencies into an image that runs the same everywhere. Steps: 1 write a small dockerfile from a slim base, 2 copy code and install deps in clear layers, 3 run as a non root user, 4 keep secrets out of the image, 5 ship the image, not the machine.
+
+Sawal: environment variables rules
+Jawab: Configuration rules: 1 keep secrets and settings in environment variables or a vault, 2 never commit them to git, 3 give every environment its own values, 4 validate them at startup so the app fails fast and clear, 5 document every variable the app needs.
+
+Sawal: git workflow for teams
+Jawab: Team git flow: 1 branch per task from main, 2 small commits with clear messages, 3 open a pull request, 4 review and tests must pass, 5 merge and delete the branch, 6 deploy. Rule: main stays always working, nobody pushes straight to main.
+
+Sawal: testing pyramid
+Jawab: The testing pyramid: many fast unit tests at the bottom, fewer api and integration tests in the middle, a few end to end tests on top. Rules: 1 every bug fix adds a test, 2 tests run on every commit, 3 flaky tests get fixed or removed, 4 fast feedback beats big slow suites.
+
+Sawal: deployment steps
+Jawab: Deployment steps: 1 build the app, 2 run the test suite, 3 set environment variables on the host, 4 migrate the database, 5 deploy behind https, 6 smoke test the live url, 7 watch logs and errors, 8 roll back if health fails.
+
+Sawal: https everywhere rule
+Jawab: Every app serves https only. Steps: 1 get a certificate from a free authority, 2 redirect http to https, 3 enable strict transport security, 4 renew automatically, 5 test with an ssl scanner until it is clean.
+
+Sawal: project folder structure
+Jawab: A clean structure separates concerns: src for code, tests for tests, config for settings, scripts for tasks, and docs for documents. Rules: 1 one job per module, 2 names that say what they are, 3 no secrets anywhere in the tree, 4 a readme that a new member can follow today.
+
+Sawal: full stack app example steps
+Jawab: Building a notes app end to end: 1 schema notes with id, user id, title, body, timestamps, 2 api endpoints list, create, update, delete with auth and validation, 3 frontend pages login and notes with forms and fetch calls, 4 tests for api and ui, 5 deploy with https and a database backup plan.
+
+Sawal: performance basics
+Jawab: Performance steps: 1 measure before fixing, 2 index the queries that scan too much, 3 paginate lists, 4 compress and cache static assets, 5 lazy load what the user opens later, 6 keep payloads small, 7 set a speed budget and watch it.
+
+Sawal: logging rules for apps
+Jawab: Logging rules: 1 log who did what and when, 2 never log passwords, keys or full card data, 3 use levels debug info warn error, 4 one line per event with a request id, 5 rotate logs and protect them, 6 alert on error spikes.
+
+Sawal: backup strategy
+Jawab: Backup steps: 1 schedule automatic backups, 2 keep at least one copy in another place, 3 encrypt backups, 4 test a real restore every month, 5 write the restore steps down. Rule: a backup that was never restored is a hope, not a backup.
+
+Sawal: secure file upload steps
+Jawab: Upload steps: 1 check size and type on the server, 2 rename files to random safe names, 3 store outside the web root or in object storage, 4 never trust the declared mime type alone, 5 scan for malware, 6 serve from a separate domain without execute rights.
+
+Sawal: websocket basics
+Jawab: Websockets keep an open line for live updates such as chat. Rules: 1 authenticate the handshake, 2 validate every incoming message, 3 rate limit per client, 4 handle reconnect cleanly, 5 close dead connections on a timer.
+
+Sawal: cron and background jobs
+Jawab: Background jobs run work outside the request such as emails and reports. Steps: 1 put the job in a queue, 2 a worker picks it and retries with backoff, 3 make every job idempotent so a repeat is safe, 4 log start and end, 5 alert when the queue grows too big.
+
+Sawal: mobile responsive rules
+Jawab: Responsive rules: 1 design mobile first, 2 use relative sizes and media queries, 3 touch targets at least forty pixels, 4 test on a real small screen, 5 images resize with the layout, 6 navigation collapses into a simple menu.
+
+Sawal: accessibility basics
+Jawab: Accessibility steps: 1 every image gets alt text, 2 every input gets a label, 3 keyboard can reach everything, 4 color contrast is strong, 5 headings follow order, 6 test with a screen reader once. Rule: an accessible app works for everyone and ranks better too.
+
+
+Sawal: what is defense in depth
+Jawab: Defense in depth means many layers so one failure is not a disaster: firewall, patched system, least privilege, validated input, encrypted data, logs and alerts, tested backups. Rule: design as if every single layer will one day fail.

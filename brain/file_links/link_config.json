@@ -1,0 +1,48 @@
+{
+  "location": "Brain",
+  "path": "brain",
+  "created_at": "2026-11-21T10:27:53",
+  "categories": [
+    {
+      "category": "ai_enhanced",
+      "count": 3
+    },
+    {
+      "category": "multi_language",
+      "count": 3
+    },
+    {
+      "category": "template_system",
+      "count": 3
+    },
+    {
+      "category": "best_practices",
+      "count": 2
+    },
+    {
+      "category": "performance",
+      "count": 2
+    },
+    {
+      "category": "security",
+      "count": 2
+    },
+    {
+      "category": "testing",
+      "count": 2
+    },
+    {
+      "category": "documentation",
+      "count": 2
+    },
+    {
+      "category": "version_control",
+      "count": 2
+    },
+    {
+      "category": "deployment",
+      "count": 3
+    }
+  ],
+  "total_links": 24
+}

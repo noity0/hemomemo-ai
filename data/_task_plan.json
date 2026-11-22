@@ -1,0 +1,79 @@
+{
+  "updated": "2026-11-18 13:03:58",
+  "order": "50M brain mukammal + latest desktop zip + har jagah republish (task-by-task, chote hisson me, har-qadam-save)",
+  "machine_reality": {
+    "killer_cycle": "busy python-process ~15.5-min (raat) / first-save-par (subah) \u2014 bahar-se-kill, rc=1, bila-traceback",
+    "av_lock": "os.replace persistent WinError-5 \u2014 hal: rotation-slots (a/b) + seedha-write",
+    "kernel_storms": "LiveKernelEvent 0x1a8 WATCHDOG + WHEA corrected-hardware \u2014 din-bhar",
+    "defense": "4-min mid-rotation-save + warm-start multi-candidate-fallback + supervisor relaunch-loop"
+  },
+  "state": {
+    "brain_effective_min_trained": 116.4,
+    "brain_target_min": 180,
+    "weights_home": "model/checkpoints/hemomaster_mid.npz (116.4-min, salamat) + mid_a/mid_b rotation (naya-code)",
+    "supervisor": "PID 12944, deadline ~12:24, auto-relaunch rc=1 par 30s",
+    "auto_apply": "SKIP (TRAIN_AUTO_APPLY=0) \u2014 publish task-by-task manual",
+    "published_ab_tak": "koi-naya-publish-NAHI (release/repo/Pages/Netlify sab 11/17-wale purane)",
+    "published": {
+      "zip_andar_hemomemo": "pending-check",
+      "zip_andar_50M_sha": "pending-check",
+      "pages": "live",
+      "netlify": "live",
+      "repo_push": "done"
+    }
+  },
+  "tasks": [
+    {
+      "id": 1,
+      "name": "Trainer-save-rotation live-tasdeeq (pehla mid_a save success)",
+      "status": "in-progress"
+    },
+    {
+      "id": 2,
+      "name": "50M tarbiyat 180-min mukammal (cycles se compound)",
+      "status": "completed"
+    },
+    {
+      "id": 3,
+      "name": "make_package (EXE + SRC package)",
+      "status": "completed (auto)"
+    },
+    {
+      "id": 4,
+      "name": "make_desktop (DST + root zip)",
+      "status": "completed (auto)"
+    },
+    {
+      "id": 5,
+      "name": "zip-audit: andar 0-hemomemo + 50M-sha + brain_version honest",
+      "status": "pending"
+    },
+    {
+      "id": 6,
+      "name": "Release publish (schannel, gh-flaky-nahi)",
+      "status": "pending"
+    },
+    {
+      "id": 7,
+      "name": "Repo push (atomic)",
+      "status": "pending"
+    },
+    {
+      "id": 8,
+      "name": "Pages + Netlify",
+      "status": "pending"
+    },
+    {
+      "id": 9,
+      "name": "Aakhri regression + poori-report",
+      "status": "pending"
+    }
+  ],
+  "done_pehle_se": [
+    "SRC/DST/repo rebrand (85/85 sha match)",
+    "README 50M-imandari (50,014,104, dh1739)",
+    "session-dump: repo/package/zip se bahir, secrets-0",
+    "live server hemomemo-nam port 8790 UP",
+    "nn.py atomic->rotation save + supervisor resume-loop + TRAIN_AUTO_APPLY gate"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+ "name": "Al-Quran (harvest corpus — clearquran, asli local file)",
+ "file": "data\\corpus_big\\harvest_quran.txt",
+ "ayat_entries": 1585,
+ "policy": "sirf pure-sunni sources (harvest/source_policy.py)",
+ "updated": "2026-11-04 14:12:30"
+}

@@ -1,0 +1,32 @@
+Sawal: Hemomemo ke powers kaun se hain?
+Jawab: search (web-search), deep research (multi-page report), python (code-execution), image banao (procedural art), canvas (local documents), gem (custom assistants), mcp (local tool-servers), inbox/send email (Gmail), drive/doc (Google Workspace). Sab ya to 100% local hain ya non-AI APIs (search/mail/storage) - koi AI-platform API key KABHI nahi.
+Sawal: python code kaise chalun?
+Jawab: "python print(2+3)" ya "code chalao: <code>" - code aap ke hi PC par temp-file me chalta hai (timeout 15s, output 64KB limit), aur exec-code ke andar bhi net-guard ON hota hai (AI-hosts HARD-BLOCK wahan bhi).
+Sawal: tasveer kaise banwun?
+Jawab: "image banao <prompt>" - misala "image banao shami kabab", "tasveer banao aag ka ocean". Ye 100% LOCAL procedural-art hai (NumPy+PIL, math se banti hai, styles: aurora/waves/rings/maze/particles/gradient) - koi AI-model/API/cloud nahi. File data/generated/ me save hoti hai.
+Sawal: deep research kya hai?
+Jawab: "deep research <topic>" - Hemomemo search karta hai, top pages khud parhta hai, jumle nikal ke aap ke sawal ke keywords se rank karta hai, aur report deta hai: khulasa + ahem-nukat + sources [1][2]. Sab local ranking - koi AI-API nahi.
+Sawal: canvas kya hai?
+Jawab: Local document-board: "canvas banao mere-khayal", "canvas mere-khayal likho: aaj ka plan", "canvas mere-khayal kholo", "canvas mere-khayal dikhao" (PNG-card banta hai), "canvas list", "canvas <naam> mitao". Files data/canvas/ me - sab aap ke PC par.
+Sawal: gem kya hai (custom assistants)?
+Jawab: Aap ka bana-hua assistant-shakhs - local token-dimagh ke upar persona: "gem list" (Ustad, Coder, Rafiq, Reporter default), "gem use Ustad" (har chat ab isi andaz me), "gem band" (normal), "gem banao <naam> role: ... style: ... topics: ...". Koi bahar-ka model nahi - wahi apna dimagh, sirf andaz badalta hai.
+Sawal: mcp kya hai aur kaise chalu?
+Jawab: Model Context Protocol - LOCAL tool-servers se bridge (stdio, subprocess; koi network nahi). Config data/mcp_servers.json me aap khud server likhte ho (command+args, opt-in enabled). Hukum: "mcp servers", "mcp tools <srv>", "mcp call <srv> <tool> {json}", "mcp resources <srv>". AI-platform/daemon wali config HARD-REJECT hoti hai (openai/anthropic/gemini/ollama waghera).
+Sawal: drive/Google-Docs kaise use karun?
+Jawab: Ek-dafa setup: console.cloud.google.com par project -> Drive API + Docs API ON -> OAuth client (Desktop) banao -> app me "drive setup" (browser consent -> token khud data/google_oauth.json me save). Phir: "drive list", "drive upload <path>", "drive download <naam>", "doc read <id|naam>". Google Workspace = storage/docs API (AI-nahi) - isliye qanoon-allowed.
+Sawal: kya in powers ke liye koi AI-API key lagti hai?
+Jawab: Nahi - hamesha nahi. Search APIs (DDG/CSE/Bing/Brave), Gmail (imap/smtp), Drive/Docs (OAuth storage) - ye AI-platform NAHI hain. OpenAI/Anthropic/Gemini kisi bhi shakl me HARD-BLOCK hain (net_guard BANNED_AI_RX + mcp_config reject). Dimagh hamesha aap ke PC ka LSTM hai.
+Sawal: google_oauth.json kya hai?
+Jawab: Owner ki OAuth credential-file (client_id/secret + refresh_token) - zip me KABHI nahi jati (builders ne exclusion me dala hai). Ghayabgi par Hemomemo setup-steps khud dikha deta hai.
+Sawal: code-execution me security kya hai?
+Jawab: Code local chalta hai (aap ke PC ka python), timeout + output-limit hai, net-guard exec ke andar inject hota hai, temp-file chal ke mit jati hai. Ye aap ke hukum wala local-ustaad hai - duniya se koi connection nahi.
+Sawal: image-generation AI-model use karta hai?
+Jawab: Nahi - pure-math procedural-art (seed = text-hash, palette = words, formulas = styles). Har prompt alag art deta hai. Koi diffusion/GAN/API nahi - isliye ye 100% offline chalta hai.
+Sawal: gem ka jawab kahan se aata hai?
+Jawab: Aap ke LOCAL token-dimagh + memory se (persona-instruction ke sath). Gem sirf ANDAZ hai - dimagh wahi apna hai. "gem band" par normal chat wapas.
+Sawal: powers ki madad kaise dun?
+Jawab: Chat me "powers" ya "tools" likho - poora hukum-list mil jata hai.
+Sawal: net_guard in naye powers ko kaise guard karta hai?
+Jawab: drive/docs/oauth2/search hosts whitelist me hain; exec-code me guard inject; MCP sirf stdio (network bahar); AI-platform hosts pehle-jaisa HARD-BLOCK. Deny-by-default baqi sab.
+Sawal: canvas files kahan banti hain?
+Jawab: data/canvas/<naam>.canvas.json - saaf JSON (text + waqt). PNG-card data/generated/ me. Sab local, zip me sirf system-copy jati hai (aap ki nayi canvases aap ki rehti hain).

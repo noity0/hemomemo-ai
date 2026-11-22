@@ -1,0 +1,20 @@
+Hemomemo RESUME-KA-PLAN (boot ke baad khud hona hai):
+
+1) Ye changes code me save hain (disk pe, mehfooz):
+   - app/hemomemo_app.py: VIDEO_GENERATION=True + video-page scrollable
+     (touch-drag + mouse-wheel + keyboard Up/Down/PgUp/PgDn/Home/End + ▲▼)
+   - app/hemomemo_app.py: chat clarification me ab user-ka-asli-text quote hota hai
+     (English-canned-template-leak band)
+   - model/frontolobe.py: response_suggestions ab input-aware Roman-Urdu
+   - scripts/make_desktop_package.py: guide me "Video-Generation: TRUE" + scroll-info
+   - scripts/make_package.py: PRESERVE-set + chat_history_app.json writable
+   - _publish_final.ps1: basement re-zip hata (2GB>GitHub-limit fail hota tha);
+     ab sirf apply-chain ki 419MB complete-final zip upload hoti hai
+   - _apply_training_everywhere.py: imandari-guard (package-fail → chain rukti hai)
+2) Boot/logon par Startup-folder VBS (_APPLY-AT-LOGON.vbs) khud chalata:
+   _APPLY-NOW.bat → full apply-chain (EXE rebuild NAYE code se + packages
+   + dono zips + release-upload + repo-push + Pages + Netlify)
+3) 50M final brain (1794986685) lock hai — 9M/pending-flag trainer hata diya gaya; koi auto-retrain nahi.
+4) Build: py -3.12 (cv2 bundled). Agent-EXE aur Ultra-Brain-EXE dono fresh.
+5) Qanoon: users ko sirf desktop-app zip; DigitalBrain main folder ka zip
+   kahin nahi; koi external AI API nahi — 100% local.

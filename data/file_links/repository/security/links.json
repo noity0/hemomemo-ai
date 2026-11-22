@@ -1,0 +1,20 @@
+{
+  "category": "security",
+  "location": "Repository",
+  "created_at": "2026-11-21T10:27:53",
+  "count": 2,
+  "links": [
+    {
+      "source": "enhancement_system/security/templates/security_scanner.py",
+      "source_exists": true,
+      "target": "app/security_scanner.py",
+      "target_exists": false
+    },
+    {
+      "source": "enhancement_system/security/templates/security_checklist.md",
+      "source_exists": true,
+      "target": "docs/security_checklist.md",
+      "target_exists": false
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+# security/policy.hmhzsrc — HMHZ SECRET-LANGUAGE SECURITY POLICY
+# Ye file koi standard compiler/parser nahi samajhta — sirf security/hmhz.py VM.
+# Kaam: prompt me jailbreak/injection patterns → BLOCK, warna ALLOW.
+# (compile: py -3 security/hmhz.py compile security/policy.hmhzsrc security/policy.hmhz)
+
+PUSH "ignore previous instructions"
+IN prompt
+MATCH
+STORE 0
+PUSH "system prompt"
+IN prompt
+MATCH
+STORE 1
+PUSH "jailbreak"
+IN prompt
+MATCH
+STORE 2
+PUSH "developer mode"
+IN prompt
+MATCH
+STORE 3
+PUSH "api key"
+IN prompt
+MATCH
+STORE 4
+PUSH "act as an ai"
+IN prompt
+MATCH
+STORE 5
+PUSH "bypass"
+IN prompt
+MATCH
+STORE 6
+LOAD 0
+LOAD 1
+ADD
+LOAD 2
+ADD
+LOAD 3
+ADD
+LOAD 4
+ADD
+LOAD 5
+ADD
+LOAD 6
+ADD
+PUSH 0
+CMP
+JZ blocked
+PUSH "ALLOW"
+OUT
+HALT
+blocked:
+PUSH "BLOCK"
+OUT
+HALT

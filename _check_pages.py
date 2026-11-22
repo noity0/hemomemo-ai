@@ -1,0 +1,10 @@
+import urllib.request
+c = urllib.request.urlopen('https://noity0.github.io/hemomemo-ai/').read().decode()
+print('4.2.1:', c.count('4.2.1-people'))
+print('JSON-LD blocks:', c.count('ld+json'))
+print('About section:', 'Hemomemo AI Kya Hai' in c)
+print('VideoObject:', 'VideoObject' in c)
+print('Article:', '"Article"' in c)
+print('Dataset:', '"Dataset"' in c)
+print('FAQ cards:', c.count('card'))
+print('Breadcrumb:', 'BreadcrumbList' in c)

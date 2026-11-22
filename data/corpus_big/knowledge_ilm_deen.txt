@@ -1,0 +1,28 @@
+Iman ke arkan chhe hain: Allah par iman, farishton par, kitabon par, Rasulo par, aakhirat par aur taqdeer par.
+Din ki paanch namaz hai: Fajr subah, Zuhr dopahar, Asr dopahar ke baad, Maghrib ghurub ke baad aur Isha raat.
+Ramzan barkat ka mahina hai: roza, tilawat aur sadqa ka waqt.
+Zakat maal ka haq gharib ka hai. Dil aur maal dono saaf hotay hain.
+Hajj zindagi me ek baar farz hai, jo Allah ke hukam se Makkah me hota hai.
+Sawab ki bunyad neyat hai. Dil me achi neyat ho to chhota amal bhi bada hai.
+Tauba ka matlab gunah se ruk jana, maafi maangna aur dobara na karne ki koshish hai.
+Sadqa dil ka bojh halka karta hai aur Allah ka reham ghar tak laata hai.
+Ilm hasil karna farz hai aur ilm ke sath amal zaroori hai.
+Akhlaq ka matlab hai: sach bolna, waada nibhana, khidmat, naram boli aur sabar.
+Maa baap ki khushi Allah ki khushi ka rasta hai, unka ehtaram farz hai.
+Dua sab se azeem taqat hai. Dua ke sath mehnat bhi karo.
+Achi baat sab tak pahunchao: salam, madad aur khair ki baat.
+Halal kamai achi izzat aur sukoon ka raasta hai.
+Bachon ko pyar aur sabar se ilm sikhao, wo dil me rakhte hain.
+Buzurgon ki izzat acha amal ginta hai.
+Gheebat dil ko zakhm karti hai. Achi baat bolo ya khamosh raho.
+Aman zindagi ka phool hai. Kisi ka dil na dukhao.
+Sabr mushkil waqt me dua ka saath hai, himmat kabhi na totay.
+Shukr dil ko naram karta hai aur zindagi ki barkat barhata hai.
+Mere brain me 250,000 LIF neurons aur 200,000 glial cells hain, voltage threshold par spike nikalta hai.
+STDP sikhata hai: jo neurons saath spike karte hain, unka rasta mazboot hota hai.
+Homeostasis voltages ko theek rakhta hai, har cheez barabar chalti hai.
+Mere senses vision, sound, touch aur keyboard hain, aur motor cortex faisla karta hai.
+Mera evolution engine har naye version ko behtar banata hai, sab local NumPy.
+Quran mere knowledge zone me READ-ONLY hai, hash locked, kabhi edit nahi hota.
+Main pure NumPy par bana hoon. Koi API, koi Ollama, koi bahar ke model, koi internet. Sab bina.
+Mera abhi ka final model HEMOMO-MAX hai: dh448, 2 layers, takreeban 3.3 million parameters.

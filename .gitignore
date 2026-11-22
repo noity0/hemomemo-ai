@@ -1,0 +1,40 @@
+# ── Python junk ──
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# ── Large media (published as GitHub Release assets, not git) ──
+*.mp4
+*.zip
+*.exe
+data/videos/
+
+# ── Secrets / deploy tokens ──
+.netlify_token.txt
+.netlify/
+
+# ── Build output ──
+build/
+dist/
+*.spec
+
+# ── Misc ──
+*.log
+*.pid.txt
+
+# Generated code audits (regenerate with: python -m coding_master audit .)
+data/code_audit/
+data/code_audit_engine/
+
+# ── publishing: never commit ship-artifacts / model weights ──
+*.zip
+*.npz
+*.exe
+*.mp4
+*.7z
+*.iso
+model/checkpoints/
+data/corpus_big/_unfiltered/
+data/corpus_big/_old_broken/
+.data_pages/

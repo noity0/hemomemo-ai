@@ -1,0 +1,16 @@
+{
+  "category": "documentation",
+  "description": "Automated documentation generation",
+  "file_types": [
+    "doc",
+    "docx",
+    "html",
+    "md",
+    "pdf",
+    "txt"
+  ],
+  "templates": [
+    "doc_generator.py",
+    "README_TEMPLATE.md"
+  ]
+}

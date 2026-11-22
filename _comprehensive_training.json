@@ -1,0 +1,22 @@
+{
+ "prefix": "hemomaster_comprehensive",
+ "base": "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_comprehensive_1794227321.npz",
+ "final": "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_comprehensive_1794231718.npz",
+ "steps": 355,
+ "wall_s": 3612.422751426697,
+ "vocab": 95,
+ "d_h": 660,
+ "avg_loss_last100": 2.7552115726470947,
+ "epochs": [
+  "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_comprehensive_1794228716.npz",
+  "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_comprehensive_1794229319.npz",
+  "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_comprehensive_1794229925.npz",
+  "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_comprehensive_1794230533.npz",
+  "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_comprehensive_1794231146.npz",
+  "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_comprehensive_1794231718.npz"
+ ],
+ "corpus": "D:\\DigitalBrain\\data\\corpus_big\\trainer_comprehensive_2h.txt",
+ "sha256": {
+  "hemomaster_comprehensive_1794231718.npz": "4d0fe7db2af2b5f9"
+ }
+}

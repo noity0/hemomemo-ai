@@ -1,0 +1,20 @@
+{
+ "prefix": "hemomaster_cmdctrl",
+ "base": "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_1794211843.npz",
+ "final": "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_cmdctrl_1794213909.npz",
+ "steps": 160,
+ "wall_s": 1205.3577435016632,
+ "vocab": 95,
+ "d_h": 660,
+ "avg_loss_last100": 3.027399296760559,
+ "epochs": [
+  "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_cmdctrl_1794213014.npz",
+  "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_cmdctrl_1794213324.npz",
+  "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_cmdctrl_1794213632.npz",
+  "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_cmdctrl_1794213909.npz"
+ ],
+ "corpus": "D:\\DigitalBrain\\data\\corpus_big\\trainer_knowledge_cmdshell.txt,D:\\DigitalBrain\\data\\corpus_big\\agent_orders.txt,D:\\DigitalBrain\\data\\corpus_big\\gamebot_tasks.txt",
+ "sha256": {
+  "hemomaster_cmdctrl_1794213909.npz": "a0468856769df748"
+ }
+}

@@ -1,0 +1,35 @@
+{
+  "category": "security",
+  "description": "Security-first coding approach",
+  "file_types": [
+    "angular",
+    "c",
+    "cpp",
+    "css",
+    "env",
+    "go",
+    "html",
+    "ini",
+    "java",
+    "js",
+    "json",
+    "jsx",
+    "node",
+    "php",
+    "py",
+    "rb",
+    "react",
+    "rs",
+    "toml",
+    "ts",
+    "tsx",
+    "vue",
+    "xml",
+    "yaml",
+    "yml"
+  ],
+  "templates": [
+    "security_scanner.py",
+    "security_checklist.md"
+  ]
+}

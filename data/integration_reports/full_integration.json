@@ -1,0 +1,45 @@
+{
+  "generated_at": "2026-11-21T10:51:53.115938",
+  "qanoon_compliance": {
+    "local_only": true,
+    "no_external_ai": true,
+    "no_cloud_dependencies": true,
+    "no_ffmpeg": true,
+    "all_data_on_disk": true
+  },
+  "file_linking": {
+    "digitalbrain_to_desktop_links": 10,
+    "digitalbrain_to_app_links": 5,
+    "digitalbrain_to_zip_links": 2,
+    "desktop_to_app_links": 1,
+    "total_links": 18,
+    "zip_files_tracked": 2,
+    "total_files_linked": 59
+  },
+  "coding_engine": {
+    "version": "2.0.0",
+    "status": "ok",
+    "modules_checked": 12,
+    "symbols_indexed": 121,
+    "languages_supported": 11,
+    "code_kinds": 10,
+    "project_scaffolds": 8,
+    "security_score": 100,
+    "analysis_score": 88.0,
+    "analysis_grade": "B"
+  },
+  "enhancement_system": {
+    "total_capabilities": 18,
+    "categories": 10,
+    "installed_templates": 48
+  },
+  "new_features_added": [
+    "Deep file linking (DigitalBrain \u2194 Desktop \u2194 App \u2194 ZIP)",
+    "ZIP manifest with SHA256 + MD5 hashes",
+    "Local AI code suggestor (12 suggestions detected)",
+    "Performance profiler for code analysis",
+    "Unified HTML dashboard",
+    "Git hooks for pre-commit validation"
+  ],
+  "all_qanoon_safe": true
+}

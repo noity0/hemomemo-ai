@@ -1,0 +1,1151 @@
+# HEMOMEMO CODING-ILM (45+ zabanein: hello/variable/loop/function)
+# App-ka code-dimagh isi-format par samajhta hai: code hello in <lang>.
+
+Sawal: code hello in python
+Sawal: python me salam ka code
+Sawal: hello world python
+Jawab: Asli python program (khud banaya, apna token-dimagh):
+print('salam')
+
+Sawal: python variable
+Sawal: python me variable kaise
+Jawab: python me variable: x = 5
+
+Sawal: python loop
+Sawal: python me for-loop
+Jawab: python me loop: for i in range(5): print(i)
+
+Sawal: python function
+Sawal: python me function/method
+Jawab: python me function: def salam(n):
+    return 'salam ' + n
+
+Sawal: code hello in c
+Sawal: c me salam ka code
+Sawal: hello world c
+Jawab: Asli c program (khud banaya, apna token-dimagh):
+#include <stdio.h>
+int main(){printf("salam\n");return 0;}
+
+Sawal: c variable
+Sawal: c me variable kaise
+Jawab: c me variable: int x = 5;
+
+Sawal: c loop
+Sawal: c me for-loop
+Jawab: c me loop: for(int i=0;i<5;i++)printf("%d\n",i);
+
+Sawal: c function
+Sawal: c me function/method
+Jawab: c me function: const char* salam(const char* n){static char b[64];sprintf(b,"salam %s",n);return b;}
+
+Sawal: code hello in c++
+Sawal: c++ me salam ka code
+Sawal: hello world c++
+Jawab: Asli c++ program (khud banaya, apna token-dimagh):
+#include <iostream>
+int main(){std::cout<<"salam\n";}
+
+Sawal: c++ variable
+Sawal: c++ me variable kaise
+Jawab: c++ me variable: int x = 5;
+
+Sawal: c++ loop
+Sawal: c++ me for-loop
+Jawab: c++ me loop: for(int i=0;i<5;i++)std::cout<<i<<"\n";
+
+Sawal: c++ function
+Sawal: c++ me function/method
+Jawab: c++ me function: std::string salam(std::string n){return "salam "+n;}
+
+Sawal: code hello in c#
+Sawal: c# me salam ka code
+Sawal: hello world c#
+Jawab: Asli c# program (khud banaya, apna token-dimagh):
+using System;
+class P{static void Main(){Console.WriteLine("salam");}}
+
+Sawal: c# variable
+Sawal: c# me variable kaise
+Jawab: c# me variable: int x = 5;
+
+Sawal: c# loop
+Sawal: c# me for-loop
+Jawab: c# me loop: for(int i=0;i<5;i++)Console.WriteLine(i);
+
+Sawal: c# function
+Sawal: c# me function/method
+Jawab: c# me function: string Salam(string n)=>"salam "+n;
+
+Sawal: code hello in java
+Sawal: java me salam ka code
+Sawal: hello world java
+Jawab: Asli java program (khud banaya, apna token-dimagh):
+public class P{public static void main(String[] a){System.out.println("salam");}}
+
+Sawal: java variable
+Sawal: java me variable kaise
+Jawab: java me variable: int x = 5;
+
+Sawal: java loop
+Sawal: java me for-loop
+Jawab: java me loop: for(int i=0;i<5;i++)System.out.println(i);
+
+Sawal: java function
+Sawal: java me function/method
+Jawab: java me function: String salam(String n){return "salam "+n;}
+
+Sawal: code hello in javascript
+Sawal: javascript me salam ka code
+Sawal: hello world javascript
+Jawab: Asli javascript program (khud banaya, apna token-dimagh):
+console.log('salam');
+
+Sawal: javascript variable
+Sawal: javascript me variable kaise
+Jawab: javascript me variable: let x = 5;
+
+Sawal: javascript loop
+Sawal: javascript me for-loop
+Jawab: javascript me loop: for(let i=0;i<5;i++)console.log(i);
+
+Sawal: javascript function
+Sawal: javascript me function/method
+Jawab: javascript me function: const salam = n => 'salam '+n;
+
+Sawal: code hello in typescript
+Sawal: typescript me salam ka code
+Sawal: hello world typescript
+Jawab: Asli typescript program (khud banaya, apna token-dimagh):
+console.log('salam');
+
+Sawal: typescript variable
+Sawal: typescript me variable kaise
+Jawab: typescript me variable: let x: number = 5;
+
+Sawal: typescript loop
+Sawal: typescript me for-loop
+Jawab: typescript me loop: for(let i=0;i<5;i++)console.log(i);
+
+Sawal: typescript function
+Sawal: typescript me function/method
+Jawab: typescript me function: const salam = (n: string): string => 'salam '+n;
+
+Sawal: code hello in go
+Sawal: go me salam ka code
+Sawal: hello world go
+Jawab: Asli go program (khud banaya, apna token-dimagh):
+package main
+import "fmt"
+func main(){fmt.Println("salam")}
+
+Sawal: go variable
+Sawal: go me variable kaise
+Jawab: go me variable: x := 5
+
+Sawal: go loop
+Sawal: go me for-loop
+Jawab: go me loop: for i:=0;i<5;i++{fmt.Println(i)}
+
+Sawal: go function
+Sawal: go me function/method
+Jawab: go me function: func salam(n string) string {return "salam "+n}
+
+Sawal: code hello in rust
+Sawal: rust me salam ka code
+Sawal: hello world rust
+Jawab: Asli rust program (khud banaya, apna token-dimagh):
+fn main(){println!("salam");}
+
+Sawal: rust variable
+Sawal: rust me variable kaise
+Jawab: rust me variable: let x = 5;
+
+Sawal: rust loop
+Sawal: rust me for-loop
+Jawab: rust me loop: for i in 0..5{println!("{}",i)}
+
+Sawal: rust function
+Sawal: rust me function/method
+Jawab: rust me function: fn salam(n:&str)->String{format!("salam {}",n)}
+
+Sawal: code hello in php
+Sawal: php me salam ka code
+Sawal: hello world php
+Jawab: Asli php program (khud banaya, apna token-dimagh):
+<?php echo 'salam';
+
+Sawal: php variable
+Sawal: php me variable kaise
+Jawab: php me variable: $x = 5;
+
+Sawal: php loop
+Sawal: php me for-loop
+Jawab: php me loop: for($i=0;$i<5;$i++)echo $i;
+
+Sawal: php function
+Sawal: php me function/method
+Jawab: php me function: function salam($n){return 'salam '.$n;}
+
+Sawal: code hello in ruby
+Sawal: ruby me salam ka code
+Sawal: hello world ruby
+Jawab: Asli ruby program (khud banaya, apna token-dimagh):
+puts 'salam'
+
+Sawal: ruby variable
+Sawal: ruby me variable kaise
+Jawab: ruby me variable: x = 5
+
+Sawal: ruby loop
+Sawal: ruby me for-loop
+Jawab: ruby me loop: 5.times{|i|puts i}
+
+Sawal: ruby function
+Sawal: ruby me function/method
+Jawab: ruby me function: def salam(n); "salam #{n}"; end
+
+Sawal: code hello in swift
+Sawal: swift me salam ka code
+Sawal: hello world swift
+Jawab: Asli swift program (khud banaya, apna token-dimagh):
+print("salam")
+
+Sawal: swift variable
+Sawal: swift me variable kaise
+Jawab: swift me variable: var x = 5
+
+Sawal: swift loop
+Sawal: swift me for-loop
+Jawab: swift me loop: for i in 0..<5{print(i)}
+
+Sawal: swift function
+Sawal: swift me function/method
+Jawab: swift me function: func salam(_ n:String)->String{return "salam "+n}
+
+Sawal: code hello in kotlin
+Sawal: kotlin me salam ka code
+Sawal: hello world kotlin
+Jawab: Asli kotlin program (khud banaya, apna token-dimagh):
+fun main(){println("salam")}
+
+Sawal: kotlin variable
+Sawal: kotlin me variable kaise
+Jawab: kotlin me variable: val x = 5
+
+Sawal: kotlin loop
+Sawal: kotlin me for-loop
+Jawab: kotlin me loop: for(i in 0..4)println(i)
+
+Sawal: kotlin function
+Sawal: kotlin me function/method
+Jawab: kotlin me function: fun salam(n:String)="salam $n"
+
+Sawal: code hello in dart
+Sawal: dart me salam ka code
+Sawal: hello world dart
+Jawab: Asli dart program (khud banaya, apna token-dimagh):
+void main(){print('salam');}
+
+Sawal: dart variable
+Sawal: dart me variable kaise
+Jawab: dart me variable: var x = 5;
+
+Sawal: dart loop
+Sawal: dart me for-loop
+Jawab: dart me loop: for(var i=0;i<5;i++)print(i);
+
+Sawal: dart function
+Sawal: dart me function/method
+Jawab: dart me function: String salam(String n)=>'salam '+n;
+
+Sawal: code hello in lua
+Sawal: lua me salam ka code
+Sawal: hello world lua
+Jawab: Asli lua program (khud banaya, apna token-dimagh):
+print('salam')
+
+Sawal: lua variable
+Sawal: lua me variable kaise
+Jawab: lua me variable: local x = 5
+
+Sawal: lua loop
+Sawal: lua me for-loop
+Jawab: lua me loop: for i=1,5 do print(i) end
+
+Sawal: lua function
+Sawal: lua me function/method
+Jawab: lua me function: function salam(n) return 'salam '..n end
+
+Sawal: code hello in perl
+Sawal: perl me salam ka code
+Sawal: hello world perl
+Jawab: Asli perl program (khud banaya, apna token-dimagh):
+print "salam\n";
+
+Sawal: perl variable
+Sawal: perl me variable kaise
+Jawab: perl me variable: my $x = 5;
+
+Sawal: perl loop
+Sawal: perl me for-loop
+Jawab: perl me loop: for my $i (0..4){print "$i\n"}
+
+Sawal: perl function
+Sawal: perl me function/method
+Jawab: perl me function: sub salam {my($n)=@_;return "salam $n";}
+
+Sawal: code hello in r
+Sawal: r me salam ka code
+Sawal: hello world r
+Jawab: Asli r program (khud banaya, apna token-dimagh):
+cat('salam\n')
+
+Sawal: r variable
+Sawal: r me variable kaise
+Jawab: r me variable: x <- 5
+
+Sawal: r loop
+Sawal: r me for-loop
+Jawab: r me loop: for(i in 1:5)cat(i,'\n')
+
+Sawal: r function
+Sawal: r me function/method
+Jawab: r me function: salam <- function(n) paste0('salam ',n)
+
+Sawal: code hello in matlab
+Sawal: matlab me salam ka code
+Sawal: hello world matlab
+Jawab: Asli matlab program (khud banaya, apna token-dimagh):
+disp('salam')
+
+Sawal: matlab variable
+Sawal: matlab me variable kaise
+Jawab: matlab me variable: x = 5;
+
+Sawal: matlab loop
+Sawal: matlab me for-loop
+Jawab: matlab me loop: for i=1:5, disp(i); end
+
+Sawal: matlab function
+Sawal: matlab me function/method
+Jawab: matlab me function: function s=salam(n); s=['salam ' n]; end
+
+Sawal: code hello in julia
+Sawal: julia me salam ka code
+Sawal: hello world julia
+Jawab: Asli julia program (khud banaya, apna token-dimagh):
+println("salam")
+
+Sawal: julia variable
+Sawal: julia me variable kaise
+Jawab: julia me variable: x = 5
+
+Sawal: julia loop
+Sawal: julia me for-loop
+Jawab: julia me loop: for i in 1:5 println(i) end
+
+Sawal: julia function
+Sawal: julia me function/method
+Jawab: julia me function: salam(n) = "salam $n"
+
+Sawal: code hello in haskell
+Sawal: haskell me salam ka code
+Sawal: hello world haskell
+Jawab: Asli haskell program (khud banaya, apna token-dimagh):
+main = putStrLn "salam"
+
+Sawal: haskell variable
+Sawal: haskell me variable kaise
+Jawab: haskell me variable: x = 5 :: Int
+
+Sawal: haskell loop
+Sawal: haskell me for-loop
+Jawab: haskell me loop: mapM_ print [0..4]
+
+Sawal: haskell function
+Sawal: haskell me function/method
+Jawab: haskell me function: salam n = "salam " ++ n
+
+Sawal: code hello in elixir
+Sawal: elixir me salam ka code
+Sawal: hello world elixir
+Jawab: Asli elixir program (khud banaya, apna token-dimagh):
+IO.puts "salam"
+
+Sawal: elixir variable
+Sawal: elixir me variable kaise
+Jawab: elixir me variable: x = 5
+
+Sawal: elixir loop
+Sawal: elixir me for-loop
+Jawab: elixir me loop: for i <- 0..4, do: IO.puts i
+
+Sawal: elixir function
+Sawal: elixir me function/method
+Jawab: elixir me function: def salam(n), do: "salam #{n}"
+
+Sawal: code hello in erlang
+Sawal: erlang me salam ka code
+Sawal: hello world erlang
+Jawab: Asli erlang program (khud banaya, apna token-dimagh):
+-module(p).
+-export([m/0]).
+m() -> io:format("salam~n").
+
+Sawal: erlang variable
+Sawal: erlang me variable kaise
+Jawab: erlang me variable: X = 5.
+
+Sawal: erlang loop
+Sawal: erlang me for-loop
+Jawab: erlang me loop: lists:foreach(fun(I)->io:format("~p~n",[I]) end,lists:seq(0,4)).
+
+Sawal: erlang function
+Sawal: erlang me function/method
+Jawab: erlang me function: salam(N)->lists:concat([salam,32,N]).
+
+Sawal: code hello in clojure
+Sawal: clojure me salam ka code
+Sawal: hello world clojure
+Jawab: Asli clojure program (khud banaya, apna token-dimagh):
+(println "salam")
+
+Sawal: clojure variable
+Sawal: clojure me variable kaise
+Jawab: clojure me variable: (def x 5)
+
+Sawal: clojure loop
+Sawal: clojure me for-loop
+Jawab: clojure me loop: (doseq [i (range 5)] (println i))
+
+Sawal: clojure function
+Sawal: clojure me function/method
+Jawab: clojure me function: (defn salam [n] (str "salam " n))
+
+Sawal: code hello in fsharp
+Sawal: fsharp me salam ka code
+Sawal: hello world fsharp
+Jawab: Asli fsharp program (khud banaya, apna token-dimagh):
+printfn "salam"
+
+Sawal: fsharp variable
+Sawal: fsharp me variable kaise
+Jawab: fsharp me variable: let x = 5
+
+Sawal: fsharp loop
+Sawal: fsharp me for-loop
+Jawab: fsharp me loop: for i = 0 to 4 do printfn "%d" i
+
+Sawal: fsharp function
+Sawal: fsharp me function/method
+Jawab: fsharp me function: let salam n = "salam " + n
+
+Sawal: code hello in scala
+Sawal: scala me salam ka code
+Sawal: hello world scala
+Jawab: Asli scala program (khud banaya, apna token-dimagh):
+object P extends App{println("salam")}
+
+Sawal: scala variable
+Sawal: scala me variable kaise
+Jawab: scala me variable: val x = 5
+
+Sawal: scala loop
+Sawal: scala me for-loop
+Jawab: scala me loop: (0 to 4).foreach(println)
+
+Sawal: scala function
+Sawal: scala me function/method
+Jawab: scala me function: def salam(n:String)="salam "+n
+
+Sawal: code hello in groovy
+Sawal: groovy me salam ka code
+Sawal: hello world groovy
+Jawab: Asli groovy program (khud banaya, apna token-dimagh):
+println 'salam'
+
+Sawal: groovy variable
+Sawal: groovy me variable kaise
+Jawab: groovy me variable: def x = 5
+
+Sawal: groovy loop
+Sawal: groovy me for-loop
+Jawab: groovy me loop: 5.times{println it}
+
+Sawal: groovy function
+Sawal: groovy me function/method
+Jawab: groovy me function: def salam(n){"salam $n"}
+
+Sawal: code hello in assembly x86 (masm)
+Sawal: assembly x86 (masm) me salam ka code
+Sawal: hello world assembly x86 (masm)
+Jawab: Asli assembly x86 (masm) program (khud banaya, apna token-dimagh):
+.model small
+.stack
+.code
+start: mov ax,@data
+mov ds,ax
+mov dx,off msg
+mov ah,9
+int 21h
+end start
+
+Sawal: assembly x86 (masm) variable
+Sawal: assembly x86 (masm) me variable kaise
+Jawab: assembly x86 (masm) me variable: mov ax, 5
+
+Sawal: assembly x86 (masm) loop
+Sawal: assembly x86 (masm) me for-loop
+Jawab: assembly x86 (masm) me loop: mov cx,5
+lp: loop lp
+
+Sawal: assembly x86 (masm) function
+Sawal: assembly x86 (masm) me function/method
+Jawab: assembly x86 (masm) me function: (subroutine) call salam → ret
+
+Sawal: code hello in bash
+Sawal: bash me salam ka code
+Sawal: hello world bash
+Jawab: Asli bash program (khud banaya, apna token-dimagh):
+#!/bin/bash
+echo salam
+
+Sawal: bash variable
+Sawal: bash me variable kaise
+Jawab: bash me variable: x=5
+
+Sawal: bash loop
+Sawal: bash me for-loop
+Jawab: bash me loop: for i in 0 1 2 3 4; do echo $i; done
+
+Sawal: bash function
+Sawal: bash me function/method
+Jawab: bash me function: salam(){ echo "salam $1"; }
+
+Sawal: code hello in powershell script
+Sawal: powershell script me salam ka code
+Sawal: hello world powershell script
+Jawab: Asli powershell script program (khud banaya, apna token-dimagh):
+Write-Host 'salam'
+
+Sawal: powershell script variable
+Sawal: powershell script me variable kaise
+Jawab: powershell script me variable: $x = 5
+
+Sawal: powershell script loop
+Sawal: powershell script me for-loop
+Jawab: powershell script me loop: 0..4 | ForEach-Object {$_}
+
+Sawal: powershell script function
+Sawal: powershell script me function/method
+Jawab: powershell script me function: function salam($n){"salam $n"}
+
+Sawal: code hello in batch cmd
+Sawal: batch cmd me salam ka code
+Sawal: hello world batch cmd
+Jawab: Asli batch cmd program (khud banaya, apna token-dimagh):
+@echo off
+echo salam
+
+Sawal: batch cmd variable
+Sawal: batch cmd me variable kaise
+Jawab: batch cmd me variable: set x=5
+
+Sawal: batch cmd loop
+Sawal: batch cmd me for-loop
+Jawab: batch cmd me loop: for /l %%i in (1,1,5) do echo %%i
+
+Sawal: batch cmd function
+Sawal: batch cmd me function/method
+Jawab: batch cmd me function: (call):call :salam Ali
+:salam
+echo salam %1
+
+Sawal: code hello in sql
+Sawal: sql me salam ka code
+Sawal: hello world sql
+Jawab: Asli sql program (khud banaya, apna token-dimagh):
+SELECT 'salam';
+
+Sawal: sql variable
+Sawal: sql me variable kaise
+Jawab: sql me variable: DECLARE @x INT = 5;
+
+Sawal: sql loop
+Sawal: sql me for-loop
+Jawab: sql me loop: (tally) WITH t AS (SELECT 1 N UNION ALL SELECT N+1 FROM t WHERE N<5) SELECT N FROM t;
+
+Sawal: sql function
+Sawal: sql me function/method
+Jawab: sql me function: CREATE FUNCTION salam(@n VARCHAR(50)) RETURNS VARCHAR(50) AS BEGIN RETURN 'salam '+@n; END
+
+Sawal: code hello in pl/sql
+Sawal: pl/sql me salam ka code
+Sawal: hello world pl/sql
+Jawab: Asli pl/sql program (khud banaya, apna token-dimagh):
+BEGIN DBMS_OUTPUT.PUT_LINE('salam'); END;
+
+Sawal: pl/sql variable
+Sawal: pl/sql me variable kaise
+Jawab: pl/sql me variable: x NUMBER := 5;
+
+Sawal: pl/sql loop
+Sawal: pl/sql me for-loop
+Jawab: pl/sql me loop: FOR i IN 1..5 LOOP DBMS_OUTPUT.PUT_LINE(i); END LOOP;
+
+Sawal: pl/sql function
+Sawal: pl/sql me function/method
+Jawab: pl/sql me function: FUNCTION salam(n VARCHAR2) RETURN VARCHAR2 IS BEGIN RETURN 'salam '||n; END;
+
+Sawal: code hello in t-sql / mssql
+Sawal: t-sql / mssql me salam ka code
+Sawal: hello world t-sql / mssql
+Jawab: Asli t-sql / mssql program (khud banaya, apna token-dimagh):
+PRINT 'salam';
+
+Sawal: t-sql / mssql variable
+Sawal: t-sql / mssql me variable kaise
+Jawab: t-sql / mssql me variable: DECLARE @x INT = 5;
+
+Sawal: t-sql / mssql loop
+Sawal: t-sql / mssql me for-loop
+Jawab: t-sql / mssql me loop: DECLARE @i INT=0; WHILE @i<5 BEGIN PRINT @i; SET @i+=1; END;
+
+Sawal: t-sql / mssql function
+Sawal: t-sql / mssql me function/method
+Jawab: t-sql / mssql me function: CREATE FUNCTION salam(@n VARCHAR(50)) RETURNS VARCHAR(50) AS BEGIN RETURN 'salam '+@n; END
+
+Sawal: code hello in vbscript
+Sawal: vbscript me salam ka code
+Sawal: hello world vbscript
+Jawab: Asli vbscript program (khud banaya, apna token-dimagh):
+MsgBox "salam"
+
+Sawal: vbscript variable
+Sawal: vbscript me variable kaise
+Jawab: vbscript me variable: Dim x : x = 5
+
+Sawal: vbscript loop
+Sawal: vbscript me for-loop
+Jawab: vbscript me loop: For i = 0 To 4 : WScript.Echo i : Next
+
+Sawal: vbscript function
+Sawal: vbscript me function/method
+Jawab: vbscript me function: Function salam(n): salam = "salam " & n : End Function
+
+Sawal: code hello in vb.net
+Sawal: vb.net me salam ka code
+Sawal: hello world vb.net
+Jawab: Asli vb.net program (khud banaya, apna token-dimagh):
+Module P
+Sub Main() : Console.WriteLine("salam") : End Sub
+End Module
+
+Sawal: vb.net variable
+Sawal: vb.net me variable kaise
+Jawab: vb.net me variable: Dim x As Integer = 5
+
+Sawal: vb.net loop
+Sawal: vb.net me for-loop
+Jawab: vb.net me loop: For i = 0 To 4 : Console.WriteLine(i) : Next
+
+Sawal: vb.net function
+Sawal: vb.net me function/method
+Jawab: vb.net me function: Function Salam(n As String) As String : Return "salam " & n : End Function
+
+Sawal: code hello in delphi / pascal
+Sawal: delphi / pascal me salam ka code
+Sawal: hello world delphi / pascal
+Jawab: Asli delphi / pascal program (khud banaya, apna token-dimagh):
+program P;begin writeln('salam');end.
+
+Sawal: delphi / pascal variable
+Sawal: delphi / pascal me variable kaise
+Jawab: delphi / pascal me variable: var x: Integer = 5;
+
+Sawal: delphi / pascal loop
+Sawal: delphi / pascal me for-loop
+Jawab: delphi / pascal me loop: for i := 0 to 4 do writeln(i);
+
+Sawal: delphi / pascal function
+Sawal: delphi / pascal me function/method
+Jawab: delphi / pascal me function: function salam(n: string): string; begin result := 'salam '+n; end;
+
+Sawal: code hello in objective-c
+Sawal: objective-c me salam ka code
+Sawal: hello world objective-c
+Jawab: Asli objective-c program (khud banaya, apna token-dimagh):
+#import <Foundation/Foundation.h>
+int main(){NSLog(@"salam");return 0;}
+
+Sawal: objective-c variable
+Sawal: objective-c me variable kaise
+Jawab: objective-c me variable: NSInteger x = 5;
+
+Sawal: objective-c loop
+Sawal: objective-c me for-loop
+Jawab: objective-c me loop: for(int i=0;i<5;i++)NSLog(@"%ld",(long)i);
+
+Sawal: objective-c function
+Sawal: objective-c me function/method
+Jawab: objective-c me function: NSString* salam(NSString*n){return [NSString stringWithFormat:@"salam %@",n];}
+
+Sawal: code hello in arduino (c++)
+Sawal: arduino (c++) me salam ka code
+Sawal: hello world arduino (c++)
+Jawab: Asli arduino (c++) program (khud banaya, apna token-dimagh):
+void setup(){Serial.begin(9600);}
+
+Sawal: arduino (c++) variable
+Sawal: arduino (c++) me variable kaise
+Jawab: arduino (c++) me variable: int x = 5;
+
+Sawal: arduino (c++) loop
+Sawal: arduino (c++) me for-loop
+Jawab: arduino (c++) me loop: for(int i=0;i<5;i++)Serial.println(i);
+
+Sawal: arduino (c++) function
+Sawal: arduino (c++) me function/method
+Jawab: arduino (c++) me function: String salam(String n){return "salam "+n;}
+
+Sawal: code hello in html
+Sawal: html me salam ka code
+Sawal: hello world html
+Jawab: Asli html program (khud banaya, apna token-dimagh):
+<!DOCTYPE html><html><head><title>S</title></head><body><h1>salam</h1></body></html>
+
+Sawal: html variable
+Sawal: html me variable kaise
+Jawab: html me variable: <input value="5">
+
+Sawal: html loop
+Sawal: html me for-loop
+Jawab: html me loop: <ul><li>1</li><li>2</li></ul>
+
+Sawal: html function
+Sawal: html me function/method
+Jawab: html me function: <button onclick="salam('Ali')">go</button>
+
+Sawal: code hello in css
+Sawal: css me salam ka code
+Sawal: hello world css
+Jawab: Asli css program (khud banaya, apna token-dimagh):
+body::before{content:'salam'}
+
+Sawal: css variable
+Sawal: css me variable kaise
+Jawab: css me variable: --x: 5; (custom-prop)
+
+Sawal: css loop
+Sawal: css me for-loop
+Jawab: css me loop: li:nth-child(n){} (pattern-loop)
+
+Sawal: css function
+Sawal: css me function/method
+Jawab: css me function: .salam::after{content:attr(data-n)}
+
+Sawal: code hello in solidity
+Sawal: solidity me salam ka code
+Sawal: hello world solidity
+Jawab: Asli solidity program (khud banaya, apna token-dimagh):
+pragma solidity ^0.8;
+contract P{string public s="salam";}
+
+Sawal: solidity variable
+Sawal: solidity me variable kaise
+Jawab: solidity me variable: uint x = 5;
+
+Sawal: solidity loop
+Sawal: solidity me for-loop
+Jawab: solidity me loop: for(uint i=0;i<5;i++){}
+
+Sawal: solidity function
+Sawal: solidity me function/method
+Jawab: solidity me function: function salam(string n) public pure returns(string m){m=string.concat("salam ",n);}
+
+Sawal: code hello in fortran
+Sawal: fortran me salam ka code
+Sawal: hello world fortran
+Jawab: Asli fortran program (khud banaya, apna token-dimagh):
+program p
+print *,"salam"
+end program
+
+Sawal: fortran variable
+Sawal: fortran me variable kaise
+Jawab: fortran me variable: integer :: x = 5
+
+Sawal: fortran loop
+Sawal: fortran me for-loop
+Jawab: fortran me loop: do i=1,5
+print *,i
+end do
+
+Sawal: fortran function
+Sawal: fortran me function/method
+Jawab: fortran me function: function salam(n); character(len=64) salam; character(*) n; salam='salam '//n; end function
+
+Sawal: code hello in cobol
+Sawal: cobol me salam ka code
+Sawal: hello world cobol
+Jawab: Asli cobol program (khud banaya, apna token-dimagh):
+IDENTIFICATION DIVISION.
+PROGRAM-ID. P.
+PROCEDURE DIVISION.
+DISPLAY "salam".
+STOP RUN.
+
+Sawal: cobol variable
+Sawal: cobol me variable kaise
+Jawab: cobol me variable: 01 X PIC 9 VALUE 5.
+
+Sawal: cobol loop
+Sawal: cobol me for-loop
+Jawab: cobol me loop: PERFORM VARYING I FROM 1 BY 1 UNTIL I > 5
+DISPLAY I
+END-PERFORM.
+
+Sawal: cobol function
+Sawal: cobol me function/method
+Jawab: cobol me function: MOVE "salam " TO WS-OUT. STRING N DELIMITED BY SPACE INTO WS-OUT.
+
+Sawal: code hello in ada
+Sawal: ada me salam ka code
+Sawal: hello world ada
+Jawab: Asli ada program (khud banaya, apna token-dimagh):
+with Ada.Text_IO;
+procedure P is begin Ada.Text_IO.Put_Line("salam"); end P;
+
+Sawal: ada variable
+Sawal: ada me variable kaise
+Jawab: ada me variable: X : Integer := 5;
+
+Sawal: ada loop
+Sawal: ada me for-loop
+Jawab: ada me loop: for I in 0..4 loop Put_Line(Integer'Image(I)); end loop;
+
+Sawal: ada function
+Sawal: ada me function/method
+Jawab: ada me function: function Salam(N:String) return String is ("salam " & N);
+
+Sawal: code hello in prolog
+Sawal: prolog me salam ka code
+Sawal: hello world prolog
+Jawab: Asli prolog program (khud banaya, apna token-dimagh):
+main :- write('salam'), nl.
+
+Sawal: prolog variable
+Sawal: prolog me variable kaise
+Jawab: prolog me variable: X is 5.
+
+Sawal: prolog loop
+Sawal: prolog me for-loop
+Jawab: prolog me loop: forall(between(0,4,I), writeln(I)).
+
+Sawal: prolog function
+Sawal: prolog me function/method
+Jawab: prolog me function: salam(N, S) :- atom_concat('salam ', N, S).
+
+Sawal: code hello in lisp (cl)
+Sawal: lisp (cl) me salam ka code
+Sawal: hello world lisp (cl)
+Jawab: Asli lisp (cl) program (khud banaya, apna token-dimagh):
+(format t "salam~%")
+
+Sawal: lisp (cl) variable
+Sawal: lisp (cl) me variable kaise
+Jawab: lisp (cl) me variable: (defparameter x 5)
+
+Sawal: lisp (cl) loop
+Sawal: lisp (cl) me for-loop
+Jawab: lisp (cl) me loop: (loop for i from 0 to 4 do (print i))
+
+Sawal: lisp (cl) function
+Sawal: lisp (cl) me function/method
+Jawab: lisp (cl) me function: (defun salam (n) (concatenate 'string "salam " n))
+
+Sawal: code hello in scheme
+Sawal: scheme me salam ka code
+Sawal: hello world scheme
+Jawab: Asli scheme program (khud banaya, apna token-dimagh):
+(display "salam") (newline)
+
+Sawal: scheme variable
+Sawal: scheme me variable kaise
+Jawab: scheme me variable: (define x 5)
+
+Sawal: scheme loop
+Sawal: scheme me for-loop
+Jawab: scheme me loop: (do ((i 0 (+ i 1)))((> i 4))(display i))
+
+Sawal: scheme function
+Sawal: scheme me function/method
+Jawab: scheme me function: (define (salam n)(string-append "salam " n))
+
+Sawal: code hello in d (dlang)
+Sawal: d (dlang) me salam ka code
+Sawal: hello world d (dlang)
+Jawab: Asli d (dlang) program (khud banaya, apna token-dimagh):
+import std.stdio;
+void main(){writeln("salam");}
+
+Sawal: d (dlang) variable
+Sawal: d (dlang) me variable kaise
+Jawab: d (dlang) me variable: int x = 5;
+
+Sawal: d (dlang) loop
+Sawal: d (dlang) me for-loop
+Jawab: d (dlang) me loop: foreach(i;0..5)writeln(i);
+
+Sawal: d (dlang) function
+Sawal: d (dlang) me function/method
+Jawab: d (dlang) me function: string salam(string n){return "salam "~n;}
+
+Sawal: code hello in zig
+Sawal: zig me salam ka code
+Sawal: hello world zig
+Jawab: Asli zig program (khud banaya, apna token-dimagh):
+const std=@import("std");
+pub fn main()!void{try std.io.getStdOut().writer().print("salam\n",.{});}
+
+Sawal: zig variable
+Sawal: zig me variable kaise
+Jawab: zig me variable: var x: i32 = 5;
+
+Sawal: zig loop
+Sawal: zig me for-loop
+Jawab: zig me loop: var i: usize=0; while(i<5):(i+=1){try w.print("{d}\n",.{i});}
+
+Sawal: zig function
+Sawal: zig me function/method
+Jawab: zig me function: fn salam(alloc:std.mem.Allocator,n:[]const u8)![]const u8{return std.fmt.allocPrint(alloc,"salam {s}",.{n});}
+
+Sawal: code hello in nim
+Sawal: nim me salam ka code
+Sawal: hello world nim
+Jawab: Asli nim program (khud banaya, apna token-dimagh):
+echo "salam"
+
+Sawal: nim variable
+Sawal: nim me variable kaise
+Jawab: nim me variable: var x = 5
+
+Sawal: nim loop
+Sawal: nim me for-loop
+Jawab: nim me loop: for i in 0..<5: echo i
+
+Sawal: nim function
+Sawal: nim me function/method
+Jawab: nim me function: proc salam(n: string): string = "salam " & n
+
+Sawal: code hello in crystal
+Sawal: crystal me salam ka code
+Sawal: hello world crystal
+Jawab: Asli crystal program (khud banaya, apna token-dimagh):
+puts "salam"
+
+Sawal: crystal variable
+Sawal: crystal me variable kaise
+Jawab: crystal me variable: x = 5
+
+Sawal: crystal loop
+Sawal: crystal me for-loop
+Jawab: crystal me loop: 5.times{|i|puts i}
+
+Sawal: crystal function
+Sawal: crystal me function/method
+Jawab: crystal me function: def salam(n); "salam #{n}"; end
+
+Sawal: python me list/array
+Sawal: python list banane ka tareeqa
+Jawab: python me list/array: lst = [1,2,3]; lst.append(4)
+
+Sawal: python me dictionary/map
+Sawal: python dictionary kaise
+Jawab: python me dict/map: d = {'naam':'Ali','umr':25}; d['naam']
+
+Sawal: python me file read write
+Sawal: python file kaise parho likho
+Jawab: python me file-kaam: with open('a.txt') as f: t = f.read() — likho: open('a.txt','w')
+
+Sawal: python me comment
+Sawal: python comment kaise likhte hain
+Jawab: python me comment: # ye comment hai
+
+Sawal: javascript me list/array
+Sawal: javascript list banane ka tareeqa
+Jawab: javascript me list/array: const lst = [1,2,3]; lst.push(4);
+
+Sawal: javascript me dictionary/map
+Sawal: javascript dictionary kaise
+Jawab: javascript me dict/map: const d = {naam:'Ali'}; d.naam;
+
+Sawal: javascript me file read write
+Sawal: javascript file kaise parho likho
+Jawab: javascript me file-kaam: fs.writeFileSync('a.txt','salam'); let t = fs.readFileSync('a.txt','utf8');
+
+Sawal: javascript me comment
+Sawal: javascript comment kaise likhte hain
+Jawab: javascript me comment: // ye comment hai
+
+Sawal: c me list/array
+Sawal: c list banane ka tareeqa
+Jawab: c me list/array: int a[3] = {1,2,3};
+
+Sawal: c me dictionary/map
+Sawal: c dictionary kaise
+Jawab: c me dict/map: (struct) struct P {int x;}; map = khud-hash-table
+
+Sawal: c me file read write
+Sawal: c file kaise parho likho
+Jawab: c me file-kaam: FILE* f = fopen("a.txt","w"); fprintf(f,"salam"); fclose(f);
+
+Sawal: c me comment
+Sawal: c comment kaise likhte hain
+Jawab: c me comment: // ye comment hai
+
+Sawal: c++ me list/array
+Sawal: c++ list banane ka tareeqa
+Jawab: c++ me list/array: std::vector<int> v = {1,2,3}; v.push_back(4);
+
+Sawal: c++ me dictionary/map
+Sawal: c++ dictionary kaise
+Jawab: c++ me dict/map: std::map<std::string,int> m; m["x"] = 1;
+
+Sawal: c++ me file read write
+Sawal: c++ file kaise parho likho
+Jawab: c++ me file-kaam: std::ofstream f("a.txt"); f << "salam"; (read: std::ifstream)
+
+Sawal: c++ me comment
+Sawal: c++ comment kaise likhte hain
+Jawab: c++ me comment: // ye comment hai
+
+Sawal: c# me list/array
+Sawal: c# list banane ka tareeqa
+Jawab: c# me list/array: var lst = new List<int>{1,2,3}; lst.Add(4);
+
+Sawal: c# me dictionary/map
+Sawal: c# dictionary kaise
+Jawab: c# me dict/map: var d = new Dictionary<string,int>(); d["x"] = 1;
+
+Sawal: c# me file read write
+Sawal: c# file kaise parho likho
+Jawab: c# me file-kaam: File.WriteAllText("a.txt","salam"); string t = File.ReadAllText("a.txt");
+
+Sawal: c# me comment
+Sawal: c# comment kaise likhte hain
+Jawab: c# me comment: // ye comment hai
+
+Sawal: java me list/array
+Sawal: java list banane ka tareeqa
+Jawab: java me list/array: List<Integer> lst = new ArrayList<>(); lst.add(4);
+
+Sawal: java me dictionary/map
+Sawal: java dictionary kaise
+Jawab: java me dict/map: Map<String,Integer> m = new HashMap<>(); m.put("x",1);
+
+Sawal: java me file read write
+Sawal: java file kaise parho likho
+Jawab: java me file-kaam: Files.writeString(Path.of("a.txt"), "salam");
+
+Sawal: java me comment
+Sawal: java comment kaise likhte hain
+Jawab: java me comment: // ye comment hai
+
+Sawal: go me list/array
+Sawal: go list banane ka tareeqa
+Jawab: go me list/array: lst := []int{1,2,3}; lst = append(lst, 4)
+
+Sawal: go me dictionary/map
+Sawal: go dictionary kaise
+Jawab: go me dict/map: m := map[string]int{"x":1}
+
+Sawal: go me file read write
+Sawal: go file kaise parho likho
+Jawab: go me file-kaam: os.WriteFile("a.txt", []byte("salam"), 0644)
+
+Sawal: go me comment
+Sawal: go comment kaise likhte hain
+Jawab: go me comment: // ye comment hai
+
+Sawal: rust me list/array
+Sawal: rust list banane ka tareeqa
+Jawab: rust me list/array: let mut v = vec![1,2,3]; v.push(4);
+
+Sawal: rust me dictionary/map
+Sawal: rust dictionary kaise
+Jawab: rust me dict/map: use std::collections::HashMap; let mut m = HashMap::new(); m.insert("x", 1);
+
+Sawal: rust me file read write
+Sawal: rust file kaise parho likho
+Jawab: rust me file-kaam: std::fs::write("a.txt", b"salam"); let t = std::fs::read_to_string("a.txt");
+
+Sawal: rust me comment
+Sawal: rust comment kaise likhte hain
+Jawab: rust me comment: // ye comment hai
+
+Sawal: php me list/array
+Sawal: php list banane ka tareeqa
+Jawab: php me list/array: $lst = [1,2,3]; $lst[] = 4;
+
+Sawal: php me dictionary/map
+Sawal: php dictionary kaise
+Jawab: php me dict/map: $d = ['naam'=>'Ali']; $d['naam'];
+
+Sawal: php me file read write
+Sawal: php file kaise parho likho
+Jawab: php me file-kaam: file_put_contents('a.txt','salam'); $t = file_get_contents('a.txt');
+
+Sawal: php me comment
+Sawal: php comment kaise likhte hain
+Jawab: php me comment: // ye comment hai
+
+Sawal: bash me list/array
+Sawal: bash list banane ka tareeqa
+Jawab: bash me list/array: lst=(1 2 3); lst+=(4); echo ${lst[@]}
+
+Sawal: bash me dictionary/map
+Sawal: bash dictionary kaise
+Jawab: bash me dict/map: declare -A d; d[naam]=Ali; echo ${d[naam]}
+
+Sawal: bash me file read write
+Sawal: bash file kaise parho likho
+Jawab: bash me file-kaam: echo salam > a.txt; cat a.txt
+
+Sawal: bash me comment
+Sawal: bash comment kaise likhte hain
+Jawab: bash me comment: # ye comment hai
+
+Sawal: sql me list/array
+Sawal: sql list banane ka tareeqa
+Jawab: sql me list/array: SELECT * FROM t WHERE x IN (1,2,3);
+
+Sawal: sql me dictionary/map
+Sawal: sql dictionary kaise
+Jawab: sql me dict/map: SELECT JSON_VALUE(col, '$.naam') FROM t;
+
+Sawal: sql me file read write
+Sawal: sql file kaise parho likho
+Jawab: sql me file-kaam: BULK INSERT / OPENROWSET se file-import
+
+Sawal: sql me comment
+Sawal: sql comment kaise likhte hain
+Jawab: sql me comment: -- ye comment hai
+
+Sawal: html me list/array
+Sawal: html list banane ka tareeqa
+Jawab: html me list/array: <ul><li>1</li><li>2</li></ul>
+
+Sawal: html me dictionary/map
+Sawal: html dictionary kaise
+Jawab: html me dict/map: <div data-naam="Ali"> (data-attribute)
+
+Sawal: html me file read write
+Sawal: html file kaise parho likho
+Jawab: html me file-kaam: <input type="file"> (browser-file-picker)
+
+Sawal: html me comment
+Sawal: html comment kaise likhte hain
+Jawab: html me comment: <!-- ye comment hai -->
+

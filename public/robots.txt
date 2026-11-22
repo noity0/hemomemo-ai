@@ -1,0 +1,65 @@
+# Hemomemo AI robots.txt
+# Allow all search engines + AI crawlers for fast indexing
+
+# --- Search Engines ---
+User-agent: *
+Allow: /
+
+# --- Google ---
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+# --- Bing ---
+User-agent: Bingbot
+Allow: /
+
+# --- Yandex ---
+User-agent: YandexBot
+Allow: /
+
+# --- DuckDuckGo ---
+User-agent: DuckDuckBot
+Allow: /
+
+# --- Naver (Korean) ---
+User-agent: Naverbot
+Allow: /
+
+# --- Brave ---
+User-agent: BraveBot
+Allow: /
+
+# --- AI Crawlers (ChatGPT, Claude, Perplexity, etc.) ---
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+# --- Sitemaps ---
+Sitemap: https://noity0.github.io/hemomemo-ai/sitemap.xml
+Sitemap: https://hemomemo-ai.netlify.app/sitemap.xml

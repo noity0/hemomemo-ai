@@ -1,0 +1,6 @@
+{
+ "key": "hemo1b45b4f6e99e92f2c6a4bb8fc51d87bed426d6f692bde184",
+ "created": "2026-11-07 14:45:53",
+ "note": "owner key (rotated after public-zip leak audit) - local only; never ship in zip/repo/package",
+ "rotated": "2026-11-18 21:30:23"
+}

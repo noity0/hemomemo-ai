@@ -1,0 +1,36 @@
+"""
+📄 owner_data.txt — Hemomemo AI Owner Information
+
+Yeh file Hemomemo AI ka owner (creator) ke details rakhta hai.
+Sab files ke sath link hona chahiye — yeh file poora system ke identity ka hissa hai.
+"""
+# Owner Information
+
+## Personal Details
+- **Name:** Hafiz Muhammed Huzaifa Shamim
+- **Age:** 17
+- **Current Residence:** Iskaan Residency Block, Karachi
+- **Future Plans:** Likely to move to another location in the near future
+
+## Professional Details
+- **College:** DJ Science College, Karachi
+- **Research Focus:** Hafiz Muhammed Huzaifa Shamim
+
+## System Integration
+Yeh file poore system ke sath link hai. Sab files ke sath yeh details share kiye gaye hain taake system ka identity bilkul clear ho.
+
+## Research Links
+- [Google Search: Hafiz Muhammed Huzaifa Shamim](https://www.google.com/search?q=Hafiz+Muhammed+Huzaifa+Shamim)
+- [HMHS Game (banayi site): https://hmhsgame.netlify.app](https://hmhsgame.netlify.app)
+
+## Notes
+Owner ke details sab files ke sath share kiye gaye hain taake system ka identity bilkul clear ho.
+
+## Recent Owner-Action (2026-11-05)
+- Owner ne [https://hmhsgame.netlify.app](https://hmhsgame.netlify.app) site banayi —
+  jiska naam **HMHS Game** hai (HMHS = Hafiz Muhammad Huzaifa Shamim).
+- Owner ka email: laptopshampoo@gmail.com
+- Owner ka Instagram: huzaifa_464
+- Ye information Hemomemo ka owner (Hafiz Muhammed Huzaifa Shamim) ne Hemomemo ke
+  hisaab se di aur Hemomemo ke brain me rakha gaya.
+

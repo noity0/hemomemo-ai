@@ -1,0 +1,26 @@
+{
+  "category": "ai_enhanced",
+  "location": "Data",
+  "created_at": "2026-11-21T10:27:53",
+  "count": 3,
+  "links": [
+    {
+      "source": "enhancement_system/ai_enhanced/templates/ai_code_generator.py",
+      "source_exists": true,
+      "target": "app/ai_code_generator.py",
+      "target_exists": false
+    },
+    {
+      "source": "enhancement_system/ai_enhanced/templates/ai_review.py",
+      "source_exists": true,
+      "target": "app/ai_review.py",
+      "target_exists": false
+    },
+    {
+      "source": "enhancement_system/ai_enhanced/templates/ai_testing.py",
+      "source_exists": true,
+      "target": "app/ai_testing.py",
+      "target_exists": false
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+ "prefix": "hemomaster_vid_",
+ "base": "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_vid__1794218551.npz",
+ "final": "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_vid__1794221934.npz",
+ "steps": 110,
+ "wall_s": 1210.436663389206,
+ "vocab": 95,
+ "d_h": 660,
+ "avg_loss_last100": 2.736418693065643,
+ "epochs": [
+  "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_vid__1794221028.npz",
+  "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_vid__1794221352.npz",
+  "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_vid__1794221660.npz",
+  "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_vid__1794221934.npz"
+ ],
+ "corpus": "D:\\DigitalBrain\\data\\corpus_big\\trainer_research_vidai.txt",
+ "sha256": {
+  "hemomaster_vid__1794221934.npz": "f671d3c686e0fdfa"
+ }
+}

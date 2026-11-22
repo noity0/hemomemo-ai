@@ -1,0 +1,58 @@
+Sawal: variable kya hota hai
+Jawab: variable ek naam hai jo data yaad rakhta hai - x = 5 me x variable hai jisme 5 rakha.
+Sawal: loop kya karta hai
+Jawab: loop ek hi kaam ko bar-bar karta hai - for aur while loop. Har round iteration kehlata hai.
+Sawal: function kya hota hai
+Jawab: function code ka chota dabba hai - input parameter leta hai, kaam karta hai, result return karta hai. Naam se dobara call hota hai.
+Sawal: list kya hoti hai
+Jawab: list kai cheezein ek jagah rakhti hai - items = [1, 2, 3]. Index 0 se shuru hota hai.
+Sawal: numpy array list se behtar kyo hai
+Jawab: numpy array numbers ko ek santali me rakhta hai aur C-speed par math karta hai - hazaaron guna tez loop se.
+Sawal: import ka kya kaam hai
+Jawab: import doosri file/module ka code is file me laata hai - import numpy as np numpy ko np naam se deta hai.
+Sawal: try except kya hai
+Jawab: try kaam karta hai, masla hone par except chalta hai - program crash nahi hota, asli masla dikhata hai (imandari error).
+Sawal: file kaise kholte hain
+Jawab: open(path, "r") parhne ke liye, "w" likhne ke liye, "a" aakhir me jorne ke liye (append-only ka rasta). Kaam khatam to close ya with.
+Sawal: with open kyo behtar hai
+Jawab: with block khatam hote hi file khud band ho jati hai - band karna bhoolne ka risk zero.
+Sawal: json kya hai
+Jawab: json data ka asaan likha hua shakal hai - {"naam": "hemo"}. Achhi reading ke liye json.load, likhne ke liye json.dump.
+Sawal: sha256 kya karta hai
+Jawab: file ka pakka pehchan-number banata hai - ek bit badlav to poori hash badal jati hai. Package manifest isi se sac-faros hota hai.
+Sawal: debug kaise karte hain
+Jawab: print() se beech beech ki qadrein dekho, masle ki asal jagah dhoondo, phir chota fix karo aur dobara chalao - guess nahi, dekh kar.
+Sawal: test kyo likhte hain
+Jawab: test har feature ko khud check karta hai - PASS ya FAIL imandari se. Aage koi badlav puraani cheez na todo.
+Sawal: video engine ki resolution kya hai
+Jawab: final 1280x720 at 24 fps. Andar 1600x900 par render ho kar LANCZOS se niche aata hai (2x shafaf-safai).
+Sawal: video ka waqt-seema kya hai
+Jawab: 5 second se 3000 second (50 minute) tak - MIN_DUR aur MAX_DUR guards ke andar.
+Sawal: video prompt se parinday kaise bante hain
+Jawab: birds lafz par V-shaped parinday sky me uarte hain - parinda 13px ka, wing phaila kar.
+Sawal: video me barish kaise banti hai
+Jawab: rain lafz par slanted rain streaks aate hain - main stream aur chota tail, sab numpy frames.
+Sawal: video mp4 kaise banta hai
+Jawab: frames seedhe ffmpeg pipe me jaate hain aur mp4 banata hai - kabhi .raw file disk par nahi (pipe-only, safai).
+Sawal: same prompt phir call ho to video kya hota hai
+Jawab: wahi file name phir se overwrite hoti hai - naya naam nahi, purani file aise hi badalti hai.
+Sawal: video_meta file ka kya role
+Jawab: video chalne ke baad maalumat likhti hai - duration, frames, size. Video na bane to fail honestly batao, khamoshi nahi.
+Sawal: text-dimagh kaise kam karta hai
+Jawab: char-level token soch: lafz nahi, har harf ek token. Chota dimagh magar apna - koi bahar-ka model nahi.
+Sawal: vocab 95 ka kya matlab hai
+Jawab: tokenizer ke total 95 mumkin alamaat - iske bahar ka corpus se khud saaf ho jata hai.
+Sawal: window 96 asal me kya hota
+Jawab: training me 96 token ek window me parhte hain aur agli id guess karte hain - stride 48 se adha overlap.
+Sawal: LSTM kya kam karta hai
+Jawab: LSTM purani makhtasri yaad rakhta hai - agla token guess karne ke liye window ka sara tanazo dekhta hai.
+Sawal: train_step ka loss kya batata hai
+Jawab: loss jhoot-nahi hai: jitna kam, utna dimagh corpus se hafta. Har step me thora kam hona acha samajh.
+Sawal: checkpoint file kya hoti hai
+Jawab: .npz file jisme dimagh ke tamam wazan (weights) mehfooz hote hain - nayi naam se save, purani kabhi na mitao.
+Sawal: ANALYZE phaiz me kya hota
+Jawab: sawal aane par dimagh pehle sochta hai (30-60 second) phir jawab banata hai - waqt imandari hai, koi jhooti foran-jawab nahi.
+Sawal: seekhna (learn) kahan rakha jata hai
+Jawab: do jagah: episodic memory (foran yaad) aur corpus file (daimi). Koi bhi data delete nahi - sab append-only.
+Sawal: samajhne ki power kaise barhti hai
+Jawab: sawal ko dhyan se parho, makhfi ilqay dhoondo, chote qadam me toro, har qadam ka jawab dekho - phir seedha jawab banao

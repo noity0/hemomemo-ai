@@ -1,0 +1,20 @@
+{
+  "category": "testing",
+  "location": "Desktop App",
+  "created_at": "2026-11-21T10:27:53",
+  "count": 2,
+  "links": [
+    {
+      "source": "enhancement_system/testing/templates/test_generator.py",
+      "source_exists": true,
+      "target": "tests/test_generator.py",
+      "target_exists": false
+    },
+    {
+      "source": "enhancement_system/testing/templates/test_runner.py",
+      "source_exists": true,
+      "target": "tests/test_runner.py",
+      "target_exists": false
+    }
+  ]
+}

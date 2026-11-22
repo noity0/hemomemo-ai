@@ -1,0 +1,1312 @@
+# HEMOMEMO VERIFIED-WORLD-ILM (sach-amanat: science/tech/math/deen-basics)
+# Har-jawab-tasdeeq-shuda (standard-docs-level). Koi-jhoot, koi-chhupav nahi.
+
+Sawal: suraj ka temper
+Sawal: suraj ka temper kya hai
+Sawal: suraj ka temper ke bare me ilm
+Sawal: batao suraj ka temper
+Sawal: suraj ka temper sach batao
+Jawab: Suraj ki satah ~5500°C, andar ~15,000,000°C (nuclear-fusion: hydrogen→helium). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: sabse bara planet
+Sawal: sabse bara planet kya hai
+Sawal: sabse bara planet ke bare me ilm
+Sawal: batao sabse bara planet
+Sawal: sabse bara planet sach batao
+Jawab: Brihaspati (Jupiter) — zameen se ~11x bara qatr; 1300+ zameen andar aa sakti hain. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: sabse chhota planet
+Sawal: sabse chhota planet kya hai
+Sawal: sabse chhota planet ke bare me ilm
+Sawal: batao sabse chhota planet
+Sawal: sabse chhota planet sach batao
+Jawab: Atarad (Mercury) — suraj ke sab-qareeb bhi bada-wazan hai. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: roshni ki raftaar
+Sawal: roshni ki raftaar kya hai
+Sawal: roshni ki raftaar ke bare me ilm
+Sawal: batao roshni ki raftaar
+Sawal: roshni ki raftaar sach batao
+Jawab: ~299,792 km/second — vacuum me tehreer-shehar ki hadd (Einstein). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: zameen ki roundness
+Sawal: zameen ki roundness kya hai
+Sawal: zameen ki roundness ke bare me ilm
+Sawal: batao zameen ki roundness
+Sawal: zameen ki roundness sach batao
+Jawab: Zameen gool; qatr ~12,742 km; circumference ~40,075 km. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: pahaar-sabse-ooncha
+Sawal: pahaar-sabse-ooncha kya hai
+Sawal: pahaar-sabse-ooncha ke bare me ilm
+Sawal: batao pahaar-sabse-ooncha
+Sawal: pahaar-sabse-ooncha sach batao
+Jawab: Everest (sagarmatha) 8,849 m — sagar-satah se; Mauna Kea (Hawaii) base-to-peak sabse-tulba. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: muhit-sabse-gahra
+Sawal: muhit-sabse-gahra kya hai
+Sawal: muhit-sabse-gahra ke bare me ilm
+Sawal: batao muhit-sabse-gahra
+Sawal: muhit-sabse-gahra sach batao
+Jawab: Mariana Trench ~10,935 m (Challenger Deep). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: jannat-warood-ilm (quran)
+Sawal: jannat-warood-ilm (quran) kya hai
+Sawal: jannat-warood-ilm (quran) ke bare me ilm
+Sawal: batao jannat-warood-ilm (quran)
+Sawal: jannat-warood-ilm (quran) sach batao
+Jawab: Quran: 114 surahs, ~6,236 aayaat (riwayat-farq), 30 para — hifz ki naimat. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: hadees-sahi
+Sawal: hadees-sahi kya hai
+Sawal: hadees-sahi ke bare me ilm
+Sawal: batao hadees-sahi
+Sawal: hadees-sahi sach batao
+Jawab: Sahih Bukhari (~7,563 hadith sahih-riwayat), Sahih Muslim — islami-ilm ke amin-khazane. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: computer-kya
+Sawal: computer-kya kya hai
+Sawal: computer-kya ke bare me ilm
+Sawal: batao computer-kya
+Sawal: computer-kya sach batao
+Jawab: Computer = input→process(CPU)→output + memory. CPU-cycles GHz (1GHz = 10^9 tik/hr). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: binary-kya
+Sawal: binary-kya kya hai
+Sawal: binary-kya ke bare me ilm
+Sawal: batao binary-kya
+Sawal: binary-kya sach batao
+Jawab: Computer-sirf 0/1 (bit). 1 byte = 8 bit = 256 mumkin-values. ASCII 'A' = 65 = 01000001. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: OS-kya-hai
+Sawal: OS-kya-hai kya hai
+Sawal: OS-kya-hai ke bare me ilm
+Sawal: batao OS-kya-hai
+Sawal: OS-kya-hai sach batao
+Jawab: OS (Windows/Linux/macOS) = hardware-ka-muhtasim: process/memory/file/device — apps usi par chalti. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: RAM kya
+Sawal: RAM kya kya hai
+Sawal: RAM kya ke bare me ilm
+Sawal: batao RAM kya
+Sawal: RAM kya sach batao
+Jawab: Random-Access-Memory: temporary-kaam-ki-jagah (bijli-band→saf). HDD/SSD = permanent. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: CPU-core
+Sawal: CPU-core kya hai
+Sawal: CPU-core ke bare me ilm
+Sawal: batao CPU-core
+Sawal: CPU-core sach batao
+Jawab: Core = asli-hisaab-unit. Multi-core = parallel. Cache L1/L2/L3 = tez-chhota-memory. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: GPU kya
+Sawal: GPU kya kya hai
+Sawal: GPU kya ke bare me ilm
+Sawal: batao GPU kya
+Sawal: GPU kya sach batao
+Jawab: Graphics-card: hazaron-cores parallel (display + AI-matrix + rendering). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: internet-kya-hai
+Sawal: internet-kya-hai kya hai
+Sawal: internet-kya-hai ke bare me ilm
+Sawal: batao internet-kya-hai
+Sawal: internet-kya-hai sach batao
+Jawab: World-wide packet-network (TCP/IP). IP = makan-ka-pata; DNS = naam→IP; HTTP = page-protocol. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: IP kya
+Sawal: IP kya kya hai
+Sawal: IP kya ke bare me ilm
+Sawal: batao IP kya
+Sawal: IP kya sach batao
+Jawab: IPv4: 32-bit (192.168.1.1); IPv6: 128-bit (2001:db8::1) — dunia bhar ke liye bohot-zada. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: dns kya
+Sawal: dns kya kya hai
+Sawal: dns kya ke bare me ilm
+Sawal: batao dns kya
+Sawal: dns kya sach batao
+Jawab: Domain-Name-System: google.com → 142.250.x.x (root→TLD→authoritative chain). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: http https farq
+Sawal: http https farq kya hai
+Sawal: http https farq ke bare me ilm
+Sawal: batao http https farq
+Sawal: http https farq sach batao
+Jawab: HTTPS = HTTP + TLS (sari-traffic-encrypted; padlock-cert). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: email-kaise
+Sawal: email-kaise kya hai
+Sawal: email-kaise ke bare me ilm
+Sawal: batao email-kaise
+Sawal: email-kaise sach batao
+Jawab: SMTP (bhejo) + IMAP/POP3 (parho) — server-to-server MX-records se. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: ssl-tls-kya
+Sawal: ssl-tls-kya kya hai
+Sawal: ssl-tls-kya ke bare me ilm
+Sawal: batao ssl-tls-kya
+Sawal: ssl-tls-kya sach batao
+Jawab: TLS = data-jur-mehfooz (handshake→keys→encrypt). Certificates = CA ki tasdeeq. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: wifi kaise
+Sawal: wifi kaise kya hai
+Sawal: wifi kaise ke bare me ilm
+Sawal: batao wifi kaise
+Sawal: wifi kaise sach batao
+Jawab: Radio-waves 2.4/5GHz; WPA2/WPA3-encryption; SSID = network-naam. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: battery-ilm
+Sawal: battery-ilm kya hai
+Sawal: battery-ilm ke bare me ilm
+Sawal: batao battery-ilm
+Sawal: battery-ilm sach batao
+Jawab: Li-ion: 300-500 full-cycles; 20-80% range-bacha-lo; garmi dushman. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: solar-panel
+Sawal: solar-panel kya hai
+Sawal: solar-panel ke bare me ilm
+Sawal: batao solar-panel
+Sawal: solar-panel sach batao
+Jawab: Photovoltaic: roshni→DC-bijli (~20% modern-efficiency). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: insaan-dil
+Sawal: insaan-dil kya hai
+Sawal: insaan-dil ke bare me ilm
+Sawal: batao insaan-dil
+Sawal: insaan-dil sach batao
+Jawab: 4-hisson ka pump, ~70-75 beats/min aaram; din-me ~100,000 dhadkan. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: insaan-dimagh
+Sawal: insaan-dimagh kya hai
+Sawal: insaan-dimagh ke bare me ilm
+Sawal: batao insaan-dimagh
+Sawal: insaan-dimagh sach batao
+Jawab: ~86 billion neurons; synapses ~100 trillion; 20W-power (1-diyay-ke-barabar!). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: khun-groups
+Sawal: khun-groups kya hai
+Sawal: khun-groups ke bare me ilm
+Sawal: batao khun-groups
+Sawal: khun-groups sach batao
+Jawab: A, B, AB, O (Rh+/-) — O-negative universal-donor, AB+ universal-acceptor. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: pani-kya
+Sawal: pani-kya kya hai
+Sawal: pani-kya ke bare me ilm
+Sawal: batao pani-kya
+Sawal: pani-kya sach batao
+Jawab: H2O: 2-hydrogen 1-oxygen; 0°C jam, 100°C boil (1-atm); 4°C sab-zada-ghana. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: hawa-kya
+Sawal: hawa-kya kya hai
+Sawal: hawa-kya ke bare me ilm
+Sawal: batao hawa-kya
+Sawal: hawa-kya sach batao
+Jawab: N2 78% + O2 21% + Ar 0.9% + CO2 0.04% — sagar-satah par 1-atm pressure. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: chand-fasla
+Sawal: chand-fasla kya hai
+Sawal: chand-fasla ke bare me ilm
+Sawal: batao chand-fasla
+Sawal: chand-fasla sach batao
+Jawab: ~384,400 km (zameen se); qatr 3,474 km; gravity zameen-ka 1/6. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: tajmahal
+Sawal: tajmahal kya hai
+Sawal: tajmahal ke bare me ilm
+Sawal: batao tajmahal
+Sawal: tajmahal sach batao
+Jawab: Agra, 1632-1653 (Shah-Jahan, Mumtaz ki yaad) — white-marble UNESCO. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: qadim-ajayab
+Sawal: qadim-ajayab kya hai
+Sawal: qadim-ajayab ke bare me ilm
+Sawal: batao qadim-ajayab
+Sawal: qadim-ajayab sach batao
+Jawab: Giza-piramids (2560 BC), Hanging-Gardens, Temple-Artemis, Statue-Zeus, Mausoleum, Colossus, Lighthouse-Alexandria. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: mera-pak-mulk
+Sawal: mera-pak-mulk kya hai
+Sawal: mera-pak-mulk ke bare me ilm
+Sawal: batao mera-pak-mulk
+Sawal: mera-pak-mulk sach batao
+Jawab: Pakistan: 1947 (14-August) qaim; capital Islamabad; population ~240 million (2nd-muslim, 5th-world). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: K2
+Sawal: K2 kya hai
+Sawal: K2 ke bare me ilm
+Sawal: batao K2
+Sawal: K2 sach batao
+Jawab: Duniya ka doosra-ooncha (8,611 m) — Pakistan (Karakoram) — 'Savage Mountain'. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: thar
+Sawal: thar kya hai
+Sawal: thar ke bare me ilm
+Sawal: batao thar
+Sawal: thar sach batao
+Jawab: Pakistan ke Thar desert — hindu-kush/himalaya/karakoram 3-ranges apne-mulk-me. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: mohsin-kalam
+Sawal: mohsin-kalam kya hai
+Sawal: mohsin-kalam ke bare me ilm
+Sawal: batao mohsin-kalam
+Sawal: mohsin-kalam sach batao
+Jawab: Allama-Iqbal (shaheer-mashriq) + Quaid-Azam (bani-e-pakistan) — qaumi-shakhsiyat. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: sajda-k-num
+Sawal: sajda-k-num kya hai
+Sawal: sajda-k-num ke bare me ilm
+Sawal: batao sajda-k-num
+Sawal: sajda-k-num sach batao
+Jawab: Quran me sajda-ayaat 14 (riwayat-farq) — tilawat-me sajda-e-tilawat. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: Islami-calendar
+Sawal: Islami-calendar kya hai
+Sawal: Islami-calendar ke bare me ilm
+Sawal: batao Islami-calendar
+Sawal: Islami-calendar sach batao
+Jawab: Hijri: lunar-year (~354-din); Muharram se shuru; 2026 CE ≈ 1447-48 AH. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: din-ka-hisaab
+Sawal: din-ka-hisaab kya hai
+Sawal: din-ka-hisaab ke bare me ilm
+Sawal: batao din-ka-hisaab
+Sawal: din-ka-hisaab sach batao
+Jawab: Din 24-hrs = 1440-min; zone: Earth 24-maqtai-zones (UTC-base). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: rail-gari
+Sawal: rail-gari kya hai
+Sawal: rail-gari ke bare me ilm
+Sawal: batao rail-gari
+Sawal: rail-gari sach batao
+Jawab: Rail 1825 (England, Stockton-Darlington) se; steam→diesel→electric. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: hawai-jahaz
+Sawal: hawai-jahaz kya hai
+Sawal: hawai-jahaz ke bare me ilm
+Sawal: batao hawai-jahaz
+Sawal: hawai-jahaz sach batao
+Jawab: Wright-brothers 17-Dec-1903 (Kitty-Hawk) — pehli-controlled-flight 12s/37m. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: mobile-kya
+Sawal: mobile-kya kya hai
+Sawal: mobile-kya ke bare me ilm
+Sawal: batao mobile-kya
+Sawal: mobile-kya sach batao
+Jawab: Handheld-computer: SoC (CPU+GPU+modem), Li-battery, radio (LTE/5G). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: sim-kya
+Sawal: sim-kya kya hai
+Sawal: sim-kya ke bare me ilm
+Sawal: batao sim-kya
+Sawal: sim-kya sach batao
+Jawab: Subscriber-Identity-Module: chip-me IMSI/keys — network-parh-kar-tasdeeq. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: barcode/qr
+Sawal: barcode/qr kya hai
+Sawal: barcode/qr ke bare me ilm
+Sawal: batao barcode/qr
+Sawal: barcode/qr sach batao
+Jawab: Barcode: line-pattern (1D); QR: square-matrix (2D) — 30% error-correction Reed-Solomon. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: wifi-signal-kaise
+Sawal: wifi-signal-kaise kya hai
+Sawal: wifi-signal-kaise ke bare me ilm
+Sawal: batao wifi-signal-kaise
+Sawal: wifi-signal-kaise sach batao
+Jawab: OFDM subcarriers par digital-modulation; MIMO antennas-multi-stream. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: password-safety
+Sawal: password-safety kya hai
+Sawal: password-safety ke bare me ilm
+Sawal: batao password-safety
+Sawal: password-safety sach batao
+Jawab: Password-manager + 2FA (TOTP); 12+ chars; kabhi-reuse-nahi. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: phishing-kya
+Sawal: phishing-kya kya hai
+Sawal: phishing-kya ke bare me ilm
+Sawal: batao phishing-kya
+Sawal: phishing-kya sach batao
+Jawab: Jhooti-email/site ke zariye cred-churaya — link-padho, domain-jaanch. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: virus-malware
+Sawal: virus-malware kya hai
+Sawal: virus-malware ke bare me ilm
+Sawal: batao virus-malware
+Sawal: virus-malware sach batao
+Jawab: Malware-kinds: virus (file), worm (khud-fail), trojan (parda), ransomware (lock+paisa), spyware (khufia). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: antivirus-kaise
+Sawal: antivirus-kaise kya hai
+Sawal: antivirus-kaise ke bare me ilm
+Sawal: batao antivirus-kaise
+Sawal: antivirus-kaise sach batao
+Jawab: Signature + heuristic + behaviour (Defender modern-cloud). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: firewall-kya
+Sawal: firewall-kya kya hai
+Sawal: firewall-kya ke bare me ilm
+Sawal: batao firewall-kya
+Sawal: firewall-kya sach batao
+Jawab: Packet-filter/Stateful: in/out rules (port/protocol/IP). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: vpn-kya
+Sawal: vpn-kya kya hai
+Sawal: vpn-kya ke bare me ilm
+Sawal: batao vpn-kya
+Sawal: vpn-kya sach batao
+Jawab: Encrypted-tunnel: PC→VPN-server→internet (IP-chhupa, Wi-Fi-suraksha). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: https-padlock
+Sawal: https-padlock kya hai
+Sawal: https-padlock ke bare me ilm
+Sawal: batao https-padlock
+Sawal: https-padlock sach batao
+Jawab: Browser-padlock = TLS-cert-valid (padlock ≠ site-imandari — content-bhi-dekho). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: database-kya
+Sawal: database-kya kya hai
+Sawal: database-kya ke bare me ilm
+Sawal: batao database-kya
+Sawal: database-kya sach batao
+Jawab: Structured-data-store (SQL: tables/rows/keys; NoSQL: docs/kv). ACID = amanat. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: sql-kya-hai
+Sawal: sql-kya-hai kya hai
+Sawal: sql-kya-hai ke bare me ilm
+Sawal: batao sql-kya-hai
+Sawal: sql-kya-hai sach batao
+Jawab: Structured-Query-Language: SELECT/INSERT/UPDATE/DELETE + JOIN/WHERE/GROUP. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: algorithm-kya
+Sawal: algorithm-kya kya hai
+Sawal: algorithm-kya ke bare me ilm
+Sawal: batao algorithm-kya
+Sawal: algorithm-kya sach batao
+Jawab: Qadam-war-qadam-hal (steps). Efficiency: O(n), O(log n), O(n²) — big-O. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: data-structure
+Sawal: data-structure kya hai
+Sawal: data-structure ke bare me ilm
+Sawal: batao data-structure
+Sawal: data-structure sach batao
+Jawab: Array, Linked-list, Stack (LIFO), Queue (FIFO), Tree, Graph, Hash-map (O(1)-lookup). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: ai-kya-hai
+Sawal: ai-kya-hai kya hai
+Sawal: ai-kya-hai ke bare me ilm
+Sawal: batao ai-kya-hai
+Sawal: ai-kya-hai sach batao
+Jawab: Machine-learning se software-jo-seekhe: pattern→prediction. Neural-net = layers × weights. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: neural-network
+Sawal: neural-network kya hai
+Sawal: neural-network ke bare me ilm
+Sawal: batao neural-network
+Sawal: neural-network sach batao
+Jawab: Input→hidden-layers (weights+bias, activation)→output; training = loss-ghatao (gradient-descent). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: llm kya
+Sawal: llm kya kya hai
+Sawal: llm kya ke bare me ilm
+Sawal: batao llm kya
+Sawal: llm kya sach batao
+Jawab: Large-Language-Model: text par token-prediction sekh kar bana transformer. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: token-kya
+Sawal: token-kya kya hai
+Sawal: token-kya ke bare me ilm
+Sawal: batao token-kya
+Sawal: token-kya sach batao
+Jawab: Text-ka tukra (word/sub-word). Models tokens-par parhte-likhte hain. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: cloud-kya
+Sawal: cloud-kya kya hai
+Sawal: cloud-kya ke bare me ilm
+Sawal: batao cloud-kya
+Sawal: cloud-kya sach batao
+Jawab: Doosre-PC-parkar-services (rent: compute/storage). Local-AI = sab-apne-PC (Hemomemo-tareeqa). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: qanoon-imandari
+Sawal: qanoon-imandari kya hai
+Sawal: qanoon-imandari ke bare me ilm
+Sawal: batao qanoon-imandari
+Sawal: qanoon-imandari sach batao
+Jawab: Ye-app-100%-local: koi-cloud-AI, koi-bahar-API, koi-data-bahar — sirf-apna-dimagh. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: open-source-kya
+Sawal: open-source-kya kya hai
+Sawal: open-source-kya ke bare me ilm
+Sawal: batao open-source-kya
+Sawal: open-source-kya sach batao
+Jawab: Code-sab-ko (license) — MIT/GPL/Apache — imandari-share. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: git kya
+Sawal: git kya kya hai
+Sawal: git kya ke bare me ilm
+Sawal: batao git kya
+Sawal: git kya sach batao
+Jawab: Version-control: commits = snapshots; branch = parallel-kahani; merge = joro. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: github-kya
+Sawal: github-kya kya hai
+Sawal: github-kya ke bare me ilm
+Sawal: batao github-kya
+Sawal: github-kya sach batao
+Jawab: Git-hosting + PR/issues/releases — dunia-bhar-ke-projects. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: json kya
+Sawal: json kya kya hai
+Sawal: json kya ke bare me ilm
+Sawal: batao json kya
+Sawal: json kya sach batao
+Jawab: Data-format: {"key": "value"} — apps-ka-amanat-exchange. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: yaml/csv/xml
+Sawal: yaml/csv/xml kya hai
+Sawal: yaml/csv/xml ke bare me ilm
+Sawal: batao yaml/csv/xml
+Sawal: yaml/csv/xml sach batao
+Jawab: YAML: indent-config; CSV: comma-table; XML: tags (purana-lakin-amin). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: http-methods
+Sawal: http-methods kya hai
+Sawal: http-methods ke bare me ilm
+Sawal: batao http-methods
+Sawal: http-methods sach batao
+Jawab: GET (parho), POST (bhejo), PUT (badlo), DELETE (hatao) — status: 200 OK, 404 nahi-mila, 500 server-ghalat. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: http-status
+Sawal: http-status kya hai
+Sawal: http-status ke bare me ilm
+Sawal: batao http-status
+Sawal: http-status sach batao
+Jawab: 1xx info, 2xx kamyab (200/201/204), 3xx redirect (301/304), 4xx aap-ghalat (400/401/403/404/429), 5xx server-ghalat (500/502/503). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: cookie-session
+Sawal: cookie-session kya hai
+Sawal: cookie-session ke bare me ilm
+Sawal: batao cookie-session
+Sawal: cookie-session sach batao
+Jawab: Cookie = browser-me chhota-pair (server-bheja); session-server-ki-yaad; JWT = signed-token. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: api-kya
+Sawal: api-kya kya hai
+Sawal: api-kya ke bare me ilm
+Sawal: batao api-kya
+Sawal: api-kya sach batao
+Jawab: App-to-app-ka-sar (contract): REST (URL+JSON), GraphQL (ek-sawal), gRPC (fast-binary). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: compiler/interpreter
+Sawal: compiler/interpreter kya hai
+Sawal: compiler/interpreter ke bare me ilm
+Sawal: batao compiler/interpreter
+Sawal: compiler/interpreter sach batao
+Jawab: Compiler: sab-pehle-machine-code (C/C++/Rust); interpreter: line-by-line (Python/JS); JIT: mix (Java/C#). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: memory-leak
+Sawal: memory-leak kya hai
+Sawal: memory-leak ke bare me ilm
+Sawal: batao memory-leak
+Sawal: memory-leak sach batao
+Jawab: App-RAM-chhore-na-bande (delete/free bhool) — fix: dispose/RAII/garbage-collect. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: linux-kya
+Sawal: linux-kya kya hai
+Sawal: linux-kya ke bare me ilm
+Sawal: batao linux-kya
+Sawal: linux-kya sach batao
+Jawab: Kernel 1991 (Linus); distro = kernel+tools (Ubuntu/Debian/Arch); terminal-lover. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: unix-ilm
+Sawal: unix-ilm kya hai
+Sawal: unix-ilm ke bare me ilm
+Sawal: batao unix-ilm
+Sawal: unix-ilm sach batao
+Jawab: 1970 Bell-Labs; everything-is-a-file; pipelines | (philosophy). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: macOS-kya
+Sawal: macOS-kya kya hai
+Sawal: macOS-kya ke bare me ilm
+Sawal: batao macOS-kya
+Sawal: macOS-kya sach batao
+Jawab: Apple-OS (Darwin-Unix base) — Mac-ka-dil. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: gsm-calling
+Sawal: gsm-calling kya hai
+Sawal: gsm-calling ke bare me ilm
+Sawal: batao gsm-calling
+Sawal: gsm-calling sach batao
+Jawab: SIM-auth → MSC → voice-channel; VoLTE = IP-voice. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: 5g-kya
+Sawal: 5g-kya kya hai
+Sawal: 5g-kya ke bare me ilm
+Sawal: batao 5g-kya
+Sawal: 5g-kya sach batao
+Jawab: Ultra-fast-radio (mmWave/sub-6) — low-latency (~10ms). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: gps-kya
+Sawal: gps-kya kya hai
+Sawal: gps-kya ke bare me ilm
+Sawal: batao gps-kya
+Sawal: gps-kya sach batao
+Jawab: Satellites (≥4 dikh) → trilateration → jagah (±5m). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: batteries-recycle
+Sawal: batteries-recycle kya hai
+Sawal: batteries-recycle ke bare me ilm
+Sawal: batao batteries-recycle
+Sawal: batteries-recycle sach batao
+Jawab: E-waste-mat-phaink — recycle-centres (lead/lithium-zehreela). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: solar-system-planets
+Sawal: solar-system-planets kya hai
+Sawal: solar-system-planets ke bare me ilm
+Sawal: batao solar-system-planets
+Sawal: solar-system-planets sach batao
+Jawab: 8 planets: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune (+ Pluto dwarf-2006). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: insaan-jism-pani
+Sawal: insaan-jism-pani kya hai
+Sawal: insaan-jism-pani ke bare me ilm
+Sawal: batao insaan-jism-pani
+Sawal: insaan-jism-pani sach batao
+Jawab: Jism ~60% pani; khoon ~7% of-weight; haddiyan 206 (adult). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: duniya-ki-abaadi
+Sawal: duniya-ki-abaadi kya hai
+Sawal: duniya-ki-abaadi ke bare me ilm
+Sawal: batao duniya-ki-abaadi
+Sawal: duniya-ki-abaadi sach batao
+Jawab: ~8.1 billion (2024-est); sabse-zada India, phir China, phir USA/Indonesia/Pakistan. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: languages-count
+Sawal: languages-count kya hai
+Sawal: languages-count ke bare me ilm
+Sawal: batao languages-count
+Sawal: languages-count sach batao
+Jawab: ~7,000 zindah-zabanein; sabse-zada-speakers: English, Mandarin, Hindi-Urdu, Spanish, Arabic. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: urdu-kya
+Sawal: urdu-kya kya hai
+Sawal: urdu-kya ke bare me ilm
+Sawal: batao urdu-kya
+Sawal: urdu-kya sach batao
+Jawab: Urdu: Hindustani-khazana (Arabic-Persian-script) — Pakistan-ki-qaumi-zaban. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: maths-pi
+Sawal: maths-pi kya hai
+Sawal: maths-pi ke bare me ilm
+Sawal: batao maths-pi
+Sawal: maths-pi sach batao
+Jawab: π ≈ 3.14159265 (d/q); e ≈ 2.718 (natural-log); √2 ≈ 1.414. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: maths-primes
+Sawal: maths-primes kya hai
+Sawal: maths-primes ke bare me ilm
+Sawal: batao maths-primes
+Sawal: maths-primes sach batao
+Jawab: Prime: sirf 1 aur khud-par-kata (2,3,5,7,11...); RSA-key-security = bade-primes. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: algebra-base
+Sawal: algebra-base kya hai
+Sawal: algebra-base ke bare me ilm
+Sawal: batao algebra-base
+Sawal: algebra-base sach batao
+Jawab: x-dhoondo: ax+b=0 → x=-b/a; quadratic: x=(-b±√(b²-4ac))/2a. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: geometry-pythagoras
+Sawal: geometry-pythagoras kya hai
+Sawal: geometry-pythagoras ke bare me ilm
+Sawal: batao geometry-pythagoras
+Sawal: geometry-pythagoras sach batao
+Jawab: Right-triangle: a²+b²=c². (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: statistics-mean
+Sawal: statistics-mean kya hai
+Sawal: statistics-mean ke bare me ilm
+Sawal: batao statistics-mean
+Sawal: statistics-mean sach batao
+Jawab: Mean (jama/count), median (beech), mode (zyada-baar); std-dev = phailav. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: probability-base
+Sawal: probability-base kya hai
+Sawal: probability-base ke bare me ilm
+Sawal: batao probability-base
+Sawal: probability-base sach batao
+Jawab: P = manzoor/mumkin (0-1); coin 1/2; dice 1/6; independent: multiply. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: unit-si
+Sawal: unit-si kya hai
+Sawal: unit-si ke bare me ilm
+Sawal: batao unit-si
+Sawal: unit-si sach batao
+Jawab: metre/kg/second/ampere/kelvin/mole/candela — 7-SI-base-units. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: speed-calc
+Sawal: speed-calc kya hai
+Sawal: speed-calc ke bare me ilm
+Sawal: batao speed-calc
+Sawal: speed-calc sach batao
+Jawab: Speed = faasla/waqt (km/h); acceleration = speed-change/time. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: newton-laws
+Sawal: newton-laws kya hai
+Sawal: newton-laws ke bare me ilm
+Sawal: batao newton-laws
+Sawal: newton-laws sach batao
+Jawab: 1: inertia; 2: F=ma; 3: har-amal-pardakht-muqabil. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: einstein-emc
+Sawal: einstein-emc kya hai
+Sawal: einstein-emc ke bare me ilm
+Sawal: batao einstein-emc
+Sawal: einstein-emc sach batao
+Jawab: E=mc² — mass=energy; light-speed-hadd. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: thermo-laws
+Sawal: thermo-laws kya hai
+Sawal: thermo-laws ke bare me ilm
+Sawal: batao thermo-laws
+Sawal: thermo-laws sach batao
+Jawab: Energy-ur-nahi (1st); entropy-barhti (2nd); 0K-pahunch-nahi (3rd). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: electricity-ohm
+Sawal: electricity-ohm kya hai
+Sawal: electricity-ohm ke bare me ilm
+Sawal: batao electricity-ohm
+Sawal: electricity-ohm sach batao
+Jawab: V=IR; P=VI (watts); series: R-jama; parallel: 1/R-jama. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: magnet-ilm
+Sawal: magnet-ilm kya hai
+Sawal: magnet-ilm ke bare me ilm
+Sawal: batao magnet-ilm
+Sawal: magnet-ilm sach batao
+Jawab: Like-poles-repel; field-lines N→S; electromagnet = current-coil. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: light-refraction
+Sawal: light-refraction kya hai
+Sawal: light-refraction ke bare me ilm
+Sawal: batao light-refraction
+Sawal: light-refraction sach batao
+Jawab: Roshni-lateef-se-dense: mud-jati (snell: n1sinθ1=n2sinθ2); rainbow = prisma-farq. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: sound-waves
+Sawal: sound-waves kya hai
+Sawal: sound-waves ke bare me ilm
+Sawal: batao sound-waves
+Sawal: sound-waves sach batao
+Jawab: Hawa-me ~343 m/s; pitch = frequency (Hz); loudness = amplitude (dB). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: camera-kaise
+Sawal: camera-kaise kya hai
+Sawal: camera-kaise ke bare me ilm
+Sawal: batao camera-kaise
+Sawal: camera-kaise sach batao
+Jawab: Lens→sensor (photodiodes); exposure = aperture×shutter×ISO; RAW = unprocessed. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: video-fps
+Sawal: video-fps kya hai
+Sawal: video-fps ke bare me ilm
+Sawal: batao video-fps
+Sawal: video-fps sach batao
+Jawab: FPS = frames/sec (24 film, 30 TV, 60 game); bitrate = quality×size. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: compression-zip
+Sawal: compression-zip kya hai
+Sawal: compression-zip ke bare me ilm
+Sawal: batao compression-zip
+Sawal: compression-zip sach batao
+Jawab: Lossless (ZIP/DEFLATE: repeat-patterns) vs lossy (JPEG/MP3: chhota-data-丢 khatarnaak-detail). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: encryption-kya
+Sawal: encryption-kya kya hai
+Sawal: encryption-kya ke bare me ilm
+Sawal: batao encryption-kya
+Sawal: encryption-kya sach batao
+Jawab: Plaintext→cipher (key). Symmetric (AES, same-key) vs asymmetric (RSA/ECC, public+private). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: hashing-kya
+Sawal: hashing-kya kya hai
+Sawal: hashing-kya ke bare me ilm
+Sawal: batao hashing-kya
+Sawal: hashing-kya sach batao
+Jawab: One-way-fingerprint (SHA-256) — file-integrity; collision-resistant. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: digital-signature
+Sawal: digital-signature kya hai
+Sawal: digital-signature ke bare me ilm
+Sawal: batao digital-signature
+Sawal: digital-signature sach batao
+Jawab: Hash + private-key-sign → koi-bhi-public-se-tasdeeq (imandari-mohar). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: log-kya-hai
+Sawal: log-kya-hai kya hai
+Sawal: log-kya-hai ke bare me ilm
+Sawal: batao log-kya-hai
+Sawal: log-kya-hai sach batao
+Jawab: App-ka-amal-record (timestamp+level) — debugging-ka-dost. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: api-key-kya
+Sawal: api-key-kya kya hai
+Sawal: api-key-kya ke bare me ilm
+Sawal: batao api-key-kya
+Sawal: api-key-kya sach batao
+Jawab: Secret-token app-identity-ke-liye (koi-share-nahi; rotate-periodically). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: api-localhost
+Sawal: api-localhost kya hai
+Sawal: api-localhost ke bare me ilm
+Sawal: batao api-localhost
+Sawal: api-localhost sach batao
+Jawab: 127.0.0.1 = khud-PC (loopback); localhost-port (misal 8790) = app-ka-sar — bahar-nahi-jata. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: versioning-semver
+Sawal: versioning-semver kya hai
+Sawal: versioning-semver ke bare me ilm
+Sawal: batao versioning-semver
+Sawal: versioning-semver sach batao
+Jawab: MAJOR.MINOR.PATCH (4.2.0): major = tod-wali-tarbiyati, minor = naya-kirdar, patch = theek. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: backup-rule
+Sawal: backup-rule kya hai
+Sawal: backup-rule ke bare me ilm
+Sawal: batao backup-rule
+Sawal: backup-rule sach batao
+Jawab: 3-2-1: 3-copies, 2-media, 1-offsite — data-amanat. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: uml-kya
+Sawal: uml-kya kya hai
+Sawal: uml-kya ke bare me ilm
+Sawal: batao uml-kya
+Sawal: uml-kya sach batao
+Jawab: Software-design-diagram (class/sequence/usecase) — bolne-se-pehle-sochna. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: oop-kya
+Sawal: oop-kya kya hai
+Sawal: oop-kya ke bare me ilm
+Sawal: batao oop-kya
+Sawal: oop-kya sach batao
+Jawab: Object: data+functions (class = naqsha); encapsulation, inheritance, polymorphism, abstraction. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: design-patterns
+Sawal: design-patterns kya hai
+Sawal: design-patterns ke bare me ilm
+Sawal: batao design-patterns
+Sawal: design-patterns sach batao
+Jawab: Factory, Singleton, Observer, Strategy, Adapter — bara-masla, amin-hal. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: regression-test
+Sawal: regression-test kya hai
+Sawal: regression-test ke bare me ilm
+Sawal: batao regression-test
+Sawal: regression-test sach batao
+Jawab: Badlaav-ke-baad purana-kuch-tod-na-pare — tests-phir-chalao. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: unit-test
+Sawal: unit-test kya hai
+Sawal: unit-test ke bare me ilm
+Sawal: batao unit-test
+Sawal: unit-test sach batao
+Jawab: Ek-hissa-alag-test (assert) — bug-pakray-jaldi; coverage = kitna-test-hua. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: profiling-kya
+Sawal: profiling-kya kya hai
+Sawal: profiling-kya ke bare me ilm
+Sawal: batao profiling-kya
+Sawal: profiling-kya sach batao
+Jawab: Kaahan-waqt/RAM-kharch (perfmon, ps -aux, JS-profiler). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: sql-injection
+Sawal: sql-injection kya hai
+Sawal: sql-injection ke bare me ilm
+Sawal: batao sql-injection
+Sawal: sql-injection sach batao
+Jawab: Input-me SQL-ghusao (halka-filter) — hal: parameterized-queries (kabhi-concat-nahi). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: xss-csrf
+Sawal: xss-csrf kya hai
+Sawal: xss-csrf ke bare me ilm
+Sawal: batao xss-csrf
+Sawal: xss-csrf sach batao
+Jawab: XSS: site-par-dusro-ka-script; CSRF: aap-ke-naam-se-farzi-request — hal: sanitize+CSRF-token. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: dns-over-https
+Sawal: dns-over-https kya hai
+Sawal: dns-over-https ke bare me ilm
+Sawal: batao dns-over-https
+Sawal: dns-over-https sach batao
+Jawab: DoH: DNS-sawal-bhi-encrypted (privacy). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: rust-safety
+Sawal: rust-safety kya hai
+Sawal: rust-safety ke bare me ilm
+Sawal: batao rust-safety
+Sawal: rust-safety sach batao
+Jawab: Ownership/borrow-checker: memory-bugs-compile-par-pakrey. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: python-zen
+Sawal: python-zen kya hai
+Sawal: python-zen ke bare me ilm
+Sawal: batao python-zen
+Sawal: python-zen sach batao
+Jawab: import this — saaf-suthra (Readable > clever). PEP8-style. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: java-jvm
+Sawal: java-jvm kya hai
+Sawal: java-jvm ke bare me ilm
+Sawal: batao java-jvm
+Sawal: java-jvm sach batao
+Jawab: Write-once-run-anywhere: bytecode → JVM (Windows/Mac/Linux). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: c-make-compile
+Sawal: c-make-compile kya hai
+Sawal: c-make-compile ke bare me ilm
+Sawal: batao c-make-compile
+Sawal: c-make-compile sach batao
+Jawab: gcc a.c -o a.exe; make = build-rules; CMake = cross-platform-builder. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: js-node
+Sawal: js-node kya hai
+Sawal: js-node ke bare me ilm
+Sawal: batao js-node
+Sawal: js-node sach batao
+Jawab: Node.js = JS-runtime (V8) — server-side; npm = package-manager. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: npm pip cargo
+Sawal: npm pip cargo kya hai
+Sawal: npm pip cargo ke bare me ilm
+Sawal: batao npm pip cargo
+Sawal: npm pip cargo sach batao
+Jawab: Package-managers: npm (JS), pip (Python), cargo (Rust), maven/gradle (Java), nuget (C#). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: ide-kya-hai
+Sawal: ide-kya-hai kya hai
+Sawal: ide-kya-hai ke bare me ilm
+Sawal: batao ide-kya-hai
+Sawal: ide-kya-hai sach batao
+Jawab: Editor+tools (VS-Code, PyCharm) — lint/debug/git-ek-jagah. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: regex-kya
+Sawal: regex-kya kya hai
+Sawal: regex-kya ke bare me ilm
+Sawal: batao regex-kya
+Sawal: regex-kya sach batao
+Jawab: Pattern-language: ^start, $end, [abc], \d digit, * 0+, + 1+, ? optional — dhoondo-badlo. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: ascii-unicode
+Sawal: ascii-unicode kya hai
+Sawal: ascii-unicode ke bare me ilm
+Sawal: batao ascii-unicode
+Sawal: ascii-unicode sach batao
+Jawab: ASCII 127; Unicode = sab-zabanein (UTF-8 backward-compatible-amin). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: endian-kya
+Sawal: endian-kya kya hai
+Sawal: endian-kya ke bare me ilm
+Sawal: batao endian-kya
+Sawal: endian-kya sach batao
+Jawab: Little-endian (x86: chhota-pehle) vs big-endian (network-order). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: floating-point
+Sawal: floating-point kya hai
+Sawal: floating-point ke bare me ilm
+Sawal: batao floating-point
+Sawal: floating-point sach batao
+Jawab: IEEE-754: 0.1+0.2 ≠ 0.3 (binary-fraction) — money: cents/decimal-use-karo. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: big-data-kya
+Sawal: big-data-kya kya hai
+Sawal: big-data-kya ke bare me ilm
+Sawal: batao big-data-kya
+Sawal: big-data-kya sach batao
+Jawab: Bohot-zada-data (TB+): distribute (Hadoop/Spark) — chunk-process. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: cache-kya
+Sawal: cache-kya kya hai
+Sawal: cache-kya ke bare me ilm
+Sawal: batao cache-kya
+Sawal: cache-kya sach batao
+Jawab: Tez-chhota-copy (browser, CPU, DNS, CDN) — hit/miss; stale-data-muamla. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: cdn-kya
+Sawal: cdn-kya kya hai
+Sawal: cdn-kya ke bare me ilm
+Sawal: batao cdn-kya
+Sawal: cdn-kya sach batao
+Jawab: Content-Delivery-Network: duniya-bhar-edges-se pages-tez. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: load-balancer
+Sawal: load-balancer kya hai
+Sawal: load-balancer ke bare me ilm
+Sawal: batao load-balancer
+Sawal: load-balancer sach batao
+Jawab: Requests-multi-servers-baat (round-robin/least-conn) — up-time. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: docker-kya
+Sawal: docker-kya kya hai
+Sawal: docker-kya ke bare me ilm
+Sawal: batao docker-kya
+Sawal: docker-kya sach batao
+Jawab: Container = app+libs-ek-packet (portable) — image/run/volume. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: k8s-kya
+Sawal: k8s-kya kya hai
+Sawal: k8s-kya ke bare me ilm
+Sawal: batao k8s-kya
+Sawal: k8s-kya sach batao
+Jawab: Kubernetes: containers-orchestrate (scale/heal/schedule). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: ci/cd-kya
+Sawal: ci/cd-kya kya hai
+Sawal: ci/cd-kya ke bare me ilm
+Sawal: batao ci/cd-kya
+Sawal: ci/cd-kya sach batao
+Jawab: Har-push → auto-test → auto-deploy (GitHub-Actions pattern) — imandari-automation. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: seo-kya
+Sawal: seo-kya kya hai
+Sawal: seo-kya ke bare me ilm
+Sawal: batao seo-kya
+Sawal: seo-kya sach batao
+Jawab: Search-Engine-Optimization: title/meta/heading/sitemap/OG/JSON-LD — crawler-dosti. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: robots-txt
+Sawal: robots-txt kya hai
+Sawal: robots-txt ke bare me ilm
+Sawal: batao robots-txt
+Sawal: robots-txt sach batao
+Jawab: robots.txt crawler-ko-rasta: User-agent: * Allow: / + Sitemap-link. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: sitemap-xml
+Sawal: sitemap-xml kya hai
+Sawal: sitemap-xml ke bare me ilm
+Sawal: batao sitemap-xml
+Sawal: sitemap-xml sach batao
+Jawab: Site-ke-sare-URL-ki-list (lastmod/priority) — crawler-ki-map. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: traffic-analytics
+Sawal: traffic-analytics kya hai
+Sawal: traffic-analytics ke bare me ilm
+Sawal: batao traffic-analytics
+Sawal: traffic-analytics sach batao
+Jawab: Visits/CTR/bounce — privacy-first-analytics (koi-chupda-tracking-nahi). (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: ad-free-imandari
+Sawal: ad-free-imandari kya hai
+Sawal: ad-free-imandari ke bare me ilm
+Sawal: batao ad-free-imandari
+Sawal: ad-free-imandari sach batao
+Jawab: Ye-site-bina-tracking: koi-ad, koi-third-party-pixel — sirf-download-link. (sach — amanat-ke-mutabiq, koi-jhoot nahi.)
+
+Sawal: penicillin-khoj
+Sawal: penicillin-khoj kya hai
+Sawal: penicillin-khoj ke bare me ilm
+Sawal: batao penicillin-khoj
+Sawal: penicillin-khoj sach batao
+Jawab: 1928 Alexander Fleming ne penicillin khoja — pehla antibiotic; 1945 Nobel. (sach — amanat-ke-mutabiq.)
+
+Sawal: pehla-vaccine
+Sawal: pehla-vaccine kya hai
+Sawal: pehla-vaccine ke bare me ilm
+Sawal: batao pehla-vaccine
+Sawal: pehla-vaccine sach batao
+Jawab: 1796 Edward Jenner — smallpox-vaccine; 'vaccine' lafz Latin vacca (gai) se. (sach — amanat-ke-mutabiq.)
+
+Sawal: radio-khoj
+Sawal: radio-khoj kya hai
+Sawal: radio-khoj ke bare me ilm
+Sawal: batao radio-khoj
+Sawal: radio-khoj sach batao
+Jawab: 1895 Marconi ne radio-signals bheji; 1901 trans-Atlantic-signal. (sach — amanat-ke-mutabiq.)
+
+Sawal: bulb-ijad
+Sawal: bulb-ijad kya hai
+Sawal: bulb-ijad ke bare me ilm
+Sawal: batao bulb-ijad
+Sawal: bulb-ijad sach batao
+Jawab: 1879 Edison ki practical incandescent-bulb (Joseph Swan bhi mushtarka-kirdar); 1882 pehli power-station. (sach — amanat-ke-mutabiq.)
+
+Sawal: telephone-ijad
+Sawal: telephone-ijad kya hai
+Sawal: telephone-ijad ke bare me ilm
+Sawal: batao telephone-ijad
+Sawal: telephone-ijad sach batao
+Jawab: 1876 Alexander Graham Bell ka patent; pehli-call: 'Mr. Watson, come here.' (sach — amanat-ke-mutabiq.)
+
+Sawal: television-ijad
+Sawal: television-ijad kya hai
+Sawal: television-ijad ke bare me ilm
+Sawal: batao television-ijad
+Sawal: television-ijad sach batao
+Jawab: 1926 John Logie Baird ne pehli mechanical-TV-dikhayi. (sach — amanat-ke-mutabiq.)
+
+Sawal: world-wide-web-ijad
+Sawal: world-wide-web-ijad kya hai
+Sawal: world-wide-web-ijad ke bare me ilm
+Sawal: batao world-wide-web-ijad
+Sawal: world-wide-web-ijad sach batao
+Jawab: 1989-1991 Tim Berners-Lee (CERN) ne WWW banaya — HTML + URL + HTTP; pehla browser. (sach — amanat-ke-mutabiq.)
+
+Sawal: pehla-computer
+Sawal: pehla-computer kya hai
+Sawal: pehla-computer ke bare me ilm
+Sawal: batao pehla-computer
+Sawal: pehla-computer sach batao
+Jawab: 1941 Zuse-Z3 (programmable); 1945 ENIAC (electronic, USA); 1948 Manchester-Baby (stored-program). (sach — amanat-ke-mutabiq.)
+
+Sawal: transistor-ijad
+Sawal: transistor-ijad kya hai
+Sawal: transistor-ijad ke bare me ilm
+Sawal: batao transistor-ijad
+Sawal: transistor-ijad sach batao
+Jawab: 1947 Bell-Labs (Bardeen-Brattain-Shockley) — modern-electronics-ki-neenh; 1956 Nobel. (sach — amanat-ke-mutabiq.)
+
+Sawal: ic-ijad
+Sawal: ic-ijad kya hai
+Sawal: ic-ijad ke bare me ilm
+Sawal: batao ic-ijad
+Sawal: ic-ijad sach batao
+Jawab: 1958 Jack Kilby + 1959 Robert Noyce ne integrated-circuit banaya — chip-ki-ibtda. (sach — amanat-ke-mutabiq.)
+
+Sawal: pehli-programming-zaban
+Sawal: pehli-programming-zaban kya hai
+Sawal: pehli-programming-zaban ke bare me ilm
+Sawal: batao pehli-programming-zaban
+Sawal: pehli-programming-zaban sach batao
+Jawab: 1957 FORTRAN (John Backus, IBM) — pehli widely-used compiler-language. (sach — amanat-ke-mutabiq.)
+
+Sawal: dna-structure
+Sawal: dna-structure kya hai
+Sawal: dna-structure ke bare me ilm
+Sawal: batao dna-structure
+Sawal: dna-structure sach batao
+Jawab: 1953 Watson-Crick double-helix (Rosalind Franklin ka X-ray data buniyad); 1962 Nobel. (sach — amanat-ke-mutabiq.)
+
+Sawal: human-genome-ilm
+Sawal: human-genome-ilm kya hai
+Sawal: human-genome-ilm ke bare me ilm
+Sawal: batao human-genome-ilm
+Sawal: human-genome-ilm sach batao
+Jawab: 2003 Human-Genome-Project pura: ~3-billion base-pairs, ~20,000 genes. (sach — amanat-ke-mutabiq.)
+
+Sawal: chand-par-qadam
+Sawal: chand-par-qadam kya hai
+Sawal: chand-par-qadam ke bare me ilm
+Sawal: batao chand-par-qadam
+Sawal: chand-par-qadam sach batao
+Jawab: 20-July-1969 Armstrong + Aldrin (Apollo-11); Collins command-module me — 382-kg moon-rocks wapas. (sach — amanat-ke-mutabiq.)
+
+Sawal: pehla-insaan-space
+Sawal: pehla-insaan-space kya hai
+Sawal: pehla-insaan-space ke bare me ilm
+Sawal: batao pehla-insaan-space
+Sawal: pehla-insaan-space sach batao
+Jawab: 12-April-1961 Yuri Gagarin (Vostok-1) — 108-minute orbit. (sach — amanat-ke-mutabiq.)
+
+Sawal: pehli-aurat-space
+Sawal: pehli-aurat-space kya hai
+Sawal: pehli-aurat-space ke bare me ilm
+Sawal: batao pehli-aurat-space
+Sawal: pehli-aurat-space sach batao
+Jawab: 1963 Valentina Tereshkova — 48-orbits, ~3-din. (sach — amanat-ke-mutabiq.)
+
+Sawal: iss-ilm
+Sawal: iss-ilm kya hai
+Sawal: iss-ilm ke bare me ilm
+Sawal: batao iss-ilm
+Sawal: iss-ilm sach batao
+Jawab: International Space Station: 1998-launch, 2000-se-lagatar-insaan-hain; ~400-km ooncha, 90-min-orbit. (sach — amanat-ke-mutabiq.)
+
+Sawal: voyager-1-ilm
+Sawal: voyager-1-ilm kya hai
+Sawal: voyager-1-ilm ke bare me ilm
+Sawal: batao voyager-1-ilm
+Sawal: voyager-1-ilm sach batao
+Jawab: 1977-launch; 2012-me interstellar-space dakhil — insaan-ka-sabse-door bheja-hwa-cheez. (sach — amanat-ke-mutabiq.)
+
+Sawal: everest-ka-naam
+Sawal: everest-ka-naam kya hai
+Sawal: everest-ka-naam ke bare me ilm
+Sawal: batao everest-ka-naam
+Sawal: everest-ka-naam sach batao
+Jawab: George Everest (Surveyor-General-India) ke naam par; Nepal me Sagarmatha, Tibet me Chomolungma. (sach — amanat-ke-mutabiq.)
+
+Sawal: sahara-ilm
+Sawal: sahara-ilm kya hai
+Sawal: sahara-ilm ke bare me ilm
+Sawal: batao sahara-ilm
+Sawal: sahara-ilm sach batao
+Jawab: Sabse-bara hot-desert (~9.2M km²); sabse-bara desert overall Antarctica (barf-desert). (sach — amanat-ke-mutabiq.)
+
+Sawal: sabse-thanda-jagah
+Sawal: sabse-thanda-jagah kya hai
+Sawal: sabse-thanda-jagah ke bare me ilm
+Sawal: batao sabse-thanda-jagah
+Sawal: sabse-thanda-jagah sach batao
+Jawab: Antarctica: -89.2°C (Vostok, 1983) — earth-record; duniya-ka ~70% freshwater-ice bhi yahin. (sach — amanat-ke-mutabiq.)
+
+Sawal: nile-vs-amazon
+Sawal: nile-vs-amazon kya hai
+Sawal: nile-vs-amazon ke bare me ilm
+Sawal: batao nile-vs-amazon
+Sawal: nile-vs-amazon sach batao
+Jawab: Nile ~6,650-km (sabse-lamba by length); Amazon sabse-bara by volume (~209,000 m³/s). (sach — amanat-ke-mutabiq.)
+
+Sawal: baikal-ilm
+Sawal: baikal-ilm kya hai
+Sawal: baikal-ilm ke bare me ilm
+Sawal: batao baikal-ilm
+Sawal: baikal-ilm sach batao
+Jawab: Baikal (Russia) sabse-gahra lake (1,642-m); duniya-ke ~20% unfrozen-freshwater. (sach — amanat-ke-mutabiq.)
+
+Sawal: angel-falls-ilm
+Sawal: angel-falls-ilm kya hai
+Sawal: angel-falls-ilm ke bare me ilm
+Sawal: batao angel-falls-ilm
+Sawal: angel-falls-ilm sach batao
+Jawab: Angel Falls (Venezuela) 979-m — sabse-ooncha waterfall. (sach — amanat-ke-mutabiq.)
+
+Sawal: great-wall-ilm
+Sawal: great-wall-ilm kya hai
+Sawal: great-wall-ilm ke bare me ilm
+Sawal: batao great-wall-ilm
+Sawal: great-wall-ilm sach batao
+Jawab: Great Wall: sab-branches mila-kar ~21,196-km (2012 official survey). (sach — amanat-ke-mutabiq.)
+
+Sawal: burj-khalifa-ilm
+Sawal: burj-khalifa-ilm kya hai
+Sawal: burj-khalifa-ilm ke bare me ilm
+Sawal: batao burj-khalifa-ilm
+Sawal: burj-khalifa-ilm sach batao
+Jawab: 828-m (Dubai, 2010) — duniya-ki-sabse-ooncha building. (sach — amanat-ke-mutabiq.)
+
+Sawal: paper-ijad
+Sawal: paper-ijad kya hai
+Sawal: paper-ijad ke bare me ilm
+Sawal: batao paper-ijad
+Sawal: paper-ijad sach batao
+Jawab: China, ~105-CE (Cai Lun); Europe tak 11th-century pohnchi. (sach — amanat-ke-mutabiq.)
+
+Sawal: printing-press-ijad
+Sawal: printing-press-ijad kya hai
+Sawal: printing-press-ijad ke bare me ilm
+Sawal: batao printing-press-ijad
+Sawal: printing-press-ijad sach batao
+Jawab: ~1440 Gutenberg (Mainz) — movable-metal-type; pehli-muddat-printed-Bible 1455. (sach — amanat-ke-mutabiq.)
+
+Sawal: zero-aur-algebra
+Sawal: zero-aur-algebra kya hai
+Sawal: zero-aur-algebra ke bare me ilm
+Sawal: batao zero-aur-algebra
+Sawal: zero-aur-algebra sach batao
+Jawab: Zero-ka qanooni-concept India se (Brahmagupta, 7th-century); algebra Al-Khwarizmi (9th-century) — 'algorithm' unhi-ke-naam-se. (sach — amanat-ke-mutabiq.)
+
+Sawal: oonchai-boiling
+Sawal: oonchai-boiling kya hai
+Sawal: oonchai-boiling ke bare me ilm
+Sawal: batao oonchai-boiling
+Sawal: oonchai-boiling sach batao
+Jawab: Oonchai-par-boiling-point ghatta: Everest-par pani ~70°C par ubalta (pressure-kam). (sach — amanat-ke-mutabiq.)
+
+Sawal: bijli-dahan-ilm
+Sawal: bijli-dahan-ilm kya hai
+Sawal: bijli-dahan-ilm ke bare me ilm
+Sawal: batao bijli-dahan-ilm
+Sawal: bijli-dahan-ilm sach batao
+Jawab: Lightning ~30,000°C — suraj-ki-satah-se ~5-guna-garam; bolt ~300-million-volt tak. (sach — amanat-ke-mutabiq.)
+
+Sawal: pani-anomaly
+Sawal: pani-anomaly kya hai
+Sawal: pani-anomaly ke bare me ilm
+Sawal: batao pani-anomaly
+Sawal: pani-anomaly sach batao
+Jawab: Pani-jamne-par-phailta-hai (4°C-par-sab-zada-ghana) — isliye barf-paani-par-taire-zindagi-bachati. (sach — amanat-ke-mutabiq.)
+
+Sawal: dodo-extinct-ilm
+Sawal: dodo-extinct-ilm kya hai
+Sawal: dodo-extinct-ilm ke bare me ilm
+Sawal: batao dodo-extinct-ilm
+Sawal: dodo-extinct-ilm sach batao
+Jawab: Dodo (Mauritius) ~1681-extinct — insaan + leye-gaye-janwar-se. (sach — amanat-ke-mutabiq.)
+
+Sawal: dinosaur-khatam-ilm
+Sawal: dinosaur-khatam-ilm kya hai
+Sawal: dinosaur-khatam-ilm ke bare me ilm
+Sawal: batao dinosaur-khatam-ilm
+Sawal: dinosaur-khatam-ilm sach batao
+Jawab: ~66-million-saal-pehle (Chicxulub-asteroid, Mexico); parinde dinosaurs-ki-hi-aulad. (sach — amanat-ke-mutabiq.)
+
+Sawal: zameen-umar-ilm
+Sawal: zameen-umar-ilm kya hai
+Sawal: zameen-umar-ilm ke bare me ilm
+Sawal: batao zameen-umar-ilm
+Sawal: zameen-umar-ilm sach batao
+Jawab: ~4.54-billion-saal (radiometric-dating); zindagi ~3.7-billion-saal-se. (sach — amanat-ke-mutabiq.)
+
+Sawal: kainat-umar-ilm
+Sawal: kainat-umar-ilm kya hai
+Sawal: kainat-umar-ilm ke bare me ilm
+Sawal: batao kainat-umar-ilm
+Sawal: kainat-umar-ilm sach batao
+Jawab: ~13.8-billion-saal (Big-Bang; Planck-satellite 2018 tajziya). (sach — amanat-ke-mutabiq.)
+
+Sawal: suraj-wazan-hisa
+Sawal: suraj-wazan-hisa kya hai
+Sawal: suraj-wazan-hisa ke bare me ilm
+Sawal: batao suraj-wazan-hisa
+Sawal: suraj-wazan-hisa sach batao
+Jawab: Suraj = solar-system-ka-99.86%-wazan; andar ~1.3-million-zameen-samaye. (sach — amanat-ke-mutabiq.)
+
+Sawal: suraj-roshni-waqt
+Sawal: suraj-roshni-waqt kya hai
+Sawal: suraj-roshni-waqt ke bare me ilm
+Sawal: batao suraj-roshni-waqt
+Sawal: suraj-roshni-waqt sach batao
+Jawab: Suraj-ki-roshni-zameen-tak ~8-minute-20-second (~150-million-km). (sach — amanat-ke-mutabiq.)
+
+Sawal: photosynthesis-ilm
+Sawal: photosynthesis-ilm kya hai
+Sawal: photosynthesis-ilm ke bare me ilm
+Sawal: batao photosynthesis-ilm
+Sawal: photosynthesis-ilm sach batao
+Jawab: Patta: CO₂ + pani + roshni → glucose + O₂ (chlorophyll); duniya-ki-O₂-ka-~50%-ocean-plankton-se. (sach — amanat-ke-mutabiq.)
+
+Sawal: gold-ilm
+Sawal: gold-ilm kya hai
+Sawal: gold-ilm ke bare me ilm
+Sawal: batao gold-ilm
+Sawal: gold-ilm sach batao
+Jawab: Gold (Au) atomic-number-79; neutron-star-mergers me banta — zameen-ka-gold-space-se-aya. (sach — amanat-ke-mutabiq.)
+
+Sawal: dna-insaan-ilm
+Sawal: dna-insaan-ilm kya hai
+Sawal: dna-insaan-ilm ke bare me ilm
+Sawal: batao dna-insaan-ilm
+Sawal: dna-insaan-ilm sach batao
+Jawab: Har-insaan-ke-DNA ~3-billion base-pairs; koi-2-insaan-99.9%-same. (sach — amanat-ke-mutabiq.)
+
+Sawal: aankh-rang-ilm
+Sawal: aankh-rang-ilm kya hai
+Sawal: aankh-rang-ilm ke bare me ilm
+Sawal: batao aankh-rang-ilm
+Sawal: aankh-rang-ilm sach batao
+Jawab: Aankh ~10-million-rang pehchan-sakti; retina: ~127M-rod + ~7M-cone-cells. (sach — amanat-ke-mutabiq.)
+
+Sawal: neptune-hawa-ilm
+Sawal: neptune-hawa-ilm kya hai
+Sawal: neptune-hawa-ilm ke bare me ilm
+Sawal: batao neptune-hawa-ilm
+Sawal: neptune-hawa-ilm sach batao
+Jawab: Neptune-ki-hawaein ~2,100-km/h — solar-system-ki-sabse-tez. (sach — amanat-ke-mutabiq.)
+
+Sawal: great-red-spot-ilm
+Sawal: great-red-spot-ilm kya hai
+Sawal: great-red-spot-ilm ke bare me ilm
+Sawal: batao great-red-spot-ilm
+Sawal: great-red-spot-ilm sach batao
+Jawab: Jupiter-ka-Great-Red-Spot: 350+ saal-purana-toofan, zameen-se-bada. (sach — amanat-ke-mutabiq.)
+

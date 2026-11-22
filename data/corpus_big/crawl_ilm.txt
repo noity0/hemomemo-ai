@@ -1,0 +1,598 @@
+# HEMOMEMO WORLD-CRAWL-ILM (bot ki web-research ki a-to-z imandari-tarib)
+# robots/sitemaps/operators/APIs/rate-limits — Hemomemo live_research + Obscura browser isi par chale.
+
+Sawal: crawler web-crawler kya
+Sawal: web-crawl web-crawler kya
+Sawal: bot se web-crawler kya kaise
+Sawal: web-crawler kya crawling
+Sawal: research web-crawler kya
+Jawab: Crawler = bot jo pages-khole→links-nikale→dohray (politeness + depth-limit). Hemomemo: apna browser (Obscura) + live_research — koi-AI-API-nahi.
+
+Sawal: crawler robots.txt kya
+Sawal: web-crawl robots.txt kya
+Sawal: bot se robots.txt kya kaise
+Sawal: robots.txt kya crawling
+Sawal: research robots.txt kya
+Jawab: Site-ka-rasta-bot-ke-liye: User-agent: * Disallow: /private — crawler-IMANDARI: pehle-parho-phir-chalo.
+
+Sawal: crawler sitemap kaise parse
+Sawal: web-crawl sitemap kaise parse
+Sawal: bot se sitemap kaise parse kaise
+Sawal: sitemap kaise parse crawling
+Sawal: research sitemap kaise parse
+Jawab: /sitemap.xml parho → <loc> URLs → queue (rate-limit 1-req/sec-dostana).
+
+Sawal: crawler search operators
+Sawal: web-crawl search operators
+Sawal: bot se search operators kaise
+Sawal: search operators crawling
+Sawal: research search operators
+Jawab: Google/Bing/DDG operators: site:example.com (sirf-usi-site), filetype:pdf, intitle:"khobsurat", inurl:api, "exact phrase", -word (nikal), OR, before:/after: — research-ki-taig.
+
+Sawal: crawler wayback-machine
+Sawal: web-crawl wayback-machine
+Sawal: bot se wayback-machine kaise
+Sawal: wayback-machine crawling
+Sawal: research wayback-machine
+Jawab: archive.org/web/URL — purana-page-dekho (deleted-content-amin-khazana).
+
+Sawal: crawler rate-limit kya
+Sawal: web-crawl rate-limit kya
+Sawal: bot se rate-limit kya kaise
+Sawal: rate-limit kya crawling
+Sawal: research rate-limit kya
+Jawab: Kitni-requests-kitne-waqt-me (429 = bas-karo). Respect: backoff (1s→2s→4s) + Retry-After-header.
+
+Sawal: crawler user-agent kya
+Sawal: web-crawl user-agent kya
+Sawal: bot se user-agent kya kaise
+Sawal: user-agent kya crawling
+Sawal: research user-agent kya
+Jawab: Bot-ki-pehchan header (HemomemoBot/1.0 +contact). Stealth-test ke liye sirf-owner-run me (hifazat-qanoon).
+
+Sawal: crawler html-parse kaise
+Sawal: web-crawl html-parse kaise
+Sawal: bot se html-parse kaise kaise
+Sawal: html-parse kaise crawling
+Sawal: research html-parse kaise
+Jawab: <a href> links, <title>, meta-description, h1-h2 (zimma-dar-parsing: html.parser/regex-na-fashan).
+
+Sawal: crawler rss/atom feeds
+Sawal: web-crawl rss/atom feeds
+Sawal: bot se rss/atom feeds kaise
+Sawal: rss/atom feeds crawling
+Sawal: research rss/atom feeds
+Jawab: <item><title><link><pubDate> — fresh-content-bina-crawl (subscribe-tareeqa).
+
+Sawal: crawler api vs crawl
+Sawal: web-crawl api vs crawl
+Sawal: bot se api vs crawl kaise
+Sawal: api vs crawl crawling
+Sawal: research api vs crawl
+Jawab: API (amin-structured) pehle-try; crawl-sirf-jahan-API-nahi — tos-check-zaroori.
+
+Sawal: crawler js-page-kaise parhe
+Sawal: web-crawl js-page-kaise parhe
+Sawal: bot se js-page-kaise parhe kaise
+Sawal: js-page-kaise parhe crawling
+Sawal: research js-page-kaise parhe
+Jawab: SPA/headless-browser (Obscura-Rust-CDP) — HTML-dynamically-render-phir-parse.
+
+Sawal: crawler pagination-kaise
+Sawal: web-crawl pagination-kaise
+Sawal: bot se pagination-kaise kaise
+Sawal: pagination-kaise crawling
+Sawal: research pagination-kaise
+Jawab: Next/rel=next, ?page=n pattern — loop-until-no-more; dedupe (seen-set).
+
+Sawal: crawler dedupe-kya
+Sawal: web-crawl dedupe-kya
+Sawal: bot se dedupe-kya kaise
+Sawal: dedupe-kya crawling
+Sawal: research dedupe-kya
+Jawab: Pehle-dekha-URL-chor (hash-set) — crawler-ka-akhlaq + RAM-bachao.
+
+Sawal: crawler robots meta tag
+Sawal: web-crawl robots meta tag
+Sawal: bot se robots meta tag kaise
+Sawal: robots meta tag crawling
+Sawal: research robots meta tag
+Jawab: <meta name=robots content=noindex,nofollow> — page-level-rasta; crawler-respect.
+
+Sawal: crawler canonical-link
+Sawal: web-crawl canonical-link
+Sawal: bot se canonical-link kaise
+Sawal: canonical-link crawling
+Sawal: research canonical-link
+Jawab: <link rel=canonical> — asli-URL (dup-content-ka-hal) — crawl-usi-ko-karo.
+
+Sawal: crawler 404/410 handling
+Sawal: web-crawl 404/410 handling
+Sawal: bot se 404/410 handling kaise
+Sawal: 404/410 handling crawling
+Sawal: research 404/410 handling
+Jawab: 404 = page-ghaib (queue-nikaal), 410 = hamesha-ghaib, 301/302 = naye-jagah (follow).
+
+Sawal: crawler download file kaise
+Sawal: web-crawl download file kaise
+Sawal: bot se download file kaise kaise
+Sawal: download file kaise crawling
+Sawal: research download file kaise
+Jawab: curl -O / iwr -OutFile + Content-Type-check + size-limit (safety) + hash-tasdeeq.
+
+Sawal: crawler extract table
+Sawal: web-crawl extract table
+Sawal: bot se extract table kaise
+Sawal: extract table crawling
+Sawal: research extract table
+Jawab: <table> rows/cells-parse → CSV (headless-browser-ka-table-text-kaam-amin).
+
+Sawal: crawler js-render vs source
+Sawal: web-crawl js-render vs source
+Sawal: bot se js-render vs source kaise
+Sawal: js-render vs source crawling
+Sawal: research js-render vs source
+Jawab: View-source = server-HTML; F12-DOM = rendered — crawler-dono-jaanta (Obscura-DOM-events).
+
+Sawal: crawler iframe handling
+Sawal: web-crawl iframe handling
+Sawal: bot se iframe handling kaise
+Sawal: iframe handling crawling
+Sawal: research iframe handling
+Jawab: <iframe src> alag-document — separately-fetch (same-origin-policy-yaad).
+
+Sawal: crawler auth crawl
+Sawal: web-crawl auth crawl
+Sawal: bot se auth crawl kaise
+Sawal: auth crawl crawling
+Sawal: research auth crawl
+Jawab: Login-ke-peeche-wala-data: sirf-owner-ke-credentials + tos-amanat (koi-chori-nahi).
+
+Sawal: crawler image-crawl
+Sawal: web-crawl image-crawl
+Sawal: bot se image-crawl kaise
+Sawal: image-crawl crawling
+Sawal: research image-crawl
+Jawab: <img src> + srcset (hi-res-pick) + alt-text (ilm); hotlink-nahi — download-to-own-storage.
+
+Sawal: crawler email-extract
+Sawal: web-crawl email-extract
+Sawal: bot se email-extract kaise
+Sawal: email-extract crawling
+Sawal: research email-extract
+Jawab: mailto: + obfuscated (at)-patterns — imandari: sirf-apni-lists (spam-kabhi-nahi).
+
+Sawal: crawler pdf-crawl
+Sawal: web-crawl pdf-crawl
+Sawal: bot se pdf-crawl kaise
+Sawal: pdf-crawl crawling
+Sawal: research pdf-crawl
+Jawab: Content-Type-check + pdf-parser (text-extract) — malaa-cab-file-limits.
+
+Sawal: crawler captcha kya
+Sawal: web-crawl captcha kya
+Sawal: bot se captcha kya kaise
+Sawal: captcha kya crawling
+Sawal: research captcha kya
+Jawab: Bot-rok-test (images/challenge) — Hemomemo: ROKO (bypass-NAHI — imandari-qanoon).
+
+Sawal: crawler geo-restricted
+Sawal: web-crawl geo-restricted
+Sawal: bot se geo-restricted kaise
+Sawal: geo-restricted crawling
+Sawal: research geo-restricted
+Jawab: Region-blocked-content — respect-karo (proxy-ghalat-tareeqa).
+
+Sawal: crawler crawl-depth-strategy
+Sawal: web-crawl crawl-depth-strategy
+Sawal: bot se crawl-depth-strategy kaise
+Sawal: crawl-depth-strategy crawling
+Sawal: research crawl-depth-strategy
+Jawab: BFS (breadth-first, polite) vs DFS (deep-topic) — priority-frontier (score: relevance).
+
+Sawal: crawler politeness-delay
+Sawal: web-crawl politeness-delay
+Sawal: bot se politeness-delay kaise
+Sawal: politeness-delay crawling
+Sawal: research politeness-delay
+Jawab: Same-host: 1-2s gap (server-ka-haq) — concurrent-per-host ≤2.
+
+Sawal: crawler session-crawl
+Sawal: web-crawl session-crawl
+Sawal: bot se session-crawl kaise
+Sawal: session-crawl crawling
+Sawal: research session-crawl
+Jawab: Cookies keep-alive → logged-state-continue (session-jar + expiry-jaanch).
+
+Sawal: crawler headers-note
+Sawal: web-crawl headers-note
+Sawal: bot se headers-note kaise
+Sawal: headers-note crawling
+Sawal: research headers-note
+Jawab: Accept-Language/Accept-Encoding (gzip) — server-dosti; ETag/If-Modified-Since = bandwidth-imandari.
+
+Sawal: crawler meta-refresh
+Sawal: web-crawl meta-refresh
+Sawal: bot se meta-refresh kaise
+Sawal: meta-refresh crawling
+Sawal: research meta-refresh
+Jawab: <meta http-equiv=refresh content=3;url> — JS-nahi bhi redirect-parh-lo.
+
+Sawal: crawler http redirects
+Sawal: web-crawl http redirects
+Sawal: bot se http redirects kaise
+Sawal: http redirects crawling
+Sawal: research http redirects
+Jawab: 301/302/307/308 — max-10-follow (loop-guard).
+
+Sawal: crawler https-first
+Sawal: web-crawl https-first
+Sawal: bot se https-first kaise
+Sawal: https-first crawling
+Sawal: research https-first
+Jawab: HTTP→HTTPS-upgrade (security); mixed-content-warning-respect.
+
+Sawal: crawler trailing-slash
+Sawal: web-crawl trailing-slash
+Sawal: bot se trailing-slash kaise
+Sawal: trailing-slash crawling
+Sawal: research trailing-slash
+Jawab: /page vs /page/ = 2-URL (normalize: ek-form-rakho).
+
+Sawal: crawler query-param-dedupe
+Sawal: web-crawl query-param-dedupe
+Sawal: bot se query-param-dedupe kaise
+Sawal: query-param-dedupe crawling
+Sawal: research query-param-dedupe
+Jawab: utm_* / fbclid params-strip (same-content-hamesha).
+
+Sawal: crawler archive-org api
+Sawal: web-crawl archive-org api
+Sawal: bot se archive-org api kaise
+Sawal: archive-org api crawling
+Sawal: research archive-org api
+Jawab: https://archive.org/wayback/available?url= — nearest-snapshot-JSON (amin).
+
+Sawal: crawler wikipedia-api
+Sawal: web-crawl wikipedia-api
+Sawal: bot se wikipedia-api kaise
+Sawal: wikipedia-api crawling
+Sawal: research wikipedia-api
+Jawab: https://xx.wikipedia.org/api/rest_v1/page/summary/TITLE — structured-ilm (whitelisted-source).
+
+Sawal: crawler github-api
+Sawal: web-crawl github-api
+Sawal: bot se github-api kaise
+Sawal: github-api crawling
+Sawal: research github-api
+Jawab: api.github.com/repos/{owner}/{repo} — releases/contents (token-free-public).
+
+Sawal: crawler npm/pypi registry
+Sawal: web-crawl npm/pypi registry
+Sawal: bot se npm/pypi registry kaise
+Sawal: npm/pypi registry crawling
+Sawal: research npm/pypi registry
+Jawab: registry.npmjs.org/pkg — versions/metadata (package-ilm).
+
+Sawal: crawler stack-api
+Sawal: web-crawl stack-api
+Sawal: bot se stack-api kaise
+Sawal: stack-api crawling
+Sawal: research stack-api
+Jawab: api.stackexchange.com — Q&A-ilm (quota-respect).
+
+Sawal: crawler rss-discovery
+Sawal: web-crawl rss-discovery
+Sawal: bot se rss-discovery kaise
+Sawal: rss-discovery crawling
+Sawal: research rss-discovery
+Jawab: <link rel=alternate type=application/rss+xml> — page-head-se-feed-dhoondo.
+
+Sawal: crawler link-graph
+Sawal: web-crawl link-graph
+Sawal: bot se link-graph kaise
+Sawal: link-graph crawling
+Sawal: research link-graph
+Jawab: A→B→C edges-save — topic-map (rank: in-links-score).
+
+Sawal: crawler content-fingerprint
+Sawal: web-crawl content-fingerprint
+Sawal: bot se content-fingerprint kaise
+Sawal: content-fingerprint crawling
+Sawal: research content-fingerprint
+Jawab: hash-main-content (boilerplate-strip) — dup-page-pakdo.
+
+Sawal: crawler boilerplate-kya
+Sawal: web-crawl boilerplate-kya
+Sawal: bot se boilerplate-kya kaise
+Sawal: boilerplate-kya crawling
+Sawal: research boilerplate-kya
+Jawab: Nav/footer/ads = har-page-same — content-extract (readability-algo-jaisa).
+
+Sawal: crawler language-detect
+Sawal: web-crawl language-detect
+Sawal: bot se language-detect kaise
+Sawal: language-detect crawling
+Sawal: research language-detect
+Jawab: <html lang> + charset-jaanch — Urdu/English-content-alag-route.
+
+Sawal: crawler date-extract
+Sawal: web-crawl date-extract
+Sawal: bot se date-extract kaise
+Sawal: date-extract crawling
+Sawal: research date-extract
+Jawab: <time datetime> + meta-article:published_time — fresh-ka-tareekh.
+
+Sawal: crawler author-extract
+Sawal: web-crawl author-extract
+Sawal: bot se author-extract kaise
+Sawal: author-extract crawling
+Sawal: research author-extract
+Jawab: meta-author + byline-patterns — ilm-ke-zimma-dar.
+
+Sawal: crawler rate-per-domain
+Sawal: web-crawl rate-per-domain
+Sawal: bot se rate-per-domain kaise
+Sawal: rate-per-domain crawling
+Sawal: research rate-per-domain
+Jawab: Per-domain-token-bucket — duniya-bhar-crawl-par-server-sachai.
+
+Sawal: crawler errors-logging
+Sawal: web-crawl errors-logging
+Sawal: bot se errors-logging kaise
+Sawal: errors-logging crawling
+Sawal: research errors-logging
+Jawab: Har-crawl-line-log (url, status, ms, bytes) — imandari-report.
+
+Sawal: crawler crawl-pause
+Sawal: web-crawl crawl-pause
+Sawal: bot se crawl-pause kaise
+Sawal: crawl-pause crawling
+Sawal: research crawl-pause
+Jawab: KeyboardInterrupt/flag-file (data\_PAUSED.flag-jaisa) — chain-amanat.
+
+Sawal: crawler proxy-kya
+Sawal: web-crawl proxy-kya
+Sawal: bot se proxy-kya kaise
+Sawal: proxy-kya crawling
+Sawal: research proxy-kya
+Jawab: Beech-wala-server (IP-badal) — Hemomemo: sirf-owner-run + halal-maqsid (chhupna-nahi).
+
+Sawal: crawler concurrent-crawl
+Sawal: web-crawl concurrent-crawl
+Sawal: bot se concurrent-crawl kaise
+Sawal: concurrent-crawl crawling
+Sawal: research concurrent-crawl
+Jawab: Threads/async: 5-10-parallel, per-host-limit — Obscura-headless-pool.
+
+Sawal: crawler ttl-cache
+Sawal: web-crawl ttl-cache
+Sawal: bot se ttl-cache kaise
+Sawal: ttl-cache crawling
+Sawal: research ttl-cache
+Jawab: Re-crawl-jab-tak-purana (Cache-Control: max-age) — imandari-bandwidth.
+
+Sawal: crawler integrity-check
+Sawal: web-crawl integrity-check
+Sawal: bot se integrity-check kaise
+Sawal: integrity-check crawling
+Sawal: research integrity-check
+Jawab: Downloaded-page: status+size+hash-log; partial→discard-retry.
+
+Sawal: crawler extract-paragraphs
+Sawal: web-crawl extract-paragraphs
+Sawal: bot se extract-paragraphs kaise
+Sawal: extract-paragraphs crawling
+Sawal: research extract-paragraphs
+Jawab: <p> + <article> + readability-score — sirf-matn (nav/ads-strip).
+
+Sawal: crawler heading-outline
+Sawal: web-crawl heading-outline
+Sawal: bot se heading-outline kaise
+Sawal: heading-outline crawling
+Sawal: research heading-outline
+Jawab: h1-h6-tree = page-ki-kahani — summary-ke-liye-amin.
+
+Sawal: crawler meta-og-image
+Sawal: web-crawl meta-og-image
+Sawal: bot se meta-og-image kaise
+Sawal: meta-og-image crawling
+Sawal: research meta-og-image
+Jawab: og:image URL-social-card (crawler-ka-sach).
+
+Sawal: crawler structured-data
+Sawal: web-crawl structured-data
+Sawal: bot se structured-data kaise
+Sawal: structured-data crawling
+Sawal: research structured-data
+Jawab: JSON-LD (@context schema.org) — page-ka-sach-machine-format (saara-data-structured).
+
+Sawal: crawler amp-pages
+Sawal: web-crawl amp-pages
+Sawal: bot se amp-pages kaise
+Sawal: amp-pages crawling
+Sawal: research amp-pages
+Jawab: amp.* versions — lightweight-alternate (prefer-canonical).
+
+Sawal: crawler printer-friendly
+Sawal: web-crawl printer-friendly
+Sawal: bot se printer-friendly kaise
+Sawal: printer-friendly crawling
+Sawal: research printer-friendly
+Jawab: ?print=1 / print-css — saaf-text-nikalo.
+
+Sawal: crawler robots-agents-note
+Sawal: web-crawl robots-agents-note
+Sawal: bot se robots-agents-note kaise
+Sawal: robots-agents-note crawling
+Sawal: research robots-agents-note
+Jawab: Blocked-agents (Cloudflare-bot-fight) — 403-respect-karo, zor-nahi.
+
+Sawal: crawler feed-pagination
+Sawal: web-crawl feed-pagination
+Sawal: bot se feed-pagination kaise
+Sawal: feed-pagination crawling
+Sawal: research feed-pagination
+Jawab: RSS me rel=next / ?paged=n — continue-loop.
+
+Sawal: crawler search-engine-diff
+Sawal: web-crawl search-engine-diff
+Sawal: bot se search-engine-diff kaise
+Sawal: search-engine-diff crawling
+Sawal: research search-engine-diff
+Jawab: Google/Bing/DDG-index-farq — multi-engine-research-amin.
+
+Sawal: crawler deep-web
+Sawal: web-crawl deep-web
+Sawal: bot se deep-web kaise
+Sawal: deep-web crawling
+Sawal: research deep-web
+Jawab: Login-ke-peeche-wala (not-indexed) — sirf-authorized-access.
+
+Sawal: crawler dark-pattern-jaanch
+Sawal: web-crawl dark-pattern-jaanch
+Sawal: bot se dark-pattern-jaanch kaise
+Sawal: dark-pattern-jaanch crawling
+Sawal: research dark-pattern-jaanch
+Jawab: Fake-buttons/hidden-terms — crawler-report-kar (imandari-flag).
+
+Sawal: crawler crawl-report
+Sawal: web-crawl crawl-report
+Sawal: bot se crawl-report kaise
+Sawal: crawl-report crawling
+Sawal: research crawl-report
+Jawab: End-of-run: pages-OK/failed/duplicates + top-domains — imandari-num.
+
+Sawal: crawler respect-source
+Sawal: web-crawl respect-source
+Sawal: bot se respect-source kaise
+Sawal: respect-source crawling
+Sawal: research respect-source
+Jawab: Isteemal: quote-source (URL+date) — ilm-ki-amanat.
+
+Sawal: crawler crawl-budget
+Sawal: web-crawl crawl-budget
+Sawal: bot se crawl-budget kaise
+Sawal: crawl-budget crawling
+Sawal: research crawl-budget
+Jawab: Har-site-ke-liye-max-pages-per-visit (Search-Console 'crawl-stats') — server-imaandari.
+
+Sawal: crawler sitemap-index
+Sawal: web-crawl sitemap-index
+Sawal: bot se sitemap-index kaise
+Sawal: sitemap-index crawling
+Sawal: research sitemap-index
+Jawab: sitemap-index.xml me kai-sitemaps ho-sakte — sab-parho-phir-URLs-queue.
+
+Sawal: crawler hreflang-ilm
+Sawal: web-crawl hreflang-ilm
+Sawal: bot se hreflang-ilm kaise
+Sawal: hreflang-ilm crawling
+Sawal: research hreflang-ilm
+Jawab: <link rel=alternate hreflang=ur> — multi-zaban-versions-ka-map; crawler-usi-zaban-leta.
+
+Sawal: crawler noindex-vs-robots
+Sawal: web-crawl noindex-vs-robots
+Sawal: bot se noindex-vs-robots kaise
+Sawal: noindex-vs-robots crawling
+Sawal: research noindex-vs-robots
+Jawab: robots.txt = crawl-ROKO; noindex = index-me-mat-dalo. Farq: noindex-page-crawl-ho-kar-meta-parha-jata.
+
+Sawal: crawler nofollow-links
+Sawal: web-crawl nofollow-links
+Sawal: bot se nofollow-links kaise
+Sawal: nofollow-links crawling
+Sawal: research nofollow-links
+Jawab: rel=nofollow = weight-na-do — crawler-follow-kar-sakta-par-rank-mat.
+
+Sawal: crawler last-modified-use
+Sawal: web-crawl last-modified-use
+Sawal: bot se last-modified-use kaise
+Sawal: last-modified-use crawling
+Sawal: research last-modified-use
+Jawab: Last-Modified-header/ETag — purana-page-dobara-mat-uto (If-Modified-Since → 304).
+
+Sawal: crawler hash-fragment-ilm
+Sawal: web-crawl hash-fragment-ilm
+Sawal: bot se hash-fragment-ilm kaise
+Sawal: hash-fragment-ilm crawling
+Sawal: research hash-fragment-ilm
+Jawab: URL-me #ke-baad-wala-hissa server-tak-NAHI-jata — crawl-URL-normalize (#hatao).
+
+Sawal: crawler url-encoding-ilm
+Sawal: web-crawl url-encoding-ilm
+Sawal: bot se url-encoding-ilm kaise
+Sawal: url-encoding-ilm crawling
+Sawal: research url-encoding-ilm
+Jawab: %20 aur + (spaces), percent-encoding-normalize — ek-page-2-URL-na-bane.
+
+Sawal: crawler gzip-decode-crawl
+Sawal: web-crawl gzip-decode-crawl
+Sawal: bot se gzip-decode-crawl kaise
+Sawal: gzip-decode-crawl crawling
+Sawal: research gzip-decode-crawl
+Jawab: Accept-Encoding: gzip, br — response-decompress (Content-Encoding-header-dekho).
+
+Sawal: crawler charset-detect-crawl
+Sawal: web-crawl charset-detect-crawl
+Sawal: bot se charset-detect-crawl kaise
+Sawal: charset-detect-crawl crawling
+Sawal: research charset-detect-crawl
+Jawab: <meta charset> / BOM / HTTP-charset — UTF-8-default (Urdu-text-safai).
+
+Sawal: crawler infinite-scroll-crawl
+Sawal: web-crawl infinite-scroll-crawl
+Sawal: bot se infinite-scroll-crawl kaise
+Sawal: infinite-scroll-crawl crawling
+Sawal: research infinite-scroll-crawl
+Jawab: Scroll-par-XHR/fetch-JSON-load — Network-tab-se-API-endpoint-pakdo (API-first).
+
+Sawal: crawler lazy-loading-crawl
+Sawal: web-crawl lazy-loading-crawl
+Sawal: bot se lazy-loading-crawl kaise
+Sawal: lazy-loading-crawl crawling
+Sawal: research lazy-loading-crawl
+Jawab: <img loading=lazy> / data-src — asli-src attribute DOM-se-nikalo.
+
+Sawal: crawler head-first-crawl
+Sawal: web-crawl head-first-crawl
+Sawal: bot se head-first-crawl kaise
+Sawal: head-first-crawl crawling
+Sawal: research head-first-crawl
+Jawab: Bari-file: pehle-HEAD-request (Content-Length) — limit-se-bara → skip+log.
+
+Sawal: crawler conditional-get
+Sawal: web-crawl conditional-get
+Sawal: bot se conditional-get kaise
+Sawal: conditional-get crawling
+Sawal: research conditional-get
+Jawab: If-None-Match / If-Modified-Since bhejo — 304-aya→bandwidth-bachao (etiquette).
+
+Sawal: crawler ua-robots-groups
+Sawal: web-crawl ua-robots-groups
+Sawal: bot se ua-robots-groups kaise
+Sawal: ua-robots-groups crawling
+Sawal: research ua-robots-groups
+Jawab: robots.txt groups: 'User-agent: Googlebot' alag, '*' sab-ke-liye — longest-match-rule.
+
+Sawal: crawler warc-format
+Sawal: web-crawl warc-format
+Sawal: bot se warc-format kaise
+Sawal: warc-format crawling
+Sawal: research warc-format
+Jawab: Web-ARChive (.warc) — puri-crawl-archive-standard (archive.org-isi-format).
+
+Sawal: crawler dns-cache-crawler
+Sawal: web-crawl dns-cache-crawler
+Sawal: bot se dns-cache-crawler kaise
+Sawal: dns-cache-crawler crawling
+Sawal: research dns-cache-crawler
+Jawab: DNS-resolution-cache (TTL-tak) — har-request-par-naya-lookup-nahi.
+
+Sawal: crawler obey-tos-ilm
+Sawal: web-crawl obey-tos-ilm
+Sawal: bot se obey-tos-ilm kaise
+Sawal: obey-tos-ilm crawling
+Sawal: research obey-tos-ilm
+Jawab: Site-ke-Terms-of-Service parho — crawl-ki-imandari-qanoon (Hemomemo-hamesha).
+

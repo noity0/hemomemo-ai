@@ -1,0 +1,130 @@
+{
+  "name": "ULTIMATE CODING MASTER engine",
+  "path": "coding_master",
+  "status": "ok",
+  "version": "2.0.0",
+  "modules_checked": 12,
+  "modules_failed": 0,
+  "modules": {
+    "__init__.py": "ok",
+    "__main__.py": "ok",
+    "analyzer.py": "ok",
+    "cli.py": "ok",
+    "docs.py": "ok",
+    "generator.py": "ok",
+    "indexer.py": "ok",
+    "refactor.py": "ok",
+    "scaffold.py": "ok",
+    "security.py": "ok",
+    "tests_gen.py": "ok",
+    "util.py": "ok"
+  },
+  "languages": [
+    "python",
+    "javascript",
+    "typescript",
+    "go",
+    "rust",
+    "java",
+    "csharp",
+    "ruby",
+    "php",
+    "shell",
+    "sql"
+  ],
+  "kinds": [
+    "function",
+    "class",
+    "dataclass",
+    "cli",
+    "http-server",
+    "script",
+    "module",
+    "test",
+    "struct",
+    "interface"
+  ],
+  "project_types": [
+    "python-cli",
+    "python-lib",
+    "python-api",
+    "web-static",
+    "node-cli",
+    "go-cli",
+    "rust-cli",
+    "data-analysis"
+  ],
+  "self_index": {
+    "root": "D:\\DigitalBrain\\coding_master",
+    "generated_at": "2026-11-21T10:27:54",
+    "file_count": 12,
+    "symbol_count": 121,
+    "total_lines": 4266,
+    "parse_errors": 0,
+    "by_kind": {
+      "class": 8,
+      "function": 57,
+      "method": 56
+    },
+    "by_language": {
+      "python": 121
+    },
+    "entry_points": [
+      "__main__.py",
+      "cli.py"
+    ]
+  },
+  "self_analysis": {
+    "score": {
+      "value": 88.0,
+      "grade": "B"
+    },
+    "summary": {
+      "files": 12,
+      "lines": 4266,
+      "code_lines": 3598,
+      "functions": 117,
+      "classes": 8,
+      "issues": 81,
+      "issues_by_severity": {
+        "critical": 0,
+        "high": 0,
+        "medium": 18,
+        "low": 3,
+        "info": 60
+      },
+      "rules": {
+        "deep-nesting": 3,
+        "high-complexity": 7,
+        "large-file": 2,
+        "long-function": 8,
+        "missing-docstring": 59,
+        "todo-comment": 1,
+        "too-many-parameters": 1
+      }
+    }
+  },
+  "self_security": {
+    "score": 100,
+    "passed": true,
+    "findings": 0
+  },
+  "capabilities": [
+    "static symbol index with search",
+    "complexity and code-smell analysis",
+    "secrets and unsafe-call scanning",
+    "multi-language code generation",
+    "runnable unit-test generation",
+    "Markdown API and README generation",
+    "AST-safe refactoring (imports, rename)",
+    "project scaffolding for several stacks",
+    "unified audit report (index + analysis + security)"
+  ],
+  "qanoon": {
+    "local_only": true,
+    "stdlib_only": true,
+    "no_external_ai": true,
+    "no_cloud_dependencies": true,
+    "no_ffmpeg": true
+  }
+}

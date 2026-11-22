@@ -1,0 +1,112 @@
+# Lifecycle Knowledge — Hemomemo AI (2x knowledge upgrade)
+# Sawal/Jawab pairs cover: Software Lifecycle, System Lifecycle, Biological Lifecycle,
+# Product Lifecycle, AI/ML Model Lifecycle, Data Lifecycle, Digital Brain Lifecycle
+
+Sawal: software development lifecycle kya hai
+Jawab: Software Development Lifecycle (SDLC) aik stepwise process hai software banane ka. Isme planning se lekar maintenance tak har stage hoti hai: requirements gathering, design, implementation (coding), testing, deployment aur maintenance. SDLC phases: planning, analysis, design, implementation, testing, deployment, maintenance. Har phase achay se test hoti hai taake software bug-free aur delivery time pe ho. Models: Waterfall, Agile, Spiral, V-model. Agile sprints me iterative development karta hai. SDLC ka maqsad low cost, high quality aur timely delivery hai.
+
+Sawal: waterfall model kya hai
+Jawab: Waterfall model SDLC ka sab se purana aur sequential (linear) model hai. Isme har phase pichle phase ke complete hone ke baad shuru hota hai. Phases: requirements → design → implementation → testing → deployment → maintenance. Ek dafa phase complete hone ke baad wapas previous phase me jaane ka option nahi hota. Ye model un projects ke liye behtar hai jahan requirements well-defined aur stable hon. Isme testing har phase ke baad hoti hai, aur documentation zayeada detail me hoti hai.
+
+Sawal: agile methodology kya hai
+Jawab: Agile methodology ek iterative aur incremental SDLC approach hai. Isme poora project chhote sprints (1-4 weeks) me divide hota hai. Har sprint me working software deliver hota hai. Agile principles: individuals and interactions over processes and tools, working software over comprehensive documentation, customer collaboration over contract negotiation, responding to change over following a plan. Scrum aur Kanban popular Agile frameworks hain. Daily stand-ups, sprint planning, retrospectives — sab Agile ka hissa hain.
+
+Sawal: spiral model kya hai
+Jawab: Spiral model SDLC ka risk-driven model hai jo Waterfall aur Prototyping ka combination hai. Har spiral loop 4 phases hoti hain: planning, risk analysis, engineering (coding + testing), evaluation. Har iteration me risk analysis pehle hoti hai. High-risk projects ke liye behtar hai. Isme har cycle me cost aur effort increase hota hai. Ye model complexity handle karta hai aur changes accommodate karta hai.
+
+Sawal: V-model kya hai
+Jawab: V-model SDLC ka verification and validation model hai. Isme har development phase ke corresponding testing phase hota hai. Left side me development phases hain: requirements → functional design → technical design → coding. Right side me testing phases: unit testing, integration testing, system testing, acceptance testing. V-shape me verification (development) aur validation (testing) ek sath chalte hain. Ye model high reliability aur documentation ke liye use hota hai.
+
+Sawal: biological life cycle kya hai
+Jawab: Biological life cycle wo stages hain jinse har living organism guzarta hai. For humans: birth → infancy → childhood → adolescence → adulthood → old age → death. Plants ka life cycle: seed → germination → seedling → mature plant → flowering → seed production → death. Insects (butterfly): egg → larva → pupa → adult. Har organism ka life cycle alag hota hai lekin sab me birth, growth, reproduction aur death hota hai. Life cycle evolution ke through adapt hoti hai.
+
+Sawal: ai model lifecycle kya hai
+Jawab: AI/ML model lifecycle ke stages hain: problem definition → data collection → data preprocessing → feature engineering → model selection → training → evaluation → hyperparameter tuning → deployment → monitoring → retraining. Production me model monitoring zaroori hai kyunke data drift aur concept drift ho sakti hai. Continuous learning pipeline automate retraining karta hai. Model lifecycle me reproducibility, versioning, aur CI/CD important hain.
+
+Sawal: data lifecycle kya hai
+Jawab: Data lifecycle stages: data creation → data storage → data usage → data sharing → data archiving → data destruction. Har stage me security aur governance zaroori hai. GDPR aur data privacy laws data lifecycle ko regulate karte hain. Data retention policies define karti hain kitne time tak data store karna hai. Data lifecycle management (ILM) storage cost aur compliance legal hoti hai.
+
+Sawal: product lifecycle kya hai
+Jawab: Product lifecycle ke 4 stages hain: introduction → growth → maturity → decline. Introduction me new product launch hota hai, low sales, high costs. Growth me sales rapidly increase hoti hain. Maturity me market saturated ho jata hai, competition high hoti hai. Decline me sales girti hain, product may be discontinued or redesigned. Har stage me marketing aur strategy alag hoti hai. Product lifecycle management (PLM) manufacturing aur retail me common hai.
+
+Sawal: system lifecycle kya hai
+Jawab: System lifecycle ke stages: concept development → requirements analysis → design → implementation → testing → operation → maintenance → retirement. System engineering me har stage me stakeholders se feedback liya jata hai. Systems engineering lifecycle ISO/IEC 15288 standard define karti hai. Maqsad: reliable, scalable, maintainable systems banana jo long-term value de.
+
+Sawal: digital brain lifecycle kya hai
+Jawab: DigitalBrain (Hemomemo AI) ka lifecycle: idea & architecture design → neural network implementation (pure NumPy LSTM) → tokenizer & vocabulary creation → corpus preparation → training (backpropagation) → evaluation & checkpoints → deployment as offline chat system → live web research integration → heart/emotions/feelings integration → continuous learning from chat (live plasticity) → memory consolidation → security hardening → final user interaction. Har stage me offline-oath, no API, aur halal guidelines follow hoti hain.
+
+Sawal: software maintenance kya hai
+Jawab: Software maintenance SDLC ka last phase hai. Isme code me bugs fix karna, performance improve karna, aur new features add karna shamil hai. Maintenance types: corrective (bug fixes), adaptive (new OS/hardware), perfective (performance), and preventive (future issues). Software maintenance lifecycle cost ka 60-70% hota hai. Good documentation aur modular code maintenance ko asaan banate hain.
+
+Sawal: requirements gathering kya hai
+Jawab: Requirements gathering SDLC ka first step hai. Isme stakeholders se software ki needs, features, aur constraints collect karte hain. Techniques: interviews, questionnaires, observation, document analysis. Requirements functional (what software does) aur non-functional (performance, security, usability) hote hain. SRS (Software Requirements Specification) document finalize hota hai. Clear requirements project success ke liye critical hain.
+
+Sawal: testing types kya hain
+Jawab: Testing types: unit testing (individual components), integration testing (modules together), system testing (complete system), acceptance testing (user approval). Functional testing: black-box, white-box, grey-box. Non-functional testing: performance, security, usability, compatibility. Regression testing: ensure old features work after changes. Automated testing tools: Selenium, JUnit, PyTest. Testing quality assurance ka foundation hai.
+
+Sawal: deployment strategies kya hain
+Jawab: Deployment strategies: blue-green deployment (two identical environments), canary deployment (small percentage rollout), rolling deployment (gradual replacement), A/B testing (compare versions). CI/CD pipelines automate deployment. Continuous Integration: code integrate frequently, automated build/test. Continuous Deployment: every passing change deploy hota hai automatically. DevOps culture deployment speed aur reliability improve karti hai.
+
+Sawal: maintenance phase kya hota hai
+Jawab: Maintenance SDLC ka last phase hai jisme software live hone ke baad issues solve kiye jate hain. Isme patches, updates, enhancements, aur bug fixes shamil hain. Maintenance categories: corrective (fix bugs), adaptive (fit environment), perfective (improve performance), preventive (avoid future issues). User feedback aur analytics se maintenance prioritize hoti hai. Good maintenance software longevity badhata hai.
+
+Sawal: SDLC aur STLC me farq kya hai
+Jawab: SDLC (Software Development Life Cycle) software banane ka process hai. STLC (Software Testing Life Cycle) sirf testing ka process hai. SDLC me requirements se lekar deployment tak sab phases hain. STLC me test planning, test case design, test execution, and test closure phases hoti hain. SDLC aur STLC dono parallel chalte hain. STLC SDLC ka subset hai jo quality assurance pe focus karta hai.
+
+Sawal: data science lifecycle kya hai
+Jawab: Data science lifecycle: business problem understanding → data collection → data cleaning → exploratory data analysis (EDA) → feature engineering → model building → model evaluation → deployment → monitoring. CRISP-DM (Cross-Industry Standard Process for Data Mining) popular methodology hai. Har step me domain expertise aur technical skills dono zaroori hain. Data science me reproducibility aur ethical AI important hain.
+
+Sawal: machine learning lifecycle kya hai
+Jawab: ML lifecycle: problem framing → data collection & labelling → data preprocessing → feature selection → model selection → training → validation → testing → deployment → monitoring → retraining. Data drift aur concept drift monitor karte hain. MLOps ML lifecycle ko automate aur streamline karta hai. Model versioning, experiment tracking (MLflow), aur CI/CD pipelines ML lifecycle ka hissa hain.
+
+Sawal: product requirements document kya hai
+Jawab: PRD (Product Requirements Document) product ki specifications, features, aur user stories define karta hai. Isme objectives, target audience, features, wireframes, aur success metrics hote hain. PRD stakeholders ke liye single source of truth hai. Agile me PRD ki jagah user stories aur product backlog use hota hai. Clear PRD development miscommunication kam karta hai.
+
+Sawal: risk management SDLC me kyun zaroori hai
+Jawab: Risk management SDLC me zaroori hai kyunke har software project me uncertainties hoti hain: scope creep, technical challenges, resource constraints, timeline delays. Risk identification, assessment, mitigation, and monitoring phases hoti hain. Early risk detection project failure kam karta hai. Risk register document se risks track hoti hain. Spiral model risk analysis ko explicitly include karta hai.
+
+Sawal: AI lifecycle stages kya hain
+Jawab: AI lifecycle: problem identification → data strategy → data acquisition → data preparation → model design → model training → model evaluation → model deployment → monitoring & maintenance → responsible AI governance. Har stage me fairness, transparency, explainability, aur privacy kakhayal rakhna hota hai. AI lifecycle me continuous learning aur human oversight zaroori hai.
+
+Sawal: software architecture kya hai
+Jawab: Software architecture software ka high-level structure hai. Isme components, their relationships, aur design decisions hote hain. Architectures: layered, microservices, event-driven, client-server, MVC. Architectural decisions performance, scalability, security aur maintainability ko affect karti hain. Architecture patterns: Singleton, Factory, Observer, MVC. Good architecture future changes ko asaan banati hai.
+
+Sawal: microservices architecture kya hai
+Jawab: Microservices architecture me application chhote independent services me divide hota hai. Har service apna business capability implement karti hai, independently deploy aur scale hoti hai. REST APIs ya message queues se services communicate karte hain. Advantages: independent deployment, technology diversity, fault isolation. Challenges: distributed system complexity, data consistency, monitoring. Docker aur Kubernetes microservices me common hain.
+
+Sawal: DevOps kya hai
+Jawab: DevOps Development aur Operations ka culture hai jo software delivery speed aur quality improve karta hai. Automation: CI/CD pipelines, infrastructure as code (Terraform, Ansible), monitoring (Prometheus, Grafana). DevOps practices: continuous integration, continuous delivery, continuous monitoring, feedback loops. DevOps culture collaboration, communication, aur shared responsibility pe based hai. DevOps reduces time-to-market aur increases reliability.
+
+Sawal: software quality assurance kya hai
+Jawab: Software QA (Quality Assurance) process se ensure karti hai ke software requirements meet karta hai aur defect-free hai. QA activities: process audits, standards compliance, test planning, test execution, defect tracking, root cause analysis. QA aur Testing related hain lekin QA process-focused hai aur Testing product-focused. QA metrics: defect density, test coverage, requirement traceability. ISO 9001 aur CMMI quality standards hain.
+
+Sawal: security in SDLC kya hai
+Jawab: Security SDLC ka critical aspect hai. Secure SDLC (SSDLC) me security har phase me integrate hoti hai: requirements (threat modeling), design (security architecture), implementation (secure coding), testing (penetration testing, vulnerability scanning), deployment (secure configuration), maintenance (patch management). OWASP Top 10 common vulnerabilities hain. DevSecOps security ko CI/CD me shift-left approach se integrate karta hai.
+
+Sawal: software versioning kya hai
+Jawab: Software versioning software releases ko track aur manage karne ka tareeqa hai. Semantic Versioning (SemVer): MAJOR.MINOR.PATCH. MAJOR breaking changes, MINOR new features (backward compatible), PATCH bug fixes. Git se version control hota hai. Tags aur branches se releases manage hoti hain. Versioning collaboration aur rollback enable karta hai. Package managers (npm, pip) versions specify karte hain.
+
+Sawal: code review kya hai
+Jawab: Code review development process ka step hai jahan doosre developers written code review karte hain. Goals: find bugs, improve code quality, knowledge sharing, standards enforcement. Code review techniques: pair programming, pull request reviews, automated analysis (SonarQube). Best practices: small changes, clear descriptions, constructive feedback, automated tests. Code review knowledge transfer aur team collaboration badhati hai.
+
+Sawal: configuration management kya hai
+Jawab: Configuration management (CM) software aur system settings track aur control karne ka process hai. CM tools: Git, Ansible, Puppet, Chef. CM ensures consistency across environments (development, staging, production). Infrastructure as Code (IaC) CM ka hissa hai. CM prevents "works on my machine" issues. CM aur change management milke system stability aur auditability provide karte hain.
+
+Sawal: deployment pipeline kya hai
+Jawab: Deployment pipeline automated workflow hai jisme code commit se lekar production deployment tak steps hote hain. Typical stages: source control → build → unit tests → integration tests → security scan → staging deployment → acceptance tests → production deployment → monitoring. Jenkins, GitLab CI, GitHub Actions pipelines automate karti hain. Pipeline reliability aur speed software delivery improve karti hain.
+
+Sawal: software cost estimation kya hai
+Jawab: Software cost estimation project effort, time aur budget predict karne ka process hai. Methods: expert judgment, COCOMO (Constructive Cost Model), function point analysis, use case points. Factors: complexity, team experience, technology, requirements stability. Estimation accuracy requirements clarity aur historical data pe depend karti hai. Agile me velocity aur story points se estimation hoti hai.
+
+Sawal: project management lifecycle kya hai
+Jawab: Project management lifecycle phases: initiation → planning → execution → monitoring & controlling → closing. PMBOK framework ye phases define karta hai. Initiation me project charter aur stakeholder identification. Planning me scope, schedule, budget, risk management. Execution me team assign aur deliverables create. Monitoring me progress track aur changes control. Closing me handover aur lessons learned. PRINCE2 aur Agile PM also popular frameworks hain.
+
+Sawal: biological human lifecycle in Islam kya hai
+Jawab: Islam me human lifecycle stages: embryo (nutfah, alaqah, mudghah) → birth → childhood (irada/responsibility absent) → baligh (puberty, religious obligations start) → adulthood → old age → death → barzakh → qiyamah → jannah/jahannam. Quran 23:12-14: "And We created man from extract of clay... then We made him a semen-drop in a safe place... then the clot, then the lump of flesh... then We developed him into another creation." Har stage me Allah ki qudrat aur rehmat hai.
+
+Sawal: Hemomemo AI ka lifecycle kya hai
+Jawab: Hemomemo AI (HMHS Muslim Texture / Hemomemo AI) ka lifecycle: (1) Concept & architecture planning, (2) Pure NumPy neural network implementation (2-layer LSTM, 5.1M params), (3) Tokenizer & vocabulary creation from corpus, (4) Seed corpus preparation (English + Roman Urdu + Hadith/Quran knowledge), (5) Training via backpropagation-through-time (BPTT), (6) Checkpoints & model card, (7) Integration with bio-brain hub (250k neurons + 200k glial cells), (8) Heart & feelings/sensors integration, (9) Live web research engine (Google/DDG/Bing, whitelist-only), (10) Metacognition & rethink mechanism, (11) Live plasticity (learn from chat), (12) Security hardening & offline oath, (13) Terminal deployment (run.py menu). Har stage me ZERO external API, ZERO cloud, ZERO other AI model — sab kuch local rehta hai.
+
+Sawal: neural network training lifecycle kya hai
+Jawab: Neural network training lifecycle: data collection → data cleaning → train/validation/test split → model definition → weight initialization → forward pass → loss calculation → backpropagation → gradient descent → epoch iteration → validation checkpoint → hyperparameter tuning → early stopping → final model evaluation → model export. Training loop repeat until convergence. Monitoring: loss curves, accuracy metrics, overfitting detection. Training lifecycle reproducibility ke liye seed setting aur logging zaroori hai.
+

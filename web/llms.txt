@@ -1,0 +1,64 @@
+# Hemomemo AI
+
+> 100% local offline AI with its OWN brain (pure-NumPy 2-layer LSTM, 50M params (50,014,104),
+> dh1739) — NOT an LLM app, NO external model, NO AI-API, NO cloud, NO MCP-daemon.
+> Runs entirely on your PC (Windows 7 → 11). Owner: Hafiz Muhammad Huzaifa
+> Shamim (HMHS), Karachi. License: MIT.
+
+## What is Hemomemo AI
+
+Hemomemo AI is a self-contained artificial intelligence desktop application
+that runs 100% locally on Windows 7 through 11 (64-bit). It is not an LLM
+wrapper, not a cloud service, and does not call OpenAI, Anthropic, Gemini,
+or any AI-platform API. It is a standalone app with its own 50M-parameter
+NumPy LSTM brain, its own memory, and its own knowledge corpus.
+
+### Core Systems
+
+- **50M-parameter 2-layer LSTM brain** — pure NumPy, no PyTorch/TensorFlow.
+- **20M-parameter Prompt Understanding System** — transformer architecture
+  for intent recognition, context analysis, entity extraction, complexity
+  scoring, and domain routing (social/math/code/hadith/quran/ilm/general).
+- **Flow Engine (24 archetypes, 42B+ combinations)** — deterministic query
+  routing: last-question priority, inverted index, Python snippets,
+  sacred-text routing.
+- **Ultra-Photoreal Video Engine** — ray tracing, material system,
+  subsurface scattering, atmospheric effects at 3840×2160. No FFmpeg.
+- **Minecraft GameBot** — MC-JOIN, chat-orders, duo mode, PC-eye control.
+
+## Download
+
+- [Latest desktop ZIP (~386 MB)](https://github.com/noity0/hemomemo-ai/releases/download/v4.2.1-people/HemomemoUltra-People.zip): full app (brain + corpus + GameBot + connection-hub + Flow Engine + Ultra-Photoreal Video + 20M Prompt Understanding System) - extract & run START-HEMOMO.bat, no install needed. The same link always serves the newest build (asset replaced on each release).
+- [All releases](https://github.com/noity0/hemomemo-ai/releases)
+
+## Sites
+
+- [GitHub Pages](https://noity0.github.io/hemomemo-ai/)
+- [Netlify mirror](https://hemomemo-ai.netlify.app/)
+- [Demo video: Mountain Bike](https://github.com/noity0/hemomemo-ai/releases/download/v4.2.1-people/mountain_bike_demo.mp4)
+- [Repo](https://github.com/noity0/hemomemo-ai)
+
+## Local API (127.0.0.1:8790 — sirf Hemomemo, koi AI-platform nahi)
+- Endpoints: `/health`, `/v1/info`, `/v1/models` (OpenAI-shape), `/v1/ch
+- Auth: `X-Hemomemo-Key` + `X-Hemomemo-Ts` (unix sec) + `X-Hemomemo-Nonce`
+  (ya `Authorization: Bearer`); ghalat key → 401, flood → 429, bad input → 400
+- Rate: 60 requests / 10-min window (shared, flood-guard)
+
+## Powers (chat commands, all local or non-AI APIs)
+- `search <topic>` / `khojo <topic>`: web search — keyless DuckDuckGo by default; optional Google-CSE / Bing / Brave keys (search APIs only)
+- `deep research <topic>`: reads top pages itself, ranks sentences locally, report with sources [1][2]
+- `python <code>`: local Python code execution (15s timeout, 64KB output cap, net-guard injected)
+- `image banao <prompt>`: procedural image generation — pure math (NumPy+PIL): aurora / waves / rings / maze / particles / gradient; NO AI model
+- `canvas banao <naam>` / `canvas <naam> likho: ...` / `canvas list`: local document boards (+ PNG cards)
+- `gem list` / `gem use <naam>` / `gem banao <naam> role: ...`: custom assistants over the SAME local brain (Ustad, Coder, Rafiq, Reporter by default)
+- `mcp servers` / `mcp tools <srv>` / `mcp call <srv> <tool> {json}`: local stdio MCP tool-servers, opt-in config; AI-platform server configs are HARD-REJECTED
+- `inbox check` / `send email to X subject: ... body: ...`: Gmail read/send (imap 993 / smtp 587, app-password; password never logged)
+- `drive list|upload|download`, `doc read <id|naam>`: Google Workspace storage/docs (OAuth, non-AI APIs only)
+
+## Law (qanoon)
+- The brain is 100% local: a pure-NumPy 2-layer LSTM (own checkpoints on disk) + retrieval over local Sawal:/Jawab: corpora + episodic memory. No tokens, no quotas, no external model.
+- HARD-BLOCKED forever: OpenAI, Anthropic, Gemini/generativelanguage, and every AI-platform API or cloud AI connection (net_guard: deny-by-default whitelist + banned-host regex, checked BEFORE allowlist).
+- Only non-AI APIs are permitted: web search, mail (Gmail), storage/docs (Drive/Docs), plus read-only knowledge sources (Wikipedia, Quran/Hadith APIs).
+
+## Architecture (short)
+input → L1 net-firewall → L2 input-guard → INTENT → memory (episodic.jsonl) + knowledge (corpus_big/*.txt) → reasoning loop (deterministic math for numbers) → composer (own LSTM) → L4 sacred-guard + L5 HMHZ secret-VM → answer. Game agent speaks its own Minecraft VarInt protocol (no SDK); QA suites run before every release.

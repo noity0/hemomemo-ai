@@ -1,0 +1,61 @@
+{
+ "trainer_A": {
+  "prefix": "hemomaster_codevid",
+  "base": "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_1794211843.npz",
+  "final": "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_codevid_1794213909.npz",
+  "steps": 160,
+  "wall_s": 1204.925796508789,
+  "vocab": 95,
+  "d_h": 660,
+  "avg_loss_last100": 2.992671797275543,
+  "epochs": [
+   "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_codevid_1794213014.npz",
+   "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_codevid_1794213324.npz",
+   "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_codevid_1794213632.npz",
+   "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_codevid_1794213909.npz"
+  ],
+  "corpus": "D:\\DigitalBrain\\data\\corpus_big\\coding_knowledge.txt,D:\\DigitalBrain\\data\\corpus_big\\coding_deep_master.txt,D:\\DigitalBrain\\data\\corpus_big\\trainer_knowledge_2h.txt,D:\\DigitalBrain\\data\\corpus_big\\trainer_lessons_coding_video_text.txt",
+  "sha256": {
+   "hemomaster_codevid_1794213909.npz": "693ccb569cc30a67"
+  }
+ },
+ "trainer_B": {
+  "prefix": "hemomaster_cmdctrl",
+  "base": "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_1794211843.npz",
+  "final": "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_cmdctrl_1794213909.npz",
+  "steps": 160,
+  "wall_s": 1205.3577435016632,
+  "vocab": 95,
+  "d_h": 660,
+  "avg_loss_last100": 3.027399296760559,
+  "epochs": [
+   "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_cmdctrl_1794213014.npz",
+   "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_cmdctrl_1794213324.npz",
+   "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_cmdctrl_1794213632.npz",
+   "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_cmdctrl_1794213909.npz"
+  ],
+  "corpus": "D:\\DigitalBrain\\data\\corpus_big\\trainer_knowledge_cmdshell.txt,D:\\DigitalBrain\\data\\corpus_big\\agent_orders.txt,D:\\DigitalBrain\\data\\corpus_big\\gamebot_tasks.txt",
+  "sha256": {
+   "hemomaster_cmdctrl_1794213909.npz": "a0468856769df748"
+  }
+ },
+ "unified_final": "D:\\DigitalBrain\\model\\checkpoints\\hemomaster_united_1794214277.npz",
+ "apply": {
+  "people_checkpoints": [
+   "hemomaster_cmdctrl_1794213014.npz",
+   "hemomaster_cmdctrl_1794213324.npz",
+   "hemomaster_cmdctrl_1794213632.npz",
+   "hemomaster_cmdctrl_1794213909.npz",
+   "hemomaster_codevid_1794213014.npz",
+   "hemomaster_codevid_1794213324.npz",
+   "hemomaster_codevid_1794213632.npz",
+   "hemomaster_codevid_1794213909.npz",
+   "hemomaster_united_1794214221.npz",
+   "hemomaster_united_1794214277.npz"
+  ],
+  "owner_remember": 71,
+  "people_remember": 71
+ },
+ "total_wall_s": 1580.1295306682587,
+ "law": "100% local \u2014 no external AI/API/cloud; append-only"
+}

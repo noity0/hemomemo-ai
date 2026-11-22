@@ -1,0 +1,150 @@
+{
+ "users": {
+  "pkgfinal@gmail.com": {
+   "salt": "2c2ed377fdee1722fc9b10c3336b86e2",
+   "pw": "00fc607875c5c03dbdbf45be6d1674d452bfe7efc6aab0ff0485bedf382bec2f",
+   "key": "hemo9961d2412a0af1cb364a9a3752b6a161ab1a27684b9c74a5",
+   "keys": [
+    "hemo9961d2412a0af1cb364a9a3752b6a161ab1a27684b9c74a5"
+   ],
+   "created": "2026-11-05 19:49:51",
+   "requests": 2,
+   "last_used": "2026-11-05 19:49:57",
+   "key_rotated": "2026-11-18 21:30:23"
+  },
+  "owner@hmhs.local": {
+   "salt": "e54501a82002a302fc976cf1f38c731e",
+   "pw": "62c994823e864c9bc1befee94549cbdbe3062e133d34383e089d77e5a1fc3ed4",
+   "key": "hemo3807a02f4ab4fd39672585f89c9ed1498375b944a7b6b8f1",
+   "keys": [
+    "hemo3807a02f4ab4fd39672585f89c9ed1498375b944a7b6b8f1"
+   ],
+   "created": "2026-11-09 13:03:38",
+   "requests": 37,
+   "last_used": "2026-11-15 19:22:55",
+   "note": "owner-manual grant (OpenCode integration \u2014 HMHS apni key)",
+   "key_rotated": "2026-11-18 21:30:23"
+  },
+  "keytest846872@gmail.com": {
+   "salt": "9c25bf5fffa61ccd26a7c10ef6896f5c",
+   "pw": "c91b044e8db3a040434b3cb9ea4f7294cc9ba3b883ef0e55f26b4d622139d0ad",
+   "key": "hemo531ea0815f0b69a8a681c1fe16165e1cb7a0fd8ff07b7220",
+   "keys": [
+    "hemo531ea0815f0b69a8a681c1fe16165e1cb7a0fd8ff07b7220"
+   ],
+   "created": "2026-11-16 21:37:00",
+   "requests": 0,
+   "last_used": "",
+   "key_rotated": "2026-11-18 21:30:23"
+  },
+  "keytest847185@gmail.com": {
+   "salt": "a5696f2e3ec14efbb5ba6997b31f5c43",
+   "pw": "ec8865ed7c27b02d785a31fb5627c8379a944928d4ac852d434666660fb3d69f",
+   "key": "hemo4a02acd1e55b1bbeaee8a50e449fddb90486e81bd7c42382",
+   "keys": [
+    "hemo4a02acd1e55b1bbeaee8a50e449fddb90486e81bd7c42382"
+   ],
+   "created": "2026-11-16 21:39:47",
+   "requests": 4,
+   "last_used": "2026-11-16 21:39:59",
+   "key_rotated": "2026-11-18 21:30:23"
+  },
+  "keytest849452@gmail.com": {
+   "salt": "c5509e9ab0e9d2e54516cc0baf89b3d2",
+   "pw": "101198d8bf7a3994a8607fbc57271236a896154af46b6e30b541476c6b5dfaf4",
+   "key": "hemo205955da736ae1ad31722205585ccb6335f4aa18a245d60d",
+   "keys": [
+    "hemo205955da736ae1ad31722205585ccb6335f4aa18a245d60d"
+   ],
+   "created": "2026-11-16 22:17:34",
+   "requests": 2,
+   "last_used": "2026-11-16 22:17:35",
+   "key_rotated": "2026-11-18 21:30:23"
+  },
+  "keytest851376@gmail.com": {
+   "salt": "46f356373849e5ae5838dfd695038943",
+   "pw": "5c318e4a56ce6f506ee7e4d2aad025747ed053a353f9791e11d0c2271902d93f",
+   "key": "hemoc5f7b3e0ceea6be3000c59e2eb3f5bfd9cfc8240811a687e",
+   "keys": [
+    "hemoc5f7b3e0ceea6be3000c59e2eb3f5bfd9cfc8240811a687e"
+   ],
+   "created": "2026-11-16 22:49:36",
+   "requests": 2,
+   "last_used": "2026-11-16 22:49:37",
+   "key_rotated": "2026-11-18 21:30:23"
+  },
+  "keytest852461@gmail.com": {
+   "salt": "999f38478273226ec2855f9bc95cd6c9",
+   "pw": "6f3484853950b65039381fdf55927826feaaa09259ab0d8584cc1661130fb8bc",
+   "key": "hemodded0f07661f9a67ac5f94884dc216c06c9bfa0d298c0cac",
+   "keys": [
+    "hemodded0f07661f9a67ac5f94884dc216c06c9bfa0d298c0cac"
+   ],
+   "created": "2026-11-16 23:07:41",
+   "requests": 2,
+   "last_used": "2026-11-16 23:07:42",
+   "key_rotated": "2026-11-18 21:30:23"
+  },
+  "apitest852761@gmail.com": {
+   "salt": "7fd0899d9e51aff0a58cf7d9d466cf1b",
+   "pw": "dbd21724a25ec4dc00e9f4a2ed9e4e02b50d98a7e7220ff5caada00ccf73f1bd",
+   "key": "hemocc8c570ed54b31b5ab3426b4ef6fb0bf6610f5a1cd95df71",
+   "keys": [
+    "hemocc8c570ed54b31b5ab3426b4ef6fb0bf6610f5a1cd95df71"
+   ],
+   "created": "2026-11-16 23:12:42",
+   "requests": 3,
+   "last_used": "2026-11-16 23:12:56",
+   "key_rotated": "2026-11-18 21:30:23"
+  },
+  "probe852846@gmail.com": {
+   "salt": "148a16f696db7acd78dfd911ee98bb44",
+   "pw": "8b82332338359276afafff664626e85233041769d2578522c4e4049a8e39fdf2",
+   "key": "hemo619195d2cfc077c6da40c9ca1ec11a69c26f4381b8c069c8",
+   "keys": [
+    "hemo619195d2cfc077c6da40c9ca1ec11a69c26f4381b8c069c8"
+   ],
+   "created": "2026-11-16 23:14:08",
+   "requests": 0,
+   "last_used": "",
+   "key_rotated": "2026-11-18 21:30:23"
+  },
+  "apitest852890@gmail.com": {
+   "salt": "d0e1cd713afd4b9e47649b6369f185b2",
+   "pw": "88527c7fe5b9d83f2a90d00678a32fb0e49abdf46848424f33fec04f19398639",
+   "key": "hemo27f70c0e95670d37994c7bbb5a70105812cdcb69247e35ca",
+   "keys": [
+    "hemo27f70c0e95670d37994c7bbb5a70105812cdcb69247e35ca"
+   ],
+   "created": "2026-11-16 23:14:52",
+   "requests": 3,
+   "last_used": "2026-11-16 23:15:05",
+   "key_rotated": "2026-11-18 21:30:23"
+  },
+  "keytest852907@gmail.com": {
+   "salt": "d23f4426129c9c4214fb7135c82b7118",
+   "pw": "e93c85505cb9b140120c91626bf9150367ed2a5f9e1b3e65e2da36c4398d5f5c",
+   "key": "hemoa8ba232317eef005ea66ea8dafa62b476a0f1371fac60c93",
+   "keys": [
+    "hemoa8ba232317eef005ea66ea8dafa62b476a0f1371fac60c93"
+   ],
+   "created": "2026-11-16 23:15:08",
+   "requests": 2,
+   "last_used": "2026-11-16 23:15:09",
+   "key_rotated": "2026-11-18 21:30:23"
+  },
+  "apitest893600@gmail.com": {
+   "salt": "4f6a476fc42cd4ec03326bce37a51693",
+   "pw": "d13c8807ac0dfc69eabce119326de82acb778e82a0a60a63e68b0de7ba383a6c",
+   "key": "hemo2285d5cbff6ced8112ed15c1985cd676da332712d2805201",
+   "keys": [
+    "hemo2285d5cbff6ced8112ed15c1985cd676da332712d2805201"
+   ],
+   "created": "2026-11-17 10:33:20",
+   "requests": 3,
+   "last_used": "2026-11-17 10:33:32",
+   "key_rotated": "2026-11-18 21:30:23"
+  }
+ },
+ "note": "Hemomemo AI API per-user accounts (100% local \u2014 no platform API)"
+}

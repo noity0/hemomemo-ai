@@ -1,0 +1,178 @@
+Sawal: what is code
+Jawab: Code is a set of step-by-step instructions written in a programming language that tells the computer exactly what to do. Every app, website and game is code working together.
+
+Sawal: what is an algorithm
+Jawab: An algorithm is a finite list of clear steps to solve a problem. Steps: 1 read the problem, 2 write input and output, 3 break the problem into small steps, 4 write the steps in order, 5 test with examples, 6 fix and improve.
+
+Sawal: what is a variable
+Jawab: A variable is a named box in memory that stores a value. Rule: give it a clear small name like total or user_age. Steps: 1 choose the name, 2 assign the value, 3 use the name later in the code.
+
+Sawal: what is a function
+Jawab: A function is a named block of code that does one job and can be reused. Steps: 1 give it a name, 2 write inputs called parameters, 3 write the steps inside, 4 return the result, 5 call it by name whenever needed.
+
+Sawal: what is a loop
+Jawab: A loop repeats steps. for loop repeats a known count, while loop repeats until a condition becomes false. Rule: every loop must have an exit or it runs forever.
+
+Sawal: what is a condition
+Jawab: A condition lets the program choose. if this then do that, else do the other. Steps: 1 write the question, 2 write the true branch, 3 write the else branch, 4 test both sides.
+
+Sawal: what is an array
+Jawab: An array or list is an ordered set of values kept together and reached by index starting at zero. Steps: 1 create the list, 2 add items, 3 read items by index, 4 loop over all items.
+
+Sawal: what is a dictionary
+Jawab: A dictionary or map stores key and value pairs. You look up a value by its key fast. Steps: 1 create it, 2 insert key with value, 3 read by key, 4 update or delete by key.
+
+Sawal: what is a stack
+Jawab: A stack is last in first out. The last item pushed is the first popped. Used in undo history and function calls. Steps: push adds on top, pop removes from top, peek looks at top.
+
+Sawal: what is a queue
+Jawab: A queue is first in first out like a line of people. Used in task processing. Steps: enqueue adds at the back, dequeue removes from the front.
+
+Sawal: what is recursion
+Jawab: Recursion is when a function calls itself on a smaller problem until it reaches a base case. Rules: 1 always define the base case first, 2 make the problem smaller each call, 3 never recurse forever.
+
+Sawal: what is big o notation
+Jawab: Big O describes how work grows with input size. O of 1 is constant, O of log n is fast search, O of n is a single pass, O of n squared is nested loops. Rule: prefer lower growth for large data.
+
+Sawal: fibonacci steps
+Jawab: Fibonacci steps: 1 take n, 2 set a is 0 and b is 1, 3 repeat n times, 4 temp is a plus b, 5 move a to b and b to temp, 6 answer is a. Sequence is 0 1 1 2 3 5 8 13 21 34.
+
+Sawal: prime number steps
+Jawab: Prime check steps: 1 if n is less than 2 it is not prime, 2 if n is 2 it is prime, 3 if n is even it is not prime, 4 test divisors from 3 up to square root of n stepping by 2, 5 if any divides n it is not prime else it is prime.
+
+Sawal: palindrome steps
+Jawab: Palindrome steps: 1 clean the text and lower the case, 2 set left at start and right at end, 3 compare characters at left and right, 4 if different it is not a palindrome, 5 move left forward and right backward, 6 if you meet in the middle it is a palindrome.
+
+Sawal: sort steps bubble sort
+Jawab: Bubble sort steps: 1 repeat passes over the list, 2 compare each pair of neighbours, 3 swap if the left is bigger, 4 after each pass the biggest bubble reaches the end, 5 stop when a full pass makes no swap.
+
+Sawal: binary search steps
+Jawab: Binary search steps: 1 the list must be sorted, 2 set low at start and high at end, 3 take the middle item, 4 if it equals the target you found it, 5 if target is bigger search the right half, 6 if smaller search the left half, 7 repeat until found or the range is empty. Speed is O of log n.
+
+Sawal: fizzbuzz steps
+Jawab: FizzBuzz steps: 1 count from 1 to 100, 2 if the number divides by 3 and 5 print FizzBuzz, 3 else if it divides by 3 print Fizz, 4 else if it divides by 5 print Buzz, 5 else print the number.
+
+Sawal: factorial steps
+Jawab: Factorial steps: 1 n factorial is n times n minus 1 factorial, 2 base case is 0 factorial equals 1, 3 multiply down to 1. Example 5 factorial is 5 times 4 times 3 times 2 times 1 equals 120.
+
+Sawal: reverse a string steps
+Jawab: Reverse steps: 1 start from the last character, 2 walk backwards to the first, 3 collect each character, 4 join them. Or swap first with last and move inward until the middle.
+
+Sawal: coding naming rules
+Jawab: Naming rules: 1 names must say what the thing is, 2 variables are nouns, functions are verbs, 3 be consistent in the whole project, 4 no single letters except tiny loop counters, 5 no misleading names ever.
+
+Sawal: coding clean rules
+Jawab: Clean code rules: 1 DRY means do not repeat yourself, share one function, 2 KISS means keep it simple, 3 small functions that do one job, 4 comments say why not what, 5 format the code the same everywhere, 6 handle errors, never ignore them silently, 7 test the happy path and the edge cases.
+
+Sawal: debugging steps
+Jawab: Debugging steps: 1 read the error message slowly, 2 find the exact line, 3 reproduce the bug every time, 4 print or log the values before the crash, 5 form one guess and test it, 6 fix the cause not the symptom, 7 run the tests again.
+
+Sawal: testing steps
+Jawab: Testing steps: 1 test normal cases, 2 test zero and empty inputs, 3 test very large inputs, 4 test wrong inputs and check graceful refusal, 5 automate the tests so they run every change, 6 a fix is not done until its test passes.
+
+Sawal: what is an api
+Jawab: An API is a doorway a program offers so other programs can request work. Steps: 1 client sends a request with a method and path, 2 server checks the key and rules, 3 server does the work, 4 server returns a status code and a JSON body.
+
+Sawal: what is json
+Jawab: JSON is a text format for structured data with keys and values, lists, strings and numbers. Rules: keys are quoted strings, no trailing comma, strings use double quotes.
+
+Sawal: what is rest crud
+Jawab: REST uses HTTP methods on resource paths. CRUD means Create read update delete. POST creates, GET reads, PUT or PATCH updates, DELETE removes. Status codes: 200 ok, 201 created, 400 bad input, 401 no key, 403 forbidden, 404 not found, 429 too many requests.
+
+Sawal: python rules
+Jawab: Python rules: 1 indentation of 4 spaces defines blocks, 2 no braces, 3 define a function with def, 4 duck typing, 5 import modules at the top, 6 use virtual environments for projects, 7 pep 8 style guide.
+
+Sawal: python hello world
+Jawab: In Python write print("Hello, world!") and run the file with python. Define a function with def greet(name): return "Salam " + name.
+
+Sawal: javascript rules
+Jawab: JavaScript rules: 1 runs in the browser and on node, 2 use let and const not var, 3 functions are values, 4 async uses promises and async await, 5 strict equality with three equals signs to avoid surprises.
+
+Sawal: typescript rules
+Jawab: TypeScript is JavaScript plus types. Rules: 1 annotate function inputs and outputs, 2 interfaces describe shapes, 3 the compiler catches type errors early, 4 types vanish at runtime.
+
+Sawal: java rules
+Jawab: Java rules: 1 every program starts at public static void main, 2 code lives inside a class, 3 strongly typed, 4 compile to bytecode that runs on the JVM, 5 packages organize classes.
+
+Sawal: c plus plus rules
+Jawab: C++ rules: 1 manual memory with new and delete or smart pointers, 2 headers declare, sources define, 3 use the standard library containers like vector and map, 4 compile then link, 5 zero cost abstractions.
+
+Sawal: c sharp rules
+Jawab: C# rules: 1 runs on the dot net runtime, 2 classes and namespaces, 3 properties instead of raw fields, 4 garbage collection manages memory, 5 async await is first class.
+
+Sawal: go rules
+Jawab: Go rules: 1 programs start at func main in package main, 2 goroutines run tasks at the same time, 3 channels pass messages between goroutines, 4 gofmt formats all code the same, 5 errors are values you return and check.
+
+Sawal: rust rules
+Jawab: Rust rules: 1 ownership moves values, 2 the borrow checker stops data races at compile time, 3 no null, use Option and Result, 4 cargo builds and manages packages, 5 memory safe without a garbage collector.
+
+Sawal: php rules
+Jawab: PHP rules: 1 code lives between question mark php tags, 2 variables start with a dollar sign, 3 made for the web and html templates, 4 always validate input and escape output, 5 use prepared statements for databases.
+
+Sawal: ruby rules
+Jawab: Ruby rules: 1 everything is an object, 2 blocks with do and end make iteration clean, 3 convention over configuration in rails, 4 methods return the last expression, 5 readable english like syntax.
+
+Sawal: bash rules
+Jawab: Bash rules: 1 first line is shebang bin bash, 2 quote every variable, 3 no spaces around the equal sign, 4 test with square brackets, 5 loops with for and while, 6 always check the exit code of important commands.
+
+Sawal: html rules
+Jawab: HTML rules: 1 every page has one h1, 2 tags open and close in order, 3 attributes give extra info like src and href, 4 semantic tags like header main footer describe meaning, 5 keep structure in html, style in css, logic in javascript.
+
+Sawal: css rules
+Jawab: CSS rules: 1 selectors target html elements, 2 the box model is content padding border margin, 3 flexbox for one direction layout, grid for two directions, 4 use rem units and relative sizes, 5 mobile first with media queries.
+
+Sawal: sql rules
+Jawab: SQL rules: 1 select columns from a table where a condition, 2 join links tables on keys, 3 group by with aggregates like count and sum, 4 index the columns you search often, 5 always use parameters, never glue user text into a query.
+
+Sawal: kotlin rules
+Jawab: Kotlin rules: 1 null safe types with question mark, 2 val is read only and var is mutable, 3 data classes hold values, 4 coroutines for async work, 5 full java compatibility.
+
+Sawal: dart rules
+Jawab: Dart rules: 1 the language of flutter apps, 2 strong types with sound null safety, 3 async with futures and streams, 4 widgets compose the ui, 5 hot reload makes work fast.
+
+Sawal: perl rules
+Jawab: Perl rules: 1 powerful text processing and regex, 2 sigils on variables, 3 use strict and use warnings always, 4 there is more than one way to do it, 5 great for pipelines and reports.
+
+Sawal: lua rules
+Jawab: Lua rules: 1 tiny fast embedded scripting language, 2 tables are the one data structure for lists and maps, 3 used in games and plugins, 4 coroutines built in, 5 simple C api to bind native code.
+
+Sawal: haskell rules
+Jawab: Haskell rules: 1 pure functions with no side effects, 2 immutable values, 3 types are proofs, Maybe and Either replace null and exceptions, 4 lazy evaluation, 5 recursion and higher order functions instead of loops.
+
+Sawal: scala rules
+Jawab: Scala rules: 1 blends object oriented and functional style, 2 runs on the JVM, 3 case classes and pattern matching, 4 immutable collections by default, 5 used for big data with spark.
+
+Sawal: what is git
+Jawab: Git saves history. Steps: 1 git clone to copy a repo, 2 edit files, 3 git add to stage, 4 git commit to save a point, 5 git push to share, 6 git pull to get others work. Branches let you try ideas safely.
+
+Sawal: what is a neural network
+Jawab: A neural network is layers of small units with weights. Steps of learning: 1 predict, 2 measure the loss, 3 compute gradients by backpropagation, 4 nudge weights the opposite way, 5 repeat many times until the loss falls.
+
+Sawal: what is lstm
+Jawab: LSTM is a recurrent network with gates that remember long sequences. It reads text one character at a time and predicts the next character. Used in Hemomemo to think and write locally with no internet.
+
+Sawal: what is training loss
+Jawab: Loss is a number that measures how wrong the model is. Lower loss means better. Training lowers loss step by step. If loss stops falling, learning has converged.
+
+Sawal: how does a chat assistant think
+Jawab: Steps: 1 read the question, 2 recall related knowledge notes, 3 form an answer with its own trained brain, 4 check safety and truth rules, 5 answer honestly and say when it does not know.
+
+Sawal: code i love you in html
+Jawab: Make a full HTML page whose h1 shows the exact message I love you with a pink gradient background and floating hearts animation using CSS keyframes.
+
+Sawal: make a page that says welcome to my shop in html
+Jawab: Make a full HTML page whose h1 shows Welcome to my shop with a clean centered card layout; the page title and heading come from the user order.
+
+Sawal: login form in html
+Jawab: Make a login form with email and password inputs, a submit button, and JavaScript validation that shows a message if any field is empty.
+
+Sawal: fibonacci in python with 20 terms
+Jawab: def fibonacci(n): a, b = 0, 1, out = []; loop n times appending a then a, b = b, a + b; return out. Call print(fibonacci(20)) using the number from the order.
+
+Sawal: table of 7 in python
+Jawab: def multiplication_table(n): for i in 1..10 print(n, x, i, =, n*i). Call multiplication_table(7) using the number from the order.
+
+Sawal: click counter in javascript
+Jawab: Make a counter page with a big number display and buttons for add, sub and reset; JavaScript changes count on every click.
+
+Rule: the code must always contain the user words, user numbers and user language from the order. Never give the same canned page for every order.

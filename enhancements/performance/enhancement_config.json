@@ -1,0 +1,36 @@
+{
+  "category": "performance",
+  "description": "Performance optimization and profiling",
+  "created": "2026-11-21T10:27:53",
+  "levels": [
+    "basic",
+    "intermediate",
+    "advanced",
+    "expert"
+  ],
+  "file_types": [
+    "c",
+    "cpp",
+    "csv",
+    "go",
+    "java",
+    "jl",
+    "js",
+    "json",
+    "lua",
+    "node",
+    "php",
+    "py",
+    "r",
+    "rb",
+    "rs",
+    "sql",
+    "ts",
+    "xlsx",
+    "xml"
+  ],
+  "template_files": [
+    "performance_analyzer.py",
+    "memory_profiler.py"
+  ]
+}

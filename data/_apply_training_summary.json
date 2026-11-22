@@ -1,0 +1,12 @@
+{
+ "when": "2026-11-18 15:07:11",
+ "took_min": 25.40779982805252,
+ "results": {
+  "make_package": true,
+  "make_desktop_package": true,
+  "zip": true,
+  "web_copy": true,
+  "publish": true
+ },
+ "all_ok": true
+}
