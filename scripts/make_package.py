@@ -37,7 +37,7 @@ import time
 
 SRC = "D:\\DigitalBrain"
 DST = "D:\\HemomemoUltra-People"
-VERSION = "v4.3.0-people"
+VERSION = "v4.2.1-people"
 
 # copy hone wale poore folders (code) — andar se dev-filth chhaant ke
 COPY_DIRS = ["core", "harvest", "security", "server", "web", "agent", "tests",
@@ -605,7 +605,7 @@ def main():
     # PowerShell verifier (kisi bhi PC par — python ki zaroorat nahi)
     ps = ("$ok = $true\n"
           "Write-Host '== Hemomemo AI — SYSTEM VERIFY ==' -ForegroundColor Green\n"
-          "foreach ($line in Get-Content '$PSScriptRoot\\PROTECTED_MANIFEST.sha256') {\n"
+          "foreach ($line in Get-Content \"$PSScriptRoot\\PROTECTED_MANIFEST.sha256\") {\n"
           "  if ($line -match '^([0-9a-f]{64})  (.+)$') {\n"
           "    $p = Join-Path $PSScriptRoot $Matches[2]\n"
           "    if (-not (Test-Path $p)) { Write-Host ('GAYIB  ' + $Matches[2]) -ForegroundColor Red; $ok = $false; continue }\n"
