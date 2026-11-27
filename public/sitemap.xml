@@ -1,11 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <url>
-       <loc>https://noity0.github.io/hemomemo-ai/</loc>
-       <lastmod>2026-11-17T00:00:00+00:00</lastmod>
-       <changefreq>weekly</changefreq>
-       <priority>1.0000</priority>
+    <loc>https://noity0.github.io/hemomemo-ai/</loc>
+    <lastmod>2026-11-20T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://noity0.github.io/hemomemo-ai/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://noity0.github.io/hemomemo-ai/"/>
+    <image:image>
+      <image:loc>https://noity0.github.io/hemomemo-ai/og-image.png</image:loc>
+      <image:title>Hemomemo AI — 100% Local Offline AI Desktop App for Windows</image:title>
+      <image:caption>Hemomemo AI download page — 100% local, no cloud, no external LLM</image:caption>
+    </image:image>
   </url>
+
+  <url>
+    <loc>https://noity0.github.io/hemomemo-ai/#about</loc>
+    <lastmod>2026-11-20T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://noity0.github.io/hemomemo-ai/#download</loc>
+    <lastmod>2026-11-20T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://noity0.github.io/hemomemo-ai/#demo</loc>
+    <lastmod>2026-11-20T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://noity0.github.io/hemomemo-ai/#sawal-jawab</loc>
+    <lastmod>2026-11-20T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
 </urlset>
