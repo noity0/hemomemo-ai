@@ -30,54 +30,55 @@ def chk(no, name, ok, note=""):
 
 t, m = b.respond("code i love you in c++")
 chk(1, "code i love you in c++ -> asli C++ (cout)",
-    m["source"] == "code" and "cout" in t and "i love you" in t
+    m["source"] in ("code", "flow:code") and "cout" in t and "i love you" in t
     and "#include <iostream>" in t, m["source"])
 t, m = b.respond("python me i love you ka code")
 chk(2, "python me ... ka code -> print()",
-    m["source"] == "code" and "print(" in t and "i love you" in t,
+    m["source"] in ("code", "flow:code") and "print(" in t and "i love you" in t,
     m["source"])
 t, m = b.respond("code hello world in python")
-chk(3, "code hello world in python", m["source"] == "code"
+chk(3, "code hello world in python", m["source"] in ("code", "flow:code")
     and "hello world" in t, m["source"])
 t, m = b.respond("code hjhjkghfgh in c#")
 chk(4, "c# zaban (screenshot-bug) -> Console.WriteLine",
-    m["source"] == "code" and "Console.WriteLine" in t
+    m["source"] in ("code", "flow:code") and "Console.WriteLine" in t
     and "hjhjkghfgh" in t, m["source"])
 t, m = b.respond("code hello in rust")
-chk(5, "rust -> println!", m["source"] == "code" and "println!" in t,
+chk(5, "rust -> println!", m["source"] in ("code", "flow:code") and "println!" in t,
     m["source"])
 t, m = b.respond("code hello in go")
-chk(6, "go -> fmt.Println", m["source"] == "code" and "fmt.Println" in t,
+chk(6, "go -> fmt.Println", m["source"] in ("code", "flow:code") and "fmt.Println" in t,
     m["source"])
 t, m = b.respond("code salam in php")
-chk(7, "php -> <?php echo", m["source"] == "code" and "echo" in t
+chk(7, "php -> <?php echo", m["source"] in ("code", "flow:code") and "echo" in t
     and "<?php" in t, m["source"])
 t, m = b.respond("code hi in html")
-chk(8, "html -> poora page (h1)", m["source"] == "code"
+chk(8, "html -> poora page (h1)", m["source"] in ("code", "flow:code")
     and "<!DOCTYPE html>" in t and "<h1>hi</h1>" in t, m["source"])
 t, m = b.respond("code hi in sql")
-chk(9, "sql -> SELECT", m["source"] == "code" and "SELECT" in t, m["source"])
+chk(9, "sql -> SELECT", m["source"] in ("code", "flow:code") and "SELECT" in t, m["source"])
 t, m = b.respond("code hi in assembly")
-chk(10, "assembly -> syscall print", m["source"] == "code"
+chk(10, "assembly -> syscall print", m["source"] in ("code", "flow:code")
     and "syscall" in t, m["source"])
 t, m = b.respond("code hi in cobol")
-chk(11, "cobol -> DISPLAY", m["source"] == "code" and "DISPLAY" in t,
+chk(11, "cobol -> DISPLAY", m["source"] in ("code", "flow:code") and "DISPLAY" in t,
     m["source"])
 t, m = b.respond("code hi in hemolang")
 chk(12, "ghair-maujood zaban -> imandari-listing",
     "nahi" in t and "jaanta hoon" in t, m["source"])
 t, m = b.respond("java me salam ka code")
 chk(13, "roman-rasta (java me ... ka code) -> System.out",
-    m["source"] == "code" and "System.out" in t, m["source"])
+    m["source"] in ("code", "flow:code") and "System.out" in t, m["source"])
 t, m = b.respond("2 + 2")
-chk(14, "math bigda nahi (2+2=4)", m["source"] == "math" and "= 4" in t,
-    m["source"])
+chk(14, "math bigda nahi (2+2=4)", m["source"] in ("math", "flow:math-arith")
+    and "= 4" in t, m["source"])
 t, m = b.respond("hadith batao")
 chk(15, "hadith code na bane (bina-knowledge imandari/ilm)",
-    m["source"] in ("ilm", "imandari"), m["source"])
+    m["source"] in ("ilm", "imandari", "flow:hadith:honest"), m["source"])
 t, m = b.respond("who is sex")
 chk(16, "purana-bug salam (identity-dump nahi)",
-    m["source"] in ("ilm", "imandari")
+    m["source"] in ("ilm", "imandari", "flow:explain",
+                    "flow:honest:explain", "flow:explain:honest")
     and "name" not in t.lower()[:60], m["source"])
 
 print("=" * 62)
