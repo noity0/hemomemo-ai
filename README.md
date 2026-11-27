@@ -288,6 +288,8 @@ on ke baad, aur sirf is opt-in ke baad.
 BUILD-WINDOWS.bat     <- 1) tests  2) EXE (PyInstaller)  3) package
 py -3 tests\test_new_modules.py    <- honest tests (22 checks)
 py -3 tests\test_token_brain.py    <- token-dimagh tests (20 checks)
+py -3 tests\test_samajh.py         <- input-samajh tests (24 checks)
+py -3 tests\test_talk_training.py   <- small-talk/talking + coding-chat tests (7 checks)
 py -3 tests\test_agent_powers.py   <- agent powers tests (42 checks)
 py -3 tests\test_gamebot_50qa.py   <- game-bot control/read QA (50 checks)
 py -3 scripts\make_package.py      <- package + SHA-256 manifest
@@ -320,13 +322,13 @@ L6 API-guard (local keys). Koi platform API / cloud / doosra AI — **nahi**
 
 ## 🧪 QA — Imandari
 
-Har release se pehle **10 test-suites** chalti hain (neeche asli-numbers).
+Har release se pehle **ye test-suites** chalti hain (neeche asli-numbers).
 **Nateeja jaisa hai waisa bataya jata hai** — koi nakli "success" nahi. Dimagh-
 modules ke tests (memory / retrieval / reasoning / deterministic-math /
 mc-bot protocol / token-dimagh / agent-powers / order-parser / console-orders /
 task-sekh-system / api-endpoints / prompt-samajh / code-gen):
 
-- ✅ token-dimagh: **20/20 PASS** (2026-11-08)
+- ✅ token-dimagh: **20/20 PASS** (2026-11-27)
 - ✅ agent-powers suite: **42/42 PASS** (2026-11-08)
 - ✅ game-bot 50-QA: **PASS=50 FAIL=0 (of 50)** (2026-11-08)
 - ✅ key-lifecycle: 11/11 PASS (live API, 2026-11-07)
@@ -334,7 +336,22 @@ task-sekh-system / api-endpoints / prompt-samajh / code-gen):
   /health, /v1/chat, /v1/chat/completions (OpenAI-shape), /v1/models, auth,
   401/400/405/404/415, rate-limit 429
 - ✅ prompt-samajh suite: **23/23 PASS** (2026-11-17)
-- ✅ code-gen suite: **16/16 PASS** (2026-11-17)
+- ✅ samajh suite (naya): **24/24 PASS** (2026-11-27) — Roman-Urdu/English
+  typo + shorthand repair (`wat is your nam` → identity, `calcualte 15 * 3`
+  → 45, `circl ka area` → formula, `fibonaci` → code), code/naam/English
+  guards, follow-up ishara (iska/uska/aur/next), `[ISHARA]` prompt, aur
+  ghair-Islamic sawal par sacred-citation reject (relevance guard)
+- ✅ talk/small-talk + coding-chat suite (naya): **7/7 PASS** (2026-11-27) —
+  chatting/talking (how/mood/doing/teach) → social + coding-chat stays on
+  code flow (`python me loop kaise likhein` → flow:code:snippet) +
+  math/social isolation + 100% local-only guard
+- ✅ code-gen suite: **16/16 PASS** (2026-11-23)
+- ✅ coding_master engine suite: **16/16 PASS** (2026-11-23)
+- ✅ coding aqal suite (naya): **10/10 PASS** (2026-11-23) — plan / bugs /
+  explain / review / reason commands, AST bug-detection
+- ✅ code aqal suite (naya): **17/17 PASS** (2026-11-23) — fibonacci, primes,
+  FizzBuzz, palindrome, reverse, vowels, even/odd, leap-year, GCD,
+  temperature, sort, password: code banta hai aur isi PC par chalta hai
 - ✅ flow-engine suite: **24/24 PASS** (2026-11-19) — archetype routing, domain-specific handlers
 - ✅ ultra-realistic video: **5/5 PASS** (2026-11-19) — flow fields, mountain bike, racing scenes
 - ✅ poori regression: **237/237 PASS, 0 FAIL (13 suites)** (2026-11-19)
