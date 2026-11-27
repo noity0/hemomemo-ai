@@ -52,29 +52,36 @@ kr = KnowledgeRetrieval(os.path.join(os.path.dirname(
 mem = EpisodicStore(tempfile.mkdtemp())
 brain = TokenBrain(generate_fn=None, knowledge=kr, memory=mem)
 
-# math (deterministic - pakka sahi)
+# math (deterministic - pakka sahi) — flow-v3 source bhi qabool
 t, m = brain.respond("2 + 2")
-check("math-2+2", m["source"] == "math" and "4" in t)
+check("math-2+2", m["source"] in ("math", "flow:math-arith") and "4" in t)
 t, m = brain.respond("9 * 5 + 9 * 4")
-check("math-9x5+9x4", m["source"] == "math" and "81" in t)
+check("math-9x5+9x4",
+      m["source"] in ("math", "flow:math-arith") and "81" in t)
 
-# formula (deterministic)
+# formula (deterministic) — flow-v3 source bhi qabool
 t, m = brain.respond("circle ka area, r = 5")
-check("formula-circle", m["source"] == "formula" and "78.5398" in t)
+check("formula-circle",
+      m["source"] in ("formula", "flow:math-formula") and "78.5398" in t)
 t, m = brain.respond("E = mc^2, m = 2")
-check("formula-emc2", m["source"] == "formula" and "joule" in t)
+check("formula-emc2",
+      m["source"] in ("formula", "flow:math-formula") and "1.798e+17" in t)
 
-# pehchaan
+# pehchaan — flow-v3 source bhi qabool
 t, m = brain.respond("aap kaun ho?")
-check("identity-ur", m["source"] == "pehchaan" and "Hemomemo" in t)
+check("identity-ur",
+      m["source"] in ("pehchaan", "flow:identity") and "Hemomemo" in t)
 t, m = brain.respond("what is your name")
-check("identity-en", m["source"] == "pehchaan" and "Hemomemo" in t)
+check("identity-en",
+      m["source"] in ("pehchaan", "flow:identity") and "Hemomemo" in t)
 
-# yaad-flow (already-flow)
+# yaad-flow (already-flow) — flow-v3 source bhi qabool
 t, m = brain.respond("mera naam Ahmed hai")
-check("yaad-save", m["source"] == "yaad" and "Ahmed" in t)
+check("yaad-save",
+      m["source"] in ("yaad", "flow:memory-save") and "Ahmed" in t)
 t, m = brain.respond("mera naam kya hai?")
-check("yaad-recall", m["source"] == "yaad" and "Ahmed" in t)
+check("yaad-recall",
+      m["source"] in ("yaad", "flow:memory-recall") and "Ahmed" in t)
 
 # ilm (token-IDF retrieval) - TOPICAL criteria
 # 🧠 NOTE (flow v3): sawalon ab TokenBrain→chat_once(full-soch-flow) me chalte
@@ -94,8 +101,12 @@ check("ilm-python-loop", ("loop" in t.lower() or "for" in t.lower()
 # (pehle "who is sex" par identity-dump aata tha - ab mutaliq/samajh-dar jawab)
 t, m = brain.respond("who is sex")
 bad_old_dump = "HMHS Muslim Texture" in t   # purana ghalat jawab
-check("samajh-unknown-topic", m["source"] in ("ilm", "imandari")
-      and not bad_old_dump and len(t) > 20, "source=%s" % m["source"])
+bad_sacred = any(w in t.lower() for w in ("bukhari", "quran", "sahih"))
+check("samajh-unknown-topic", m["source"] in (
+      "ilm", "imandari", "flow:explain", "flow:explain:ilm",
+      "flow:honest:explain")
+      and not bad_old_dump and not bad_sacred and len(t) > 20,
+      "source=%s" % m["source"])
 
 # khaali input - adab
 t, m = brain.respond("")
