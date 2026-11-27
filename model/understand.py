@@ -130,10 +130,26 @@ class TokenBrain:
     def read(self, prompt: str):
         return tk.understand(prompt)
 
-    def respond(self, prompt: str) -> Tuple[str, dict]:
+    def respond(self, prompt: str, hist=None, progress=None) -> Tuple[str, dict]:
         """POORA SOCH-LOOP: token -> routing -> jawab (100% local).
-        Composer sirf aam-baat ka fallback hai."""
+        Composer sirf aam-baat ka fallback hai.
+
+        🆕 FLOW-ENGINE (user-hukum): har qism ka apna flow —
+        samajh → token-tukre → soch → dalil → yaad/ilm/formula-sheet →
+        Hemomemo LLM → jaanch → jawab. Chat-history sirf sandarabh;
+        AKHRI sawal 100% priority. Koi AI-API/cloud nahi.
+        """
         text = (prompt or "").strip()
+        try:
+            from model.flow_engine import run as _flow_run
+            _flow_out = _flow_run(
+                text, knowledge=self.knowledge, memory=self.memory,
+                generate_fn=self.generate_fn, hist=hist, progress=progress)
+            if _flow_out is not None:
+                return _flow_out
+        except Exception:
+            # flow-engine fail ho to neeche purana local raasta (fail-open)
+            pass
         try:
             text = core_intent_text(text)
         except Exception:
@@ -284,6 +300,13 @@ def default_token_chat() -> TokenBrain:
     know = KnowledgeRetrieval(os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "corpus_big"))
     mem = EpisodicStore(os.path.join(os.path.dirname(os.path.dirname(__file__)), "data"))
     _SHARED["brain"] = TokenBrain(generate_fn=composer, knowledge=know, memory=mem)
+    # 🆕 background warmup: pehla "hadith batao" 10-20s na le. Ye alag
+    # thread me chalta hai, chat ka jawab rukta nahi; 100% local.
+    try:
+        threading.Thread(target=know.warmup, daemon=True,
+                         name="hemo-ilm-warmup").start()
+    except Exception:
+        pass
     return _SHARED["brain"]
 
 def understand(text: str) -> dict:
