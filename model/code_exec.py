@@ -51,13 +51,14 @@ def fix_common(code):
     return c
 
 
-def run_python(code, timeout=15.0):
+def run_python(code, timeout=30.0):
     """Python-code chalao -> (ok, output, error, took_s).
     🩹 CODING-ERROR-AUTO-FIX (user-hukum): pehli-koshish FAIL ho aur
     fix_common() kuch theek-kar sake to theek-karke DOBARA chalao."""
     code = (code or "").strip()
     if not code:
         return False, "", "khali-code", 0.0
+    # Increase default timeout to 30s to handle complex generation
     ok, out, err, took = _run_python_once(code, timeout)
     if not ok:
         fixed = fix_common(code)
@@ -71,7 +72,7 @@ def run_python(code, timeout=15.0):
     return ok, out, err, took
 
 
-def _run_python_once(code, timeout=15.0):
+def _run_python_once(code, timeout=30.0):
     """Aik-dafa python-chalao -> (ok, output, error, took_s)."""
     code = (code or "").strip()
     if not code:
@@ -106,7 +107,7 @@ def _run_python_once(code, timeout=15.0):
             pass
 
 
-def run_python_text(code, timeout=15.0):
+def run_python_text(code, timeout=30.0):
     """Chat-ready jawab -> (text, meta)."""
     ok, out, err, took = run_python(code, timeout=timeout)
     if ok:
@@ -117,6 +118,7 @@ def run_python_text(code, timeout=15.0):
     why = err.strip() or "unknown"
     txt = ("[python-exec] FAIL (%.1fs):\n```\n%s\n```\n"
            "(code theek karke dobara 'python' hukum do.)" % (took, why[:2500]))
+    return txt, {"source": "code-exec", "ok": False, "took": round(took, 2)}
     return txt, {"source": "code-exec", "ok": False,
                  "error": why[:300]}
 
@@ -182,6 +184,137 @@ def gen_program(desc):
     if m:
         return ('import math\nprint("Factorial:", math.factorial(%d))'
                 % int(m.group(1)))
+    # 1c) mashhoor-chote-programs (AQAL: niyat samajh kar sachcha code)
+    low_words = set(re.findall(r"[a-z]+", low))
+
+    def first_int(default):
+        hit = re.search(r"\d{1,4}", d)
+        return int(hit.group()) if hit else default
+
+    if "fizzbuzz" in low.replace(" ", ""):
+        n = first_int(20)
+        return (
+            'for i in range(1, %d + 1):\n'
+            '    if i %% 15 == 0:\n'
+            '        print("FizzBuzz")\n'
+            '    elif i %% 3 == 0:\n'
+            '        print("Fizz")\n'
+            '    elif i %% 5 == 0:\n'
+            '        print("Buzz")\n'
+            '    else:\n'
+            '        print(i)' % n)
+    if re.search(r"(?i)\bfib(?:onacci|onachi|onacci|onacci\s+series)\b", d):
+        n = first_int(10)
+        n = max(1, min(n, 60))
+        return (
+            'n = %d\n'
+            'a, b = 0, 1\n'
+            'for _ in range(n):\n'
+            '    print(a, end=" ")\n'
+            '    a, b = b, a + b\n'
+            'print()' % n)
+    if re.search(r"(?i)\bprime\s+numbers?\b.*\b(?:up\s*to|1\s*se|tak)\b", d):
+        limit = first_int(50)
+        limit = max(2, min(limit, 5000))
+        return (
+            'limit = %d\n'
+            'primes = []\n'
+            'for n in range(2, limit + 1):\n'
+            '    for i in range(2, int(n ** 0.5) + 1):\n'
+            '        if n %% i == 0:\n'
+            '            break\n'
+            '    else:\n'
+            '        primes.append(n)\n'
+            'print("Primes:", primes)' % limit)
+    if re.search(r"(?i)\bprime\b", d):
+        n = first_int(29)
+        return (
+            'n = %d\n'
+            'if n < 2:\n'
+            '    print(n, "prime nahi hai")\n'
+            'else:\n'
+            '    is_prime = True\n'
+            '    for i in range(2, int(n ** 0.5) + 1):\n'
+            '        if n %% i == 0:\n'
+            '            is_prime = False\n'
+            '            break\n'
+            '    print(n, "prime hai" if is_prime else "prime nahi hai")' % n)
+    quoted = re.search(r"[\"\'`]([^\"\'`]{2,60})[\"\'`]", d)
+
+    def sample_text(default):
+        if quoted:
+            return quoted.group(1)
+        stop = {"code", "python", "program", "write", "make", "generate",
+                "likho", "banao", "karo", "karein", "check", "reverse",
+                "string", "palindrome", "vowels", "vowel", "count", "the",
+                "a", "an", "in", "me", "mein", "ka", "ki", "hai", "kya",
+                "of", "for", "and", "with", "using"}
+        words = [word for word in re.findall(r"[A-Za-z][A-Za-z0-9_]{1,30}", d)
+                 if word.lower() not in stop]
+        return words[-1] if words else default
+
+    if "palindrome" in low:
+        text = sample_text("madam")
+        return (
+            'text = %r\n'
+            'clean = text.replace(" ", "").lower()\n'
+            'print(text, "palindrome hai" if clean == clean[::-1]'
+            ' else "palindrome nahi hai")' % text)
+    if "vowel" in low:
+        if quoted:
+            text = quoted.group(1)
+        else:
+            phrase = re.search(r"(?i)\b(?:in|of|mein|for)\s+(.+)$", d)
+            text = phrase.group(1).strip(" .,?!") if phrase else "hello world"
+            text = re.sub(r"\b(?:check|count|karo|karein)\b", "", text,
+                          flags=re.I).strip() or "hello world"
+        return (
+            'text = %r\n'
+            'vowels = "aeiou"\n'
+            'count = sum(1 for ch in text.lower() if ch in vowels)\n'
+            'print("Vowels:", count)' % text)
+    if "reverse" in low:
+        if re.search(r"\[[^\]]*\]", d):
+            items = re.search(r"\[[^\]]*\]", d).group()
+            return 'items = %s\nprint("Reverse:", items[::-1])' % items
+        text = sample_text("hello")
+        return 'text = %r\nprint("Reverse:", text[::-1])' % text
+    if "leap" in low:
+        year = first_int(2024)
+        return (
+            'year = %d\n'
+            'leap = (year %% 4 == 0 and year %% 100 != 0) or year %% 400 == 0\n'
+            'print(year, "leap year hai" if leap else "leap year nahi hai")'
+            % year)
+    if low_words & {"gcd", "hcf"}:
+        return (
+            'a, b = 48, 18\n'
+            'x, y = a, b\n'
+            'while y:\n'
+            '    x, y = y, x % y\n'
+            'print("GCD:", x)')
+    if low_words & {"even", "odd"}:
+        n = first_int(7)
+        return ('n = %d\nprint(n, "even hai" if n %% 2 == 0 else "odd hai")'
+                % n)
+    if re.search(r"(?i)\b(?:celsius|fahrenheit)\b", d):
+        c = first_int(37)
+        return ('c = %d\nf = c * 9 / 5 + 32\nprint(c, "C =", f, "F")' % c)
+    if "password" in low:
+        return (
+            'import secrets\n'
+            'import string\n'
+            'alphabet = string.ascii_letters + string.digits + "!@#$%^&*"\n'
+            'password = "".join(secrets.choice(alphabet) for _ in range(16))\n'
+            'print("Password:", password)')
+    if low_words & {"sort", "sorted", "sorting"}:
+        found = re.search(r"\[[^\]]*\]", d)
+        items = found.group() if found else "[5, 2, 9, 1]"
+        return 'items = %s\nitems.sort()\nprint("Sorted:", items)' % items
+    if low_words & {"sum", "total"}:
+        n = first_int(10)
+        return ('n = %d\nprint("Sum 1 se", n, "tak:", sum(range(1, n + 1)))'
+                % n)
     # 2) waran-hi headline (pehla-harf bara)
     text = d[0].upper() + d[1:]
     lines = [
@@ -286,6 +419,12 @@ def _lang_templates(lang, text):
     return ""
 
 
+_PROGRAM_RX = re.compile(
+    r"(?i)\b(?:fibonacci|fibonachi|prime|fizz\s*buzz|palindrome|vowels?|"
+    r"reverse|leap\s*year|gcd|hcf|even|odd|celsius|fahrenheit|password|"
+    r"sort(?:ed|ing)?|sum|total|table\s+of|factorial)\b")
+
+
 def smart_code(payload, timeout=15.0):
     """'code <x>' ka samajh-fix:
     - x asli-python lagta hai -> seedha chalao (purana python-hukum jaisa)
@@ -307,7 +446,11 @@ def smart_code(payload, timeout=15.0):
                 "'code <baat> in <zaban>'." % (text or code),
                 {"source": "code-gen", "ok": True})
     if lang:
-        prog = _lang_templates(lang, text or code)
+        text = text or code
+        if lang == "python" and _PROGRAM_RX.search(text):
+            prog = gen_program(text)
+        else:
+            prog = _lang_templates(lang, text)
         if lang == "python":
             exec_txt, meta = run_python_text(prog, timeout)
             head = ("[code-gen] '%s' — samajh gaya, ye code banaya "
