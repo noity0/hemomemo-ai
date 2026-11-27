@@ -10,6 +10,7 @@ recency - Hemomemo ka apna apna tareeqa.
 from __future__ import annotations
 
 import json
+import math
 import os
 import re
 import threading
@@ -27,6 +28,8 @@ def _tokens(text: str) -> List[str]:
 
 # 🛡 aam-baat ke lafz (ilm ka saboot NAHI): in par 1.0 score dena hi
 # "hi" → GameBot-orders / "how are you" → dictionary jaisa ghalat-jawab tha.
+# 🆕 request-verbs (batao/sunao/likho/do) bhi content NAHI — warna
+# "hadith batao" me "batao" match ho kar Dhikr jaisa ghalat jawab aata tha.
 _STOP = {
     "a", "an", "the", "is", "are", "was", "were", "am", "be", "been",
     "i", "me", "my", "you", "your", "we", "our", "he", "she", "it", "they",
@@ -37,10 +40,33 @@ _STOP = {
     "ok", "okay", "hi", "hello", "hey", "hola", "salam", "salaam",
     "assalam", "aoa", "thanks", "thank", "please", "how", "what", "who",
     "why", "when", "where", "which", "kaise", "kya", "kaun", "kahan",
-    "kab", "hai", "ho", "hun", "hoon", "hain", "ka", "ki", "ke", "ko",
-    "se", "me", "mein", "mera", "meri", "mujhe", "aap", "tum", "tumhara",
-    "apna", "batao", "bata",
+    "kab", "hai", "ho", "hun", "hoon", "hain", "ha", "hain", "ka", "ki",
+    "ke", "ko", "se", "me", "mein", "mera", "meri", "mujhe", "aap", "tum",
+    "tumhara", "apna", "batao", "bata", "bataiye", "bataye", "sunao",
+    "suno", "likho", "likhein", "likh", "do", "dedo", "de", "dijiye",
+    "karo", "karein", "kijiye", "kar", "chahiye", "chahiyay", "koi",
+    "kuch", "ye", "yeh", "wo", "woh", "us", "is", "es", "par", "pr",
+    "tak", "sath", "liye", "wala", "wali", "wale", "ek", "bhi", "hi",
+    "hota", "hoti", "hote", "acha", "achha", "theek", "thik", "baray",
+    "bare", "mutaliq", "bara", "bare", "kis", "konsa", "kaunsa",
+    "karne", "karna", "karun", "karon", "sakta", "sakti", "sakte",
+    "hoga", "hogi", "honge", "hua", "hui", "hue", "raha", "rahi",
+    "rahe", "jay", "jaye", "ja", "mil", "mila", "mile", "dikhao",
+    "dikha", "show", "tell", "give", "explain", "define", "meaning",
+    "matlab", "tafseel", "detail", "about", "on", "of", "for", "any",
 }
+
+
+def _content_tokens(text: str) -> List[str]:
+    """Sirf maani-khez lafz (request-verbs/aam-lafz nikaal kar)."""
+    out = []
+    for w in _tokens(text):
+        if len(w) < 3:
+            continue
+        if w in _STOP:
+            continue
+        out.append(w)
+    return out
 
 
 def _overlap(query_toks: List[str], cand_toks: List[str]) -> float:
@@ -48,6 +74,8 @@ def _overlap(query_toks: List[str], cand_toks: List[str]) -> float:
 
     Qanoon: ek akela aam/2-harf lafz kabhi ilm ka saboot nahi. Isi liye
     "hi"/"you"/"kaise ho" par corpus ka koi bhi lamba jawab match nahi hota.
+    Ek 4-harf ka asli topic-lafz (misal "sabr", "quran") ab qabool hai,
+    lekin sirf 0.55 score par — 5+ harf wale lafz zyada wazni hain.
     """
     if not query_toks or not cand_toks:
         return 0.0
@@ -58,13 +86,15 @@ def _overlap(query_toks: List[str], cand_toks: List[str]) -> float:
     hit = q & c
     if not hit:
         return 0.0
-    # ek chhota lafz (3-4 harf) akela kafi nahi — do hit ya ek 5+ harf wala
-    if len(hit) == 1:
+    strong = {w for w in hit if len(w) >= 5}
+    if not strong:
+        # sirf 3-4 harf wale hit: do hit ya akela 4-harf topic
+        if len(hit) >= 2:
+            return min(0.75, len(hit) / float(len(q)))
         only = next(iter(hit))
-        if len(only) < 5 and len(q) > 1:
-            return 0.0
-        if len(only) < 5 and len(q) == 1:
-            return 0.0
+        if len(only) == 4:
+            return 0.55
+        return 0.0
     return len(hit) / float(len(q))  # kitne asli sawal-lafz milay
 
 
@@ -175,7 +205,23 @@ class EpisodicStore:
 
 
 class KnowledgeRetrieval:
-    """corpus_big ke Sawal:/Jawab: pairs me se mutaliq ilm nikalna."""
+    """corpus_big ke Sawal:/Jawab: pairs me se mutaliq ilm nikalna.
+
+    🆕 domain-routing: hadith/quran/code/game/general alag. Isi liye
+    "hadith batao" ab Dhikr-jaisa random-corpus jawab nahi deta — sirf
+    hadith-corpus se sahih hadith + source aata hai.
+    """
+
+    _GAME_FILES = {"games_knowledge.txt", "agent_orders.txt",
+                   "gamebot_tasks.txt"}
+    _DOMAIN_WORDS = {
+        "hadith": {"hadith", "hadeeth", "hadees", "sunnah", "bukhari",
+                   "sahih", "muslim", "tirmidhi", "nasai", "abu", "dawud",
+                   "ibn", "majah", "muwatta", "nabi", "rasool", "huzoor",
+                   "farmaya"},
+        "quran": {"quran", "quranic", "quraan", "koran", "ayat", "ayah",
+                  "surah", "sura", "parah", "juz"},
+    }
 
     def __init__(self, corpus_dir: str, files: Optional[List[str]] = None) -> None:
         self.corpus_dir = corpus_dir
@@ -190,16 +236,53 @@ class KnowledgeRetrieval:
                                "hadith_ibnmajah_english_sahih.txt",
                                "hadith_malik_english_sahih.txt",
                                "harvest_quran.txt"]
-        self._pairs: List[Tuple[str, str, List[str]]] = []
+        # (sawal, jawab, file, content-token-set, lafz-tadad)
+        self._pairs: List[Tuple[str, str, str, set, int]] = []
+        self._index: dict = {}          # lafz → pair-indices (inverted index)
         self._loaded_from: Optional[str] = None
+        self._loaded_files: set = set()
+        self._df: dict = {}
+        self._N = 0
         self._lock = threading.Lock()
 
-    def _load(self) -> None:
+    def _domain_files(self, domain: str) -> List[str]:
+        d = (domain or "general").lower()
+        hadith = [f for f in self.files if f.startswith("hadith_")]
+        quran = [f for f in self.files if f == "harvest_quran.txt"]
+        code = [f for f in self.files if f.startswith("coding_")]
+        game = [f for f in self.files if f in self._GAME_FILES]
+        general = [f for f in self.files
+                   if f.startswith("coding_") or f == "harvest_live.txt"]
+        if d == "hadith":
+            return hadith
+        if d == "quran":
+            return quran
+        if d == "islamic":
+            return hadith + quran
+        if d == "code":
+            return code
+        if d == "game":
+            return game
+        if d == "general":
+            # aam ilm: GameBot orders/commands KABHI nahi
+            return general
+        return list(self.files)
+
+    def _ensure(self, domain: str) -> None:
+        """Sirf is domain ki files parho (pehli query tez rahe)."""
+        files = self._domain_files(domain)
         with self._lock:
-            if self._loaded_from == self.corpus_dir:
-                return
-            pairs: List[Tuple[str, str, List[str]]] = []
-            for fn in self.files:
+            if self._loaded_from != self.corpus_dir:
+                self._pairs = []
+                self._index = {}
+                self._df = {}
+                self._N = 0
+                self._loaded_files = set()
+                self._loaded_from = self.corpus_dir
+            for fn in files:
+                if fn in self._loaded_files:
+                    continue
+                self._loaded_files.add(fn)
                 fp = os.path.join(self.corpus_dir, fn)
                 if not os.path.isfile(fp):
                     continue
@@ -207,29 +290,155 @@ class KnowledgeRetrieval:
                     raw = open(fp, "r", encoding="utf-8", errors="ignore").read()
                 except OSError:
                     continue
-                qs = re.findall(r"Sawal:\s*(.+?)\s*\nJawab:\s*(.+?)(?=\n\S|\Z)",
-                                raw, re.DOTALL)
-                for q, a in qs:
+                # 🆕 split-based parse (regex lookahead 4.6MB hadith par slow
+                # tha; ye linear hai — pehli hadith-query 8s se ~1s).
+                for chunk in raw.split("Sawal:")[1:]:
+                    if "Jawab:" not in chunk:
+                        continue
+                    q, a = chunk.split("Jawab:", 1)
+                    a = a.split("Sawal:", 1)[0]
                     q1 = " ".join(str(q).split())
                     a1 = " ".join(str(a).split())[:1200]
-                    if q1 and a1 and not _JUNK_RX.search(a1):
-                        pairs.append((q1, a1, _tokens(q1 + " " + a1)))
-            self._pairs = pairs
-            self._loaded_from = self.corpus_dir
+                    if not q1 or not a1 or _JUNK_RX.search(a1):
+                        continue
+                    # index ke liye pehle 600 harf kaafi hain (hadith ka
+                    # asal bayan shuru me hota hai) — load tez + RAM kam.
+                    toks = _tokens(q1 + " " + a1[:600])
+                    tset = {w for w in toks
+                            if len(w) >= 3 and w not in _STOP}
+                    if not tset:
+                        continue
+                    idx = len(self._pairs)
+                    self._pairs.append((q1, a1, fn, tset, max(1, len(toks))))
+                    for w in tset:
+                        self._df[w] = self._df.get(w, 0) + 1
+                        self._index.setdefault(w, []).append(idx)
+            self._N = max(1, len(self._pairs))
 
-    def search(self, query: str, k: int = 3) -> List[Tuple[str, str, float]]:
-        """(sawal, jawab, score) - sab-se-mutaaliq pehle."""
-        self._load()
-        qt = _tokens(query)
+    def _load(self) -> None:
+        self._ensure("all")
+
+    def warmup(self) -> None:
+        """Peeche-peeche (background thread) aam domains tayyar karo."""
+        for d in ("general", "hadith", "quran", "code", "game"):
+            try:
+                self._ensure(d)
+            except Exception:
+                pass
+
+    def _idf(self, w: str) -> float:
+        return math.log((self._N + 1.0) / (self._df.get(w, 0) + 1.0)) + 1.0
+
+    def _domain_match(self, fn: str, domain: str) -> bool:
+        d = (domain or "general").lower()
+        if d in ("all", "*"):
+            return True
+        if d == "hadith":
+            return fn.startswith("hadith_")
+        if d == "quran":
+            return fn == "harvest_quran.txt"
+        if d == "islamic":
+            return fn.startswith("hadith_") or fn == "harvest_quran.txt"
+        if d == "code":
+            return fn.startswith("coding_")
+        if d == "game":
+            return fn in self._GAME_FILES
+        # general: GameBot orders/commands aur deeni corpus alag domains
+        return (not fn.startswith("hadith_")
+                and fn != "harvest_quran.txt"
+                and fn not in ("agent_orders.txt", "gamebot_tasks.txt"))
+
+    def _score(self, qt: List[str], tset: set, q: str, a: str,
+               wlen: int) -> float:
+        if not qt or not tset:
+            return 0.0
+        qset = set(qt)
+        hit = qset & tset
+        if not hit:
+            return 0.0
+        strong = {w for w in hit if len(w) >= 5}
+        if not strong and len(hit) < 2:
+            return 0.0
+        den = sum(self._idf(w) for w in qset) or 1.0
+        num = sum(self._idf(w) for w in hit)
+        coverage = num / den
+        low = a.lower()
+        phrase = " ".join(qt)
+        bonus = 0.0
+        if phrase and (phrase in low or phrase in q.lower()):
+            bonus += 0.20
+        # sawal ke title me lafz = zyada mutaliq
+        title = q.lower()
+        title_hit = sum(1 for w in hit if w in title)
+        if title_hit:
+            bonus += min(0.15, 0.15 * title_hit / float(len(hit)))
+        # 🆕 lafz ki kasafat (density): chhoti hadith jo seedha topic par ho
+        # usay lambi kahani se pehle rakho. Warna "sabr" par 5,000-harf
+        # hadith jeet jati thi jisme patience sirf ek dafa aaya tha.
+        if wlen:
+            tf = sum(low.count(w) for w in hit)
+            density = tf / float(wlen)
+            bonus += min(0.22, density * 3.0)
+        return min(1.0, coverage + bonus)
+
+    def search_ex(self, query: str, k: int = 3,
+                  domain: str = "general") -> List[Tuple[str, str, float, str]]:
+        """(sawal, jawab, score, file) — domain ke andar best matches."""
+        self._ensure(domain)
+        qt = _content_tokens(query)
+        dwords = self._DOMAIN_WORDS.get((domain or "").lower(), set())
+        if dwords:
+            # domain-word akela ho to generic jawab (search nahi)
+            qt = [w for w in qt if w not in dwords]
         if not qt:
             return []
-        scored = []
-        for q, a, toks in self._pairs:
-            sc = _overlap(qt, toks)
-            if sc > 0.0:
-                scored.append((q, a, sc))
+        # inverted index: sirf un pairs ko dekho jin me query-lafz hain
+        cand = set()
+        for w in qt:
+            cand.update(self._index.get(w, ()))
+        scored: List[Tuple[str, str, float, str]] = []
+        seen = set()
+        for i in cand:
+            try:
+                q, a, fn, tset, wlen = self._pairs[i]
+            except (IndexError, ValueError):
+                continue
+            if not self._domain_match(fn, domain):
+                continue
+            sc = self._score(qt, tset, q, a, wlen)
+            if sc < 0.30:
+                continue
+            key = a[:160]
+            if key in seen:
+                continue
+            seen.add(key)
+            scored.append((q, a, sc, fn))
         scored.sort(key=lambda p: p[2], reverse=True)
-        return scored[:k]
+        return scored[:max(1, int(k))]
+
+    def search(self, query: str, k: int = 3) -> List[Tuple[str, str, float]]:
+        """Purana API: (sawal, jawab, score) — general domain."""
+        return [(q, a, sc) for q, a, sc, _fn in
+                self.search_ex(query, k=k, domain="general")]
+
+    def generic_ex(self, domain: str) -> Optional[Tuple[str, str, float, str]]:
+        """Domain ka pehla reliable pair (generic 'hadith batao' ke liye)."""
+        self._ensure(domain)
+        fallback = None
+        for q, a, fn, tset, wlen in self._pairs:
+            if not self._domain_match(fn, domain):
+                continue
+            if fallback is None:
+                fallback = (q, a, 0.5, fn)
+            if (domain or "").lower() == "hadith" and re.search(
+                    r"Sahih al-Bukhari\s+1\s*:", a):
+                return (q, a, 1.0, fn)
+            if (domain or "").lower() == "quran" and re.search(
+                    r"Quran\s+1\s*:", a):
+                return (q, a, 1.0, fn)
+            if fallback is not None:
+                return fallback
+        return fallback
 
     def count(self) -> int:
         self._load()
@@ -238,7 +447,7 @@ class KnowledgeRetrieval:
     def pairs(self):
         """Token-dimagh ke liye: (sawal, jawab, tokens) ki poori suchi."""
         self._load()
-        return self._pairs
+        return [(q, a, sorted(tset)) for q, a, _fn, tset, _wlen in self._pairs]
 
 
 def make_answer_fn(generate_fn: Optional[Callable[[str], str]] = None,
