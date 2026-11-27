@@ -2,22 +2,44 @@
 
 > 100% local offline AI with its OWN brain (pure-NumPy 2-layer LSTM, 50M params (50,014,104),
 > dh1739) — NOT an LLM app, NO external model, NO AI-API, NO cloud, NO MCP-daemon.
-> Runs entirely on your PC (Windows 7 → 11). Owner: Hafiz Muhammed Huzaifa
+> Runs entirely on your PC (Windows 7 → 11). Owner: Hafiz Muhammad Huzaifa
 > Shamim (HMHS), Karachi. License: MIT.
 
+## What is Hemomemo AI
+
+Hemomemo AI is a self-contained artificial intelligence desktop application
+that runs 100% locally on Windows 7 through 11 (64-bit). It is not an LLM
+wrapper, not a cloud service, and does not call OpenAI, Anthropic, Gemini,
+or any AI-platform API. It is a standalone app with its own 50M-parameter
+NumPy LSTM brain, its own memory, and its own knowledge corpus.
+
+### Core Systems
+
+- **50M-parameter 2-layer LSTM brain** — pure NumPy, no PyTorch/TensorFlow.
+- **20M-parameter Prompt Understanding System** — transformer architecture
+  for intent recognition, context analysis, entity extraction, complexity
+  scoring, and domain routing (social/math/code/hadith/quran/ilm/general).
+- **Flow Engine (24 archetypes, 42B+ combinations)** — deterministic query
+  routing: last-question priority, inverted index, Python snippets,
+  sacred-text routing.
+- **Ultra-Photoreal Video Engine** — ray tracing, material system,
+  subsurface scattering, atmospheric effects at 3840×2160. No FFmpeg.
+- **Minecraft GameBot** — MC-JOIN, chat-orders, duo mode, PC-eye control.
+
 ## Download
-- [Latest desktop ZIP (~357 MB)](https://github.com/noity0/hemomemo-ai/releases/download/v4.2.0-people/HemomemoUltra-People.zip): full app (brain + corpus + GameBot + connection-hub) — extract & run START-HEMOMO.bat, no install needed. The same link always serves the newest build (asset replaced on each release).
+
+- [Latest desktop ZIP (~386 MB)](https://github.com/noity0/hemomemo-ai/releases/download/v4.2.1-people/HemomemoUltra-People.zip): full app (brain + corpus + GameBot + connection-hub + Flow Engine + Ultra-Photoreal Video + 20M Prompt Understanding System) - extract & run START-HEMOMO.bat, no install needed. The same link always serves the newest build (asset replaced on each release).
 - [All releases](https://github.com/noity0/hemomemo-ai/releases)
 
 ## Sites
+
 - [GitHub Pages](https://noity0.github.io/hemomemo-ai/)
 - [Netlify mirror](https://hemomemo-ai.netlify.app/)
+- [Demo video: Mountain Bike](https://github.com/noity0/hemomemo-ai/releases/download/v4.2.1-people/mountain_bike_demo.mp4)
 - [Repo](https://github.com/noity0/hemomemo-ai)
 
 ## Local API (127.0.0.1:8790 — sirf Hemomemo, koi AI-platform nahi)
-- Endpoints: `/health`, `/v1/info`, `/v1/models` (OpenAI-shape), `/v1/chat`,
-  `/v1/chat/completions` (OpenAI-shape facade — jawab apna local NumPy dimagh),
-  `/v1/auth/signup|signin|key/new|me` (per-user keys, 100% local)
+- Endpoints: `/health`, `/v1/info`, `/v1/models` (OpenAI-shape), `/v1/ch
 - Auth: `X-Hemomemo-Key` + `X-Hemomemo-Ts` (unix sec) + `X-Hemomemo-Nonce`
   (ya `Authorization: Bearer`); ghalat key → 401, flood → 429, bad input → 400
 - Rate: 60 requests / 10-min window (shared, flood-guard)
