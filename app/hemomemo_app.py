@@ -331,7 +331,7 @@ def chat_async(prompt, on_done, think="auto", progress=None, hist=None):
         except Exception:
             pass
         # 🗒 CHAT-YAAD + 🧩 CODE-SAMAJH PROMPT-SYSTEM (100% local):
-        # upar-wale SARE messages yaad-may; AKHRI user-sawal 90% priority.
+        # upar-wale SARE messages yaad-may; AKHRI user-sawal 100% priority.
         _ctx = ""
         _cont = False
         try:
@@ -341,6 +341,20 @@ def chat_async(prompt, on_done, think="auto", progress=None, hist=None):
             _cont = is_continuation(prompt)
         except Exception:
             _ctx = ""
+        # 🧠 HEMOMO FLOW-ENGINE (user-hukum): HAR qism ka apna flow —
+        # samajh → token-tukre → soch → dalil → yaad/ilm/formula-sheet →
+        # Hemomemo LLM → jaanch → jawab. Raw prompt jaata hai (frontolobe
+        # wrapper nahi), is liye "hi" par corpus/ilm nahi chalta. History
+        # sirf sandarabh: AKHRI sawal 100% priority.
+        try:
+            from model.understand import default_token_chat
+            _ftxt, _fm = default_token_chat().respond(
+                prompt, hist=hist, progress=progress)
+            if _ftxt:
+                on_done(_ftxt, _fm or {})
+                return
+        except Exception as _fe:
+            _log("flow-engine FAIL: %s" % _fe)
         try:
             # First, use frontolobe to understand the user input
             try:
