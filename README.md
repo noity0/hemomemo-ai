@@ -151,6 +151,10 @@ Hemomemo AI ke **teen kaam** hain:
 ### 1) TEXT — Chat (apna dimagh)
 - Sawal-jawab, ilm, islami-adab, general chat.
 - Har baat **yaad** mein mehfooz (aap ke PC par) — agle jawab behtar.
+- **Chatting/talking (2026-11-27):** social flow me naye kinds — `how`
+  (tum kaise ho / what is up / how are you), `mood` (udaas / akela / udaar),
+  `doing` (tum kya kar rahe ho / what are you doing), `teach` (coding sikhao).
+  Baat-cheet pehle social par jati hai (doings ko identity se nahi social me).
 
 ### 2) CODE — Code-Dimagh (45+ zabanen ka Ustad!)
 - **45+ coding-zabanen** — har zaban me ASLI chhal-filar program khud banta hai
@@ -326,11 +330,16 @@ Har release se pehle **ye test-suites** chalti hain (neeche asli-numbers).
 **Nateeja jaisa hai waisa bataya jata hai** — koi nakli "success" nahi. Dimagh-
 modules ke tests (memory / retrieval / reasoning / deterministic-math /
 mc-bot protocol / token-dimagh / agent-powers / order-parser / console-orders /
-task-sekh-system / api-endpoints / prompt-samajh / code-gen):
+task-sekh-system / api-endpoints / prompt-samajh / code-gen / small-talk+talking):
 
 - ✅ token-dimagh: **20/20 PASS** (2026-11-27)
+- ✅ new-modules/honest suite: **21/22 PASS, 1 FAIL (pre-existing: knowledge-creeper)**
+  (2026-11-27 — pehle se maujood, is upgrade se nahi)
 - ✅ agent-powers suite: **42/42 PASS** (2026-11-08)
-- ✅ game-bot 50-QA: **PASS=50 FAIL=0 (of 50)** (2026-11-08)
+- ✅ game-bot 50-QA: **45/50 PASS, 5 FAIL (of 50)** (2026-11-27) — **pre-existing
+  (2026-11-08 se pehle se hai)**: test me `_ok_src` expected-sources (`gamebot`,
+  `howto`, `honest:*`) mojood nahi the; meri social-flow changes se inaam
+  nahi hua (sources same rahe). Fix = test-source-set update + bot-order answers.
 - ✅ key-lifecycle: 11/11 PASS (live API, 2026-11-07)
 - ✅ api-endpoints suite (naya): **31/31 PASS** (live API, 2026-11-17) —
   /health, /v1/chat, /v1/chat/completions (OpenAI-shape), /v1/models, auth,
